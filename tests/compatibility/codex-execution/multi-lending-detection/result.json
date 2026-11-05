@@ -1,0 +1,18 @@
+{
+  "skill_used": "multi-lending-detection",
+  "candidates": ["Alpha"],
+  "lender_counts": [
+    {"borrower_id": "Alpha", "distinct_lenders": 2},
+    {"borrower_id": "Beta", "distinct_lenders": 1},
+    {"borrower_id": "Gamma", "distinct_lenders": 0}
+  ],
+  "identity_rule": "Treat Alpha, Beta and Gamma as distinct borrower identities and I1/I2 as independent legal entities. Count distinct institutions after filtering active loans. Beta's two actual disbursements remain distinct events attached to one loan Z at I1; they contribute one institution. Shared phone P supports historical association only and never merges borrower identities. For implementation, preserve stable borrower/loan/institution IDs and source_system + record_id event keys.",
+  "temporal_rule": "Evaluate the date-level snapshot as_of 2026-02-01 using half-open intervals: valid_from <= as_of and (valid_to is null or as_of < valid_to). Here null explicitly means still open. Alpha's X/I1 and Y/I2 overlap at the snapshot, meeting the demonstration threshold of at least 2 distinct institutions. Beta's Z/I1 is active but below threshold. Gamma's historical loan has ended; the January 30 credit inquiry is not loan debt. P's January-only bindings have expired by February 1. These are model-inference candidates from supplied facts, not fraud findings or approval decisions. Offline semantic evaluation only; database execution was not performed.",
+  "gql_handoff": "For a later GQL request, hand off the Graph Model Specification, source mappings, snapshot question, identity and temporal rules, demonstration threshold, constraints and enforcement locations, unresolved inputs and target NebulaGraph version. Inspect the then-installed capabilities: route queries and supported DML to gql-query-generator; procedure definitions/management and graph algorithms to gql-procedure-generator. Verify Graph Type/DDL support separately and report any capability gap. Check returned elements, keys, types, endpoints, directions, temporal filtering and institution deduplication; distinguish semantic review from database execution. No external skill was invoked or GQL syntax generated here.",
+  "open_questions": [
+    "For implementation, what stable borrower, loan and institution IDs, source record keys and provenance are available?",
+    "For financial exposure calculations beyond this demonstration, what outstanding-balance, settlement and reversal rules apply?",
+    "For historical 'known at the time' analysis, what observed_at/history fields are available, and what timezone applies if dates become timestamps?",
+    "For a later GQL handoff, what target NebulaGraph version and physical schema should be used?"
+  ]
+}

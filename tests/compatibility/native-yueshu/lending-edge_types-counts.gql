@@ -1,0 +1,27 @@
+MATCH ()-[e@`BORROWS`]->() RETURN 'BORROWS' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`PROVIDES`]->() RETURN 'PROVIDES' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`APPLIES`]->() RETURN 'APPLIES' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`SUBMITTED_TO`]->() RETURN 'SUBMITTED_TO' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`HAS_FACILITY`]->() RETURN 'HAS_FACILITY' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`GRANTS`]->() RETURN 'GRANTS' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`DRAWS_ON`]->() RETURN 'DRAWS_ON' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`HAS_DISBURSEMENT`]->() RETURN 'HAS_DISBURSEMENT' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`HAS_REPAYMENT`]->() RETURN 'HAS_REPAYMENT' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`INQUIRY_SUBJECT`]->() RETURN 'INQUIRY_SUBJECT' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`INQUIRY_BY`]->() RETURN 'INQUIRY_BY' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`USES_PHONE`]->() RETURN 'USES_PHONE' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`USES_ACCOUNT`]->() RETURN 'USES_ACCOUNT' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`PAYS_TO`]->() RETURN 'PAYS_TO' AS object_type, count(*) AS record_count

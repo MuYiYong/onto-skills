@@ -1,0 +1,16 @@
+CREATE GRAPH TYPE /default_schema/`onto_verify_5602e6b6cefa_fraud_type` AS {
+  NODE TYPE `Party` (LABEL `Party` {`party_id` STRING NOT NULL, `identity_evidence` STRING NOT NULL, PRIMARY KEY (`party_id`)}),
+  NODE TYPE `Account` (LABEL `Account` {`account_id` STRING NOT NULL, `institution_scope` STRING NOT NULL, PRIMARY KEY (`account_id`)}),
+  NODE TYPE `Transaction` (LABEL `Transaction` {`transaction_id` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `amount` DECIMAL(18,2) NOT NULL, `currency` STRING NOT NULL, `status` STRING NOT NULL, `reverses_id` STRING, PRIMARY KEY (`transaction_id`)}),
+  NODE TYPE `DeviceObservation` (LABEL `DeviceObservation` {`observation_id` STRING NOT NULL, `device_token` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME, `observed_at` ZONED DATETIME NOT NULL, `match_method` STRING NOT NULL, `confidence` STRING NOT NULL, PRIMARY KEY (`observation_id`)}),
+  NODE TYPE `EvidenceRecord` (LABEL `EvidenceRecord` {`evidence_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `status` STRING NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `match_method` STRING NOT NULL, `confidence` STRING NOT NULL, PRIMARY KEY (`evidence_id`)}),
+  NODE TYPE `InvestigationHypothesis` (LABEL `InvestigationHypothesis` {`hypothesis_id` STRING NOT NULL, `rule_id` STRING NOT NULL, `review_status` STRING NOT NULL, `counterevidence` STRING NOT NULL, PRIMARY KEY (`hypothesis_id`)}),
+  EDGE TYPE `OWNS_ACCOUNT` (`Party`)-[LABEL `OWNS_ACCOUNT` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Account`),
+  EDGE TYPE `SENT_FROM` (`Transaction`)-[LABEL `SENT_FROM` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Account`),
+  EDGE TYPE `RECEIVED_BY` (`Transaction`)-[LABEL `RECEIVED_BY` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Account`),
+  EDGE TYPE `OBSERVED_FOR` (`DeviceObservation`)-[LABEL `OBSERVED_FOR` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Party`),
+  EDGE TYPE `SUPPORTED_BY` (`InvestigationHypothesis`)-[LABEL `SUPPORTED_BY` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`EvidenceRecord`),
+  EDGE TYPE `CONCERNS` (`InvestigationHypothesis`)-[LABEL `CONCERNS` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Party`),
+  EDGE TYPE `DOCUMENTS_TRANSACTION` (`EvidenceRecord`)-[LABEL `DOCUMENTS_TRANSACTION` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`Transaction`),
+  EDGE TYPE `DOCUMENTS_OBSERVATION` (`EvidenceRecord`)-[LABEL `DOCUMENTS_OBSERVATION` {`relation_id` STRING NOT NULL, MULTIEDGE KEY (`relation_id`)}]->(`DeviceObservation`)
+}

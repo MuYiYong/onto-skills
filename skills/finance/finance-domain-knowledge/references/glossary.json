@@ -1,0 +1,178 @@
+{
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "classification": "project-curated",
+  "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
+  "scope": "金融本体工程初始试点",
+  "source_ids": [
+    "onto-project",
+    "fibo",
+    "owl2",
+    "bcbs-credit"
+  ],
+  "id": "finance-glossary",
+  "name": "金融术语与边界",
+  "terms": [
+    {
+      "id": "FinancialInstitution",
+      "name": "金融机构",
+      "definition": "提供金融中介、服务或相关活动的组织；机构角色与组织身份分开。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "FinancialProduct",
+      "name": "金融产品",
+      "definition": "一类产品条款与业务安排；不是客户持有的每一份具体合同。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "FinancialMarket",
+      "name": "金融市场",
+      "definition": "交易、报价与发行等业务发生的机制和范围；需具体界定市场与场所。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "FinancialTransaction",
+      "name": "金融交易",
+      "definition": "参与方在特定时点履行金融业务的事件；交易与合同生命周期不同。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "FinancialContract",
+      "name": "金融合同",
+      "definition": "约定当事方权利义务的安排，不能仅用交易流水替代。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Claim",
+      "name": "债权",
+      "definition": "从权利人视角描述可主张的义务；与债务可能是同一安排的不同视角。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Debt",
+      "name": "债务",
+      "definition": "从义务人视角描述偿付义务，币种、到期和余额要有日期口径。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Account",
+      "name": "账户",
+      "definition": "在机构及账户体系范围内标识的账务或收付安排；账户号并不全局唯一。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "CreditFacility",
+      "name": "授信",
+      "definition": "按额度、期限和条件允许取得信用的安排；授信不等于已经放款。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Loan",
+      "name": "贷款",
+      "definition": "形成还款义务的贷款安排；申请、合同、放款和还款分别建模。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Guarantee",
+      "name": "担保",
+      "definition": "保证、抵押、质押等安排需分清担保方、义务和担保物角色；不混成一个布尔字段。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Settlement",
+      "name": "结算",
+      "definition": "按交易安排履行资金或资产交付的过程；交易日期和结算日期分开。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Borrower",
+      "name": "借款人",
+      "definition": "在具体贷款/授信上下文承担债务的主体角色，不是人的永久子类。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Lender",
+      "name": "授信/贷款机构",
+      "definition": "提供授信或贷款的主体角色；机构、分支和集团范围需区分。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "Repayment",
+      "name": "还款",
+      "definition": "偿还义务的业务事件，需区分计划、实付、冲正和退回。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "CreditInquiry",
+      "name": "征信查询",
+      "definition": "对主体信用信息的查询事件；查询不意味着已经借款。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    }
+  ]
+}

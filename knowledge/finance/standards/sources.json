@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "classification": "project-curated",
+  "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
+  "scope": "金融本体工程初始试点",
+  "source_ids": [
+    "onto-project",
+    "fibo",
+    "owl2",
+    "bcbs-credit"
+  ],
+  "id": "finance-sources",
+  "name": "金融知识来源索引",
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创金融知识与建模方法",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "initial-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "教学示例、业务概念整理与映射建议",
+      "authority": "项目原创整理，不是监管规范或 FIBO 原定义"
+    },
+    {
+      "id": "fibo",
+      "name": "Financial Industry Business Ontology",
+      "kind": "official-standard",
+      "uri": "https://spec.edmcouncil.org/fibo/",
+      "version": "repository 33a92cd34285d532c158da97bb42add089f135d3; AboutFIBOProd versionIRI 20261001",
+      "publisher": "EDM Council",
+      "license": "MIT for edmcouncil/fibo repository; linked publications retain own terms",
+      "retrieved_at": "2026-11-05",
+      "scope": "模块索引及金融本体术语定位；非完整本体副本",
+      "authority": "官方项目与发布来源；映射建议仍为本项目整理"
+    },
+    {
+      "id": "owl2",
+      "name": "OWL 2 Web Ontology Language Primer (Second Edition)",
+      "kind": "official-standard",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "version": "W3C Recommendation 2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original document not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Class、Property、Domain/Range、继承、Restriction 与开放世界解释",
+      "authority": "OWL 语义的官方说明，本项目不是推理实现"
+    },
+    {
+      "id": "bcbs-credit",
+      "name": "Basel Framework CRE36 Internal ratings-based approach: minimum requirements",
+      "kind": "official-standard",
+      "uri": "https://www.bis.org/basel_framework/chapter/CRE/36.htm",
+      "version": "online chapter observed 2026-11-05; applicable jurisdiction/version must be selected per task",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "BIS copyright; link and original summary only",
+      "retrieved_at": "2026-11-05",
+      "scope": "信用风险概念背景；不直接提供本地监管或审批阈值",
+      "authority": "国际银行监管框架，法律适用需另行确定"
+    }
+  ]
+}

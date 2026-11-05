@@ -1,0 +1,29 @@
+{
+  "parsed_json_count": 5,
+  "parsed_json": [
+    "multi-lending-detection/examples/graph-model.json",
+    "multi-lending-detection/references/graph-model.schema.json",
+    "multi-lending-detection/references/sources.json",
+    "fibo-ontology/references/fibo-index.json",
+    "fibo-ontology/references/sources.json"
+  ],
+  "relative_markdown_links_checked": 16,
+  "missing_links": [],
+  "synthetic_asof": "2026-02-01",
+  "null_end_assumption": "open for Z, for this check only",
+  "effective_lenders": {
+    "B1": [
+      "L1",
+      "L2"
+    ],
+    "B2": [
+      "L1"
+    ],
+    "B3": []
+  },
+  "candidate_threshold": "demonstration count >= 2",
+  "candidates": [
+    "B1"
+  ],
+  "boundary": "No packaged source parse, OWL reasoning, schema/model validator, GQL generation or database execution was performed."
+}

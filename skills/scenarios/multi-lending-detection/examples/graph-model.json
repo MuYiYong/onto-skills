@@ -1,0 +1,1488 @@
+{
+  "spec_version": "1.0",
+  "model_id": "finance-multi-lending",
+  "version": "1.0.0",
+  "graph_type": "FinanceCreditRisk",
+  "description": "合成数据的多机构有效贷款和共享标识建模示例，标准对齐有明确范围和损失。",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创金融知识与建模方法",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "initial-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "教学示例、业务概念整理与映射建议",
+      "authority": "项目原创整理，不是监管规范或 FIBO 原定义"
+    },
+    {
+      "id": "fibo",
+      "name": "Financial Industry Business Ontology",
+      "kind": "official-standard",
+      "uri": "https://spec.edmcouncil.org/fibo/",
+      "version": "repository 33a92cd34285d532c158da97bb42add089f135d3; AboutFIBOProd versionIRI 20261001",
+      "publisher": "EDM Council",
+      "license": "MIT for edmcouncil/fibo repository; linked publications retain own terms",
+      "retrieved_at": "2026-11-05",
+      "scope": "模块索引及金融本体术语定位；非完整本体副本",
+      "authority": "官方项目与发布来源；映射建议仍为本项目整理"
+    },
+    {
+      "id": "owl2",
+      "name": "OWL 2 Web Ontology Language Primer (Second Edition)",
+      "kind": "official-standard",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "version": "W3C Recommendation 2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original document not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Class、Property、Domain/Range、继承、Restriction 与开放世界解释",
+      "authority": "OWL 语义的官方说明，本项目不是推理实现"
+    },
+    {
+      "id": "bcbs-credit",
+      "name": "Basel Framework CRE36 Internal ratings-based approach: minimum requirements",
+      "kind": "official-standard",
+      "uri": "https://www.bis.org/basel_framework/chapter/CRE/36.htm",
+      "version": "online chapter observed 2026-11-05; applicable jurisdiction/version must be selected per task",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "BIS copyright; link and original summary only",
+      "retrieved_at": "2026-11-05",
+      "scope": "信用风险概念背景；不直接提供本地监管或审批阈值",
+      "authority": "国际银行监管框架，法律适用需另行确定"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Borrower",
+      "business_meaning": "已核实的借款主体；角色身份指向稳定主体，不按手机合并",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "borrower_id"
+      ],
+      "properties": [
+        {
+          "name": "borrower_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "borrower_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "party_type",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "party_type",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "identity_evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "identity_evidence",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Lender",
+      "business_meaning": "以业务确认的独立机构粒度归并的贷款/授信机构",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "lender_id"
+      ],
+      "properties": [
+        {
+          "name": "lender_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "lender_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "institution_scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "institution_scope",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "name",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Loan",
+      "business_meaning": "示例范围内按期还款的贷款合同/义务，不等于申请或单次放款",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "loan_id"
+      ],
+      "properties": [
+        {
+          "name": "loan_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "loan_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "principal_amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "principal_amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "LoanApplication",
+      "business_meaning": "可独立追踪、可能拒绝或撤销的贷款申请事件",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "application_id"
+      ],
+      "properties": [
+        {
+          "name": "application_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "application_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "event_time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "CreditFacility",
+      "business_meaning": "授信额度与条件安排；不直接计入已放款暴露",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "facility_id"
+      ],
+      "properties": [
+        {
+          "name": "facility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "facility_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "limit_amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "limit_amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Disbursement",
+      "business_meaning": "实际发放资金事件，多次放款分别有身份",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "disbursement_id"
+      ],
+      "properties": [
+        {
+          "name": "disbursement_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "disbursement_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "event_time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Repayment",
+      "business_meaning": "实际还款事件；计划、实付、冲正分别记录",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "repayment_id"
+      ],
+      "properties": [
+        {
+          "name": "repayment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "repayment_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "event_time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reverses_id",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "reverses_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "CreditInquiry",
+      "business_meaning": "征信查询事件，仅表明查询行为，不代表负债",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "inquiry_id"
+      ],
+      "properties": [
+        {
+          "name": "inquiry_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "inquiry_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "event_time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "purpose",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "purpose",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Phone",
+      "business_meaning": "用于关联的脱敏电话标识；有复用/共享可能",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "phone_token"
+      ],
+      "properties": [
+        {
+          "name": "phone_token",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "phone_token",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "normalization_scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "normalization_scope",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Account",
+      "business_meaning": "机构及账户体系内的收付账户",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "institution_id",
+        "account_token",
+        "account_namespace"
+      ],
+      "properties": [
+        {
+          "name": "institution_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "institution_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "account_token",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "account_token",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "account_namespace",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "account_namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "BORROWS",
+      "business_meaning": "该主体在该贷款中承担借款义务",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Borrower",
+      "to": "Loan",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1..1 in this example; joint borrowing excluded"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "PROVIDES",
+      "business_meaning": "机构提供贷款",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Lender",
+      "to": "Loan",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1..1 in this example; syndication excluded"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "APPLIES",
+      "business_meaning": "申请的发起主体",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Borrower",
+      "to": "LoanApplication",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1..1 in this example"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "SUBMITTED_TO",
+      "business_meaning": "申请提交的机构",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "LoanApplication",
+      "to": "Lender",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1 in this example",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_FACILITY",
+      "business_meaning": "授信角色关系",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Borrower",
+      "to": "CreditFacility",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "valid_time",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "GRANTS",
+      "business_meaning": "机构给予授信",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Lender",
+      "to": "CreditFacility",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "valid_time",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "DRAWS_ON",
+      "business_meaning": "贷款支用指定授信，不把额度当作负债金额",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Loan",
+      "to": "CreditFacility",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_DISBURSEMENT",
+      "business_meaning": "贷款关联实际放款事件",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Loan",
+      "to": "Disbursement",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1..1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_REPAYMENT",
+      "business_meaning": "贷款关联实际还款/冲正事件",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Loan",
+      "to": "Repayment",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1..1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "INQUIRY_SUBJECT",
+      "business_meaning": "被查询主体",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CreditInquiry",
+      "to": "Borrower",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "INQUIRY_BY",
+      "business_meaning": "查询发起机构",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CreditInquiry",
+      "to": "Lender",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "USES_PHONE",
+      "business_meaning": "有证据的主体电话使用关系，不等于身份相等",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Borrower",
+      "to": "Phone",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "USES_ACCOUNT",
+      "business_meaning": "指定期间收付使用关系，不自动表示账户所有权",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Borrower",
+      "to": "Account",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "PAYS_TO",
+      "business_meaning": "放款收款账户",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Disbursement",
+      "to": "Account",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1 in this example",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "identity",
+      "subject": "model",
+      "rule": "实体和事件使用稳定来源标识；每条业务来源记录幂等，手机/账户共享不是主体相同的充分证据。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "loan-principal",
+      "subject": "node:Loan",
+      "rule": "principal_amount 为十进制数且非负，currency 必填；这是对 MonetaryAmount 的有意扁平化，不保留货币量对象身份。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "intervals",
+      "subject": "model",
+      "rule": "UTC [valid_from,valid_to)；本示例 null valid_to 只表示仍有效；未知结束必须拒绝进入确定性当前暴露统计。observed_at 为首次观测，修订保存来源历史。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "multilending",
+      "subject": "model",
+      "rule": "as_of 时点余额口径确认后，按独立 lender_id 对有效 Loan 去重；示例机构数>=2 仅产生待复核候选，申请/查询不计入贷款。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "event-order",
+      "subject": "model",
+      "rule": "申请、查询、授信、放款、还款分别保留 event_time；先后顺序用于分析，不把晚到 observed_at 当实际发生顺序。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "cardinality",
+      "subject": "model",
+      "rule": "BORROWS/PROVIDES 每笔示例贷款各一主体/机构；联合借款、银团贷款、担保、集团风险在本例范围之外，不能推广该基数。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "fibo-scope",
+      "subject": "node:Loan",
+      "rule": "保留 Loan 的业务对齐；不声称实现其父类及全部进口公理的 OWL 推理。此模型仅用于示例多头借贷问题。",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project",
+        "fibo",
+        "owl2"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "loan-class",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+      "target": "node:Loan",
+      "status": "approximated",
+      "explanation": "将范围限定为按期偿付贷款的业务合同；仅对齐该类，不能因此宣称完整 OWL/FIBO 等价。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "principal-restriction",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan subClassOf (hasPrincipalAmount some MonetaryAmount)",
+      "target": "property:Loan.principal_amount",
+      "status": "approximated",
+      "explanation": "观察到该存在限制；以 amount/currency 两字段近似，丢失 MonetaryAmount 对象身份及量值相关推理，采用应用必填规则而非 OWL 闭世界断言。",
+      "constraint_ids": [
+        "loan-principal",
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "periodic-parent",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreementRepaidPeriodically",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "保留父类来源但不单建类型；本例用范围限制与说明保留业务解读，不实现父类推理和全部偿付计划语义。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "debt-parent",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/DebtInstrument",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "未展开债务工具父类属性与公理；不影响本例按机构和有效期间计数，不承诺金融工具分类查询。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "business-loan-id",
+      "source_id": "onto-project",
+      "source_term": "input.loans.loan_id",
+      "target": "property:Loan.loan_id",
+      "status": "preserved",
+      "explanation": "企业数据扩展主键，有独立来源命名空间，不是 FIBO 给定的标准主键。",
+      "constraint_ids": [
+        "identity"
+      ]
+    }
+  ],
+  "assumptions": [
+    "示例贷款按期偿付；每笔恰好一个已核实借款主体和一家独立机构。",
+    "不直接提供余额风险结论；真实业务需固定余额、币种、状态和机构合并口径。",
+    "示例接受有界 FIBO 映射损失，不声称完整导入或原生推理；完整 imports 闭包未验证。"
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "截至 2026-02-01 哪些主体在至少两家独立机构有重叠有效贷款？",
+    "哪些共享手机/收款账户关联在同一时段有效，其证据是什么？",
+    "查询/申请与放款的先后顺序是什么，记录何时被获知？"
+  ]
+}

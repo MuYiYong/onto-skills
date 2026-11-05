@@ -1,0 +1,54 @@
+{
+  "observed_at": "2026-11-05",
+  "codex_version": "0.166.0",
+  "cc_switch": {
+    "installed_binary": "not found",
+    "reviewed_source_version": "4.0.25",
+    "revision": "cc4ce03860b5987e4928dcbee76f17b29eec20e6",
+    "files": [
+      "src-tauri/src/services/skill.rs",
+      "docs/user-manual/zh/3-extensions/3.3-skills.md",
+      "src-tauri/Cargo.toml"
+    ],
+    "functions": [
+      "scan_dir_recursive",
+      "scan_skills_recursive",
+      "resolve_skill_source_dir"
+    ],
+    "evidence_level": "source review only"
+  },
+  "nebula_gql_skills": {
+    "repository": "https://github.com/MuYiYong/nebula-gql-skills",
+    "revision": "c93f01024c615556721c00532a93539d595adfef",
+    "latest_release_observed": "v26.10.25_Build142",
+    "release_date": "2026-10-25",
+    "skill_names": [
+      "gql-query-generator",
+      "gql-procedure-generator"
+    ],
+    "files_inspected": [
+      "README.md",
+      "src/gql-query-generator/SKILL.md",
+      "src/gql-procedure-generator/SKILL.md",
+      "src/gql-query-generator/references/documented-syntax.md"
+    ],
+    "ddl_support": "not established by current entrypoints/index; check installed capability before handoff",
+    "evidence_level": "upstream source inspection, not database execution"
+  },
+  "fibo": {
+    "revision": "33a92cd34285d532c158da97bb42add089f135d3",
+    "file": "LOAN/LoansGeneral/Loans.rdf",
+    "file_sha256": "87024035dac38303e21738879202d87f0f37c1347a16119f9ec2b4e37e124f05",
+    "file_version_iri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/",
+    "about_production_version_iri": "https://spec.edmcouncil.org/fibo/ontology/20261001/AboutFIBOProd/",
+    "scope": "Loan direct parents and restrictions inspected; imports not recursively loaded; no reasoner"
+  },
+  "file_hashes": {
+    "cc-skill.rs": "c984b9161d94049fcfdb4f31f17b9b349f13c7e0dd7d85eb1cd7ecf271386e39",
+    "cc-skills.md": "47fdccf9693a12137bceec1069b904d1a0ff923a2816de08d5be14b3b2855e20",
+    "gql-query.md": "d1c74467f4e3e89676c064dd982f7753866386e534b489cdf6e4992261293c4f",
+    "gql-procedure.md": "c605ff3c1e0f1973b9e00b377595d4083887a8a4b46f2a1ab8cbf55bb8b674de",
+    "gql-syntax.md": "2f9a8356be85f183bcf9c331e425e137b99fd7d94a2b339f5794472a1bce755a",
+    "fibo-domains.rdf": "91e3957aa2f3b5c82121ead716a784468a4d3f15ea32b9eadfe146dddd8df92c"
+  }
+}

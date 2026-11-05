@@ -1,0 +1,19 @@
+MATCH (n@`Borrower`) RETURN 'Borrower' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Lender`) RETURN 'Lender' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Loan`) RETURN 'Loan' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`LoanApplication`) RETURN 'LoanApplication' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`CreditFacility`) RETURN 'CreditFacility' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Disbursement`) RETURN 'Disbursement' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Repayment`) RETURN 'Repayment' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`CreditInquiry`) RETURN 'CreditInquiry' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Phone`) RETURN 'Phone' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Account`) RETURN 'Account' AS object_type, count(*) AS record_count

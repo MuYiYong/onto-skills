@@ -1,0 +1,180 @@
+{
+  "spec_version": "1.0",
+  "model_id": "equipment-custody",
+  "version": "1.0.0",
+  "graph_type": "EquipmentCustody",
+  "description": "设备保管的行业中立示例",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创建模方法与设备示例",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "initial-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "通用本体建模与虚构设备保管示例",
+      "authority": "项目原创整理，不是监管规范或 FIBO 原定义"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Equipment",
+      "business_meaning": "可独立追踪的设备",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "asset_id"
+      ],
+      "properties": [
+        {
+          "name": "asset_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "asset_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "color",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "color",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Person",
+      "business_meaning": "已核实的保管主体",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "person_id"
+      ],
+      "properties": [
+        {
+          "name": "person_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "person_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "ASSIGNED_TO",
+      "business_meaning": "设备交接保管关系，重复交接分别有编号",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Equipment",
+      "to": "Person",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "valid_time",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "nonoverlap",
+      "subject": "edge:ASSIGNED_TO",
+      "rule": "同一设备的排他保管区间不得重叠；null 结束表示尚未结束。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "equipment-id",
+      "source_id": "onto-project",
+      "source_term": "input.asset_id",
+      "target": "property:Equipment.asset_id",
+      "status": "preserved",
+      "explanation": "稳定资产编号而非名称或颜色；范围为示例资产系统。",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "示例为排他保管，未指定数据库；所有来源为原创合成数据。"
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "指定时刻谁保管设备 A-17？"
+  ]
+}

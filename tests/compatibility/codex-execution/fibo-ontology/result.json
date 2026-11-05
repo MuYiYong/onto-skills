@@ -1,0 +1,33 @@
+{
+  "skill_used": "fibo-ontology",
+  "source_scope": "Alignment is limited to input.ttl, a project-authored expression of selected axioms, and the copied skill resources. The input contains no owl:Ontology declaration, owl:versionIRI or owl:imports statements; no imports closure is supplied. The package index records upstream revision 33a92cd34285d532c158da97bb42add089f135d3 and a Loans version IRI containing 20251201; these metadata do not establish the supplied input as a complete official release. Retain all supplied axioms as mapping provenance; imported definitions remain unavailable.",
+  "source_terms": [
+    "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan — explicitly declared owl:Class; subclass of both named parents and both restrictions.",
+    "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreementRepaidPeriodically — referenced direct parent; its definition is not supplied.",
+    "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/DebtInstrument — referenced direct parent; its definition is not supplied.",
+    "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrincipalAmount — used in someValuesFrom MonetaryAmount: every Loan must have at least one qualifying monetary amount in an OWL interpretation. This specifies neither exactly one value nor that every value is a MonetaryAmount.",
+    "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/MonetaryAmount — referenced existential filler; no internal amount or currency structure is supplied.",
+    "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/hasGuarantor — used in a qualified minimum-cardinality restriction of zero.",
+    "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/Guarantor — referenced qualifying class; no local definition is supplied."
+  ],
+  "mapped_fields": [
+    "contract_key: retain as an enterprise identifier, using the chosen extension IRI urn:enterprise:loan:contract_key. It is not a FIBO-defined key. Keep source RDF identity separately when available; do not infer owl:sameAs or distinctness from key values. Retain Loan and both parent IRIs as record type-mapping metadata, without creating separate parent objects.",
+    "principal_value: use urn:enterprise:loan:principal_value for the business scalar representing a flattened principal amount. Alignment to Loan → hasPrincipalAmount → MonetaryAmount is approximate. The input supplies no numeric-value predicate, datatype, precision, instance value or rule for selecting among multiple amounts.",
+    "denomination: use urn:enterprise:loan:denomination as the enterprise denomination associated with that flattened principal value. No denomination/currency predicate or code scheme is supplied, so no exact standard-property equivalence is asserted."
+  ],
+  "losses": [
+    "Flattening the monetary amount into principal_value and denomination removes the amount object's separate identity, explicit MonetaryAmount typing and hasPrincipalAmount relationship from the field representation.",
+    "A single field pair cannot faithfully represent multiple qualifying amount objects or distinguish shared amount identity. The supplied existential restriction provides no maximum cardinality.",
+    "The supplied axioms do not establish the internal value/denomination structure assumed by the enterprise fields; that decomposition is an explicit business approximation.",
+    "Parent-class and restriction provenance is retained, but scalar fields and type metadata alone do not execute OWL inheritance or existential semantics.",
+    "Missing stored amounts are not automatically OWL violations under open-world semantics. Required fields and key uniqueness would be additional enterprise validation rules."
+  ],
+  "guarantor_requirement": "No guarantor is required by the supplied restriction. Qualified minimum cardinality zero imposes no existence requirement or upper bound, and does not require every hasGuarantor value to belong to Guarantor. Retain the axiom in provenance without adding a mandatory guarantor field. It establishes neither a required guarantee agreement nor the absence of guarantors.",
+  "reasoning_status": "Inspected the supplied Turtle and local method, index, sources and worked example through native CLI reads. No RDF parser, OWL reasoner or imports loader was executed; consistency and inferred closure were not validated. Semantic explanations are direct interpretations of the written axioms. Only Loan is explicitly declared a class; the restriction properties have no explicit ObjectProperty declarations, domains or ranges here. No DatatypeProperty, key, identity, functional-property or instance assertions are supplied. No network access or file edits were performed.",
+  "open_questions": [
+    "The uniqueness scope and reconciliation policy for contract_key are unspecified.",
+    "The numeric datatype, denomination vocabulary and association between the two amount fields need enterprise definitions.",
+    "Representing multiple principal amounts requires a business selection rule or a richer representation.",
+    "Referenced definitions and any upstream imports or additional axioms are unavailable; complete FIBO alignment and reasoning remain unverified."
+  ]
+}

@@ -1,0 +1,40 @@
+desktop frame | main
+  application | cc-switch
+              document web | Claude Code 供应商切换器
+                landmark | Main navigation
+                  link | Skip to main content
+                  push button | Collapse sidebar
+                  panel | Apps
+                    push button | Claude Code
+                    push button | Claude Desktop
+                    push button | Codex
+                    push button | Gemini CLI
+                    push button | Grok Build
+                    push button | OpenCode
+                    push button | OpenClaw
+                    push button | Hermes
+                    push button | Pi
+                    push button | MiniMax Code
+                    push button | Kimi Code
+                    push button | DeepSeek Harness
+                    push button | Antigravity
+                    push button | Oh My Pi
+                  push button | MCP
+                  push button | Skills
+                  push button | Prompts
+                  push button | Sessions
+                  push button | Accounts
+                  push button | Usage
+                  push button | Apps
+                  push button | Settings
+                    heading | Skills
+                    combo box | How Skills sync
+                    combo box | Add Skill
+                    combo box | More Skills actions
+                  page tab list | Skills view
+                    page tab | Installed 0
+                    page tab | Discover
+                  heading | No Skills yet
+                  push button | Go to Discover
+                  push button | Import from this computer
+                landmark | Notifications alt+T

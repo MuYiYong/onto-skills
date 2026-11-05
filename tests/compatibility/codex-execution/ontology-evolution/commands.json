@@ -1,0 +1,17 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/ontology-evolution/references/method.md'",
+    "exit_code": 0,
+    "output_sha256": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/ontology-evolution/SKILL.md'",
+    "exit_code": 0,
+    "output_sha256": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/ontology-evolution/examples/worked-example.md'",
+    "exit_code": 0,
+    "output_sha256": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac"
+  }
+]

@@ -1,0 +1,428 @@
+{
+  "name": "fraud",
+  "nodes": [
+    {
+      "ref": "P1",
+      "type": "Party",
+      "properties": {
+        "party_id": "P1",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "FA1",
+      "type": "Account",
+      "properties": {
+        "account_id": "FA1",
+        "institution_scope": "synthetic-bank"
+      }
+    },
+    {
+      "ref": "P2",
+      "type": "Party",
+      "properties": {
+        "party_id": "P2",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "FA2",
+      "type": "Account",
+      "properties": {
+        "account_id": "FA2",
+        "institution_scope": "synthetic-bank"
+      }
+    },
+    {
+      "ref": "P3",
+      "type": "Party",
+      "properties": {
+        "party_id": "P3",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "FA3",
+      "type": "Account",
+      "properties": {
+        "account_id": "FA3",
+        "institution_scope": "synthetic-bank"
+      }
+    },
+    {
+      "ref": "P4",
+      "type": "Party",
+      "properties": {
+        "party_id": "P4",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "FA4",
+      "type": "Account",
+      "properties": {
+        "account_id": "FA4",
+        "institution_scope": "synthetic-bank"
+      }
+    },
+    {
+      "ref": "T1",
+      "type": "Transaction",
+      "properties": {
+        "transaction_id": "T1",
+        "source_record_id": "record-T1",
+        "event_time": "2026-01-20T10:00:00Z",
+        "observed_at": "2026-01-20T13:00:00Z",
+        "amount": "100.00",
+        "currency": "CNY",
+        "status": "posted",
+        "reverses_id": null
+      }
+    },
+    {
+      "ref": "T2",
+      "type": "Transaction",
+      "properties": {
+        "transaction_id": "T2",
+        "source_record_id": "record-T2",
+        "event_time": "2026-01-20T11:00:00Z",
+        "observed_at": "2026-01-20T13:00:00Z",
+        "amount": "100.00",
+        "currency": "CNY",
+        "status": "posted",
+        "reverses_id": null
+      }
+    },
+    {
+      "ref": "EARLY",
+      "type": "Transaction",
+      "properties": {
+        "transaction_id": "EARLY",
+        "source_record_id": "record-EARLY",
+        "event_time": "2026-01-20T09:00:00Z",
+        "observed_at": "2026-01-20T13:00:00Z",
+        "amount": "100.00",
+        "currency": "CNY",
+        "status": "posted",
+        "reverses_id": null
+      }
+    },
+    {
+      "ref": "CANCELLED",
+      "type": "Transaction",
+      "properties": {
+        "transaction_id": "CANCELLED",
+        "source_record_id": "record-CANCELLED",
+        "event_time": "2026-01-20T12:00:00Z",
+        "observed_at": "2026-01-20T13:00:00Z",
+        "amount": "100.00",
+        "currency": "CNY",
+        "status": "reversed",
+        "reverses_id": null
+      }
+    },
+    {
+      "ref": "O1",
+      "type": "DeviceObservation",
+      "properties": {
+        "observation_id": "O1",
+        "device_token": "shared-device-token",
+        "valid_from": "2026-01-20T00:00:00Z",
+        "valid_to": "2026-01-21T00:00:00Z",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "confirmed-device-token",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "O2",
+      "type": "DeviceObservation",
+      "properties": {
+        "observation_id": "O2",
+        "device_token": "shared-device-token",
+        "valid_from": "2026-01-20T00:00:00Z",
+        "valid_to": "2026-01-21T00:00:00Z",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "confirmed-device-token",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "EV1",
+      "type": "EvidenceRecord",
+      "properties": {
+        "evidence_id": "EV1",
+        "source_system": "synthetic",
+        "source_record_id": "record-EV1",
+        "status": "posted",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "source-event-id",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "EV2",
+      "type": "EvidenceRecord",
+      "properties": {
+        "evidence_id": "EV2",
+        "source_system": "synthetic",
+        "source_record_id": "record-EV2",
+        "status": "posted",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "source-event-id",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "EV3",
+      "type": "EvidenceRecord",
+      "properties": {
+        "evidence_id": "EV3",
+        "source_system": "synthetic",
+        "source_record_id": "record-EV3",
+        "status": "posted",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "source-event-id",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "EV4",
+      "type": "EvidenceRecord",
+      "properties": {
+        "evidence_id": "EV4",
+        "source_system": "synthetic",
+        "source_record_id": "record-EV4",
+        "status": "posted",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "source-event-id",
+        "confidence": "source-asserted-medium"
+      }
+    },
+    {
+      "ref": "EV5",
+      "type": "EvidenceRecord",
+      "properties": {
+        "evidence_id": "EV5",
+        "source_system": "synthetic",
+        "source_record_id": "record-EV5",
+        "status": "posted",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "match_method": "shared-office-ip",
+        "confidence": "weak-common-infrastructure"
+      }
+    },
+    {
+      "ref": "H1",
+      "type": "InvestigationHypothesis",
+      "properties": {
+        "hypothesis_id": "H1",
+        "rule_id": "synthetic-temporal-chain",
+        "review_status": "pending-review",
+        "counterevidence": "P4 common office IP is not group membership evidence"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "type": "OWNS_ACCOUNT",
+      "source": "P1",
+      "target": "FA1",
+      "properties": {
+        "relation_id": "e001"
+      }
+    },
+    {
+      "type": "OWNS_ACCOUNT",
+      "source": "P2",
+      "target": "FA2",
+      "properties": {
+        "relation_id": "e002"
+      }
+    },
+    {
+      "type": "OWNS_ACCOUNT",
+      "source": "P3",
+      "target": "FA3",
+      "properties": {
+        "relation_id": "e003"
+      }
+    },
+    {
+      "type": "OWNS_ACCOUNT",
+      "source": "P4",
+      "target": "FA4",
+      "properties": {
+        "relation_id": "e004"
+      }
+    },
+    {
+      "type": "SENT_FROM",
+      "source": "T1",
+      "target": "FA1",
+      "properties": {
+        "relation_id": "e005"
+      }
+    },
+    {
+      "type": "RECEIVED_BY",
+      "source": "T1",
+      "target": "FA2",
+      "properties": {
+        "relation_id": "e006"
+      }
+    },
+    {
+      "type": "SENT_FROM",
+      "source": "T2",
+      "target": "FA2",
+      "properties": {
+        "relation_id": "e007"
+      }
+    },
+    {
+      "type": "RECEIVED_BY",
+      "source": "T2",
+      "target": "FA3",
+      "properties": {
+        "relation_id": "e008"
+      }
+    },
+    {
+      "type": "SENT_FROM",
+      "source": "EARLY",
+      "target": "FA2",
+      "properties": {
+        "relation_id": "e009"
+      }
+    },
+    {
+      "type": "RECEIVED_BY",
+      "source": "EARLY",
+      "target": "FA3",
+      "properties": {
+        "relation_id": "e010"
+      }
+    },
+    {
+      "type": "SENT_FROM",
+      "source": "CANCELLED",
+      "target": "FA2",
+      "properties": {
+        "relation_id": "e011"
+      }
+    },
+    {
+      "type": "RECEIVED_BY",
+      "source": "CANCELLED",
+      "target": "FA3",
+      "properties": {
+        "relation_id": "e012"
+      }
+    },
+    {
+      "type": "OBSERVED_FOR",
+      "source": "O1",
+      "target": "P1",
+      "properties": {
+        "relation_id": "e013"
+      }
+    },
+    {
+      "type": "DOCUMENTS_TRANSACTION",
+      "source": "EV1",
+      "target": "T1",
+      "properties": {
+        "relation_id": "e014"
+      }
+    },
+    {
+      "type": "DOCUMENTS_OBSERVATION",
+      "source": "EV3",
+      "target": "O1",
+      "properties": {
+        "relation_id": "e015"
+      }
+    },
+    {
+      "type": "OBSERVED_FOR",
+      "source": "O2",
+      "target": "P2",
+      "properties": {
+        "relation_id": "e016"
+      }
+    },
+    {
+      "type": "DOCUMENTS_TRANSACTION",
+      "source": "EV2",
+      "target": "T2",
+      "properties": {
+        "relation_id": "e017"
+      }
+    },
+    {
+      "type": "DOCUMENTS_OBSERVATION",
+      "source": "EV4",
+      "target": "O2",
+      "properties": {
+        "relation_id": "e018"
+      }
+    },
+    {
+      "type": "SUPPORTED_BY",
+      "source": "H1",
+      "target": "EV1",
+      "properties": {
+        "relation_id": "e019"
+      }
+    },
+    {
+      "type": "SUPPORTED_BY",
+      "source": "H1",
+      "target": "EV2",
+      "properties": {
+        "relation_id": "e020"
+      }
+    },
+    {
+      "type": "SUPPORTED_BY",
+      "source": "H1",
+      "target": "EV3",
+      "properties": {
+        "relation_id": "e021"
+      }
+    },
+    {
+      "type": "SUPPORTED_BY",
+      "source": "H1",
+      "target": "EV4",
+      "properties": {
+        "relation_id": "e022"
+      }
+    },
+    {
+      "type": "CONCERNS",
+      "source": "H1",
+      "target": "P1",
+      "properties": {
+        "relation_id": "e023"
+      }
+    },
+    {
+      "type": "CONCERNS",
+      "source": "H1",
+      "target": "P2",
+      "properties": {
+        "relation_id": "e024"
+      }
+    },
+    {
+      "type": "CONCERNS",
+      "source": "H1",
+      "target": "P3",
+      "properties": {
+        "relation_id": "e025"
+      }
+    }
+  ]
+}

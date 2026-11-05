@@ -1,0 +1,121 @@
+{
+  "data": [
+    {
+      "cwd": "/home/tester/project",
+      "skills": [
+        {
+          "name": "banking-business-model",
+          "description": "建立银行客户、账户、存款支付结算、授信、贷款、还款及担保的业务实体关系与生命周期。用于银行业务建模和数据域边界设计；不替代机构特定会计或监管规则，不生成数据库语法。",
+          "path": "/home/tester/.cc-switch/skills/banking-business-model/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "credit-risk-knowledge",
+          "description": "整理借款人、授信机构、贷款授信、还款、担保、征信、多头/关联借贷、集团风险和共债的建模口径。用于信用风险概念与时序关系设计；不做自动授信拒绝或把风险信号当确定事实。",
+          "path": "/home/tester/.cc-switch/skills/credit-risk-knowledge/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "entity-relationship-modeling",
+          "description": "设计实体、关系方向、基数、关系属性与稳定主键。用于概念到实体关系模型的细化、实体和属性取舍及过度建模检查；不用于行业事实检索或 GQL 语法生成。",
+          "path": "/home/tester/.cc-switch/skills/entity-relationship-modeling/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "fibo-ontology",
+          "description": "解析并裁剪 FIBO 模块、Class、Object/Datatype Property、Domain/Range、SubClass 和 OWL Restriction，对齐业务扩展并记录属性图映射损失。用于 FIBO 标准驱动建模与版本差异；不分发完整 FIBO、不生成 GQL。",
+          "path": "/home/tester/.cc-switch/skills/fibo-ontology/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "finance-domain-knowledge",
+          "description": "理解金融机构、产品、市场、交易、合同、债权债务、账户、授信、贷款、担保和结算的概念与边界。用于金融业务术语澄清和概念关系整理；不提供投资决策、监管结论或数据库语法。",
+          "path": "/home/tester/.cc-switch/skills/finance-domain-knowledge/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "fraud-network-modeling",
+          "description": "为团伙欺诈调查设计主体、共享标识、交易、控制关系、证据路径和风险子图。用于异常关联网络与团伙假设的建模及反证设计；不将共享 IP/电话、社区发现或资金链自动判定为欺诈。",
+          "path": "/home/tester/.cc-switch/skills/fraud-network-modeling/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "industry-knowledge-discovery",
+          "description": "从业务材料抽取术语、概念和规则，检索行业标准并记录来源、版本、权威性与知识缺口。用于陌生行业调研和可追溯知识整理；不承担数据库查询生成。",
+          "path": "/home/tester/.cc-switch/skills/industry-knowledge-discovery/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "multi-lending-detection",
+          "description": "为多头借贷识别设计借款人、机构、授信、申请、放款、征信、手机与收款账户的时序图模型及风险口径。用于多机构重叠负债、行为顺序和共债关联建模；不把查询/申请或共享标识直接视为借贷事实。",
+          "path": "/home/tester/.cc-switch/skills/multi-lending-detection/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "ontology-documentation",
+          "description": "把已有概念本体、属性图规格、来源与验证结论整理成可审查的设计文档。用于术语表、实体关系目录、映射和质量报告交付；不补造缺失业务事实或数据库验证结果。",
+          "path": "/home/tester/.cc-switch/skills/ontology-documentation/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "ontology-evolution",
+          "description": "比较本体和属性图版本，评估概念、身份、关系、约束及标准版本升级的兼容影响。用于本体差异分析、迁移与回滚规划；不擅自执行数据库迁移或修改生产数据。",
+          "path": "/home/tester/.cc-switch/skills/ontology-evolution/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "ontology-modeling",
+          "description": "从业务需求建立概念本体、概念层次、实体身份与生命周期。用于业务概念抽取、本体边界和概念模型设计；不用于数据库语法生成。",
+          "path": "/home/tester/.cc-switch/skills/ontology-modeling/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "ontology-validation",
+          "description": "审查概念本体与属性图模型的业务完整性、身份、关系、类型、冗余及标准映射损失。用于模型质量验收和 Graph Model Specification 复核；不宣称静态检查等于 OWL 推理或数据库运行验证。",
+          "path": "/home/tester/.cc-switch/skills/ontology-validation/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        },
+        {
+          "name": "property-graph-mapping",
+          "description": "把概念模型或 RDF/OWL 标准本体裁剪并映射为数据库中立属性图及 Graph Model Specification。用于 Class/Property/继承/Restriction 的保真与损失分析；不生成 NebulaGraph GQL 语法。",
+          "path": "/home/tester/.cc-switch/skills/property-graph-mapping/SKILL.md",
+          "scope": "user",
+          "enabled": true,
+          "pluginId": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "omitted_builtin_names": [
+    "imagegen",
+    "openai-docs",
+    "review-agent",
+    "skill-creator",
+    "skill-installer"
+  ]
+}

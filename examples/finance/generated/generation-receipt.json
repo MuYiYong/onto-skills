@@ -1,0 +1,59 @@
+{
+  "observed_at": "2026-11-05",
+  "external_skill": "gql-query-generator",
+  "repository": "https://github.com/MuYiYong/nebula-gql-skills",
+  "installed_package_version": "not reported; entry/resource hashes identify observed content",
+  "installed_entry_sha256": "d1c74467f4e3e89676c064dd982f7753866386e534b489cdf6e4992261293c4f",
+  "resources_read": [
+    "references/query-language.md",
+    "references/checklist.md",
+    "references/validation.md",
+    "references/documented-functions.md"
+  ],
+  "resource_sha256": {
+    "references/query-language.md": "2370535c791b46c43d67282143df8c246e76fe277ac3d654887b8ffdfd4b70de",
+    "references/checklist.md": "b56ccb792d6c3cc00cacce623bdbb6f7f1ae7f897195a8e5fb3626a56d221c39",
+    "references/validation.md": "11778defb9d9113b062fc9a1eeecaf9b632c5129302b17e56b6355c9f8ad93ad",
+    "references/documented-functions.md": "322c5b8fad0b05eee7c2396790a960d3c2a549453676f7fd7b120aa9150fe6fc"
+  },
+  "input_model_sha256": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+  "target": {
+    "database": "NebulaGraph",
+    "version": "5.3.0",
+    "scope": "Database"
+  },
+  "parameters": {
+    "as_of": "bind a native target datetime corresponding to 2026-02-01T00:00:00Z, matching physical property type",
+    "min_lenders": 2
+  },
+  "generated_artifact": "multi-lending.gql",
+  "artifact_sha256": "abd811f6980eca525c531631425c8859775a05a04f776fac0bfd18bb07de9c6c",
+  "static_lint_exit_code": 0,
+  "static_lint": {
+    "issues": [],
+    "needs_review": [],
+    "syntax": "unverified: lint is not a server parser",
+    "semantics": "unverified: requires case contracts and result comparison"
+  },
+  "semantic_review": [
+    "BORROWS Borrower→Loan and PROVIDES Lender→Loan match original endpoints/direction",
+    "Half-open loan validity and distinct lender_id preserve illustrative multi-institution count",
+    "Inquiry/application/disbursement and phone sharing do not enter loan count",
+    "No amount/exposure total or identity merge is inferred"
+  ],
+  "graph_type_ddl_status": "Concrete complete lending/fraud Graph Type fixtures validated natively on 5.3.2 using official version-matched DDL docs; current external query Skill DDL coverage remains unestablished.",
+  "server_execution": "passed on 5.3.2 for bounded synthetic fixture; source-bound receipt in tests/compatibility/native-yueshu/receipt.json",
+  "limits": [
+    "Native 5.3.2 fixture acceptance does not prove 5.3.0 execution, production semantics, scale or performance.",
+    "No Procedure or OWL reasoner execution.",
+    "No external Skill files, grammar generator or credentials included."
+  ],
+  "native_repair": {
+    "server_version": "5.3.2",
+    "sdk": "nebula5_python 5.3.0",
+    "original_artifact_sha256": "edc765ab9bd9cbd54081a3ea0348aed86f10ae57b11f60231d6bfff88648de21",
+    "change": "Remove only final statement terminator; preserve all query clauses and business semantics.",
+    "reason": "Native SDK/server 5.3.2 returns status 42001 for the final semicolon; removing only that terminator returns the expected rows.",
+    "evidence": "../../../tests/compatibility/native-yueshu/receipt.json"
+  }
+}

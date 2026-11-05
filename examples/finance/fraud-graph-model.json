@@ -1,0 +1,792 @@
+{
+  "spec_version": "1.0",
+  "model_id": "fraud-investigation-network",
+  "version": "1.0.0",
+  "graph_type": "FraudInvestigation",
+  "description": "以证据、时序和反证为中心的调查候选网络，不自动定性欺诈",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创金融知识与建模方法",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "initial-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "教学示例、业务概念整理与映射建议",
+      "authority": "项目原创整理，不是监管规范或 FIBO 原定义"
+    },
+    {
+      "id": "fibo",
+      "name": "Financial Industry Business Ontology",
+      "kind": "official-standard",
+      "uri": "https://spec.edmcouncil.org/fibo/",
+      "version": "repository 33a92cd34285d532c158da97bb42add089f135d3; AboutFIBOProd versionIRI 20261001",
+      "publisher": "EDM Council",
+      "license": "MIT for edmcouncil/fibo repository; linked publications retain own terms",
+      "retrieved_at": "2026-11-05",
+      "scope": "模块索引及金融本体术语定位；非完整本体副本",
+      "authority": "官方项目与发布来源；映射建议仍为本项目整理"
+    },
+    {
+      "id": "owl2",
+      "name": "OWL 2 Web Ontology Language Primer (Second Edition)",
+      "kind": "official-standard",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "version": "W3C Recommendation 2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original document not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Class、Property、Domain/Range、继承、Restriction 与开放世界解释",
+      "authority": "OWL 语义的官方说明，本项目不是推理实现"
+    },
+    {
+      "id": "bcbs-credit",
+      "name": "Basel Framework CRE36 Internal ratings-based approach: minimum requirements",
+      "kind": "official-standard",
+      "uri": "https://www.bis.org/basel_framework/chapter/CRE/36.htm",
+      "version": "online chapter observed 2026-11-05; applicable jurisdiction/version must be selected per task",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "BIS copyright; link and original summary only",
+      "retrieved_at": "2026-11-05",
+      "scope": "信用风险概念背景；不直接提供本地监管或审批阈值",
+      "authority": "国际银行监管框架，法律适用需另行确定"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Party",
+      "business_meaning": "核实主体身份",
+      "identity_scope": "虚构调查数据范围；生产依来源命名空间对齐",
+      "primary_key": [
+        "party_id"
+      ],
+      "properties": [
+        {
+          "name": "party_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "party_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "identity_evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "identity_evidence",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Account",
+      "business_meaning": "来源机构与账户体系内的账户",
+      "identity_scope": "虚构调查数据范围；生产依来源命名空间对齐",
+      "primary_key": [
+        "account_id"
+      ],
+      "properties": [
+        {
+          "name": "account_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "account_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "institution_scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "institution_scope",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Transaction",
+      "business_meaning": "有身份和方向的资金事件",
+      "identity_scope": "来源系统+原始事件编号经受控映射为 transaction_id；此例仅完整单发送/单接收账户转账",
+      "primary_key": [
+        "transaction_id"
+      ],
+      "properties": [
+        {
+          "name": "transaction_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "transaction_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "event_time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reverses_id",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "reverses_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "DeviceObservation",
+      "business_meaning": "某次设备关联观测，不是主体相等断言",
+      "identity_scope": "虚构调查数据范围；生产依来源命名空间对齐",
+      "primary_key": [
+        "observation_id"
+      ],
+      "properties": [
+        {
+          "name": "observation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "device_token",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "device_token",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "match_method",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源匹配方法，不把共享标识当身份相同",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "confidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "有来源依据的置信说明，不臆造概率",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "EvidenceRecord",
+      "business_meaning": "原始证据与撤销状态",
+      "identity_scope": "虚构调查数据范围；生产依来源命名空间对齐",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "evidence_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "match_method",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源匹配方法，不把共享标识当身份相同",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "confidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "有来源依据的置信说明，不臆造概率",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "InvestigationHypothesis",
+      "business_meaning": "待复核风险假设，独立于原始事实",
+      "identity_scope": "虚构调查数据范围；生产依来源命名空间对齐",
+      "primary_key": [
+        "hypothesis_id"
+      ],
+      "properties": [
+        {
+          "name": "hypothesis_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "hypothesis_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "rule_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "rule_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "review_status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "review_status",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "counterevidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "counterevidence",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "OWNS_ACCOUNT",
+      "business_meaning": "有证据的账户所有角色，生产需补时效",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Party",
+      "to": "Account",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "SENT_FROM",
+      "business_meaning": "资金事件的发出账户",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Transaction",
+      "to": "Account",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1 for a complete simple-transfer event",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "RECEIVED_BY",
+      "business_meaning": "资金事件的收到账户",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Transaction",
+      "to": "Account",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..1 for a complete simple-transfer event",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "OBSERVED_FOR",
+      "business_meaning": "设备观测归属主体的证据，不能合并身份",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "DeviceObservation",
+      "to": "Party",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "SUPPORTED_BY",
+      "business_meaning": "假设的证据项，撤销后重新评估",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "InvestigationHypothesis",
+      "to": "EvidenceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CONCERNS",
+      "business_meaning": "假设相关方，不是已欺诈标签",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "InvestigationHypothesis",
+      "to": "Party",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "DOCUMENTS_TRANSACTION",
+      "business_meaning": "证据对应事件",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "EvidenceRecord",
+      "to": "Transaction",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "DOCUMENTS_OBSERVATION",
+      "business_meaning": "证据对应观测",
+      "identity_scope": "示例全局 relation_id；来源记录与端点关联维度生成，重复摄入必须幂等",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "relation_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "EvidenceRecord",
+      "to": "DeviceObservation",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "chain-order",
+      "subject": "node:Transaction",
+      "rule": "连续资金链需方向一致、时间先后正确、同币种/口径、状态有效；撤销冲正保留历史，不作为当前有效事件。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "evidence",
+      "subject": "node:InvestigationHypothesis",
+      "rule": "共享设备或连通性仅产生候选假设；须保留来源、置信度、反证与复核状态，禁止自动把邻居标为团伙。",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "dedup",
+      "subject": "node:EvidenceRecord",
+      "rule": "相同 source_system/source_record_id 不重复计独立证据，不同来源的转录也不自动成为独立证据。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "transfer-endpoints",
+      "subject": "node:Transaction",
+      "rule": "每个有效简单转账恰好一个 SENT_FROM 和一个 RECEIVED_BY；缺失端点或未拆分批量事件不用于方向链路分析。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "transaction-source",
+      "source_id": "onto-project",
+      "source_term": "input.transaction_id",
+      "target": "property:Transaction.transaction_id",
+      "status": "preserved",
+      "explanation": "来源事件身份保留，事件节点承载参与方与状态，非简单时戳属性提升。",
+      "constraint_ids": [
+        "dedup"
+      ]
+    }
+  ],
+  "assumptions": [
+    "本例为候选调查模型，所有主体和事件为虚构；不提供自动业务处置。",
+    "账户所有和设备时效需按实际来源补齐；本例只审查给定单日窗口。",
+    "每个 Transaction 仅一对发送/接收账户；批量转账必须先拆成有身份和金额分配的 legs，缺失端点不进入资金链。"
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "哪些有证据的资金事件在窗口内构成有序的两段链？",
+    "哪些关联仅来自公共共享标识，应排除自动团伙结论？"
+  ]
+}

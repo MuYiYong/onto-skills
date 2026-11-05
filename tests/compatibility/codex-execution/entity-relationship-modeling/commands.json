@@ -1,0 +1,12 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/entity-relationship-modeling/SKILL.md'",
+    "exit_code": 0,
+    "output_sha256": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/entity-relationship-modeling/references/method.md'",
+    "exit_code": 0,
+    "output_sha256": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823"
+  }
+]

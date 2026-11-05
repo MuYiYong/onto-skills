@@ -1,0 +1,42 @@
+[
+  {
+    "command": "/bin/bash -lc \"pwd; rg --files -g 'AGENTS.md' -g 'SKILL.md' -g '*.md' -g 'sources.json' .agents/skills/multi-lending-detection\"",
+    "exit_code": 0,
+    "output_sha256": "eb1cbcb35cd87b27f0c48f47ddcbd5225f67105be30229965344a36ffa0ebb53"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/references/domain.md'",
+    "exit_code": 0,
+    "output_sha256": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/references/sources.json'",
+    "exit_code": 0,
+    "output_sha256": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/examples/worked-example.md'",
+    "exit_code": 0,
+    "output_sha256": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/references/gql-handoff.md'",
+    "exit_code": 0,
+    "output_sha256": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "output_sha256": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/SKILL.md'",
+    "exit_code": 0,
+    "output_sha256": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/multi-lending-detection/references/method.md'",
+    "exit_code": 0,
+    "output_sha256": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885"
+  }
+]

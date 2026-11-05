@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-05",
+  "codex_version": "0.166.0",
+  "platform": "Ubuntu Linux x86_64",
+  "mode": "explicit skill invocation; ephemeral read-only exec; normal existing CLI authentication",
+  "argv": [
+    "codex",
+    "exec",
+    "--ephemeral",
+    "--sandbox",
+    "read-only",
+    "--skip-git-repo-check",
+    "-C",
+    "<isolated-project>",
+    "--output-schema",
+    "schema.json",
+    "-o",
+    "result.json",
+    "--json",
+    "-"
+  ],
+  "results": [
+    {
+      "skill": "entity-relationship-modeling",
+      "exit_code": 0,
+      "turn_completed": true,
+      "output_schema": "passed",
+      "resource_read_commands": 2,
+      "files_sha256": {
+        "SKILL.md": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e",
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "references/method.md": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823",
+        "examples/worked-example.md": "c8ecd94d03954e1c0223eb5f8aa26b527e82f5e770c643a6247f3b833d66ba20"
+      },
+      "output_sha256": "b85e2aa3465619438e798644be19e3c0e316d7e697ca5a643e5a9e08651a5ca2"
+    },
+    {
+      "skill": "fibo-ontology",
+      "exit_code": 0,
+      "turn_completed": true,
+      "output_schema": "passed",
+      "resource_read_commands": 6,
+      "files_sha256": {
+        "SKILL.md": "a26a638adca9e2c8aec07a449297e488527f44efd9d32a85bfa6b1968892c735",
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+        "references/fibo-index.json": "54ebb77187628d5eac73247e7a918ecbaa6804b0e0ebd8e920a990a9a3d3a096",
+        "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216"
+      },
+      "output_sha256": "1ccf60e4e2aca22c98aed39aa6af23161a142b57dc166645e3912bc2da21a698"
+    },
+    {
+      "skill": "multi-lending-detection",
+      "exit_code": 0,
+      "turn_completed": true,
+      "output_schema": "passed",
+      "resource_read_commands": 8,
+      "files_sha256": {
+        "SKILL.md": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e",
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+        "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+        "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b"
+      },
+      "output_sha256": "9d1c49b468111fda92f3a67c650cf6e04662bc630aff83a743e7880c35dc3f70"
+    },
+    {
+      "skill": "ontology-evolution",
+      "exit_code": 0,
+      "turn_completed": true,
+      "output_schema": "passed",
+      "resource_read_commands": 3,
+      "files_sha256": {
+        "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd",
+        "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac"
+      },
+      "output_sha256": "00004f55fb7d71167964f7c6b953873e6df079215b8916685002952ca5d8af2a"
+    }
+  ],
+  "limits": [
+    "Four bounded synthetic cases; not a quantitative evaluation of all 13 skills",
+    "Explicit invocation only; automatic triggering was not tested",
+    "No imported OWL closure or reasoner execution",
+    "No database execution in these CLI cases",
+    "No auth/configuration files copied; command outputs retained as hashes only"
+  ],
+  "artifact_sha256": {
+    "review.json": "66cafc8e664cb827cca849f9be0fa59af2bada798e8be79712b4496ac2891909",
+    "entity-relationship-modeling/prompt.txt": "7e8fc9fae23976f6b3cecf03dc0432dc015ced326d8b4c71c594374e8071edfe",
+    "entity-relationship-modeling/schema.json": "4ca893cfdb62619e933e099d9d72290b969764acd730d616abb1130488d4112c",
+    "entity-relationship-modeling/result.json": "b85e2aa3465619438e798644be19e3c0e316d7e697ca5a643e5a9e08651a5ca2",
+    "entity-relationship-modeling/commands.json": "92e057c572ffd3ba77f69199708f46638292cbd96890b0bf0f1535adde740402",
+    "fibo-ontology/prompt.txt": "3597e923279e4714af95d239ece93b033089a533c1bf91d0b08103370351759c",
+    "fibo-ontology/schema.json": "b21ec4d9121012a9c8a61e6b1312baa78fe76fb962fcbbe2ad1114d06374acc0",
+    "fibo-ontology/result.json": "1ccf60e4e2aca22c98aed39aa6af23161a142b57dc166645e3912bc2da21a698",
+    "fibo-ontology/input.ttl": "588325341b366d00874ddaf7bfda781c3c73da4c53d12e44a528c0589b1285a0",
+    "fibo-ontology/commands.json": "71e1cc16e28082c6d9706768fd1bd18ab490f849511d3aac360538a5bcca4c8a",
+    "multi-lending-detection/prompt.txt": "5eb38342fad8852d5b77f928ce1196d27e3f84d5d1f703d24e9672cc2040168a",
+    "multi-lending-detection/schema.json": "1ce2a4092bb2776a1d0fc90238bcd7f56a3f8ca7d7d2057758beb872eaacad52",
+    "multi-lending-detection/result.json": "9d1c49b468111fda92f3a67c650cf6e04662bc630aff83a743e7880c35dc3f70",
+    "multi-lending-detection/commands.json": "15a7e9a036ebb796f273af9ff522f989f3bc1ed5025c7b31edcf4db19f853f63",
+    "ontology-evolution/prompt.txt": "1499929e118d51cb110c1313ac02419a313d452dbc167f5ae8bdaad219139c8e",
+    "ontology-evolution/schema.json": "f3410ed61bbe49b4057f43683076f56197e7c613a3d5295a6d46780166463d60",
+    "ontology-evolution/result.json": "00004f55fb7d71167964f7c6b953873e6df079215b8916685002952ca5d8af2a",
+    "ontology-evolution/commands.json": "30d001d4aab0a56ce15d0145e0de39bce52c9d1718eae7e58556c96333334515"
+  }
+}

@@ -1,0 +1,5 @@
+MATCH (tx1@`Transaction` {`status`: 'posted'})-[@RECEIVED_BY]->(mid@Account)
+  <-[@SENT_FROM]-(tx2@`Transaction` {`status`: 'posted'})
+WHERE tx1.event_time < tx2.event_time
+RETURN tx1.transaction_id AS first_tx, tx2.transaction_id AS next_tx,
+       mid.account_id AS via_account

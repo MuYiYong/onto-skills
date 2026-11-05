@@ -1,0 +1,752 @@
+[
+  {
+    "label": "version",
+    "query": "SHOW VERSION",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "version": "5.3.2, Build Time: 2026-09-21T11:32:24Z"
+      }
+    ],
+    "elapsed_seconds": 0.0029
+  },
+  {
+    "label": "schema",
+    "query": "SHOW CURRENT_SCHEMA",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "path": "/default_schema",
+        "owner": "[redacted]"
+      }
+    ],
+    "elapsed_seconds": 0.0024
+  },
+  {
+    "label": "readback_lending_type",
+    "query": "SHOW CREATE GRAPH TYPE /default_schema/`onto_verify_5602e6b6cefa_lending_type`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "graph_type_name": "onto_verify_5602e6b6cefa_lending_type",
+        "create_graph_type_statement": "CREATE GRAPH TYPE IF NOT EXISTS `onto_verify_5602e6b6cefa_lending_type` AS {\n  NODE TYPE `Borrower` (LABEL `Borrower`{`borrower_id` STRING NOT NULL, `party_type` STRING NOT NULL, `identity_evidence` STRING NOT NULL, PRIMARY KEY (`borrower_id`)}),\n  NODE TYPE `Lender` (LABEL `Lender`{`lender_id` STRING NOT NULL, `institution_scope` STRING NOT NULL, `name` STRING NOT NULL, PRIMARY KEY (`lender_id`)}),\n  NODE TYPE `Loan` (LABEL `Loan`{`loan_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `principal_amount` DECIMAL(18, 2) NOT NULL, `currency` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, `status` STRING NOT NULL, PRIMARY KEY (`loan_id`)}),\n  NODE TYPE `LoanApplication` (LABEL `LoanApplication`{`application_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `status` STRING NOT NULL, PRIMARY KEY (`application_id`)}),\n  NODE TYPE `CreditFacility` (LABEL `CreditFacility`{`facility_id` STRING NOT NULL, `limit_amount` DECIMAL(18, 2) NOT NULL, `currency` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, PRIMARY KEY (`facility_id`)}),\n  NODE TYPE `Disbursement` (LABEL `Disbursement`{`disbursement_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `amount` DECIMAL(18, 2) NOT NULL, `currency` STRING NOT NULL, PRIMARY KEY (`disbursement_id`)}),\n  NODE TYPE `Repayment` (LABEL `Repayment`{`repayment_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `amount` DECIMAL(18, 2) NOT NULL, `currency` STRING NOT NULL, `status` STRING NOT NULL, `reverses_id` STRING DEFAULT NULL, PRIMARY KEY (`repayment_id`)}),\n  NODE TYPE `CreditInquiry` (LABEL `CreditInquiry`{`inquiry_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `purpose` STRING NOT NULL, PRIMARY KEY (`inquiry_id`)}),\n  NODE TYPE `Phone` (LABEL `Phone`{`phone_token` STRING NOT NULL, `normalization_scope` STRING NOT NULL, PRIMARY KEY (`phone_token`)}),\n  NODE TYPE `Account` (LABEL `Account`{`institution_id` STRING NOT NULL, `account_token` STRING NOT NULL, `account_namespace` STRING NOT NULL, PRIMARY KEY (`institution_id`,`account_token`,`account_namespace`)}),\n  EDGE TYPE `BORROWS` (`Borrower`)-[LABEL `BORROWS`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Loan`),\n  EDGE TYPE `PROVIDES` (`Lender`)-[LABEL `PROVIDES`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Loan`),\n  EDGE TYPE `APPLIES` (`Borrower`)-[LABEL `APPLIES`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`LoanApplication`),\n  EDGE TYPE `SUBMITTED_TO` (`LoanApplication`)-[LABEL `SUBMITTED_TO`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Lender`),\n  EDGE TYPE `HAS_FACILITY` (`Borrower`)-[LABEL `HAS_FACILITY`{`relation_id` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`CreditFacility`),\n  EDGE TYPE `GRANTS` (`Lender`)-[LABEL `GRANTS`{`relation_id` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`CreditFacility`),\n  EDGE TYPE `DRAWS_ON` (`Loan`)-[LABEL `DRAWS_ON`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`CreditFacility`),\n  EDGE TYPE `HAS_DISBURSEMENT` (`Loan`)-[LABEL `HAS_DISBURSEMENT`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Disbursement`),\n  EDGE TYPE `HAS_REPAYMENT` (`Loan`)-[LABEL `HAS_REPAYMENT`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Repayment`),\n  EDGE TYPE `INQUIRY_SUBJECT` (`CreditInquiry`)-[LABEL `INQUIRY_SUBJECT`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Borrower`),\n  EDGE TYPE `INQUIRY_BY` (`CreditInquiry`)-[LABEL `INQUIRY_BY`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Lender`),\n  EDGE TYPE `USES_PHONE` (`Borrower`)-[LABEL `USES_PHONE`{`relation_id` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Phone`),\n  EDGE TYPE `USES_ACCOUNT` (`Borrower`)-[LABEL `USES_ACCOUNT`{`relation_id` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Account`),\n  EDGE TYPE `PAYS_TO` (`Disbursement`)-[LABEL `PAYS_TO`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Account`)\n}"
+      }
+    ],
+    "elapsed_seconds": 0.0024
+  },
+  {
+    "label": "readback_fraud_type",
+    "query": "SHOW CREATE GRAPH TYPE /default_schema/`onto_verify_5602e6b6cefa_fraud_type`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "graph_type_name": "onto_verify_5602e6b6cefa_fraud_type",
+        "create_graph_type_statement": "CREATE GRAPH TYPE IF NOT EXISTS `onto_verify_5602e6b6cefa_fraud_type` AS {\n  NODE TYPE `Party` (LABEL `Party`{`party_id` STRING NOT NULL, `identity_evidence` STRING NOT NULL, PRIMARY KEY (`party_id`)}),\n  NODE TYPE `Account` (LABEL `Account`{`account_id` STRING NOT NULL, `institution_scope` STRING NOT NULL, PRIMARY KEY (`account_id`)}),\n  NODE TYPE `Transaction` (LABEL `Transaction`{`transaction_id` STRING NOT NULL, `source_record_id` STRING NOT NULL, `event_time` ZONED DATETIME NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `amount` DECIMAL(18, 2) NOT NULL, `currency` STRING NOT NULL, `status` STRING NOT NULL, `reverses_id` STRING DEFAULT NULL, PRIMARY KEY (`transaction_id`)}),\n  NODE TYPE `DeviceObservation` (LABEL `DeviceObservation`{`observation_id` STRING NOT NULL, `device_token` STRING NOT NULL, `valid_from` ZONED DATETIME NOT NULL, `valid_to` ZONED DATETIME DEFAULT NULL, `observed_at` ZONED DATETIME NOT NULL, `match_method` STRING NOT NULL, `confidence` STRING NOT NULL, PRIMARY KEY (`observation_id`)}),\n  NODE TYPE `EvidenceRecord` (LABEL `EvidenceRecord`{`evidence_id` STRING NOT NULL, `source_system` STRING NOT NULL, `source_record_id` STRING NOT NULL, `status` STRING NOT NULL, `observed_at` ZONED DATETIME NOT NULL, `match_method` STRING NOT NULL, `confidence` STRING NOT NULL, PRIMARY KEY (`evidence_id`)}),\n  NODE TYPE `InvestigationHypothesis` (LABEL `InvestigationHypothesis`{`hypothesis_id` STRING NOT NULL, `rule_id` STRING NOT NULL, `review_status` STRING NOT NULL, `counterevidence` STRING NOT NULL, PRIMARY KEY (`hypothesis_id`)}),\n  EDGE TYPE `OWNS_ACCOUNT` (`Party`)-[LABEL `OWNS_ACCOUNT`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Account`),\n  EDGE TYPE `SENT_FROM` (`Transaction`)-[LABEL `SENT_FROM`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Account`),\n  EDGE TYPE `RECEIVED_BY` (`Transaction`)-[LABEL `RECEIVED_BY`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Account`),\n  EDGE TYPE `OBSERVED_FOR` (`DeviceObservation`)-[LABEL `OBSERVED_FOR`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Party`),\n  EDGE TYPE `SUPPORTED_BY` (`InvestigationHypothesis`)-[LABEL `SUPPORTED_BY`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`EvidenceRecord`),\n  EDGE TYPE `CONCERNS` (`InvestigationHypothesis`)-[LABEL `CONCERNS`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Party`),\n  EDGE TYPE `DOCUMENTS_TRANSACTION` (`EvidenceRecord`)-[LABEL `DOCUMENTS_TRANSACTION`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`Transaction`),\n  EDGE TYPE `DOCUMENTS_OBSERVATION` (`EvidenceRecord`)-[LABEL `DOCUMENTS_OBSERVATION`{`relation_id` STRING NOT NULL, MULTIEDGE KEY(`relation_id`)}]->(`DeviceObservation`)\n}"
+      }
+    ],
+    "elapsed_seconds": 0.0019
+  },
+  {
+    "label": "select_lending_graph",
+    "query": "SESSION SET GRAPH /default_schema/`onto_verify_5602e6b6cefa_lending`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0021
+  },
+  {
+    "label": "lending_node_count",
+    "query": "MATCH (n) RETURN count(*) AS nodes",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "nodes": 19
+      }
+    ],
+    "elapsed_seconds": 0.2666
+  },
+  {
+    "label": "lending_edge_count",
+    "query": "MATCH ()-[e]->() RETURN count(*) AS edges",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "edges": 26
+      }
+    ],
+    "elapsed_seconds": 0.0054
+  },
+  {
+    "label": "diagnostic_statement_terminator",
+    "query": "RETURN 1 AS probe;",
+    "server_status_code": "42001",
+    "server_status_message": "syntax error near `;`, at [L1:18-L1:18]",
+    "status": "error",
+    "error": "42001: syntax error near `;`, at [L1:18-L1:18]",
+    "elapsed_seconds": 0.0015
+  },
+  {
+    "label": "diagnostic_no_terminator",
+    "query": "RETURN 1 AS probe",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "probe": 1
+      }
+    ],
+    "elapsed_seconds": 0.0019
+  },
+  {
+    "label": "set_baseline_time",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-02-01T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0016
+  },
+  {
+    "label": "set_baseline_threshold",
+    "query": "SESSION SET VALUE $min_lenders = 2",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0018
+  },
+  {
+    "label": "original_query_failure",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count;\n",
+    "server_status_code": "42001",
+    "server_status_message": "syntax error near `;`, at [L10:33-L10:33]",
+    "status": "error",
+    "error": "42001: syntax error near `;`, at [L10:33-L10:33]",
+    "elapsed_seconds": 0.0017
+  },
+  {
+    "label": "set_asof_asof_feb01",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-02-01T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0026
+  },
+  {
+    "label": "set_threshold_asof_feb01",
+    "query": "SESSION SET VALUE $min_lenders = 2",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0018
+  },
+  {
+    "label": "final_lending_asof_feb01",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "borrower_id": "B1",
+        "lender_count": 2
+      }
+    ],
+    "elapsed_seconds": 0.2874
+  },
+  {
+    "label": "set_asof_distinct_lenders",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-02-01T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0017
+  },
+  {
+    "label": "set_threshold_distinct_lenders",
+    "query": "SESSION SET VALUE $min_lenders = 1",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0018
+  },
+  {
+    "label": "final_lending_distinct_lenders",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "borrower_id": "B2",
+        "lender_count": 1
+      },
+      {
+        "borrower_id": "B1",
+        "lender_count": 2
+      }
+    ],
+    "elapsed_seconds": 0.1292
+  },
+  {
+    "label": "set_asof_before_overlap",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-01-14T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0019
+  },
+  {
+    "label": "set_threshold_before_overlap",
+    "query": "SESSION SET VALUE $min_lenders = 2",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0017
+  },
+  {
+    "label": "final_lending_before_overlap",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0079
+  },
+  {
+    "label": "set_asof_inclusive_start",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-01-15T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0022
+  },
+  {
+    "label": "set_threshold_inclusive_start",
+    "query": "SESSION SET VALUE $min_lenders = 2",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0016
+  },
+  {
+    "label": "final_lending_inclusive_start",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "borrower_id": "B1",
+        "lender_count": 2
+      }
+    ],
+    "elapsed_seconds": 0.0059
+  },
+  {
+    "label": "set_asof_exclusive_end",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-02-15T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0016
+  },
+  {
+    "label": "set_threshold_exclusive_end",
+    "query": "SESSION SET VALUE $min_lenders = 2",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0018
+  },
+  {
+    "label": "final_lending_exclusive_end",
+    "query": "MATCH (b@Borrower)-[@BORROWS]->(loan@Loan\n  WHERE loan.valid_from <= $as_of\n    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))\n  <-[@PROVIDES]-(lender@Lender)\nRETURN b.borrower_id AS borrower_id,\n       count(DISTINCT lender.lender_id) AS lender_count\nGROUP BY borrower_id\nNEXT\nFILTER lender_count >= $min_lenders\nRETURN borrower_id, lender_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0777
+  },
+  {
+    "label": "set_asof_historical_shared_phone",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-01-31T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0017
+  },
+  {
+    "label": "historical_shared_phone",
+    "query": "MATCH (b1@Borrower)-[r1@USES_PHONE\n  WHERE r1.valid_from <= $as_of AND (r1.valid_to IS NULL OR $as_of < r1.valid_to)]->(phone@Phone)\n  <-[r2@USES_PHONE\n  WHERE r2.valid_from <= $as_of AND (r2.valid_to IS NULL OR $as_of < r2.valid_to)]-(b2@Borrower)\nWHERE b1.borrower_id < b2.borrower_id\nRETURN b1.borrower_id AS first_borrower, b2.borrower_id AS second_borrower,\n       phone.phone_token AS phone_token\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "first_borrower": "B1",
+        "second_borrower": "B2",
+        "phone_token": "phone-token-shared"
+      }
+    ],
+    "elapsed_seconds": 0.0064
+  },
+  {
+    "label": "set_asof_expired_shared_phone",
+    "query": "SESSION SET VALUE $as_of = zoned_datetime('2026-02-01T00:00:00+0000')",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0017
+  },
+  {
+    "label": "expired_shared_phone",
+    "query": "MATCH (b1@Borrower)-[r1@USES_PHONE\n  WHERE r1.valid_from <= $as_of AND (r1.valid_to IS NULL OR $as_of < r1.valid_to)]->(phone@Phone)\n  <-[r2@USES_PHONE\n  WHERE r2.valid_from <= $as_of AND (r2.valid_to IS NULL OR $as_of < r2.valid_to)]-(b2@Borrower)\nWHERE b1.borrower_id < b2.borrower_id\nRETURN b1.borrower_id AS first_borrower, b2.borrower_id AS second_borrower,\n       phone.phone_token AS phone_token\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0046
+  },
+  {
+    "label": "composite_account_keys",
+    "query": "MATCH (a@Account) RETURN a.institution_id AS institution_id, a.account_token AS account_token, a.account_namespace AS account_namespace",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "institution_id": "L1",
+        "account_token": "same-synthetic-token",
+        "account_namespace": "synthetic-retail"
+      },
+      {
+        "institution_id": "L2",
+        "account_token": "same-synthetic-token",
+        "account_namespace": "synthetic-retail"
+      }
+    ],
+    "elapsed_seconds": 0.0039
+  },
+  {
+    "label": "multiple_disbursements_same_loan",
+    "query": "MATCH (l@Loan {loan_id:'C'})-[@HAS_DISBURSEMENT]->(d@Disbursement) RETURN l.loan_id AS loan_id, count(d) AS disbursements GROUP BY loan_id",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "loan_id": "C",
+        "disbursements": 2
+      }
+    ],
+    "elapsed_seconds": 0.0042
+  },
+  {
+    "label": "reject_duplicate_primary_key",
+    "query": "INSERT (@Borrower {borrower_id:'B1', party_type:'person', identity_evidence:'synthetic-duplicate'})",
+    "server_status_code": "NR205",
+    "server_status_message": "Insert node failed, primary key constraint violation for node `(288404485535956992@Borrower{borrower_id:\"B1\",party_type:\"person\",identity_evidence:\"synthetic-duplicate\"})`",
+    "status": "error",
+    "error": "NR205: Insert node failed, primary key constraint violation for node `(288404485535956992@Borrower{borrower_id:\"B1\",party_type:\"person\",identity_evidence:\"synthetic-duplicate\"})`",
+    "elapsed_seconds": 0.0025
+  },
+  {
+    "label": "reject_null_primary_key",
+    "query": "INSERT (@Borrower {borrower_id:NULL, party_type:'person', identity_evidence:'synthetic-null'})",
+    "server_status_code": "ND008",
+    "server_status_message": "Property `borrower_id` of type `Borrower` is not nullable",
+    "status": "error",
+    "error": "ND008: Property `borrower_id` of type `Borrower` is not nullable",
+    "elapsed_seconds": 0.0018
+  },
+  {
+    "label": "lending_count_after_rejections",
+    "query": "MATCH (n) RETURN count(*) AS nodes",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "nodes": 19
+      }
+    ],
+    "elapsed_seconds": 0.1156
+  },
+  {
+    "label": "select_fraud_graph",
+    "query": "SESSION SET GRAPH /default_schema/`onto_verify_5602e6b6cefa_fraud`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0019
+  },
+  {
+    "label": "fraud_node_count",
+    "query": "MATCH (n) RETURN count(*) AS nodes",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "nodes": 20
+      }
+    ],
+    "elapsed_seconds": 0.003
+  },
+  {
+    "label": "fraud_edge_count",
+    "query": "MATCH ()-[e]->() RETURN count(*) AS edges",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "edges": 25
+      }
+    ],
+    "elapsed_seconds": 0.0036
+  },
+  {
+    "label": "fraud_temporal_chain",
+    "query": "MATCH (tx1@`Transaction` {`status`: 'posted'})-[@RECEIVED_BY]->(mid@Account)\n  <-[@SENT_FROM]-(tx2@`Transaction` {`status`: 'posted'})\nWHERE tx1.event_time < tx2.event_time\nRETURN tx1.transaction_id AS first_tx, tx2.transaction_id AS next_tx,\n       mid.account_id AS via_account\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "first_tx": "T1",
+        "next_tx": "T2",
+        "via_account": "FA2"
+      }
+    ],
+    "elapsed_seconds": 0.0364
+  },
+  {
+    "label": "fraud_hypothesis_review_status",
+    "query": "MATCH (h@InvestigationHypothesis)-[@CONCERNS]->(p@Party) RETURN h.hypothesis_id AS hypothesis_id, h.review_status AS review_status, p.party_id AS party_id",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "hypothesis_id": "H1",
+        "review_status": "pending-review",
+        "party_id": "P2"
+      },
+      {
+        "hypothesis_id": "H1",
+        "review_status": "pending-review",
+        "party_id": "P3"
+      },
+      {
+        "hypothesis_id": "H1",
+        "review_status": "pending-review",
+        "party_id": "P1"
+      }
+    ],
+    "elapsed_seconds": 0.0044
+  },
+  {
+    "label": "lending_select_for_type_coverage",
+    "query": "SESSION SET GRAPH /default_schema/onto_verify_5602e6b6cefa_lending",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0024
+  },
+  {
+    "label": "lending_node_types_coverage",
+    "query": "MATCH (n@`Borrower`) RETURN 'Borrower' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Lender`) RETURN 'Lender' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Loan`) RETURN 'Loan' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`LoanApplication`) RETURN 'LoanApplication' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`CreditFacility`) RETURN 'CreditFacility' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Disbursement`) RETURN 'Disbursement' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Repayment`) RETURN 'Repayment' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`CreditInquiry`) RETURN 'CreditInquiry' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Phone`) RETURN 'Phone' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Account`) RETURN 'Account' AS object_type, count(*) AS record_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "object_type": "Lender",
+        "record_count": 2
+      },
+      {
+        "object_type": "Disbursement",
+        "record_count": 2
+      },
+      {
+        "object_type": "CreditFacility",
+        "record_count": 1
+      },
+      {
+        "object_type": "Borrower",
+        "record_count": 3
+      },
+      {
+        "object_type": "LoanApplication",
+        "record_count": 1
+      },
+      {
+        "object_type": "Phone",
+        "record_count": 1
+      },
+      {
+        "object_type": "Repayment",
+        "record_count": 1
+      },
+      {
+        "object_type": "Loan",
+        "record_count": 5
+      },
+      {
+        "object_type": "Account",
+        "record_count": 2
+      },
+      {
+        "object_type": "CreditInquiry",
+        "record_count": 1
+      }
+    ],
+    "elapsed_seconds": 0.015
+  },
+  {
+    "label": "lending_edge_types_coverage",
+    "query": "MATCH ()-[e@`BORROWS`]->() RETURN 'BORROWS' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`PROVIDES`]->() RETURN 'PROVIDES' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`APPLIES`]->() RETURN 'APPLIES' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`SUBMITTED_TO`]->() RETURN 'SUBMITTED_TO' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`HAS_FACILITY`]->() RETURN 'HAS_FACILITY' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`GRANTS`]->() RETURN 'GRANTS' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`DRAWS_ON`]->() RETURN 'DRAWS_ON' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`HAS_DISBURSEMENT`]->() RETURN 'HAS_DISBURSEMENT' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`HAS_REPAYMENT`]->() RETURN 'HAS_REPAYMENT' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`INQUIRY_SUBJECT`]->() RETURN 'INQUIRY_SUBJECT' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`INQUIRY_BY`]->() RETURN 'INQUIRY_BY' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`USES_PHONE`]->() RETURN 'USES_PHONE' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`USES_ACCOUNT`]->() RETURN 'USES_ACCOUNT' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`PAYS_TO`]->() RETURN 'PAYS_TO' AS object_type, count(*) AS record_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "object_type": "APPLIES",
+        "record_count": 1
+      },
+      {
+        "object_type": "USES_ACCOUNT",
+        "record_count": 2
+      },
+      {
+        "object_type": "SUBMITTED_TO",
+        "record_count": 1
+      },
+      {
+        "object_type": "INQUIRY_SUBJECT",
+        "record_count": 1
+      },
+      {
+        "object_type": "HAS_REPAYMENT",
+        "record_count": 1
+      },
+      {
+        "object_type": "HAS_DISBURSEMENT",
+        "record_count": 2
+      },
+      {
+        "object_type": "DRAWS_ON",
+        "record_count": 1
+      },
+      {
+        "object_type": "HAS_FACILITY",
+        "record_count": 1
+      },
+      {
+        "object_type": "USES_PHONE",
+        "record_count": 2
+      },
+      {
+        "object_type": "PAYS_TO",
+        "record_count": 2
+      },
+      {
+        "object_type": "GRANTS",
+        "record_count": 1
+      },
+      {
+        "object_type": "PROVIDES",
+        "record_count": 5
+      },
+      {
+        "object_type": "INQUIRY_BY",
+        "record_count": 1
+      },
+      {
+        "object_type": "BORROWS",
+        "record_count": 5
+      }
+    ],
+    "elapsed_seconds": 0.0948
+  },
+  {
+    "label": "fraud_select_for_type_coverage",
+    "query": "SESSION SET GRAPH /default_schema/onto_verify_5602e6b6cefa_fraud",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0022
+  },
+  {
+    "label": "fraud_node_types_coverage",
+    "query": "MATCH (n@`Party`) RETURN 'Party' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Account`) RETURN 'Account' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`Transaction`) RETURN 'Transaction' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`DeviceObservation`) RETURN 'DeviceObservation' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`EvidenceRecord`) RETURN 'EvidenceRecord' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH (n@`InvestigationHypothesis`) RETURN 'InvestigationHypothesis' AS object_type, count(*) AS record_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "object_type": "InvestigationHypothesis",
+        "record_count": 1
+      },
+      {
+        "object_type": "EvidenceRecord",
+        "record_count": 5
+      },
+      {
+        "object_type": "Transaction",
+        "record_count": 4
+      },
+      {
+        "object_type": "Party",
+        "record_count": 4
+      },
+      {
+        "object_type": "DeviceObservation",
+        "record_count": 2
+      },
+      {
+        "object_type": "Account",
+        "record_count": 4
+      }
+    ],
+    "elapsed_seconds": 0.0068
+  },
+  {
+    "label": "fraud_edge_types_coverage",
+    "query": "MATCH ()-[e@`OWNS_ACCOUNT`]->() RETURN 'OWNS_ACCOUNT' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`SENT_FROM`]->() RETURN 'SENT_FROM' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`RECEIVED_BY`]->() RETURN 'RECEIVED_BY' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`OBSERVED_FOR`]->() RETURN 'OBSERVED_FOR' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`SUPPORTED_BY`]->() RETURN 'SUPPORTED_BY' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`CONCERNS`]->() RETURN 'CONCERNS' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`DOCUMENTS_TRANSACTION`]->() RETURN 'DOCUMENTS_TRANSACTION' AS object_type, count(*) AS record_count\nUNION ALL\nMATCH ()-[e@`DOCUMENTS_OBSERVATION`]->() RETURN 'DOCUMENTS_OBSERVATION' AS object_type, count(*) AS record_count\n",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [
+      {
+        "object_type": "SENT_FROM",
+        "record_count": 4
+      },
+      {
+        "object_type": "DOCUMENTS_OBSERVATION",
+        "record_count": 2
+      },
+      {
+        "object_type": "OWNS_ACCOUNT",
+        "record_count": 4
+      },
+      {
+        "object_type": "SUPPORTED_BY",
+        "record_count": 4
+      },
+      {
+        "object_type": "CONCERNS",
+        "record_count": 3
+      },
+      {
+        "object_type": "DOCUMENTS_TRANSACTION",
+        "record_count": 2
+      },
+      {
+        "object_type": "RECEIVED_BY",
+        "record_count": 4
+      },
+      {
+        "object_type": "OBSERVED_FOR",
+        "record_count": 2
+      }
+    ],
+    "elapsed_seconds": 0.01
+  },
+  {
+    "label": "reset_current_graph_for_cleanup",
+    "query": "SESSION RESET GRAPH",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0026
+  },
+  {
+    "label": "drop_owned_fraud_graph",
+    "query": "DROP GRAPH /default_schema/`onto_verify_5602e6b6cefa_fraud`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 1.7222
+  },
+  {
+    "label": "drop_owned_lending_graph",
+    "query": "DROP GRAPH /default_schema/`onto_verify_5602e6b6cefa_lending`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 2.0498
+  },
+  {
+    "label": "drop_owned_fraud_type",
+    "query": "DROP GRAPH TYPE /default_schema/`onto_verify_5602e6b6cefa_fraud_type`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 2.0471
+  },
+  {
+    "label": "drop_owned_lending_type",
+    "query": "DROP GRAPH TYPE /default_schema/`onto_verify_5602e6b6cefa_lending_type`",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 2.0536
+  },
+  {
+    "label": "after_graph_catalog",
+    "query": "SHOW GRAPHS",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0033,
+    "catalog_other_rows": 26
+  },
+  {
+    "label": "after_type_catalog",
+    "query": "SHOW GRAPH TYPES",
+    "server_status_code": "00000",
+    "server_status_message": "",
+    "status": "success",
+    "rows": [],
+    "elapsed_seconds": 0.0024,
+    "catalog_other_rows": 28
+  }
+]

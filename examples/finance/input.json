@@ -1,0 +1,97 @@
+{
+  "classification": "project-curated",
+  "business_request": "设计信贷风险图，区分查询/授信/放款，在指定时点发现多机构有效贷款；共享电话仅作关联证据。",
+  "as_of": "2026-02-01T00:00:00Z",
+  "illustrative_threshold": 2,
+  "schema": {
+    "borrowers": [
+      "borrower_id",
+      "identity_evidence"
+    ],
+    "lenders": [
+      "lender_id",
+      "institution_scope"
+    ],
+    "loans": [
+      "loan_id",
+      "borrower_id",
+      "lender_id",
+      "principal_amount",
+      "currency",
+      "valid_from",
+      "valid_to",
+      "observed_at",
+      "source_system",
+      "source_record_id"
+    ],
+    "inquiries": [
+      "inquiry_id",
+      "borrower_id",
+      "lender_id",
+      "event_time",
+      "observed_at"
+    ],
+    "phone_bindings": [
+      "binding_id",
+      "borrower_id",
+      "phone_token",
+      "valid_from",
+      "valid_to",
+      "observed_at"
+    ]
+  },
+  "loans": [
+    {
+      "loan_id": "A",
+      "borrower_id": "B1",
+      "lender_id": "L1",
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_to": "2026-03-01T00:00:00Z"
+    },
+    {
+      "loan_id": "B",
+      "borrower_id": "B1",
+      "lender_id": "L2",
+      "valid_from": "2026-01-15T00:00:00Z",
+      "valid_to": "2026-02-15T00:00:00Z"
+    },
+    {
+      "loan_id": "C",
+      "borrower_id": "B2",
+      "lender_id": "L1",
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_to": null
+    },
+    {
+      "loan_id": "D",
+      "borrower_id": "B2",
+      "lender_id": "L1",
+      "valid_from": "2026-01-02T00:00:00Z",
+      "valid_to": null
+    },
+    {
+      "loan_id": "E",
+      "borrower_id": "B3",
+      "lender_id": "L1",
+      "valid_from": "2025-01-01T00:00:00Z",
+      "valid_to": "2025-12-31T00:00:00Z"
+    }
+  ],
+  "inquiries": [
+    {
+      "inquiry_id": "Q1",
+      "borrower_id": "B3",
+      "lender_id": "L2",
+      "event_time": "2026-01-30T00:00:00Z",
+      "observed_at": "2026-01-31T00:00:00Z"
+    }
+  ],
+  "expected": {
+    "multi_lending_candidates": [
+      "B1"
+    ],
+    "B2_distinct_lenders": 1,
+    "B3_current_loans": 0
+  },
+  "fixture_limits": "贷款样例只列计数所需列，是有界投影，其他建模字段由 Schema 声明，非完整导入数据。"
+}

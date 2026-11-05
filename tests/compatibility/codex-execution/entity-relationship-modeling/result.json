@@ -1,0 +1,16 @@
+{
+  "skill_used": "entity-relationship-modeling",
+  "entities": [
+    "Equipment A17: stable identity (source_namespace, asset_id); persists across assignments.",
+    "Person P2: stable identity (source_namespace, person_id); reused for both assignments. Names and descriptions remain mutable attributes."
+  ],
+  "keys": [
+    "Equipment key: (source_namespace, 'A17'). Person key: (source_namespace, 'P2'). Source namespace is unspecified; identifiers are not assumed globally unique.",
+    "Model ASSIGNED_TO as an attributed Equipment → Person edge, inversely read as Person has custody of Equipment. No independent assignment lifecycle is described, so an associative entity is unnecessary.",
+    "Assignment occurrence key: (source_namespace, assignment_id). Preserve two edges: H4: A17 → P2 and H5: A17 → P2. Endpoints and relationship type alone are insufficient.",
+    "Each assignment has exactly one Equipment and one Person; either entity may participate in 0..* historical assignments. Exclusive custody at an instant requires business confirmation.",
+    "Reject missing key components. Deduplicate only matching namespaced identities; cross-source merging needs an explicit identity mapping. Preserve identity through attribute changes and retain aliases for identifier corrections."
+  ],
+  "temporal_rule": "Attach valid_from and valid_to to each assignment using half-open [start, end) intervals. Assuming whole-month custody, H4=[Y-01-01,Y-02-01) and H5=[Y-02-01,Y-03-01). The year, timezone and exact boundaries are unspecified; 'during' alone does not prove full-month coverage. Preserve month precision until confirmed. Keep valid time separate from recorded_at and handover event time. A null valid_to means unknown, not automatically ongoing.",
+  "counterexample": "Keying assignments by (A17, ASSIGNED_TO, P2) makes H5 collide with H4, overwriting January custody or merging two occurrences. Keys H4 and H5 preserve both, even when their intervals are adjacent. An assignment referencing an absent Person must be flagged as an unresolved endpoint, not treated as a verified relationship."
+}

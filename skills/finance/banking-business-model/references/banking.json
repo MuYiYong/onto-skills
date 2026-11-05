@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "classification": "project-curated",
+  "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
+  "scope": "金融本体工程初始试点",
+  "source_ids": [
+    "onto-project",
+    "fibo",
+    "owl2",
+    "bcbs-credit"
+  ],
+  "id": "banking-concepts",
+  "name": "银行业务概念与生命周期",
+  "concepts": [
+    {
+      "id": "customer-party",
+      "name": "主体与客户角色",
+      "lifecycle": "主体可有多个客户角色，客户号有机构范围；组织和自然人不合并。",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "credit-process",
+      "name": "信贷流程",
+      "lifecycle": "申请 → 授信决定 → 合同 → 放款 → 应还/实还 → 结清/违约/核销；允许拒绝、撤销、冲正与重组分支。",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "deposit-payment",
+      "name": "存款与支付结算",
+      "lifecycle": "开户/维护/销户，支付指令/执行/结算/退回分别跟踪；余额带机构、币种及时间口径。",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "risk-exposure",
+      "name": "风险暴露与共债",
+      "lifecycle": "同一借款人在相同口径和时间窗口下关联多个有效债务；不把多条历史记录直接等同多头风险。",
+      "source_ids": [
+        "onto-project",
+        "bcbs-credit"
+      ],
+      "classification": "project-curated"
+    }
+  ]
+}

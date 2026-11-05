@@ -1,0 +1,68 @@
+[2026-11-05][13:32:22][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling installed from ZIP, enabled for Claude
+[2026-11-05][13:32:22][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 的 Codex 状态已更新为 true
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill fraud-network-modeling installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill multi-lending-detection installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill ontology-evolution installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill ontology-documentation installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][WARN][cc_switch_lib::services::skill] Skill directory 'entity-relationship-modeling' already exists (from local:entity-relationship-modeling), skipping
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill ontology-validation installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill property-graph-mapping installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill ontology-modeling installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill industry-knowledge-discovery installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill banking-business-model installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill finance-domain-knowledge installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill fibo-ontology installed from ZIP, enabled for Claude
+[2026-11-05][13:32:50][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge installed from ZIP, enabled for Claude
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill fraud-network-modeling 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill multi-lending-detection 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill ontology-evolution 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill ontology-documentation 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill ontology-validation 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill property-graph-mapping 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill ontology-modeling 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill industry-knowledge-discovery 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill banking-business-model 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill finance-domain-knowledge 的 Codex 状态已更新为 true
+[2026-11-05][13:32:51][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 的 Codex 状态已更新为 true
+[2026-11-05][13:32:52][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 的 Codex 状态已更新为 true
+[2026-11-05][13:33:11][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 的 Codex 状态已更新为 false
+[2026-11-05][13:33:25][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 的 Codex 状态已更新为 true
+[2026-11-05][13:33:55][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133355_entity-relationship-modeling
+[2026-11-05][13:33:55][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133355_entity-relationship-modeling
+[2026-11-05][13:34:38][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling installed from ZIP, enabled for Claude
+[2026-11-05][13:34:38][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 的 Codex 状态已更新为 true
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill banking-business-model 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_banking-business-model
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill banking-business-model 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_banking-business-model
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_credit-risk-knowledge
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_credit-risk-knowledge
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_entity-relationship-modeling
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill entity-relationship-modeling 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_entity-relationship-modeling
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_fibo-ontology
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_fibo-ontology
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill finance-domain-knowledge 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_finance-domain-knowledge
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill finance-domain-knowledge 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_finance-domain-knowledge
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill fraud-network-modeling 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_fraud-network-modeling
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill fraud-network-modeling 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_fraud-network-modeling
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill industry-knowledge-discovery 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_industry-knowledge-discovery
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill industry-knowledge-discovery 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_industry-knowledge-discovery
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill multi-lending-detection 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133556_multi-lending-detection
+[2026-11-05][13:35:56][INFO][cc_switch_lib::services::skill] Skill multi-lending-detection 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133556_multi-lending-detection
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-documentation 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-documentation
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-documentation 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-documentation
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-evolution 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-evolution
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-evolution 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-evolution
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-modeling 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-modeling
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-modeling 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-modeling
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-validation 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-validation
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill ontology-validation 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133557_ontology-validation
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill property-graph-mapping 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133557_property-graph-mapping
+[2026-11-05][13:35:57][INFO][cc_switch_lib::services::skill] Skill property-graph-mapping 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133557_property-graph-mapping
+[2026-11-05][13:36:21][INFO][cc_switch_lib::services::skill] Skill fibo-ontology installed from ZIP, enabled for Claude
+[2026-11-05][13:36:21][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge installed from ZIP, enabled for Claude
+[2026-11-05][13:36:21][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 的 Codex 状态已更新为 true
+[2026-11-05][13:36:21][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 的 Codex 状态已更新为 true
+[2026-11-05][13:36:41][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133641_credit-risk-knowledge
+[2026-11-05][13:36:41][INFO][cc_switch_lib::services::skill] Skill credit-risk-knowledge 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133641_credit-risk-knowledge
+[2026-11-05][13:36:41][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 已在卸载前备份到 /home/tester/.cc-switch/skill-backups/20261105_133641_fibo-ontology
+[2026-11-05][13:36:41][INFO][cc_switch_lib::services::skill] Skill fibo-ontology 卸载成功, backup: /home/tester/.cc-switch/skill-backups/20261105_133641_fibo-ontology
+[2026-11-05][13:37:42][WARN][cc_switch_lib::services::skill] 获取仓库 MuYiYong/onto-skills 技能失败: invalid Zip archive: Could not find EOCD

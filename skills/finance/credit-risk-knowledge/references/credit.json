@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "classification": "project-curated",
+  "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
+  "scope": "金融本体工程初始试点",
+  "source_ids": [
+    "onto-project",
+    "fibo",
+    "owl2",
+    "bcbs-credit"
+  ],
+  "id": "credit-relationships",
+  "name": "信贷实体关系与风险口径",
+  "relationships": [
+    {
+      "id": "borrowing",
+      "from": "Borrower",
+      "to": "Loan",
+      "meaning": "主体在具体贷款上下文承担义务",
+      "direction": "Borrower to Loan",
+      "cardinality": "某时点借款人可有 0..N 贷款；示例每笔贷款恰好一位借款人，联合借款需扩展角色模型",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "funding",
+      "from": "Lender",
+      "to": "Loan",
+      "meaning": "放贷角色不等于分支/集团实体身份",
+      "direction": "Lender to Loan",
+      "cardinality": "示例每笔贷款恰好一家机构；银团贷款需关联实体",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "guaranteeing",
+      "from": "Guarantor",
+      "to": "Loan",
+      "meaning": "保证人为指定义务承担约定责任；担保物和抵质押另建安排",
+      "direction": "Guarantor to Loan",
+      "cardinality": "0..N，带有效期、金额/币种和来源",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "model-inference"
+    },
+    {
+      "id": "shared-exposure",
+      "from": "Borrower",
+      "to": "Lender",
+      "meaning": "在有效时间和余额口径一致时汇总关联暴露；共债、关联借贷与集团风险不自动相同",
+      "direction": "derived",
+      "cardinality": "派生关系保存原贷款、征信来源、观测时间和口径",
+      "source_ids": [
+        "onto-project",
+        "bcbs-credit"
+      ],
+      "classification": "model-inference"
+    }
+  ]
+}

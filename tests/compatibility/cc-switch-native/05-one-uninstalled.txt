@@ -1,0 +1,261 @@
+desktop frame | main
+  application | cc-switch
+              document web | Claude Code 供应商切换器
+                landmark | Main navigation
+                  link | Skip to main content
+                  push button | Collapse sidebar
+                  panel | Apps
+                    push button | Claude Code
+                    push button | Claude Desktop
+                    push button | Codex
+                    push button | Gemini CLI
+                    push button | Grok Build
+                    push button | OpenCode
+                    push button | OpenClaw
+                    push button | Hermes
+                    push button | Pi
+                    push button | MiniMax Code
+                    push button | Kimi Code
+                    push button | DeepSeek Harness
+                    push button | Antigravity
+                    push button | Oh My Pi
+                  push button | MCP
+                  push button | Skills
+                  push button | Prompts
+                  push button | Sessions
+                  push button | Accounts
+                  push button | Usage
+                  push button | Apps
+                  push button | Settings
+                    heading | Skills
+                    combo box | How Skills sync
+                    combo box | Add Skill
+                    combo box | More Skills actions
+                  page tab list | Skills view
+                    page tab | Installed 12
+                    page tab | Discover
+                    entry | Search installed skills
+                  push button | Check Updates
+                  check box | Select all shown
+                  combo box | All
+                  combo box | Source: All
+                  combo box | Claude Code: enabled for 12 of 12 Skills, bulk actions
+                  combo box | Codex: enabled for 12 of 12 Skills, bulk actions
+                  combo box | Gemini CLI: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Grok Build: enabled for 0 of 12 Skills, bulk actions
+                  combo box | OpenCode: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Hermes: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Pi: enabled for 0 of 12 Skills, bulk actions
+                  combo box | MiniMax Code: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Kimi Code: enabled for 0 of 12 Skills, bulk actions
+                  combo box | DeepSeek Harness: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Antigravity: enabled for 0 of 12 Skills, bulk actions
+                  combo box | Oh My Pi: enabled for 0 of 12 Skills, bulk actions
+                  panel | Installed Skills
+                    list item | Local
+建立银行客户、账户、存款支付结算、授信、贷款、还款及担保的业务实体关系与生命周期。用于银行业务建模和数据域边界设计；不替代机构特定会计或监管规则，不生成数据库语法。
+                      check box | Select banking-business-model
+                      push button | banking-business-model
+                      toggle button | banking-business-model · Claude Code: enabled
+                      toggle button | banking-business-model · Codex: enabled
+                      toggle button | banking-business-model · Gemini CLI: off
+                      toggle button | banking-business-model · Grok Build: off
+                      toggle button | banking-business-model · OpenCode: off
+                      toggle button | banking-business-model · Hermes: off
+                      toggle button | banking-business-model · Pi: off
+                      toggle button | banking-business-model · MiniMax Code: off
+                      toggle button | banking-business-model · Kimi Code: off
+                      toggle button | banking-business-model · DeepSeek Harness: off
+                      toggle button | banking-business-model · Antigravity: off
+                      toggle button | banking-business-model · Oh My Pi: off
+                      combo box | More actions for banking-business-model
+                    list item | Local
+整理借款人、授信机构、贷款授信、还款、担保、征信、多头/关联借贷、集团风险和共债的建模口径。用于信用风险概念与时序关系设计；不做自动授信拒绝或把风险信号当确定事实。
+                      check box | Select credit-risk-knowledge
+                      push button | credit-risk-knowledge
+                      toggle button | credit-risk-knowledge · Claude Code: enabled
+                      toggle button | credit-risk-knowledge · Codex: enabled
+                      toggle button | credit-risk-knowledge · Gemini CLI: off
+                      toggle button | credit-risk-knowledge · Grok Build: off
+                      toggle button | credit-risk-knowledge · OpenCode: off
+                      toggle button | credit-risk-knowledge · Hermes: off
+                      toggle button | credit-risk-knowledge · Pi: off
+                      toggle button | credit-risk-knowledge · MiniMax Code: off
+                      toggle button | credit-risk-knowledge · Kimi Code: off
+                      toggle button | credit-risk-knowledge · DeepSeek Harness: off
+                      toggle button | credit-risk-knowledge · Antigravity: off
+                      toggle button | credit-risk-knowledge · Oh My Pi: off
+                      combo box | More actions for credit-risk-knowledge
+                    list item | Local
+解析并裁剪 FIBO 模块、Class、Object/Datatype Property、Domain/Range、SubClass 和 OWL Restriction，对齐业务扩展并记录属性图映射损失。用于 FIBO 标准驱动建模与版本差异；不分发完整 FIBO、不生成 GQL。
+                      check box | Select fibo-ontology
+                      push button | fibo-ontology
+                      toggle button | fibo-ontology · Claude Code: enabled
+                      toggle button | fibo-ontology · Codex: enabled
+                      toggle button | fibo-ontology · Gemini CLI: off
+                      toggle button | fibo-ontology · Grok Build: off
+                      toggle button | fibo-ontology · OpenCode: off
+                      toggle button | fibo-ontology · Hermes: off
+                      toggle button | fibo-ontology · Pi: off
+                      toggle button | fibo-ontology · MiniMax Code: off
+                      toggle button | fibo-ontology · Kimi Code: off
+                      toggle button | fibo-ontology · DeepSeek Harness: off
+                      toggle button | fibo-ontology · Antigravity: off
+                      toggle button | fibo-ontology · Oh My Pi: off
+                      combo box | More actions for fibo-ontology
+                    list item | Local
+理解金融机构、产品、市场、交易、合同、债权债务、账户、授信、贷款、担保和结算的概念与边界。用于金融业务术语澄清和概念关系整理；不提供投资决策、监管结论或数据库语法。
+                      check box | Select finance-domain-knowledge
+                      push button | finance-domain-knowledge
+                      toggle button | finance-domain-knowledge · Claude Code: enabled
+                      toggle button | finance-domain-knowledge · Codex: enabled
+                      toggle button | finance-domain-knowledge · Gemini CLI: off
+                      toggle button | finance-domain-knowledge · Grok Build: off
+                      toggle button | finance-domain-knowledge · OpenCode: off
+                      toggle button | finance-domain-knowledge · Hermes: off
+                      toggle button | finance-domain-knowledge · Pi: off
+                      toggle button | finance-domain-knowledge · MiniMax Code: off
+                      toggle button | finance-domain-knowledge · Kimi Code: off
+                      toggle button | finance-domain-knowledge · DeepSeek Harness: off
+                      toggle button | finance-domain-knowledge · Antigravity: off
+                      toggle button | finance-domain-knowledge · Oh My Pi: off
+                      combo box | More actions for finance-domain-knowledge
+                    list item | Local
+为团伙欺诈调查设计主体、共享标识、交易、控制关系、证据路径和风险子图。用于异常关联网络与团伙假设的建模及反证设计；不将共享 IP/电话、社区发现或资金链自动判定为欺诈。
+                      check box | Select fraud-network-modeling
+                      push button | fraud-network-modeling
+                      toggle button | fraud-network-modeling · Claude Code: enabled
+                      toggle button | fraud-network-modeling · Codex: enabled
+                      toggle button | fraud-network-modeling · Gemini CLI: off
+                      toggle button | fraud-network-modeling · Grok Build: off
+                      toggle button | fraud-network-modeling · OpenCode: off
+                      toggle button | fraud-network-modeling · Hermes: off
+                      toggle button | fraud-network-modeling · Pi: off
+                      toggle button | fraud-network-modeling · MiniMax Code: off
+                      toggle button | fraud-network-modeling · Kimi Code: off
+                      toggle button | fraud-network-modeling · DeepSeek Harness: off
+                      toggle button | fraud-network-modeling · Antigravity: off
+                      toggle button | fraud-network-modeling · Oh My Pi: off
+                      combo box | More actions for fraud-network-modeling
+                    list item | Local
+从业务材料抽取术语、概念和规则，检索行业标准并记录来源、版本、权威性与知识缺口。用于陌生行业调研和可追溯知识整理；不承担数据库查询生成。
+                      check box | Select industry-knowledge-discovery
+                      push button | industry-knowledge-discovery
+                      toggle button | industry-knowledge-discovery · Claude Code: enabled
+                      toggle button | industry-knowledge-discovery · Codex: enabled
+                      toggle button | industry-knowledge-discovery · Gemini CLI: off
+                      toggle button | industry-knowledge-discovery · Grok Build: off
+                      toggle button | industry-knowledge-discovery · OpenCode: off
+                      toggle button | industry-knowledge-discovery · Hermes: off
+                      toggle button | industry-knowledge-discovery · Pi: off
+                      toggle button | industry-knowledge-discovery · MiniMax Code: off
+                      toggle button | industry-knowledge-discovery · Kimi Code: off
+                      toggle button | industry-knowledge-discovery · DeepSeek Harness: off
+                      toggle button | industry-knowledge-discovery · Antigravity: off
+                      toggle button | industry-knowledge-discovery · Oh My Pi: off
+                      combo box | More actions for industry-knowledge-discovery
+                    list item | Local
+为多头借贷识别设计借款人、机构、授信、申请、放款、征信、手机与收款账户的时序图模型及风险口径。用于多机构重叠负债、行为顺序和共债关联建模；不把查询/申请或共享标识直接视为借贷事实。
+                      check box | Select multi-lending-detection
+                      push button | multi-lending-detection
+                      toggle button | multi-lending-detection · Claude Code: enabled
+                      toggle button | multi-lending-detection · Codex: enabled
+                      toggle button | multi-lending-detection · Gemini CLI: off
+                      toggle button | multi-lending-detection · Grok Build: off
+                      toggle button | multi-lending-detection · OpenCode: off
+                      toggle button | multi-lending-detection · Hermes: off
+                      toggle button | multi-lending-detection · Pi: off
+                      toggle button | multi-lending-detection · MiniMax Code: off
+                      toggle button | multi-lending-detection · Kimi Code: off
+                      toggle button | multi-lending-detection · DeepSeek Harness: off
+                      toggle button | multi-lending-detection · Antigravity: off
+                      toggle button | multi-lending-detection · Oh My Pi: off
+                      combo box | More actions for multi-lending-detection
+                    list item | Local
+把已有概念本体、属性图规格、来源与验证结论整理成可审查的设计文档。用于术语表、实体关系目录、映射和质量报告交付；不补造缺失业务事实或数据库验证结果。
+                      check box | Select ontology-documentation
+                      push button | ontology-documentation
+                      toggle button | ontology-documentation · Claude Code: enabled
+                      toggle button | ontology-documentation · Codex: enabled
+                      toggle button | ontology-documentation · Gemini CLI: off
+                      toggle button | ontology-documentation · Grok Build: off
+                      toggle button | ontology-documentation · OpenCode: off
+                      toggle button | ontology-documentation · Hermes: off
+                      toggle button | ontology-documentation · Pi: off
+                      toggle button | ontology-documentation · MiniMax Code: off
+                      toggle button | ontology-documentation · Kimi Code: off
+                      toggle button | ontology-documentation · DeepSeek Harness: off
+                      toggle button | ontology-documentation · Antigravity: off
+                      toggle button | ontology-documentation · Oh My Pi: off
+                      combo box | More actions for ontology-documentation
+                    list item | Local
+比较本体和属性图版本，评估概念、身份、关系、约束及标准版本升级的兼容影响。用于本体差异分析、迁移与回滚规划；不擅自执行数据库迁移或修改生产数据。
+                      check box | Select ontology-evolution
+                      push button | ontology-evolution
+                      toggle button | ontology-evolution · Claude Code: enabled
+                      toggle button | ontology-evolution · Codex: enabled
+                      toggle button | ontology-evolution · Gemini CLI: off
+                      toggle button | ontology-evolution · Grok Build: off
+                      toggle button | ontology-evolution · OpenCode: off
+                      toggle button | ontology-evolution · Hermes: off
+                      toggle button | ontology-evolution · Pi: off
+                      toggle button | ontology-evolution · MiniMax Code: off
+                      toggle button | ontology-evolution · Kimi Code: off
+                      toggle button | ontology-evolution · DeepSeek Harness: off
+                      toggle button | ontology-evolution · Antigravity: off
+                      toggle button | ontology-evolution · Oh My Pi: off
+                      combo box | More actions for ontology-evolution
+                    list item | Local
+从业务需求建立概念本体、概念层次、实体身份与生命周期。用于业务概念抽取、本体边界和概念模型设计；不用于数据库语法生成。
+                      check box | Select ontology-modeling
+                      push button | ontology-modeling
+                      toggle button | ontology-modeling · Claude Code: enabled
+                      toggle button | ontology-modeling · Codex: enabled
+                      toggle button | ontology-modeling · Gemini CLI: off
+                      toggle button | ontology-modeling · Grok Build: off
+                      toggle button | ontology-modeling · OpenCode: off
+                      toggle button | ontology-modeling · Hermes: off
+                      toggle button | ontology-modeling · Pi: off
+                      toggle button | ontology-modeling · MiniMax Code: off
+                      toggle button | ontology-modeling · Kimi Code: off
+                      toggle button | ontology-modeling · DeepSeek Harness: off
+                      toggle button | ontology-modeling · Antigravity: off
+                      toggle button | ontology-modeling · Oh My Pi: off
+                      combo box | More actions for ontology-modeling
+                    list item | Local
+审查概念本体与属性图模型的业务完整性、身份、关系、类型、冗余及标准映射损失。用于模型质量验收和 Graph Model Specification 复核；不宣称静态检查等于 OWL 推理或数据库运行验证。
+                      check box | Select ontology-validation
+                      push button | ontology-validation
+                      toggle button | ontology-validation · Claude Code: enabled
+                      toggle button | ontology-validation · Codex: enabled
+                      toggle button | ontology-validation · Gemini CLI: off
+                      toggle button | ontology-validation · Grok Build: off
+                      toggle button | ontology-validation · OpenCode: off
+                      toggle button | ontology-validation · Hermes: off
+                      toggle button | ontology-validation · Pi: off
+                      toggle button | ontology-validation · MiniMax Code: off
+                      toggle button | ontology-validation · Kimi Code: off
+                      toggle button | ontology-validation · DeepSeek Harness: off
+                      toggle button | ontology-validation · Antigravity: off
+                      toggle button | ontology-validation · Oh My Pi: off
+                      combo box | More actions for ontology-validation
+                    list item | Local
+把概念模型或 RDF/OWL 标准本体裁剪并映射为数据库中立属性图及 Graph Model Specification。用于 Class/Property/继承/Restriction 的保真与损失分析；不生成 NebulaGraph GQL 语法。
+                      check box | Select property-graph-mapping
+                      push button | property-graph-mapping
+                      toggle button | property-graph-mapping · Claude Code: enabled
+                      toggle button | property-graph-mapping · Codex: enabled
+                      toggle button | property-graph-mapping · Gemini CLI: off
+                      toggle button | property-graph-mapping · Grok Build: off
+                      toggle button | property-graph-mapping · OpenCode: off
+                      toggle button | property-graph-mapping · Hermes: off
+                      toggle button | property-graph-mapping · Pi: off
+                      toggle button | property-graph-mapping · MiniMax Code: off
+                      toggle button | property-graph-mapping · Kimi Code: off
+                      toggle button | property-graph-mapping · DeepSeek Harness: off
+                      toggle button | property-graph-mapping · Antigravity: off
+                      toggle button | property-graph-mapping · Oh My Pi: off
+                      combo box | More actions for property-graph-mapping
+                landmark | Notifications alt+T
+                    list item | Skill entity-relationship-modeling uninstalled Backup location: /home/tester/.cc-switch/skill-backups/20261105_133355_entity-relationship-modeling
+                      push button | Close toast

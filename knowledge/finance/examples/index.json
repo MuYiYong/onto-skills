@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "classification": "project-curated",
+  "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
+  "scope": "金融本体工程初始试点",
+  "source_ids": [
+    "onto-project",
+    "fibo",
+    "owl2"
+  ],
+  "id": "finance-example-index",
+  "name": "金融原创建模示例索引",
+  "examples": [
+    {
+      "id": "multi-lending-example",
+      "name": "多机构有效贷款与共享标识",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "scope": "合成数据、半开有效期、机构去重；非真实风控策略",
+      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/examples/finance"
+    },
+    {
+      "id": "fraud-network-example",
+      "name": "有证据的转账链和待复核假设",
+      "classification": "model-inference",
+      "source_ids": [
+        "onto-project"
+      ],
+      "scope": "单发送/单接收账户简单转账；公共标识不是欺诈结论",
+      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/skills/scenarios/fraud-network-modeling"
+    }
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "name": "lending",
+  "nodes": [
+    {
+      "ref": "B1",
+      "type": "Borrower",
+      "properties": {
+        "borrower_id": "B1",
+        "party_type": "person",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "B2",
+      "type": "Borrower",
+      "properties": {
+        "borrower_id": "B2",
+        "party_type": "person",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "B3",
+      "type": "Borrower",
+      "properties": {
+        "borrower_id": "B3",
+        "party_type": "person",
+        "identity_evidence": "confirmed-synthetic-id"
+      }
+    },
+    {
+      "ref": "L1",
+      "type": "Lender",
+      "properties": {
+        "lender_id": "L1",
+        "institution_scope": "independent-legal-institution",
+        "name": "Synthetic L1"
+      }
+    },
+    {
+      "ref": "L2",
+      "type": "Lender",
+      "properties": {
+        "lender_id": "L2",
+        "institution_scope": "independent-legal-institution",
+        "name": "Synthetic L2"
+      }
+    },
+    {
+      "ref": "A",
+      "type": "Loan",
+      "properties": {
+        "loan_id": "A",
+        "source_system": "synthetic",
+        "source_record_id": "record-A",
+        "principal_amount": "1000.00",
+        "currency": "CNY",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-03-01T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z",
+        "status": "active"
+      }
+    },
+    {
+      "ref": "B",
+      "type": "Loan",
+      "properties": {
+        "loan_id": "B",
+        "source_system": "synthetic",
+        "source_record_id": "record-B",
+        "principal_amount": "1000.00",
+        "currency": "CNY",
+        "valid_from": "2026-01-15T00:00:00Z",
+        "valid_to": "2026-02-15T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z",
+        "status": "active"
+      }
+    },
+    {
+      "ref": "C",
+      "type": "Loan",
+      "properties": {
+        "loan_id": "C",
+        "source_system": "synthetic",
+        "source_record_id": "record-C",
+        "principal_amount": "1000.00",
+        "currency": "CNY",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": null,
+        "observed_at": "2026-01-31T00:00:00Z",
+        "status": "active"
+      }
+    },
+    {
+      "ref": "D",
+      "type": "Loan",
+      "properties": {
+        "loan_id": "D",
+        "source_system": "synthetic",
+        "source_record_id": "record-D",
+        "principal_amount": "1000.00",
+        "currency": "CNY",
+        "valid_from": "2026-01-02T00:00:00Z",
+        "valid_to": null,
+        "observed_at": "2026-01-31T00:00:00Z",
+        "status": "active"
+      }
+    },
+    {
+      "ref": "E",
+      "type": "Loan",
+      "properties": {
+        "loan_id": "E",
+        "source_system": "synthetic",
+        "source_record_id": "record-E",
+        "principal_amount": "1000.00",
+        "currency": "CNY",
+        "valid_from": "2025-01-01T00:00:00Z",
+        "valid_to": "2025-12-31T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z",
+        "status": "settled"
+      }
+    },
+    {
+      "ref": "APP1",
+      "type": "LoanApplication",
+      "properties": {
+        "application_id": "APP1",
+        "source_system": "synthetic",
+        "source_record_id": "record-APP1",
+        "event_time": "2026-01-29T00:00:00Z",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "status": "pending"
+      }
+    },
+    {
+      "ref": "F1",
+      "type": "CreditFacility",
+      "properties": {
+        "facility_id": "F1",
+        "limit_amount": "10000.00",
+        "currency": "CNY",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T00:00:00Z"
+      }
+    },
+    {
+      "ref": "DIS1",
+      "type": "Disbursement",
+      "properties": {
+        "disbursement_id": "DIS1",
+        "source_system": "synthetic",
+        "source_record_id": "record-DIS1",
+        "event_time": "2026-01-05T10:00:00Z",
+        "observed_at": "2026-01-05T10:00:00Z",
+        "amount": "500.00",
+        "currency": "CNY"
+      }
+    },
+    {
+      "ref": "DIS2",
+      "type": "Disbursement",
+      "properties": {
+        "disbursement_id": "DIS2",
+        "source_system": "synthetic",
+        "source_record_id": "record-DIS2",
+        "event_time": "2026-01-06T10:00:00Z",
+        "observed_at": "2026-01-06T10:00:00Z",
+        "amount": "500.00",
+        "currency": "CNY"
+      }
+    },
+    {
+      "ref": "R1",
+      "type": "Repayment",
+      "properties": {
+        "repayment_id": "R1",
+        "source_system": "synthetic",
+        "source_record_id": "record-R1",
+        "event_time": "2026-01-20T00:00:00Z",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "amount": "100.00",
+        "currency": "CNY",
+        "status": "posted",
+        "reverses_id": null
+      }
+    },
+    {
+      "ref": "Q1",
+      "type": "CreditInquiry",
+      "properties": {
+        "inquiry_id": "Q1",
+        "source_system": "synthetic",
+        "source_record_id": "record-Q1",
+        "event_time": "2026-01-30T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z",
+        "purpose": "application"
+      }
+    },
+    {
+      "ref": "phone-token-shared",
+      "type": "Phone",
+      "properties": {
+        "phone_token": "phone-token-shared",
+        "normalization_scope": "synthetic-tokens"
+      }
+    },
+    {
+      "ref": "ACC1",
+      "type": "Account",
+      "properties": {
+        "institution_id": "L1",
+        "account_token": "same-synthetic-token",
+        "account_namespace": "synthetic-retail"
+      }
+    },
+    {
+      "ref": "ACC2",
+      "type": "Account",
+      "properties": {
+        "institution_id": "L2",
+        "account_token": "same-synthetic-token",
+        "account_namespace": "synthetic-retail"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "type": "BORROWS",
+      "source": "B1",
+      "target": "A",
+      "properties": {
+        "relation_id": "e001"
+      }
+    },
+    {
+      "type": "PROVIDES",
+      "source": "L1",
+      "target": "A",
+      "properties": {
+        "relation_id": "e002"
+      }
+    },
+    {
+      "type": "BORROWS",
+      "source": "B1",
+      "target": "B",
+      "properties": {
+        "relation_id": "e003"
+      }
+    },
+    {
+      "type": "PROVIDES",
+      "source": "L2",
+      "target": "B",
+      "properties": {
+        "relation_id": "e004"
+      }
+    },
+    {
+      "type": "BORROWS",
+      "source": "B2",
+      "target": "C",
+      "properties": {
+        "relation_id": "e005"
+      }
+    },
+    {
+      "type": "PROVIDES",
+      "source": "L1",
+      "target": "C",
+      "properties": {
+        "relation_id": "e006"
+      }
+    },
+    {
+      "type": "BORROWS",
+      "source": "B2",
+      "target": "D",
+      "properties": {
+        "relation_id": "e007"
+      }
+    },
+    {
+      "type": "PROVIDES",
+      "source": "L1",
+      "target": "D",
+      "properties": {
+        "relation_id": "e008"
+      }
+    },
+    {
+      "type": "BORROWS",
+      "source": "B3",
+      "target": "E",
+      "properties": {
+        "relation_id": "e009"
+      }
+    },
+    {
+      "type": "PROVIDES",
+      "source": "L1",
+      "target": "E",
+      "properties": {
+        "relation_id": "e010"
+      }
+    },
+    {
+      "type": "APPLIES",
+      "source": "B3",
+      "target": "APP1",
+      "properties": {
+        "relation_id": "e011"
+      }
+    },
+    {
+      "type": "SUBMITTED_TO",
+      "source": "APP1",
+      "target": "L2",
+      "properties": {
+        "relation_id": "e012"
+      }
+    },
+    {
+      "type": "HAS_FACILITY",
+      "source": "B1",
+      "target": "F1",
+      "properties": {
+        "relation_id": "e013",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": null,
+        "observed_at": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "type": "GRANTS",
+      "source": "L1",
+      "target": "F1",
+      "properties": {
+        "relation_id": "e014",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": null,
+        "observed_at": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "type": "DRAWS_ON",
+      "source": "A",
+      "target": "F1",
+      "properties": {
+        "relation_id": "e015"
+      }
+    },
+    {
+      "type": "HAS_DISBURSEMENT",
+      "source": "C",
+      "target": "DIS1",
+      "properties": {
+        "relation_id": "e016"
+      }
+    },
+    {
+      "type": "HAS_DISBURSEMENT",
+      "source": "C",
+      "target": "DIS2",
+      "properties": {
+        "relation_id": "e017"
+      }
+    },
+    {
+      "type": "HAS_REPAYMENT",
+      "source": "A",
+      "target": "R1",
+      "properties": {
+        "relation_id": "e018"
+      }
+    },
+    {
+      "type": "INQUIRY_SUBJECT",
+      "source": "Q1",
+      "target": "B3",
+      "properties": {
+        "relation_id": "e019"
+      }
+    },
+    {
+      "type": "INQUIRY_BY",
+      "source": "Q1",
+      "target": "L2",
+      "properties": {
+        "relation_id": "e020"
+      }
+    },
+    {
+      "type": "PAYS_TO",
+      "source": "DIS1",
+      "target": "ACC1",
+      "properties": {
+        "relation_id": "e021"
+      }
+    },
+    {
+      "type": "PAYS_TO",
+      "source": "DIS2",
+      "target": "ACC2",
+      "properties": {
+        "relation_id": "e022"
+      }
+    },
+    {
+      "type": "USES_PHONE",
+      "source": "B1",
+      "target": "phone-token-shared",
+      "properties": {
+        "relation_id": "e023",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-02-01T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z"
+      }
+    },
+    {
+      "type": "USES_ACCOUNT",
+      "source": "B1",
+      "target": "ACC1",
+      "properties": {
+        "relation_id": "e024",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-03-01T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z"
+      }
+    },
+    {
+      "type": "USES_PHONE",
+      "source": "B2",
+      "target": "phone-token-shared",
+      "properties": {
+        "relation_id": "e025",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-02-01T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z"
+      }
+    },
+    {
+      "type": "USES_ACCOUNT",
+      "source": "B2",
+      "target": "ACC1",
+      "properties": {
+        "relation_id": "e026",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-03-01T00:00:00Z",
+        "observed_at": "2026-01-31T00:00:00Z"
+      }
+    }
+  ]
+}

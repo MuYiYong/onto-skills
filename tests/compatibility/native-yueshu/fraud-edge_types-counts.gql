@@ -1,0 +1,15 @@
+MATCH ()-[e@`OWNS_ACCOUNT`]->() RETURN 'OWNS_ACCOUNT' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`SENT_FROM`]->() RETURN 'SENT_FROM' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`RECEIVED_BY`]->() RETURN 'RECEIVED_BY' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`OBSERVED_FOR`]->() RETURN 'OBSERVED_FOR' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`SUPPORTED_BY`]->() RETURN 'SUPPORTED_BY' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`CONCERNS`]->() RETURN 'CONCERNS' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`DOCUMENTS_TRANSACTION`]->() RETURN 'DOCUMENTS_TRANSACTION' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH ()-[e@`DOCUMENTS_OBSERVATION`]->() RETURN 'DOCUMENTS_OBSERVATION' AS object_type, count(*) AS record_count

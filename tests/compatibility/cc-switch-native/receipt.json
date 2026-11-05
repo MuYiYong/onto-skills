@@ -1,0 +1,242 @@
+{
+  "status": "passed-with-explicit-limits",
+  "date": "2026-11-05",
+  "app_version": "4.0.25",
+  "official_asset_url": "https://github.com/farion1231/cc-switch/releases/download/v4.0.25/CC-Switch-v4.0.25-Linux-x86_64.deb",
+  "official_asset_sha256": "13b377c505ce8f2511a614bb1e01bc5566ecabad119bb0b087ac3781c6d88108",
+  "environment": {
+    "image": "ubuntu:24.04",
+    "image_digest": "sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852",
+    "account": "isolated non-root tester; no host HOME/configuration/auth mounted",
+    "display": "Xvfb, native Tauri WebKitGTK, AT-SPI actions and X11 keyboard/mouse",
+    "host_installation": "not changed; existing user application version not established"
+  },
+  "source_packages_sha256": {
+    "ontology-modeling": {
+      "SKILL.md": "dbe0968d08a7d5b1748a5d8604b68de793fcc57b1fe445a79e7b89ae6c5d755f",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "a044f7d9e7373562b819dab9146f209242bdb4eedc87cc9652cffd141c49f2b7",
+      "examples/worked-example.md": "983974084bd8f279b5f3b8162a6734b1eee3fe18504c1aa3d770d9a2e97660f1"
+    },
+    "industry-knowledge-discovery": {
+      "SKILL.md": "d8785deaac4ce688979acbca57462cce7aec1f0da291f92c1f91b948025e698d",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "2d7880888735f355e01d70e69bf5f0375078f43b71d614996b8fda77227d1a90",
+      "examples/worked-example.md": "3c0e82908808a2e5601b9b3b7bfd00d772cf2f23a26290613d1b59c091ce423f"
+    },
+    "entity-relationship-modeling": {
+      "SKILL.md": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823",
+      "examples/worked-example.md": "c8ecd94d03954e1c0223eb5f8aa26b527e82f5e770c643a6247f3b833d66ba20"
+    },
+    "property-graph-mapping": {
+      "SKILL.md": "bcf1dcad31761399e96c73424c9f4dac9167244ed88b9a19e04a00eaa5eb8036",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "426d618a27a0d9fc441f555a0eb8cbe7784585bce707b79d34f4de563f42fdb0",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "examples/worked-example.md": "7aa9ed62ad48e60bec5a27c3a834ca0fccc8b425422a402f5550c6a418d05bc6",
+      "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1"
+    },
+    "ontology-validation": {
+      "SKILL.md": "d2acd23d1edf06b68a12139cd154447150d4c5d1ae06036baaa55fe68bc06087",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "c4b6b59c9720650a4ab63c2ec0a5a7c0efdc11ed794764f0936927a478fda14b",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "examples/worked-example.md": "ac872dc412545b22cacb25e6a1c1ea06bc84896bb355f61d9157a200698beb41",
+      "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1"
+    },
+    "ontology-documentation": {
+      "SKILL.md": "686665d63abb67d2bfa594f65b072e341c64544e47208b5059b37f24d2218ed1",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "c05395e8770fc98a36ef789749688be2de561c15bca5e4224a965c77b918f223",
+      "examples/worked-example.md": "a527c0856dc63f81c6d5df5ab51e430b97e5203177dc51ea716b6b20339dc924"
+    },
+    "ontology-evolution": {
+      "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd",
+      "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac"
+    },
+    "finance-domain-knowledge": {
+      "SKILL.md": "cbeffad3275230d200728ceec9d35cfee074fbcae6a6e351028738969f12672f",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+      "references/method.md": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284",
+      "examples/worked-example.md": "cb7cdb685a090b5ffa35860979f152f67a05ba786a6bd726d83516c03342f866"
+    },
+    "fibo-ontology": {
+      "SKILL.md": "a26a638adca9e2c8aec07a449297e488527f44efd9d32a85bfa6b1968892c735",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "references/fibo-index.json": "54ebb77187628d5eac73247e7a918ecbaa6804b0e0ebd8e920a990a9a3d3a096",
+      "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216"
+    },
+    "banking-business-model": {
+      "SKILL.md": "8391eb653c747f43dece31ef9fe6d264fb88cb841ddcd317974fffe22bfc3b0e",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+      "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+      "references/method.md": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538",
+      "examples/worked-example.md": "4bc0619da88f460381450e4f41c4b3540c8e081c99972ddf1d21c7ebf7928c7a"
+    },
+    "credit-risk-knowledge": {
+      "SKILL.md": "299cf2fff886748fc614394ac22bc5f8da611e1c188a3662397ddd3d42223a83",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+      "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+      "references/credit.json": "c94769bf2ed556f986e5af7cf964418b53a31633c59e6a35c25e30d0defd6bef",
+      "references/method.md": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71",
+      "examples/worked-example.md": "8edaf91fba5a621462571eba08b66c93fd4ba710b324f45695bf7904b3fc9b76"
+    },
+    "multi-lending-detection": {
+      "SKILL.md": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+      "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+      "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b"
+    },
+    "fraud-network-modeling": {
+      "SKILL.md": "5a9137dfd3f5e4197a8b26c486ecf36c6ea1594ac2b1d201a483d12470e248e4",
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "references/method.md": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256",
+      "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b",
+      "examples/worked-example.md": "2a370bf82b7131060b6097cd91a0a0c79f883a615ae7b098d6a70c751955ec3a",
+      "examples/graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e"
+    }
+  },
+  "resource_file_count": 84,
+  "zip_layouts": {
+    "single": "entity-relationship-modeling/ complete package",
+    "all": "skills/<category>/<skill>/ complete packages",
+    "selected": "credit-risk-knowledge/ and fibo-ontology/ complete packages"
+  },
+  "zip_sha256": {
+    "single-skill.zip": "95e5aa4f315d14a56d7bc168cb2bed1dcdcf21a89d4b1064cb0165ca34881741",
+    "onto-skills-local.zip": "de959a550784dd1d5d51507414d6d3fc963710421d61769802b3abcee1424918",
+    "selected-finance.zip": "2c9ec447b2156e58d4b74847aa2d22dfc55e101850f523bf4feda219fe489e8d"
+  },
+  "checks": [
+    {
+      "name": "single_native_zip_install",
+      "passed": true,
+      "detail": "Installed 1; actual UI notification enabled Claude Code and Codex by default"
+    },
+    {
+      "name": "nested_full_zip_install",
+      "passed": true,
+      "detail": "Installed remaining 12; existing package skipped rather than replaced; Installed 13"
+    },
+    {
+      "name": "resource_closure",
+      "passed": true,
+      "detail": "13 packages / 84 source files match ssot, Codex and Claude targets by SHA-256"
+    },
+    {
+      "name": "codex_selective_disable",
+      "passed": true,
+      "detail": "12 Codex entries; 13 ssot and Claude entries; remaining file hashes unchanged"
+    },
+    {
+      "name": "codex_reenable",
+      "passed": true,
+      "detail": "Returned to 13 enabled"
+    },
+    {
+      "name": "local_update_check",
+      "passed": true,
+      "detail": "Native Check Updates returned All skills are up to date; no remote upgrade performed"
+    },
+    {
+      "name": "single_uninstall_preserves_others",
+      "passed": true,
+      "detail": "12 original packages remain exact in all three locations"
+    },
+    {
+      "name": "single_reinstall",
+      "passed": true,
+      "detail": "Native ZIP returns to 13; no duplicate names"
+    },
+    {
+      "name": "native_codex_discovers_synced_skills",
+      "passed": true,
+      "detail": "Codex 0.166.0 app-server from actual native synchronized symlinks: 13 expected skills enabled, zero errors; builtins omitted separately"
+    },
+    {
+      "name": "bulk_uninstall",
+      "passed": true,
+      "detail": "Uninstall 13 finishes at Installed 0; test packages absent from all three locations"
+    },
+    {
+      "name": "selected_two_zip_install",
+      "passed": true,
+      "detail": "Only fibo-ontology and credit-risk-knowledge installed and synchronized"
+    },
+    {
+      "name": "selected_uninstall_cleanup",
+      "passed": true,
+      "detail": "Uninstall 2 finishes with no project packages; CC-Switch backups confined to disposable test account"
+    },
+    {
+      "name": "repository_configuration",
+      "passed": true,
+      "detail": "Manage repositories accepts base https://github.com/MuYiYong/onto-skills with branch main; 0 detected because remote assets unpublished. A tree/main/skills URL was rejected as Invalid repository URL format."
+    }
+  ],
+  "limits": [
+    "Actual Linux desktop runtime only; no native macOS",
+    "Published repository discovery/install and replacement with a changed remote revision are unverified: remote has no published refs",
+    "Check Updates for local ZIP content cannot prove remote update correctness",
+    "Application configuration was fully disposable; actual user installation version/configuration not verified",
+    "App-server initializes built-in system skills in isolated Codex home; builtins are not project assets",
+    "Symlink sync is app behavior; packages contain no resource symlinks",
+    "Minimal container has no CJK font; screenshots show fallback boxes for Chinese descriptions; accessibility text and source bytes are preserved. ZIP chooser screenshot is pre-install; all-13 terminal proof is stage JSON, accessibility and native Codex discovery."
+  ],
+  "cleanup": {
+    "project_skill_entries": "absent from ssot, Codex and Claude targets; original user host directories untouched",
+    "owned_container": "removed after terminal UI cleanup and evidence capture"
+  },
+  "artifact_sha256": {
+    "12-repository-config.png": "641f48d084e0190fc4d56262e32bbcd44cda3bc2c578afa7626731e0e09e578f",
+    "05-one-uninstalled.png": "be438de0e76d8909ddf03c0bdd00dcc9fa6d96ef892c858d790b09865284e9c7",
+    "10-selected-installed.png": "c6b694960513e96ea7f6dab51bc65caa83f037079daef55fe31ad460c2ba5031",
+    "01-single-installed.png": "73d520beab63df2993d944eb7d034c0edc563cb3286013cbb10e9b8791e71817",
+    "09-all-uninstalled.png": "da4fba9756e11e956b3b4e6b528ed282aa3f5b4cd5e73512ad39401225fbc74c",
+    "09-all-uninstalled.txt": "0ed5c5c971f1e738306895d40ab4debad0fb5acf6b35cb0933ca44aa06eb5425",
+    "08-bulk-select.txt": "0712781ded3418863017a20a331da0616f955c124c1138794bafd32204063791",
+    "12-repository-config.txt": "4d941ed61d30a65fce80721819cd47f4549071fa3e853a7f0c48e35eb0fa22dc",
+    "04-check-updates.txt": "7fb9e6d86774b99469f0814e71b244d59b3da0e4e34cfa5b0f2dd93c3055c387",
+    "07-restored-all.txt": "6c886a2ae9a3a84c62876f5dbb7223e860b52ae4a1b9c0f8ef68ed202e05ca40",
+    "03-codex-one-disabled.txt": "49a8d1d7ad2490c49a9af0c57d211db91739bcb8cd43ddc265fe8343b27da454",
+    "10-selected-installed.txt": "5ff2b9cce024896fde901641447bb026d67f511c3694a6b5ee5402797df1768f",
+    "05-one-uninstalled.txt": "cee070037f9ee1b1ebbbbd37b9661b7d4324498795f8b11bf330ae096cbd8990",
+    "02-all-installed.json": "56786ae10bbe5cbbebad1721e80777040e8d33035d722b77ecefdc7cdaa12e87",
+    "03-codex-one-disabled.json": "40866bc4417723cff340686561f43adacd3eccd4a0d317fbb7ef9fe16baa1bed",
+    "05-one-uninstalled.json": "f40c3037a6e36afe1f34cbe226886e75fbd0a2d0ea609a0ef575108bf1bf548c",
+    "07-restored-all.json": "56786ae10bbe5cbbebad1721e80777040e8d33035d722b77ecefdc7cdaa12e87",
+    "09-all-uninstalled.json": "f524dae33973b991b14fc2e5ed3604a8581ebcf787d1fc11e2b6215ae37abd1b",
+    "10-selected-installed.json": "97121372eb4b519551e91dda2dee8eeb35081d907dd204e5cb4b8b98d53a9dcc",
+    "11-final-clean.json": "f524dae33973b991b14fc2e5ed3604a8581ebcf787d1fc11e2b6215ae37abd1b",
+    "06-codex-discovery.json": "5b1a8ddbcbe09b864150789521701cad8453ca9bbc324646c0777e2604703434",
+    "skill-operations.log": "cb5f8ab70070299b648ba8225dc05dc09db7a21798b06d168a3ed7051ff80365",
+    "02-all-zip-chooser.png": "399dbecb3b9e5a3f0238037f716cf89db44eb9639f6475eac38ebede6144169a"
+  }
+}

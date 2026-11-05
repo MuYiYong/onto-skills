@@ -1,0 +1,1 @@
+CREATE GRAPH /default_schema/`onto_verify_5602e6b6cefa_fraud` TYPED /default_schema/`onto_verify_5602e6b6cefa_fraud_type`

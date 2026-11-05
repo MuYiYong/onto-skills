@@ -1,0 +1,10 @@
+MATCH (b@Borrower)-[@BORROWS]->(loan@Loan
+  WHERE loan.valid_from <= $as_of
+    AND (loan.valid_to IS NULL OR $as_of < loan.valid_to))
+  <-[@PROVIDES]-(lender@Lender)
+RETURN b.borrower_id AS borrower_id,
+       count(DISTINCT lender.lender_id) AS lender_count
+GROUP BY borrower_id
+NEXT
+FILTER lender_count >= $min_lenders
+RETURN borrower_id, lender_count

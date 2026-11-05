@@ -1,0 +1,1 @@
+{"type": "object", "properties": {"skill_used": {"type": "string"}, "entities": {"type": "array", "items": {"type": "string"}}, "keys": {"type": "array", "items": {"type": "string"}}, "temporal_rule": {"type": "string"}, "counterexample": {"type": "string"}}, "required": ["skill_used", "entities", "keys", "temporal_rule", "counterexample"], "additionalProperties": false}

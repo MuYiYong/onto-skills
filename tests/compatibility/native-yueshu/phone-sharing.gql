@@ -1,0 +1,7 @@
+MATCH (b1@Borrower)-[r1@USES_PHONE
+  WHERE r1.valid_from <= $as_of AND (r1.valid_to IS NULL OR $as_of < r1.valid_to)]->(phone@Phone)
+  <-[r2@USES_PHONE
+  WHERE r2.valid_from <= $as_of AND (r2.valid_to IS NULL OR $as_of < r2.valid_to)]-(b2@Borrower)
+WHERE b1.borrower_id < b2.borrower_id
+RETURN b1.borrower_id AS first_borrower, b2.borrower_id AS second_borrower,
+       phone.phone_token AS phone_token

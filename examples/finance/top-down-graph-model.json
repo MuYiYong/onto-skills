@@ -1,0 +1,268 @@
+{
+  "spec_version": "1.0",
+  "model_id": "finance-fibo-cut",
+  "version": "1.0.0",
+  "graph_type": "FiboLoanCut",
+  "description": "FIBO Loan 与金额限制的有界裁剪和业务扩展候选",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创金融知识与建模方法",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "initial-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "教学示例、业务概念整理与映射建议",
+      "authority": "项目原创整理，不是监管规范或 FIBO 原定义"
+    },
+    {
+      "id": "fibo",
+      "name": "Financial Industry Business Ontology",
+      "kind": "official-standard",
+      "uri": "https://spec.edmcouncil.org/fibo/",
+      "version": "repository 33a92cd34285d532c158da97bb42add089f135d3; AboutFIBOProd versionIRI 20261001",
+      "publisher": "EDM Council",
+      "license": "MIT for edmcouncil/fibo repository; linked publications retain own terms",
+      "retrieved_at": "2026-11-05",
+      "scope": "模块索引及金融本体术语定位；非完整本体副本",
+      "authority": "官方项目与发布来源；映射建议仍为本项目整理"
+    },
+    {
+      "id": "owl2",
+      "name": "OWL 2 Web Ontology Language Primer (Second Edition)",
+      "kind": "official-standard",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "version": "W3C Recommendation 2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original document not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Class、Property、Domain/Range、继承、Restriction 与开放世界解释",
+      "authority": "OWL 语义的官方说明，本项目不是推理实现"
+    },
+    {
+      "id": "bcbs-credit",
+      "name": "Basel Framework CRE36 Internal ratings-based approach: minimum requirements",
+      "kind": "official-standard",
+      "uri": "https://www.bis.org/basel_framework/chapter/CRE/36.htm",
+      "version": "online chapter observed 2026-11-05; applicable jurisdiction/version must be selected per task",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "BIS copyright; link and original summary only",
+      "retrieved_at": "2026-11-05",
+      "scope": "信用风险概念背景；不直接提供本地监管或审批阈值",
+      "authority": "国际银行监管框架，法律适用需另行确定"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Loan",
+      "business_meaning": "示例范围内按期还款的贷款合同/义务，不等于申请或单次放款",
+      "identity_scope": "本示例合成数据命名空间；生产需明确跨源对齐与变更策略",
+      "primary_key": [
+        "loan_id"
+      ],
+      "properties": [
+        {
+          "name": "loan_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "loan_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_system",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source_record_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "principal_amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "principal_amount",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "currency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "valid_from",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "valid_to",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "status",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [],
+  "constraints": [
+    {
+      "id": "identity",
+      "subject": "model",
+      "rule": "实体和事件使用稳定来源标识；每条业务来源记录幂等，手机/账户共享不是主体相同的充分证据。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "loan-principal",
+      "subject": "node:Loan",
+      "rule": "principal_amount 为十进制数且非负，currency 必填；这是对 MonetaryAmount 的有意扁平化，不保留货币量对象身份。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ]
+    },
+    {
+      "id": "fibo-scope",
+      "subject": "node:Loan",
+      "rule": "保留 Loan 的业务对齐；不声称实现其父类及全部进口公理的 OWL 推理。此模型仅用于示例多头借贷问题。",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project",
+        "fibo",
+        "owl2"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "loan-class",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+      "target": "node:Loan",
+      "status": "approximated",
+      "explanation": "将范围限定为按期偿付贷款的业务合同；仅对齐该类，不能因此宣称完整 OWL/FIBO 等价。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "principal-restriction",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan subClassOf (hasPrincipalAmount some MonetaryAmount)",
+      "target": "property:Loan.principal_amount",
+      "status": "approximated",
+      "explanation": "观察到该存在限制；以 amount/currency 两字段近似，丢失 MonetaryAmount 对象身份及量值相关推理，采用应用必填规则而非 OWL 闭世界断言。",
+      "constraint_ids": [
+        "loan-principal",
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "periodic-parent",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditAgreementRepaidPeriodically",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "保留父类来源但不单建类型；本例用范围限制与说明保留业务解读，不实现父类推理和全部偿付计划语义。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "debt-parent",
+      "source_id": "fibo",
+      "source_term": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/DebtInstrument",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "未展开债务工具父类属性与公理；不影响本例按机构和有效期间计数，不承诺金融工具分类查询。",
+      "constraint_ids": [
+        "fibo-scope"
+      ]
+    },
+    {
+      "id": "business-loan-id",
+      "source_id": "onto-project",
+      "source_term": "input.loans.loan_id",
+      "target": "property:Loan.loan_id",
+      "status": "preserved",
+      "explanation": "企业数据扩展主键，有独立来源命名空间，不是 FIBO 给定的标准主键。",
+      "constraint_ids": [
+        "identity"
+      ]
+    }
+  ],
+  "assumptions": [
+    "示例贷款按期偿付；每笔恰好一个已核实借款主体和一家独立机构。",
+    "不直接提供余额风险结论；真实业务需固定余额、币种、状态和机构合并口径。",
+    "示例接受有界 FIBO 映射损失，不声称完整导入或原生推理；完整 imports 闭包未验证。"
+  ],
+  "unresolved": [
+    "业务需确认父类推理与未展开 imports 的损失可接受后才能用于目标范围。"
+  ],
+  "competency_questions": [
+    "源 Loan 类与业务贷款合同如何对齐，金额对象扁平化会失去什么语义？"
+  ]
+}

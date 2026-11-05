@@ -1,0 +1,34 @@
+desktop frame | main
+  application | cc-switch
+              document web | Claude Code 供应商切换器
+                landmark | Notifications alt+T
+                dialog | Manage Skill Repositories
+                  heading | Manage Skill Repositories
+                  landmark | Add Skill Repository
+                    heading | Add Skill Repository
+                    entry | Repository URL
+                    entry | Branch
+                    push button | Add Repository
+                  landmark | Added Repositories
+                    heading | Added Repositories
+                      list item | ComposioHQ/awesome-claude-skills master · 864 skills detected
+                        check box | Use ComposioHQ/awesome-claude-skills in Discover
+                        push button | Open ComposioHQ/awesome-claude-skills on GitHub
+                        push button | Remove repository ComposioHQ/awesome-claude-skills
+                      list item | JimLiu/baoyu-skills main · 22 skills detected
+                        check box | Use JimLiu/baoyu-skills in Discover
+                        push button | Open JimLiu/baoyu-skills on GitHub
+                        push button | Remove repository JimLiu/baoyu-skills
+                      list item | MuYiYong/onto-skills main · 0 skills detected
+                        check box | Use MuYiYong/onto-skills in Discover
+                        push button | Open MuYiYong/onto-skills on GitHub
+                        push button | Remove repository MuYiYong/onto-skills
+                      list item | anthropics/skills main · 20 skills detected
+                        check box | Use anthropics/skills in Discover
+                        push button | Open anthropics/skills on GitHub
+                        push button | Remove repository anthropics/skills
+                      list item | cexll/myclaude master · 11 skills detected
+                        check box | Use cexll/myclaude in Discover
+                        push button | Open cexll/myclaude on GitHub
+                        push button | Remove repository cexll/myclaude
+                  push button | Close

@@ -1,0 +1,13 @@
+# Bounded project-authored expression of observed FIBO axioms, not an imports closure.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix loan: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix debt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix guar: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> .
+@prefix money: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+loan:Loan a owl:Class ;
+ rdfs:subClassOf debt:CreditAgreementRepaidPeriodically, fi:DebtInstrument,
+ [ a owl:Restriction ; owl:onProperty loan:hasPrincipalAmount ; owl:someValuesFrom money:MonetaryAmount ],
+ [ a owl:Restriction ; owl:onProperty guar:hasGuarantor ; owl:onClass guar:Guarantor ; owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ] .

@@ -1,0 +1,13 @@
+{
+  "prefix": "onto_verify_5602e6b6cefa",
+  "resources": {
+    "lending": {
+      "type": "/default_schema/onto_verify_5602e6b6cefa_lending_type",
+      "graph": "/default_schema/onto_verify_5602e6b6cefa_lending"
+    },
+    "fraud": {
+      "type": "/default_schema/onto_verify_5602e6b6cefa_fraud_type",
+      "graph": "/default_schema/onto_verify_5602e6b6cefa_fraud"
+    }
+  }
+}

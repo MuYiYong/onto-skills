@@ -1,0 +1,524 @@
+{
+  "status": "passed",
+  "completed_at_utc": "2026-11-05T13:07:37.941925+00:00",
+  "endpoint": "user-provided private endpoint; address/account/password not persisted",
+  "server_version": "5.3.2",
+  "server_build_time_utc": "2026-09-21T11:32:24Z",
+  "sdk_distribution": "nebula5_python==5.3.0",
+  "protocol": "native SDK over gRPC",
+  "models": {
+    "lending": {
+      "node_types": 10,
+      "edge_types": 14,
+      "nodes": 19,
+      "edges": 26
+    },
+    "fraud": {
+      "node_types": 6,
+      "edge_types": 8,
+      "nodes": 20,
+      "edges": 25
+    }
+  },
+  "checks": [
+    {
+      "name": "final_lending_asof_feb01",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          }
+        ],
+        "actual": [
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "final_lending_distinct_lenders",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          },
+          {
+            "borrower_id": "B2",
+            "lender_count": 1
+          }
+        ],
+        "actual": [
+          {
+            "borrower_id": "B2",
+            "lender_count": 1
+          },
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "final_lending_before_overlap",
+      "passed": true,
+      "detail": {
+        "expected": [],
+        "actual": []
+      }
+    },
+    {
+      "name": "final_lending_inclusive_start",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          }
+        ],
+        "actual": [
+          {
+            "borrower_id": "B1",
+            "lender_count": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "final_lending_exclusive_end",
+      "passed": true,
+      "detail": {
+        "expected": [],
+        "actual": []
+      }
+    },
+    {
+      "name": "historical_shared_phone",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "first_borrower": "B1",
+            "second_borrower": "B2",
+            "phone_token": "phone-token-shared"
+          }
+        ],
+        "actual": [
+          {
+            "first_borrower": "B1",
+            "second_borrower": "B2",
+            "phone_token": "phone-token-shared"
+          }
+        ]
+      }
+    },
+    {
+      "name": "expired_shared_phone",
+      "passed": true,
+      "detail": {
+        "expected": [],
+        "actual": []
+      }
+    },
+    {
+      "name": "multiple_disbursements_same_loan",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "loan_id": "C",
+            "disbursements": 2
+          }
+        ],
+        "actual": [
+          {
+            "loan_id": "C",
+            "disbursements": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "fraud_temporal_chain",
+      "passed": true,
+      "detail": {
+        "expected": [
+          {
+            "first_tx": "T1",
+            "next_tx": "T2",
+            "via_account": "FA2"
+          }
+        ],
+        "actual": [
+          {
+            "first_tx": "T1",
+            "next_tx": "T2",
+            "via_account": "FA2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "original_query_failure_expected_error",
+      "passed": true,
+      "detail": {
+        "expected_code": "42001",
+        "actual_code": "42001"
+      }
+    },
+    {
+      "name": "diagnostic_statement_terminator_expected_error",
+      "passed": true,
+      "detail": {
+        "expected_code": "42001",
+        "actual_code": "42001"
+      }
+    },
+    {
+      "name": "reject_duplicate_primary_key_expected_error",
+      "passed": true,
+      "detail": {
+        "expected_code": "NR205",
+        "actual_code": "NR205"
+      }
+    },
+    {
+      "name": "reject_null_primary_key_expected_error",
+      "passed": true,
+      "detail": {
+        "expected_code": "ND008",
+        "actual_code": "ND008"
+      }
+    },
+    {
+      "name": "negative_writes_left_node_count_unchanged",
+      "passed": true,
+      "detail": [
+        {
+          "nodes": 19
+        }
+      ]
+    },
+    {
+      "name": "composite_account_identity",
+      "passed": true,
+      "detail": [
+        {
+          "institution_id": "L1",
+          "account_token": "same-synthetic-token",
+          "account_namespace": "synthetic-retail"
+        },
+        {
+          "institution_id": "L2",
+          "account_token": "same-synthetic-token",
+          "account_namespace": "synthetic-retail"
+        }
+      ]
+    },
+    {
+      "name": "review_state_not_automatic_fraud",
+      "passed": true,
+      "detail": [
+        {
+          "hypothesis_id": "H1",
+          "review_status": "pending-review",
+          "party_id": "P2"
+        },
+        {
+          "hypothesis_id": "H1",
+          "review_status": "pending-review",
+          "party_id": "P3"
+        },
+        {
+          "hypothesis_id": "H1",
+          "review_status": "pending-review",
+          "party_id": "P1"
+        }
+      ]
+    },
+    {
+      "name": "lending_native_types",
+      "passed": true,
+      "detail": {
+        "nodes": 10,
+        "edges": 14
+      }
+    },
+    {
+      "name": "lending_properties_keys_and_directions",
+      "passed": true,
+      "detail": {
+        "property_declarations_checked": 79
+      }
+    },
+    {
+      "name": "lending_node_types_populated",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "Borrower": 3,
+          "Lender": 2,
+          "Loan": 5,
+          "LoanApplication": 1,
+          "CreditFacility": 1,
+          "Disbursement": 2,
+          "Repayment": 1,
+          "CreditInquiry": 1,
+          "Phone": 1,
+          "Account": 2
+        },
+        "actual": {
+          "Lender": 2,
+          "Disbursement": 2,
+          "CreditFacility": 1,
+          "Borrower": 3,
+          "LoanApplication": 1,
+          "Phone": 1,
+          "Repayment": 1,
+          "Loan": 5,
+          "Account": 2,
+          "CreditInquiry": 1
+        }
+      }
+    },
+    {
+      "name": "lending_edge_types_populated",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "BORROWS": 5,
+          "PROVIDES": 5,
+          "APPLIES": 1,
+          "SUBMITTED_TO": 1,
+          "HAS_FACILITY": 1,
+          "GRANTS": 1,
+          "DRAWS_ON": 1,
+          "HAS_DISBURSEMENT": 2,
+          "HAS_REPAYMENT": 1,
+          "INQUIRY_SUBJECT": 1,
+          "INQUIRY_BY": 1,
+          "PAYS_TO": 2,
+          "USES_PHONE": 2,
+          "USES_ACCOUNT": 2
+        },
+        "actual": {
+          "APPLIES": 1,
+          "USES_ACCOUNT": 2,
+          "SUBMITTED_TO": 1,
+          "INQUIRY_SUBJECT": 1,
+          "HAS_REPAYMENT": 1,
+          "HAS_DISBURSEMENT": 2,
+          "DRAWS_ON": 1,
+          "HAS_FACILITY": 1,
+          "USES_PHONE": 2,
+          "PAYS_TO": 2,
+          "GRANTS": 1,
+          "PROVIDES": 5,
+          "INQUIRY_BY": 1,
+          "BORROWS": 5
+        }
+      }
+    },
+    {
+      "name": "fraud_native_types",
+      "passed": true,
+      "detail": {
+        "nodes": 6,
+        "edges": 8
+      }
+    },
+    {
+      "name": "fraud_properties_keys_and_directions",
+      "passed": true,
+      "detail": {
+        "property_declarations_checked": 38
+      }
+    },
+    {
+      "name": "fraud_node_types_populated",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "Party": 4,
+          "Account": 4,
+          "Transaction": 4,
+          "DeviceObservation": 2,
+          "EvidenceRecord": 5,
+          "InvestigationHypothesis": 1
+        },
+        "actual": {
+          "InvestigationHypothesis": 1,
+          "EvidenceRecord": 5,
+          "Transaction": 4,
+          "Party": 4,
+          "DeviceObservation": 2,
+          "Account": 4
+        }
+      }
+    },
+    {
+      "name": "fraud_edge_types_populated",
+      "passed": true,
+      "detail": {
+        "expected": {
+          "OWNS_ACCOUNT": 4,
+          "SENT_FROM": 4,
+          "RECEIVED_BY": 4,
+          "OBSERVED_FOR": 2,
+          "DOCUMENTS_TRANSACTION": 2,
+          "DOCUMENTS_OBSERVATION": 2,
+          "SUPPORTED_BY": 4,
+          "CONCERNS": 3
+        },
+        "actual": {
+          "SENT_FROM": 4,
+          "DOCUMENTS_OBSERVATION": 2,
+          "OWNS_ACCOUNT": 4,
+          "SUPPORTED_BY": 4,
+          "CONCERNS": 3,
+          "DOCUMENTS_TRANSACTION": 2,
+          "RECEIVED_BY": 4,
+          "OBSERVED_FOR": 2
+        }
+      }
+    },
+    {
+      "name": "all_final_lending_queries_source_exact",
+      "passed": true,
+      "detail": {
+        "query_sha256": "abd811f6980eca525c531631425c8859775a05a04f776fac0bfd18bb07de9c6c"
+      }
+    },
+    {
+      "name": "no_unexpected_native_errors",
+      "passed": true,
+      "detail": {
+        "statements": 54,
+        "expected_errors": 4
+      }
+    },
+    {
+      "name": "owned_graphs_dropped",
+      "passed": true,
+      "detail": [
+        "drop_owned_fraud_graph",
+        "drop_owned_lending_graph"
+      ]
+    },
+    {
+      "name": "owned_graphs_absent",
+      "passed": true,
+      "detail": {
+        "remaining_owned_resources": 0
+      }
+    },
+    {
+      "name": "owned_types_dropped",
+      "passed": true,
+      "detail": [
+        "drop_owned_fraud_type",
+        "drop_owned_lending_type"
+      ]
+    },
+    {
+      "name": "owned_types_absent",
+      "passed": true,
+      "detail": {
+        "remaining_owned_resources": 0
+      }
+    },
+    {
+      "name": "catalog_counts_restored",
+      "passed": true,
+      "detail": {
+        "graphs_before_and_after": 26,
+        "graph_types_before_and_after": 28
+      }
+    },
+    {
+      "name": "cleanup_only_owned_targets",
+      "passed": true,
+      "detail": {
+        "drop_statements": 4,
+        "owned_target_count": 4
+      }
+    }
+  ],
+  "check_count": 32,
+  "all_checks_passed": true,
+  "typed_parameters": "SESSION SET VALUE with ZONED DATETIME; SDK execute_py renders templates and was not used as a native bind API",
+  "physical_mapping": {
+    "identifier": "STRING",
+    "string": "STRING",
+    "decimal": "DECIMAL(18,2) for bounded synthetic amounts",
+    "datetime": "ZONED DATETIME UTC",
+    "node_identity": "PRIMARY KEY incl. composite Account key",
+    "edge_identity": "MULTIEDGE KEY scoped to endpoints and edge type; any broader identity uniqueness remains application-enforced"
+  },
+  "repair": {
+    "original_query_hash": "edc765ab9bd9cbd54081a3ea0348aed86f10ae57b11f60231d6bfff88648de21",
+    "validated_query_hash": "abd811f6980eca525c531631425c8859775a05a04f776fac0bfd18bb07de9c6c",
+    "change": "Remove only trailing semicolon. Native API reports 42001 with it; query clauses and semantics unchanged.",
+    "failure_preserved": "native-records.json: original_query_failure and diagnostic_statement_terminator",
+    "status_handling": "Final accepted records include native status code/message and call raise_on_error; pre-status setup observations are explicitly non-authoritative for SQL status."
+  },
+  "cleanup": {
+    "status": "confirmed_absent",
+    "graphs_removed": 2,
+    "graph_types_removed": 2,
+    "remaining_owned_graphs": 0,
+    "remaining_owned_graph_types": 0,
+    "catalog_counts_before_after_equal": true,
+    "scope": "Only unique resources named in resources.json; no existing business graph or schema modified."
+  },
+  "file_sha256": {
+    "examples/finance/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+    "examples/finance/fraud-graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e",
+    "examples/finance/input.json": "e3a26892b52fde35b73f44f30e5b440cb85faefb6dd995eaa67ae9f7f8e3ff48",
+    "examples/finance/generated/multi-lending.gql": "abd811f6980eca525c531631425c8859775a05a04f776fac0bfd18bb07de9c6c",
+    "tests/compatibility/native-yueshu/fraud-chain.gql": "0c53e538b7081e7f9c54265ab8b185606ac4e925c9cc9e1f7abb7d244fd11acc",
+    "tests/compatibility/native-yueshu/fraud-edge_types-counts.gql": "415ffaf75710720e73a0f27056c5b122d0fe0aa8c1a869cd0b45c36ee32eacd0",
+    "tests/compatibility/native-yueshu/fraud-edges.gql": "8f0095e1cfc185d94119039de76d67b7a1e4099b385643b752daeb22c981c51c",
+    "tests/compatibility/native-yueshu/fraud-fixture.json": "ec5c25b53c1cfe1669802dc2a4e0fa0386bfde3e37f77e122fd4445877862303",
+    "tests/compatibility/native-yueshu/fraud-graph-type.gql": "6de2d3da3438e52a5d0434e56e177e806458ca4a1a4615b9c4c0d764c9d98288",
+    "tests/compatibility/native-yueshu/fraud-graph.gql": "354e6b08d20e3d87df044ce67e2894e608b27f2fbb238ab1ad4d50c3bc8e14bd",
+    "tests/compatibility/native-yueshu/fraud-node_types-counts.gql": "0bfd36cdb52bab38ca9eb757d7762207d6e9db670235109b233ea9c9ac743ec7",
+    "tests/compatibility/native-yueshu/fraud-nodes.gql": "cfa7a2f46b55967d6733c1e4d58e46c3489dfeffaa33b0d918e04ff0c9420eec",
+    "tests/compatibility/native-yueshu/lending-edge_types-counts.gql": "d1681cccbace3cf7de7f5e52710d2e7cfe927ecbf00eeb174cff3128409eed8f",
+    "tests/compatibility/native-yueshu/lending-edges.gql": "73fba6bf1f518460d15ffc84faea8bde11b3a454dcb904c1804155f5976c66f9",
+    "tests/compatibility/native-yueshu/lending-fixture.json": "d22cd02bcc522a5c7c1b4085c885b94f46bcf8c6e040b71a0e7c6b32834e8da7",
+    "tests/compatibility/native-yueshu/lending-graph-type.gql": "ffa8a250fa62df4511eacdb0891ae76df6d3ae09a24bc406a48a67f14761ed62",
+    "tests/compatibility/native-yueshu/lending-graph.gql": "b257f1c6e79e784cb3cf87b749a593dde6631be3b6028acb1bd0d77427b3c709",
+    "tests/compatibility/native-yueshu/lending-node_types-counts.gql": "9d4e18c1b5ea352c52bd021d802889f9d0d9c751571a013d895c8d91a622b76b",
+    "tests/compatibility/native-yueshu/lending-nodes.gql": "54f958d2cee1946eaabcbd00e3eb5dea71911a0dbd33193ff3d2783ada126081",
+    "tests/compatibility/native-yueshu/native-records.json": "a93e93b51ad80d506efb64e488685b4652d2be384fe63effbe4284406a263411",
+    "tests/compatibility/native-yueshu/phone-sharing.gql": "dfccc4046de69658aba1bca5baf6e7beec967d10f7933732aea020a49f66cff0",
+    "tests/compatibility/native-yueshu/pre-repair-multi-lending.gql": "edc765ab9bd9cbd54081a3ea0348aed86f10ae57b11f60231d6bfff88648de21",
+    "tests/compatibility/native-yueshu/resources.json": "7cd29d5c83d21c53ad1d9ae016073c65b2a3e63b97a310005a85350eea613ff8",
+    "tests/compatibility/native-yueshu/setup-observations.json": "7ba0aec0d31f5eb1bb92a267b6a90bc03251463235d3d72b4147db11f8da8668"
+  },
+  "documentation_sources": [
+    "https://dev-docs.nebula-graph.io/v5.3.2/clients/python-client/",
+    "https://dev-docs.nebula-graph.io/v5.3.2/database-gql-reference/ddl/graph-type/create/",
+    "https://dev-docs.nebula-graph.io/v5.3.2/database-gql-reference/ddl/graph/create/",
+    "https://dev-docs.nebula-graph.io/v5.3.2/database-gql-reference/data-types/temporal-type/",
+    "https://dev-docs.nebula-graph.io/v5.3.2/database-gql-reference/sessions/reset/"
+  ],
+  "limits": [
+    "Bounded synthetic fixture, not production data, scale or performance acceptance",
+    "No complete OWL/FIBO imports closure or reasoning",
+    "No CC-Switch GUI/macOS or Procedure execution",
+    "Concrete native DDL fixtures use version-matched official documentation; no general grammar generator or external Skill content is copied",
+    "Main models stay database-neutral; native results prove 5.3.2 only, not 5.3.0 execution"
+  ],
+  "redactions": [
+    "Connection endpoint, login account and password omitted; schema owner redacted; only owned catalog rows retained."
+  ]
+}

@@ -1,0 +1,21 @@
+USE /default_schema/onto_verify_5602e6b6cefa_lending
+INSERT
+  (@`Borrower` {`borrower_id`: 'B1', `party_type`: 'person', `identity_evidence`: 'confirmed-synthetic-id'}),
+  (@`Borrower` {`borrower_id`: 'B2', `party_type`: 'person', `identity_evidence`: 'confirmed-synthetic-id'}),
+  (@`Borrower` {`borrower_id`: 'B3', `party_type`: 'person', `identity_evidence`: 'confirmed-synthetic-id'}),
+  (@`Lender` {`lender_id`: 'L1', `institution_scope`: 'independent-legal-institution', `name`: 'Synthetic L1'}),
+  (@`Lender` {`lender_id`: 'L2', `institution_scope`: 'independent-legal-institution', `name`: 'Synthetic L2'}),
+  (@`Loan` {`loan_id`: 'A', `source_system`: 'synthetic', `source_record_id`: 'record-A', `principal_amount`: CAST('1000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2026-01-01T00:00:00+0000'), `valid_to`: zoned_datetime('2026-03-01T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `status`: 'active'}),
+  (@`Loan` {`loan_id`: 'B', `source_system`: 'synthetic', `source_record_id`: 'record-B', `principal_amount`: CAST('1000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2026-01-15T00:00:00+0000'), `valid_to`: zoned_datetime('2026-02-15T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `status`: 'active'}),
+  (@`Loan` {`loan_id`: 'C', `source_system`: 'synthetic', `source_record_id`: 'record-C', `principal_amount`: CAST('1000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2026-01-01T00:00:00+0000'), `valid_to`: NULL, `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `status`: 'active'}),
+  (@`Loan` {`loan_id`: 'D', `source_system`: 'synthetic', `source_record_id`: 'record-D', `principal_amount`: CAST('1000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2026-01-02T00:00:00+0000'), `valid_to`: NULL, `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `status`: 'active'}),
+  (@`Loan` {`loan_id`: 'E', `source_system`: 'synthetic', `source_record_id`: 'record-E', `principal_amount`: CAST('1000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2025-01-01T00:00:00+0000'), `valid_to`: zoned_datetime('2025-12-31T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `status`: 'settled'}),
+  (@`LoanApplication` {`application_id`: 'APP1', `source_system`: 'synthetic', `source_record_id`: 'record-APP1', `event_time`: zoned_datetime('2026-01-29T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-01T00:00:00+0000'), `status`: 'pending'}),
+  (@`CreditFacility` {`facility_id`: 'F1', `limit_amount`: CAST('10000.00' AS DECIMAL(18,2)), `currency`: 'CNY', `valid_from`: zoned_datetime('2026-01-01T00:00:00+0000'), `valid_to`: zoned_datetime('2026-12-31T00:00:00+0000')}),
+  (@`Disbursement` {`disbursement_id`: 'DIS1', `source_system`: 'synthetic', `source_record_id`: 'record-DIS1', `event_time`: zoned_datetime('2026-01-05T10:00:00+0000'), `observed_at`: zoned_datetime('2026-01-05T10:00:00+0000'), `amount`: CAST('500.00' AS DECIMAL(18,2)), `currency`: 'CNY'}),
+  (@`Disbursement` {`disbursement_id`: 'DIS2', `source_system`: 'synthetic', `source_record_id`: 'record-DIS2', `event_time`: zoned_datetime('2026-01-06T10:00:00+0000'), `observed_at`: zoned_datetime('2026-01-06T10:00:00+0000'), `amount`: CAST('500.00' AS DECIMAL(18,2)), `currency`: 'CNY'}),
+  (@`Repayment` {`repayment_id`: 'R1', `source_system`: 'synthetic', `source_record_id`: 'record-R1', `event_time`: zoned_datetime('2026-01-20T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-01T00:00:00+0000'), `amount`: CAST('100.00' AS DECIMAL(18,2)), `currency`: 'CNY', `status`: 'posted', `reverses_id`: NULL}),
+  (@`CreditInquiry` {`inquiry_id`: 'Q1', `source_system`: 'synthetic', `source_record_id`: 'record-Q1', `event_time`: zoned_datetime('2026-01-30T00:00:00+0000'), `observed_at`: zoned_datetime('2026-01-31T00:00:00+0000'), `purpose`: 'application'}),
+  (@`Phone` {`phone_token`: 'phone-token-shared', `normalization_scope`: 'synthetic-tokens'}),
+  (@`Account` {`institution_id`: 'L1', `account_token`: 'same-synthetic-token', `account_namespace`: 'synthetic-retail'}),
+  (@`Account` {`institution_id`: 'L2', `account_token`: 'same-synthetic-token', `account_namespace`: 'synthetic-retail'})

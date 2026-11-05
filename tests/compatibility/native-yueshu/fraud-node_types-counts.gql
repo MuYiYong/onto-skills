@@ -1,0 +1,11 @@
+MATCH (n@`Party`) RETURN 'Party' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Account`) RETURN 'Account' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`Transaction`) RETURN 'Transaction' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`DeviceObservation`) RETURN 'DeviceObservation' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`EvidenceRecord`) RETURN 'EvidenceRecord' AS object_type, count(*) AS record_count
+UNION ALL
+MATCH (n@`InvestigationHypothesis`) RETURN 'InvestigationHypothesis' AS object_type, count(*) AS record_count

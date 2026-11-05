@@ -1,0 +1,32 @@
+[
+  {
+    "command": "/bin/bash -lc pwd",
+    "exit_code": 0,
+    "output_sha256": "8c6f4b104ae8e23cea04341fb565a19fa707937da205134605ab9c405ee579e6"
+  },
+  {
+    "command": "/bin/bash -lc \"rg --files -g 'input.ttl' -g 'AGENTS.md' -g 'SKILL.md' -g 'fibo-index.json' -g 'sources.json' -g 'method.md' -g 'worked-example.md' -g '*.json' -g '*.ttl' -g '*.py' -g '*.sh' -g 'README*' -g 'pyproject.toml' -g 'package.json' --hidden\"",
+    "exit_code": 0,
+    "output_sha256": "fec9b8d9bef23a45831beb0ee10a53290d4a3827f32b58f89ca8000c18246b3d"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/fibo-ontology/SKILL.md .agents/skills/fibo-ontology/references/method.md .agents/skills/fibo-ontology/references/fibo-index.json .agents/skills/fibo-ontology/references/sources.json input.ttl'",
+    "exit_code": 0,
+    "output_sha256": "3a04e7ad24fcb2558ba1836c4e53554ae303ff9381463453feb36f655886a6d1"
+  },
+  {
+    "command": "/bin/bash -lc 'cat schema.json .agents/skills/fibo-ontology/examples/worked-example.md'",
+    "exit_code": 0,
+    "output_sha256": "e2ad39ad86cd6232a9df539122e33d50d46fc4caff588c3d6bf8e6c229e6a1e4"
+  },
+  {
+    "command": "/bin/bash -lc 'nl -ba input.ttl'",
+    "exit_code": 0,
+    "output_sha256": "3c8016ed1be29e3ce6d9d02520aa7616a2dcccae1c5b51fb83436bb125e5dc8e"
+  },
+  {
+    "command": "/bin/bash -lc 'rg --files --hidden'",
+    "exit_code": 0,
+    "output_sha256": "27aac280d9b457d92d3ae8972fbee3afb8bc8d3c1a49894281340f0acb09c3cd"
+  }
+]

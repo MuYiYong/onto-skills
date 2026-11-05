@@ -1,0 +1,484 @@
+{
+  "ssot": {
+    "banking-business-model": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/banking-business-model",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "8391eb653c747f43dece31ef9fe6d264fb88cb841ddcd317974fffe22bfc3b0e",
+        "examples/worked-example.md": "4bc0619da88f460381450e4f41c4b3540c8e081c99972ddf1d21c7ebf7928c7a",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "credit-risk-knowledge": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/credit-risk-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "299cf2fff886748fc614394ac22bc5f8da611e1c188a3662397ddd3d42223a83",
+        "examples/worked-example.md": "8edaf91fba5a621462571eba08b66c93fd4ba710b324f45695bf7904b3fc9b76",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/credit.json": "c94769bf2ed556f986e5af7cf964418b53a31633c59e6a35c25e30d0defd6bef",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "entity-relationship-modeling": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/entity-relationship-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e",
+        "examples/worked-example.md": "c8ecd94d03954e1c0223eb5f8aa26b527e82f5e770c643a6247f3b833d66ba20",
+        "references/method.md": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823"
+      }
+    },
+    "fibo-ontology": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/fibo-ontology",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "a26a638adca9e2c8aec07a449297e488527f44efd9d32a85bfa6b1968892c735",
+        "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216",
+        "references/fibo-index.json": "54ebb77187628d5eac73247e7a918ecbaa6804b0e0ebd8e920a990a9a3d3a096",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "finance-domain-knowledge": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/finance-domain-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "cbeffad3275230d200728ceec9d35cfee074fbcae6a6e351028738969f12672f",
+        "examples/worked-example.md": "cb7cdb685a090b5ffa35860979f152f67a05ba786a6bd726d83516c03342f866",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "fraud-network-modeling": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/fraud-network-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "5a9137dfd3f5e4197a8b26c486ecf36c6ea1594ac2b1d201a483d12470e248e4",
+        "examples/graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e",
+        "examples/worked-example.md": "2a370bf82b7131060b6097cd91a0a0c79f883a615ae7b098d6a70c751955ec3a",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "industry-knowledge-discovery": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/industry-knowledge-discovery",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d8785deaac4ce688979acbca57462cce7aec1f0da291f92c1f91b948025e698d",
+        "examples/worked-example.md": "3c0e82908808a2e5601b9b3b7bfd00d772cf2f23a26290613d1b59c091ce423f",
+        "references/method.md": "2d7880888735f355e01d70e69bf5f0375078f43b71d614996b8fda77227d1a90"
+      }
+    },
+    "multi-lending-detection": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/multi-lending-detection",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e",
+        "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+        "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "ontology-documentation": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/ontology-documentation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "686665d63abb67d2bfa594f65b072e341c64544e47208b5059b37f24d2218ed1",
+        "examples/worked-example.md": "a527c0856dc63f81c6d5df5ab51e430b97e5203177dc51ea716b6b20339dc924",
+        "references/method.md": "c05395e8770fc98a36ef789749688be2de561c15bca5e4224a965c77b918f223"
+      }
+    },
+    "ontology-evolution": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/ontology-evolution",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+        "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac",
+        "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd"
+      }
+    },
+    "ontology-modeling": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/ontology-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "dbe0968d08a7d5b1748a5d8604b68de793fcc57b1fe445a79e7b89ae6c5d755f",
+        "examples/worked-example.md": "983974084bd8f279b5f3b8162a6734b1eee3fe18504c1aa3d770d9a2e97660f1",
+        "references/method.md": "a044f7d9e7373562b819dab9146f209242bdb4eedc87cc9652cffd141c49f2b7"
+      }
+    },
+    "ontology-validation": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/ontology-validation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d2acd23d1edf06b68a12139cd154447150d4c5d1ae06036baaa55fe68bc06087",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "ac872dc412545b22cacb25e6a1c1ea06bc84896bb355f61d9157a200698beb41",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "c4b6b59c9720650a4ab63c2ec0a5a7c0efdc11ed794764f0936927a478fda14b"
+      }
+    },
+    "property-graph-mapping": {
+      "symlink": false,
+      "target": "/home/tester/.cc-switch/skills/property-graph-mapping",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "bcf1dcad31761399e96c73424c9f4dac9167244ed88b9a19e04a00eaa5eb8036",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "7aa9ed62ad48e60bec5a27c3a834ca0fccc8b425422a402f5550c6a418d05bc6",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "426d618a27a0d9fc441f555a0eb8cbe7784585bce707b79d34f4de563f42fdb0"
+      }
+    }
+  },
+  "codex": {
+    "banking-business-model": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/banking-business-model",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "8391eb653c747f43dece31ef9fe6d264fb88cb841ddcd317974fffe22bfc3b0e",
+        "examples/worked-example.md": "4bc0619da88f460381450e4f41c4b3540c8e081c99972ddf1d21c7ebf7928c7a",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "credit-risk-knowledge": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/credit-risk-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "299cf2fff886748fc614394ac22bc5f8da611e1c188a3662397ddd3d42223a83",
+        "examples/worked-example.md": "8edaf91fba5a621462571eba08b66c93fd4ba710b324f45695bf7904b3fc9b76",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/credit.json": "c94769bf2ed556f986e5af7cf964418b53a31633c59e6a35c25e30d0defd6bef",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "fibo-ontology": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/fibo-ontology",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "a26a638adca9e2c8aec07a449297e488527f44efd9d32a85bfa6b1968892c735",
+        "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216",
+        "references/fibo-index.json": "54ebb77187628d5eac73247e7a918ecbaa6804b0e0ebd8e920a990a9a3d3a096",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "finance-domain-knowledge": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/finance-domain-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "cbeffad3275230d200728ceec9d35cfee074fbcae6a6e351028738969f12672f",
+        "examples/worked-example.md": "cb7cdb685a090b5ffa35860979f152f67a05ba786a6bd726d83516c03342f866",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "fraud-network-modeling": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/fraud-network-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "5a9137dfd3f5e4197a8b26c486ecf36c6ea1594ac2b1d201a483d12470e248e4",
+        "examples/graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e",
+        "examples/worked-example.md": "2a370bf82b7131060b6097cd91a0a0c79f883a615ae7b098d6a70c751955ec3a",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "industry-knowledge-discovery": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/industry-knowledge-discovery",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d8785deaac4ce688979acbca57462cce7aec1f0da291f92c1f91b948025e698d",
+        "examples/worked-example.md": "3c0e82908808a2e5601b9b3b7bfd00d772cf2f23a26290613d1b59c091ce423f",
+        "references/method.md": "2d7880888735f355e01d70e69bf5f0375078f43b71d614996b8fda77227d1a90"
+      }
+    },
+    "multi-lending-detection": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/multi-lending-detection",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e",
+        "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+        "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "ontology-documentation": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-documentation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "686665d63abb67d2bfa594f65b072e341c64544e47208b5059b37f24d2218ed1",
+        "examples/worked-example.md": "a527c0856dc63f81c6d5df5ab51e430b97e5203177dc51ea716b6b20339dc924",
+        "references/method.md": "c05395e8770fc98a36ef789749688be2de561c15bca5e4224a965c77b918f223"
+      }
+    },
+    "ontology-evolution": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-evolution",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+        "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac",
+        "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd"
+      }
+    },
+    "ontology-modeling": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "dbe0968d08a7d5b1748a5d8604b68de793fcc57b1fe445a79e7b89ae6c5d755f",
+        "examples/worked-example.md": "983974084bd8f279b5f3b8162a6734b1eee3fe18504c1aa3d770d9a2e97660f1",
+        "references/method.md": "a044f7d9e7373562b819dab9146f209242bdb4eedc87cc9652cffd141c49f2b7"
+      }
+    },
+    "ontology-validation": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-validation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d2acd23d1edf06b68a12139cd154447150d4c5d1ae06036baaa55fe68bc06087",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "ac872dc412545b22cacb25e6a1c1ea06bc84896bb355f61d9157a200698beb41",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "c4b6b59c9720650a4ab63c2ec0a5a7c0efdc11ed794764f0936927a478fda14b"
+      }
+    },
+    "property-graph-mapping": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/property-graph-mapping",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "bcf1dcad31761399e96c73424c9f4dac9167244ed88b9a19e04a00eaa5eb8036",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "7aa9ed62ad48e60bec5a27c3a834ca0fccc8b425422a402f5550c6a418d05bc6",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "426d618a27a0d9fc441f555a0eb8cbe7784585bce707b79d34f4de563f42fdb0"
+      }
+    }
+  },
+  "claude": {
+    "banking-business-model": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/banking-business-model",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "8391eb653c747f43dece31ef9fe6d264fb88cb841ddcd317974fffe22bfc3b0e",
+        "examples/worked-example.md": "4bc0619da88f460381450e4f41c4b3540c8e081c99972ddf1d21c7ebf7928c7a",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "credit-risk-knowledge": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/credit-risk-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "299cf2fff886748fc614394ac22bc5f8da611e1c188a3662397ddd3d42223a83",
+        "examples/worked-example.md": "8edaf91fba5a621462571eba08b66c93fd4ba710b324f45695bf7904b3fc9b76",
+        "references/banking.json": "6153e923796a12ad8f88e92c7d35c63b9e59d461edb103c94434ebe274336dac",
+        "references/credit.json": "c94769bf2ed556f986e5af7cf964418b53a31633c59e6a35c25e30d0defd6bef",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "entity-relationship-modeling": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/entity-relationship-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e",
+        "examples/worked-example.md": "c8ecd94d03954e1c0223eb5f8aa26b527e82f5e770c643a6247f3b833d66ba20",
+        "references/method.md": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823"
+      }
+    },
+    "fibo-ontology": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/fibo-ontology",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "a26a638adca9e2c8aec07a449297e488527f44efd9d32a85bfa6b1968892c735",
+        "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216",
+        "references/fibo-index.json": "54ebb77187628d5eac73247e7a918ecbaa6804b0e0ebd8e920a990a9a3d3a096",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "finance-domain-knowledge": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/finance-domain-knowledge",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "cbeffad3275230d200728ceec9d35cfee074fbcae6a6e351028738969f12672f",
+        "examples/worked-example.md": "cb7cdb685a090b5ffa35860979f152f67a05ba786a6bd726d83516c03342f866",
+        "references/glossary.json": "d212c1d4458fce40bdaf749960d7eded4fd623ee535b7d19f3d030a9ae5abdee",
+        "references/method.md": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "fraud-network-modeling": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/fraud-network-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "5a9137dfd3f5e4197a8b26c486ecf36c6ea1594ac2b1d201a483d12470e248e4",
+        "examples/graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e",
+        "examples/worked-example.md": "2a370bf82b7131060b6097cd91a0a0c79f883a615ae7b098d6a70c751955ec3a",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "industry-knowledge-discovery": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/industry-knowledge-discovery",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d8785deaac4ce688979acbca57462cce7aec1f0da291f92c1f91b948025e698d",
+        "examples/worked-example.md": "3c0e82908808a2e5601b9b3b7bfd00d772cf2f23a26290613d1b59c091ce423f",
+        "references/method.md": "2d7880888735f355e01d70e69bf5f0375078f43b71d614996b8fda77227d1a90"
+      }
+    },
+    "multi-lending-detection": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/multi-lending-detection",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "01c987fd2a92a8275138c18b073d43e034c78aeb7a4d35a1d2c04d3ad91fe03e",
+        "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+        "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+        "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+        "references/sources.json": "448775478842c2d0dc56d270096f9b3e01b70496b600aeac280374b4f4c4de1b"
+      }
+    },
+    "ontology-documentation": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-documentation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "686665d63abb67d2bfa594f65b072e341c64544e47208b5059b37f24d2218ed1",
+        "examples/worked-example.md": "a527c0856dc63f81c6d5df5ab51e430b97e5203177dc51ea716b6b20339dc924",
+        "references/method.md": "c05395e8770fc98a36ef789749688be2de561c15bca5e4224a965c77b918f223"
+      }
+    },
+    "ontology-evolution": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-evolution",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+        "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac",
+        "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd"
+      }
+    },
+    "ontology-modeling": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-modeling",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "dbe0968d08a7d5b1748a5d8604b68de793fcc57b1fe445a79e7b89ae6c5d755f",
+        "examples/worked-example.md": "983974084bd8f279b5f3b8162a6734b1eee3fe18504c1aa3d770d9a2e97660f1",
+        "references/method.md": "a044f7d9e7373562b819dab9146f209242bdb4eedc87cc9652cffd141c49f2b7"
+      }
+    },
+    "ontology-validation": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/ontology-validation",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "d2acd23d1edf06b68a12139cd154447150d4c5d1ae06036baaa55fe68bc06087",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "ac872dc412545b22cacb25e6a1c1ea06bc84896bb355f61d9157a200698beb41",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "c4b6b59c9720650a4ab63c2ec0a5a7c0efdc11ed794764f0936927a478fda14b"
+      }
+    },
+    "property-graph-mapping": {
+      "symlink": true,
+      "target": "/home/tester/.cc-switch/skills/property-graph-mapping",
+      "files": {
+        "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+        "SKILL.md": "bcf1dcad31761399e96c73424c9f4dac9167244ed88b9a19e04a00eaa5eb8036",
+        "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+        "examples/worked-example.md": "7aa9ed62ad48e60bec5a27c3a834ca0fccc8b425422a402f5550c6a418d05bc6",
+        "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+        "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+        "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+        "references/method.md": "426d618a27a0d9fc441f555a0eb8cbe7784585bce707b79d34f4de563f42fdb0"
+      }
+    }
+  }
+}

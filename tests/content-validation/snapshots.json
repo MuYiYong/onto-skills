@@ -1,0 +1,61 @@
+[
+  {
+    "source": "knowledge/finance/standards/sources.json",
+    "copies": [
+      "skills/finance/finance-domain-knowledge/references/sources.json",
+      "skills/finance/fibo-ontology/references/sources.json",
+      "skills/finance/banking-business-model/references/sources.json",
+      "skills/finance/credit-risk-knowledge/references/sources.json",
+      "skills/scenarios/multi-lending-detection/references/sources.json",
+      "skills/scenarios/fraud-network-modeling/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/terminology/glossary.json",
+    "copies": [
+      "skills/finance/finance-domain-knowledge/references/glossary.json",
+      "skills/finance/banking-business-model/references/glossary.json",
+      "skills/finance/credit-risk-knowledge/references/glossary.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/concepts/banking.json",
+    "copies": [
+      "skills/finance/banking-business-model/references/banking.json",
+      "skills/finance/credit-risk-knowledge/references/banking.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/relationships/credit.json",
+    "copies": [
+      "skills/finance/credit-risk-knowledge/references/credit.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/standards/fibo-index.json",
+    "copies": [
+      "skills/finance/fibo-ontology/references/fibo-index.json"
+    ]
+  },
+  {
+    "source": "schemas/graph-model.schema.json",
+    "copies": [
+      "skills/core/property-graph-mapping/references/graph-model.schema.json",
+      "skills/core/ontology-validation/references/graph-model.schema.json",
+      "skills/scenarios/multi-lending-detection/references/graph-model.schema.json",
+      "skills/scenarios/fraud-network-modeling/references/graph-model.schema.json"
+    ]
+  },
+  {
+    "source": "examples/finance/graph-model.json",
+    "copies": [
+      "skills/scenarios/multi-lending-detection/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/finance/fraud-graph-model.json",
+    "copies": [
+      "skills/scenarios/fraud-network-modeling/examples/graph-model.json"
+    ]
+  }
+]

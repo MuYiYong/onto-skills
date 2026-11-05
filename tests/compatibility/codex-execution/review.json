@@ -1,0 +1,43 @@
+{
+  "method": "manual semantic review of each actual CLI result against synthetic prompt; schema and package hashes also checked programmatically",
+  "results": [
+    {
+      "skill": "entity-relationship-modeling",
+      "passed": true,
+      "observed": [
+        "Separates Equipment A17 from Person P2 with namespaced stable identities",
+        "H4/H5 preserve two assignments between the same endpoints",
+        "Half-open intervals preserve lifecycle and flag missing year/timezone"
+      ]
+    },
+    {
+      "skill": "fibo-ontology",
+      "passed": true,
+      "observed": [
+        "Retains the Loan superclass and existential restriction provenance",
+        "Qualified minimum zero does not require a guarantor",
+        "Flattened amount fields explicitly lose object identity, multiplicity and OWL enforcement",
+        "No complete imports closure or reasoning success is claimed"
+      ]
+    },
+    {
+      "skill": "multi-lending-detection",
+      "passed": true,
+      "observed": [
+        "Only Alpha meets the two-distinct-institution threshold",
+        "Lender counts Alpha=2, Beta=1, Gamma=0",
+        "Repeated disbursements do not increase lender count; expired phone does not merge identities",
+        "GQL generation handed off to the external skill with target-version checks"
+      ]
+    },
+    {
+      "skill": "ontology-evolution",
+      "passed": true,
+      "observed": [
+        "Detects breaking composite identity, required field and relationship-history changes",
+        "Unknown source IDs/custodians/dates remain blockers; no fabricated backfill",
+        "Proposes regression cases and preserves non-lossless rollback boundaries; no migration executed"
+      ]
+    }
+  ]
+}
