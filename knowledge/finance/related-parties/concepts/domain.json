@@ -1,0 +1,107 @@
+{
+  "id": "finance-related-parties-domain",
+  "name": "金融related-parties业务知识",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "独立技能随包知识与模型取舍",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-related",
+    "nfra-related-2025",
+    "cas36",
+    "mof-related-state",
+    "mof-annual-2024"
+  ],
+  "concepts": [
+    {
+      "id": "regimes",
+      "name": "口径分离",
+      "meaning": "中国银行保险监管办法2025修正与财务报告CAS36等定义分别建RuleSet；不能互借控制、豁免或汇总规则。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "nfra-related-2025",
+        "cas36"
+      ]
+    },
+    {
+      "id": "identity",
+      "name": "主体身份",
+      "meaning": "主体身份用证据支持的稳定来源标识；共享地址、电话、银行账户只作线索，不产生sameAs或关联方结论。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "control",
+      "name": "控制与持股",
+      "meaning": "持股边不自动等于控制；间接持股比例不能简单乘积变成通用控制判据。确认的控制/重大影响评估另带证据、口径与有效区间。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "nfra-related-2025"
+      ]
+    },
+    {
+      "id": "temporal",
+      "name": "时点与已知证据",
+      "meaning": "交易发生时的关联关系与审查时已知证据分别过滤；过期、未生效、撤回或晚到评估不偷渡到原快照。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "state",
+      "name": "国家持股反例",
+      "meaning": "仅共同国家持股的排除情形须按选定口径核实；存在额外关联证据时不能以国企标签一律豁免。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "mof-related-state"
+      ]
+    },
+    {
+      "id": "aggregation",
+      "name": "交易与金额",
+      "meaning": "同源事件重放去重，真实重复交易保留；路径多条不重复金额，按币种与余额/发生额分类汇总，冲正回指原记录。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "consolidation",
+      "name": "合并抵销边界",
+      "meaning": "财务合并披露内部交易的处理不自动成为监管关联交易豁免；候选关系保留，展示范围决定是否进入某张报表。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "cas36",
+        "mof-annual-2024"
+      ]
+    },
+    {
+      "id": "governance2025",
+      "name": "2025治理修正",
+      "meaning": "修正后的审批路径需按具体人员关系、业务和章程适用审查；不能用旧版免予审议标签直接跳过相关审查。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "nfra-related-2025"
+      ]
+    },
+    {
+      "id": "decision",
+      "name": "候选与最终判断",
+      "meaning": "输出可解释候选、证据路径、反证、未决项和待复核流程；不自动定性违法/利益输送，不自动报告或写生产系统。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ]
+    }
+  ]
+}

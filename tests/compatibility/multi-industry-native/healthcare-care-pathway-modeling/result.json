@@ -1,0 +1,41 @@
+{
+  "skill_used": "healthcare-care-pathway-modeling",
+  "answer": {
+    "procedure_performance_proven": false,
+    "superseded_value_usable": false,
+    "unknown_fill_zero": false,
+    "patients_auto_merged": false
+  },
+  "identity_rules": [
+    "项目建模建议：逻辑资源按来源server、resourceType、id区分；版本另含不透明versionId。current采用题给声明，不按版本号数值、字典序或入库先后推定。",
+    "按题给授权事实保留A的Patient/p1到假名P1的身份映射；源资源身份与假名分开，映射授权不自动扩展为披露授权。",
+    "p2仅与p1共享联系人且没有批准映射，保持记录独立，不关联到P1；共享联系人不能证明同一患者。来源：onto-project、fhir-r4-patient。",
+    "保留o1 v1的final、5 mg/L及其被替代事实，也保留current v2的entered-in-error状态；历史版本不算第二次测量，不覆盖或自动回退。",
+    "仅依据明确源引用建立subject、encounter、basedOn和provenance关系；不能因同属患者上下文就认定o1或o2回应r1。来源：references/method.md，项目映射建议。"
+  ],
+  "time_and_units": [
+    "题给所有已知截止均晚于修订：这些截止下不得把o1 v1重新作为当前有效测量；current仍是entered-in-error的v2，历史审计展示可保留5 mg/L并明确失效语境。",
+    "分别保留请求authoredOn/occurrence、执行performed、观测effective/issued、Provenance.recorded、meta.lastUpdated和接收recorded_at；修订、报告或接收时间不能替代临床发生时间。",
+    "保留原始时区、精度、choice类型和区间；部分日期不补午夜。仅已有完整瞬时值可另作UTC表示，这是项目表示策略。",
+    "历史数量仅按题给保留5 mg/L；不补造UCUM、检测项目编码、编码版本或comparator。比较与聚合须先核对结果可用性及编码、单位兼容性；转换须有明确获批规则并保留原值。来源：fhir-r4-datatypes及onto-project项目政策。"
+  ],
+  "source_limits": [
+    "基线固定为随包HL7 FHIR R4 4.0.1。已读SKILL.md、references/domain.json、sources.json、method.md、graph-model-specification.md、graph-model.schema.json及相关合成示例；仅使用本地摘要与来源索引。",
+    "r1 current版本2为revoked且没有Procedure，不能证明执行；这也不能证明现实中从未执行。撤销请求不生成执行记录，也不抹去另有独立证据的执行。来源：fhir-r4-servicerequest、fhir-r4-request-status、fhir-r4-procedure；判断为模型推论。",
+    "o1 current v2的entered-in-error使其不能作为有效测量；v1的5 mg/L仅保留为历史，不能因v2无效而继续使用旧值。状态语义来源：fhir-r4-observation-status；禁止回退为项目使用口径。",
+    "o2保持status=final、dataAbsentReason=unknown且无值，属于unknown-value；不能填0、判阴性或正常。FHIR选定约束obs-6要求根dataAbsentReason仅在根value[x]缺失时出现；不填0的证据判断与视图口径不冒充通用临床规则。来源：fhir-r4-observation及onto-project。",
+    "图身份、定量视图、历史保留和授权控制属于项目建议或当地政策，不能写成FHIR官方要求；随包示例的URL、ID、时刻、授权设置和计数不移植到本题。",
+    "本次仅完成离线语义分析，未运行验收程序、数据库或完整FHIR验证；未联网、使用其他技能或子代理，也未修改文件。"
+  ],
+  "unresolved": [
+    "假设：题给current状态、替代关系与p1映射授权作为合成事实采信，未独立核验其来源控制证据。",
+    "来源身份问题：A的规范server base URL是什么？r1、o1、o2是否均来自A，p2是否也属于A？仅按题述上下文讨论，不补造来源URL。",
+    "版本问题：Patient/p1、p2及Observation/o2的versionId未给定；o2的current声明及依据也未给定，不补版本或认定其为current。",
+    "身份控制问题：P1的目的/命名空间、映射decision与evidence标识、审批主体、授权范围及有效时间未给定；本题不补造，也不将这些项目字段宣称为FHIR官方必填项。",
+    "版本控制问题：r1与o1的current声明来自何种权威记录，控制记录ID、Provenance及修订依据是什么？未给出独立撤回控制，不推定存在额外撤回指令。",
+    "时间问题：具体as_of、各截止值及其对应时钟、修订时刻、临床/报告/源更新/接收时间和时区均未给定；仅采用截止晚于修订的已知关系。",
+    "引用问题：原始subject、encounter、basedOn和Provenance target及其精确版本解析证据未给定，不生成对应事实边。",
+    "数量问题：检测项目Coding.system/version/code、Quantity.system/code/comparator及获批转换规则未给定；保持未知。",
+    "治理问题：历史保留期限、访问与披露政策未给定；保留历史是本次模型建议，不代表已确认实际保留或披露权限。"
+  ]
+}

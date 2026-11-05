@@ -1,0 +1,227 @@
+{
+  "scenario": "shipment-exception-analysis",
+  "as_of": "2026-11-05T12:00:00Z",
+  "known_as_of": "2026-11-05T12:00:00Z",
+  "shipment_id": "SH-100",
+  "required_unit_ids": [
+    "LU-1",
+    "LU-2"
+  ],
+  "delivery_location_id": "NL-DC",
+  "delivery_milestone": "arrival",
+  "planned_arrival": "2026-11-05T15:00:00+01:00",
+  "delay_threshold_minutes": 60,
+  "source_priority": [
+    "carrier",
+    "terminal"
+  ],
+  "events": [
+    {
+      "source_system": "carrier",
+      "event_id": "plan-arrival",
+      "shipment_id": "SH-100",
+      "consignment_id": "C-ROAD-30",
+      "unit_id": null,
+      "leg_id": "LEG-ROAD-3",
+      "location_id": "NL-DC",
+      "milestone": "arrival",
+      "classifier": "planned",
+      "event_time": "2026-11-05T15:00:00+01:00",
+      "issued_at": "2026-11-04T10:00:00Z",
+      "record_time": "2026-11-04T10:00:00Z",
+      "observed_at": "2026-11-04T10:01:00Z",
+      "valid": true
+    },
+    {
+      "source_system": "carrier",
+      "event_id": "eta-old",
+      "shipment_id": "SH-100",
+      "consignment_id": "C-ROAD-30",
+      "unit_id": null,
+      "leg_id": "LEG-ROAD-3",
+      "location_id": "NL-DC",
+      "milestone": "arrival",
+      "classifier": "estimated",
+      "event_time": "2026-11-05T16:00:00+01:00",
+      "issued_at": "2026-11-05T08:00:00Z",
+      "record_time": "2026-11-05T08:00:00Z",
+      "observed_at": "2026-11-05T11:00:00Z",
+      "valid": true
+    },
+    {
+      "source_system": "carrier",
+      "event_id": "eta-new",
+      "shipment_id": "SH-100",
+      "consignment_id": "C-ROAD-30",
+      "unit_id": null,
+      "leg_id": "LEG-ROAD-3",
+      "location_id": "NL-DC",
+      "milestone": "arrival",
+      "classifier": "estimated",
+      "event_time": "2026-11-05T18:00:00+01:00",
+      "issued_at": "2026-11-05T10:00:00Z",
+      "record_time": "2026-11-05T10:00:00Z",
+      "observed_at": "2026-11-05T10:01:00Z",
+      "valid": true
+    },
+    {
+      "source_system": "terminal",
+      "event_id": "scan-new",
+      "shipment_id": "SH-100",
+      "consignment_id": "C-SEA-20",
+      "unit_id": "LU-1",
+      "leg_id": "LEG-SEA-2",
+      "location_id": "NL-PORT",
+      "milestone": "discharge",
+      "classifier": "actual",
+      "event_time": "2026-11-05T09:00:00+01:00",
+      "issued_at": "2026-11-05T08:01:00Z",
+      "record_time": "2026-11-05T08:01:00Z",
+      "observed_at": "2026-11-05T08:02:00Z",
+      "valid": true
+    },
+    {
+      "source_system": "terminal",
+      "event_id": "scan-old",
+      "shipment_id": "SH-100",
+      "consignment_id": "C-FEEDER-10",
+      "unit_id": "LU-1",
+      "leg_id": "LEG-FEEDER-1",
+      "location_id": "SG-PORT",
+      "milestone": "discharge",
+      "classifier": "actual",
+      "event_time": "2026-10-12T12:00:00+08:00",
+      "issued_at": "2026-10-12T04:01:00Z",
+      "record_time": "2026-10-12T04:01:00Z",
+      "observed_at": "2026-11-05T11:05:00Z",
+      "valid": true
+    }
+  ],
+  "context": {
+    "identity_namespace": "urn:example:onto-skills:logistics; all IDs synthetic, not GS1 allocations",
+    "shipments": [
+      {
+        "shipper_id": "SHIPPER-A",
+        "shipment_id": "SH-100",
+        "gsin": null
+      }
+    ],
+    "consignments": [
+      {
+        "provider_id": "CARRIER-A",
+        "consignment_id": "C-FEEDER-10",
+        "ginc": null
+      },
+      {
+        "provider_id": "CARRIER-B",
+        "consignment_id": "C-SEA-20",
+        "ginc": null
+      },
+      {
+        "provider_id": "CARRIER-C",
+        "consignment_id": "C-ROAD-30",
+        "ginc": null
+      }
+    ],
+    "units": [
+      {
+        "issuer_id": "SHIPPER-A",
+        "unit_id": "LU-1",
+        "sscc": null
+      },
+      {
+        "issuer_id": "SHIPPER-A",
+        "unit_id": "LU-2",
+        "sscc": null
+      }
+    ],
+    "legs": [
+      {
+        "carrier_id": "CARRIER-A",
+        "leg_id": "LEG-FEEDER-1",
+        "origin": "CN-PORT",
+        "destination": "SG-PORT",
+        "sequence": 1
+      },
+      {
+        "carrier_id": "CARRIER-B",
+        "leg_id": "LEG-SEA-2",
+        "origin": "SG-PORT",
+        "destination": "NL-PORT",
+        "sequence": 2
+      },
+      {
+        "carrier_id": "CARRIER-C",
+        "leg_id": "LEG-ROAD-3",
+        "origin": "NL-PORT",
+        "destination": "NL-DC",
+        "sequence": 3
+      }
+    ],
+    "bookings": [
+      {
+        "provider_id": "CARRIER-B",
+        "booking_id": "BK-20",
+        "revision": 1,
+        "status": "confirmed"
+      }
+    ],
+    "documents": [
+      {
+        "issuer_id": "CARRIER-B",
+        "document_id": "DOC-20",
+        "revision": 1,
+        "status": "issued"
+      }
+    ],
+    "handover": {
+      "status": "unconfirmed",
+      "from_party": "CARRIER-A",
+      "to_party": "CARRIER-B",
+      "reason": "Discharge and load scans alone do not establish custody transfer."
+    },
+    "parties": [
+      {
+        "party_namespace": "example-carriers",
+        "party_id": "CARRIER-A",
+        "party_gln": null
+      },
+      {
+        "party_namespace": "example-carriers",
+        "party_id": "CARRIER-B",
+        "party_gln": null
+      },
+      {
+        "party_namespace": "example-carriers",
+        "party_id": "CARRIER-C",
+        "party_gln": null
+      }
+    ],
+    "locations": [
+      {
+        "operator_id": "EXAMPLE-OPS",
+        "location_id": "CN-PORT",
+        "physical_gln": null,
+        "location_role": "origin"
+      },
+      {
+        "operator_id": "EXAMPLE-OPS",
+        "location_id": "SG-PORT",
+        "physical_gln": null,
+        "location_role": "transshipment"
+      },
+      {
+        "operator_id": "EXAMPLE-OPS",
+        "location_id": "NL-PORT",
+        "physical_gln": null,
+        "location_role": "transshipment"
+      },
+      {
+        "operator_id": "EXAMPLE-OPS",
+        "location_id": "NL-DC",
+        "physical_gln": null,
+        "location_role": "delivery"
+      }
+    ]
+  }
+}

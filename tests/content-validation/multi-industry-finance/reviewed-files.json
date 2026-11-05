@@ -1,0 +1,76 @@
+{
+  "isolation": "fresh local copies; no repository tests/central or packaged acceptance fixtures read",
+  "copied_directory": "/tmp/onto-finance-independent-review.C7m9qe",
+  "files": [
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "SKILL.md",
+      "sha256": "daf16edf5eabb9fd4b78d2d10bda604864e993b46b703cf591b71ef35263eddb"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "references/method.md",
+      "sha256": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "references/domain.json",
+      "sha256": "dab801ae0386a00ef8e984ca6d0edf8e557466f8c865e4f5a1f32ab207cc9975"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "references/sources.json",
+      "sha256": "40c08b008223f99048e388bfa904439bf72ce84fdfa1faed9809b2c113505363"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "references/graph-model-specification.md",
+      "sha256": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "references/graph-model.schema.json",
+      "sha256": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7"
+    },
+    {
+      "package": "financial-regulatory-reporting",
+      "path": "examples/graph-model.json",
+      "sha256": "58a208451a114e6b9f9f8c2a437b01658fb67bdffb73971f41a20c453e7e3dfb"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "SKILL.md",
+      "sha256": "c55909c34082ab7e8c148a3adc7052b37c50ed97f36af5516a7d81edbc6a9d32"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "references/method.md",
+      "sha256": "13b73a481ccfc8a39f8cca25b294a51690e946edf3ff036394007ca24d62c65f"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "references/domain.json",
+      "sha256": "c22f2604c0f23beccdfdb1319b54a1d88194e2bcb5011794ac59957d9b676469"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "references/sources.json",
+      "sha256": "990dd18781a54cbd3315231e6359de13dda98a0e3983792b1ab1f0c36327cbac"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "references/graph-model-specification.md",
+      "sha256": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "references/graph-model.schema.json",
+      "sha256": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7"
+    },
+    {
+      "package": "related-party-transaction-modeling",
+      "path": "examples/graph-model.json",
+      "sha256": "39e85841cae725e2552a1b45f2f45ac337a65c88ab924c160e2778eb2e2a6c4e"
+    }
+  ]
+}

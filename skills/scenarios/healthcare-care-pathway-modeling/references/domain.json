@@ -1,0 +1,194 @@
+{
+  "id": "healthcare-domain",
+  "name": "医疗健康数据概念与证据边界 / healthcare domain knowledge",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Database-neutral ontology/data design for patient-context request/event/result/provenance records",
+  "authority": "Onto Skills original data-modeling guidance; no clinical, regulatory or FHIR conformance authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "fhir-r4-resource",
+    "fhir-r4-patient",
+    "fhir-r4-encounter",
+    "fhir-r4-servicerequest",
+    "fhir-r4-observation",
+    "fhir-r4-procedure",
+    "fhir-r4-condition",
+    "fhir-r4-provenance",
+    "fhir-r4-datatypes",
+    "fhir-r4-request-status",
+    "fhir-r4-observation-status",
+    "fhir-r4-event-status",
+    "fhir-r4-license"
+  ],
+  "baseline": "HL7 FHIR R4 4.0.1 is deliberately pinned for this mapping. R5 is a different published release; development builds are not the baseline.",
+  "concepts": [
+    {
+      "id": "patient-identity",
+      "name": "患者标识与资源身份",
+      "summary": "Patient resource identifies a source-system record, not a globally unique person. Keep source server/type/id separate from a tenant-scoped synthetic patient pseudonym. Cross-source association needs authorized identifier crosswalk evidence; matching names, demographics or shared contact is insufficient.",
+      "modeling_decision": "Keep Patient pseudonym and evidence-bearing identity links separate. A missing or rejected link leaves the record unresolved; no automatic merge.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient",
+        "fhir-r4-resource"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "resource-version",
+      "name": "资源版本与重复导入",
+      "summary": "Resource logical identity includes its source endpoint and resource type/id. meta.versionId denotes a record version, not a sortable number, clinical event, terminology version or FHIR release. Source history availability is not guaranteed.",
+      "modeling_decision": "Keep immutable version snapshots. Exact version replay is idempotent; new versions and separate event ids survive. Resolve current state from an authoritative source claim, never lexical or numeric version sorting.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "encounter-context",
+      "name": "就诊上下文",
+      "summary": "Encounter supplies interaction context and has its own lifecycle; local systems differ in encounter granularity. A planned or repeated encounter is not an interchangeable patient row.",
+      "modeling_decision": "Use encounter source identity. Keep a repeat visit separate even for the same patient and code. Do not infer clinical completion from a finished encounter.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-encounter"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "request-versus-performance",
+      "name": "医嘱请求与实际执行",
+      "summary": "ServiceRequest models a requested service with intent and request status. Procedure models activity documentation with its own status. R4 request cancellation is represented by revoked; this alone supplies no performed event. Preserve doNotPerform: a prohibition request is not a positive request to carry out the named service.",
+      "modeling_decision": "Link explicit basedOn references. Never manufacture Procedure from Order. Count completed procedures under the fixture policy; retain not-done, entered-in-error and other states for audit without counting completed activity. A later revoked order does not erase an independently evidenced completed procedure.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-procedure",
+        "fhir-r4-request-status",
+        "fhir-r4-event-status"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "observation-validity",
+      "name": "观测结果有效性与缺失",
+      "summary": "Observation status modifies how a result is interpreted. entered-in-error invalidates that resource as usable evidence; absence of a result is not a negative finding. A dataAbsentReason can describe missing value.",
+      "modeling_decision": "The example quantitative view admits only current final/amended/corrected numerical quantities with known coding and units. This eligibility rule is local policy, not a clinical validity judgment. Unknown and preliminary remain explicit; never label an unassessed value normal.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation",
+        "fhir-r4-observation-status"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "condition-assertion",
+      "name": "健康问题与诊断断言",
+      "summary": "Condition carries a recorded concern or assessment; clinicalStatus and verificationStatus have different meanings. Recorded assertions may be unconfirmed or refuted and should not be promoted to confirmed diagnoses.",
+      "modeling_decision": "Do not derive Condition from a numerical threshold. Preserve source status and authoring context. Check con-4/con-5 where relevant, without claiming complete FHIR validation.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-condition"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "clinical-times",
+      "name": "临床时间与记录时间",
+      "summary": "Order authoredOn, requested occurrence, Procedure performed[x], Observation effective[x]/issued, Condition onset/recordedDate and Provenance recorded describe different clocks. Server lastUpdated is another clock.",
+      "modeling_decision": "Keep original choice type, precision, interval and timezone. Do not invent midnight or substitute ingestion time for an unknown clinical time. Project recorded_at means intake time and is labeled separately.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-procedure",
+        "fhir-r4-observation",
+        "fhir-r4-condition",
+        "fhir-r4-provenance",
+        "fhir-r4-resource",
+        "fhir-r4-datatypes"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "coding-and-unit",
+      "name": "术语与单位",
+      "summary": "Coding meaning is contextual to system, version and code; display text is not a key. Quantity includes the value and potentially comparator plus a unit label and coded unit system/code.",
+      "modeling_decision": "Keep code-system version and original units. Missing version remains unknown. Do not aggregate unlike versions or units by display name. Any approved conversion needs a traceable rule and original value retained; the fixture performs none.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "provenance-and-retraction",
+      "name": "证据、撤回与授权边界",
+      "summary": "Provenance can describe how a resource version was created or revised. It does not itself establish an authorization to read or disclose a patient record, nor prove that a medical activity occurred.",
+      "modeling_decision": "Attach provenance to exact versions. Source status invalidation or an authorized, version-specific retraction policy excludes a view without destroying audit history. Apply purpose/access checks before any data release; this package offers no security runtime or compliance claim.",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance",
+        "fhir-r4-observation",
+        "fhir-r4-resource"
+      ],
+      "classification": "model-inference"
+    },
+    {
+      "id": "synthetic-data-minimization",
+      "name": "合成数据最小化",
+      "summary": "These fixtures use invented patient pseudonyms, invalid example domains and local synthetic codes; they contain no patient facts or care instructions.",
+      "modeling_decision": "Request the smallest authorized, de-identified schema and examples. Keep real identity crosswalks and secrets outside prompts and examples. A pseudonym alone is not a guarantee that data are anonymous.",
+      "source_ids": [
+        "onto-project",
+        "onto-project"
+      ],
+      "classification": "model-inference"
+    }
+  ],
+  "official_constraints": [
+    {
+      "id": "r4-observation-obs6",
+      "name": "Observation missing-value exclusivity",
+      "rule": "For the Observation root value, dataAbsentReason is allowed only when value[x] is absent (obs-6). Components require their own mapping review.",
+      "classification": "official-standard",
+      "source_ids": [
+        "fhir-r4-observation"
+      ]
+    },
+    {
+      "id": "r4-condition-con5",
+      "name": "Condition entered-in-error boundary",
+      "rule": "A Condition with verificationStatus entered-in-error must omit clinicalStatus (con-5). This is a selected rule, not a complete resource validator.",
+      "classification": "official-standard",
+      "source_ids": [
+        "fhir-r4-condition"
+      ]
+    }
+  ],
+  "mapping_losses": [
+    {
+      "id": "resource-coverage-loss",
+      "name": "资源覆盖损失",
+      "detail": "Model preserves selected typed fields plus an authorized source snapshot. It does not model all cardinalities, extensions/modifierExtensions, profiles, references, consent, signatures, terminology bindings or workflow semantics. Retaining raw JSON does not implement their meaning.",
+      "classification": "model-inference",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "id": "no-terminology-equivalence",
+      "name": "术语映射边界",
+      "detail": "No ICD, LOINC or SNOMED CT files/code lists are bundled. Example clinical codes are local synthetic identifiers with explicit system and version; no equivalence to licensed clinical terminology is asserted.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ]
+    }
+  ]
+}

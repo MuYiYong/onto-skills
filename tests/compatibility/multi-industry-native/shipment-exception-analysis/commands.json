@@ -1,0 +1,56 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "98aee7502aa5f424094bf19fa45748874275cb863acb11425ced99d840d2e97e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "a5c8d624c7bd51f39b1a073cf28bb4de34eae74d757d35993980ab5ea431d09b"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "c1378b12cd33485acd8adf99490b8ef9c6668276bdd6473c0f05a1a2bc75eace"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "82f086e82f91435c0eddf36ffa9b0727e547b72a52a803a880b095faaad50e0f"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ff37738c1791fa91064883b2eda33b16d4f5aa870ac3bd332776cc083eb019d6"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/examples/input.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "c485edc4cbb964d91e0aa2b3134042e6a712d87fba436f33e38e2c6b391dd821"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/shipment-exception-analysis/examples/acceptance.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "809b8b8e3cbb235fe20082c3dab19a90994778bac239b56759d7cfef2ef53aef"
+  },
+  {
+    "command": "/bin/bash -lc \"python3 -c 'import json; from pathlib import Path; p=Path(\\\".agents/skills/shipment-exception-analysis/examples/acceptance.json\\\"); d=json.loads(p.read_text()); print(json.dumps({\\\"scope\\\":d[\\\"scope\\\"],\\\"cases\\\":[{\\\"id\\\":c[\\\"id\\\"],\\\"expected\\\":c[\\\"expected\\\"],\\\"reason\\\":c[\\\"reason\\\"]} for c in d[\\\"cases\\\"]]}, ensure_ascii=False, indent=2))'\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "54a1a2a2331e5fc143a06803911e8a3aa583c8cbee92de2d4a2cedd113ec3759"
+  }
+]

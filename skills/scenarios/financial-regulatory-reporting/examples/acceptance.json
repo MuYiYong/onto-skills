@@ -1,0 +1,826 @@
+{
+  "id": "regulatory-reporting-acceptance",
+  "name": "监管报送合成验收",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "独立技能随包知识与模型取舍",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-reporting",
+    "nfra-statistics",
+    "bcbs239",
+    "bcbs239-2026",
+    "xbrl21",
+    "xbrl-essentials"
+  ],
+  "cases": [
+    {
+      "id": "report-as-known",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "candidate",
+        "value": "150.00",
+        "source_versions": [
+          "core/L1/v1",
+          "core/L2/v1"
+        ]
+      },
+      "reason": "同源v1重放不重复；业务未来记录和获知截止后v2不进入原快照；candidate不是监管接受。"
+    },
+    {
+      "id": "late-correction-new-run",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-10-03T00:00:00+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "candidate",
+        "value": "155.00",
+        "source_versions": [
+          "core/L1/v2",
+          "core/L2/v1"
+        ]
+      },
+      "reason": "业务时点不变，新截止只替换同一业务记录的已知版本；不把v1/v2同时求和。"
+    },
+    {
+      "id": "conflicting-source-version",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "99.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "source_identity_conflict"
+      },
+      "reason": "同源系统/记录/版本出现不同载荷，不能任选或静默覆盖。"
+    },
+    {
+      "id": "mixed-currency-without-conversion",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "FX1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "7.00",
+            "unit": "dollar",
+            "currency": "USD",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "unit_or_currency_mismatch"
+      },
+      "reason": "汇总范围内外币未提供转换规则，不得删除或直接相加。"
+    },
+    {
+      "id": "unknown-is-not-zero",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": null,
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "unknown_amount"
+      },
+      "reason": "源金额未知不自动置零，不把部分总和标完整。"
+    },
+    {
+      "id": "instant-duration-mismatch",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2026.1",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "duration",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "context_definition_mismatch"
+      },
+      "reason": "存量时点指标和期间流量上下文不能互换。"
+    },
+    {
+      "id": "wrong-template-version",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "reporting_balance",
+        "report_code": "DEMO-LINEAGE-01",
+        "template_version": "2026.1",
+        "metric_id": "urn:onto:demo:loanBalance",
+        "metric_version": "2026.1",
+        "definition_period_kind": "instant",
+        "fact_template_version": "2025.2",
+        "entity_id": "B1",
+        "scope": "standalone",
+        "period_kind": "instant",
+        "as_of": "2026-09-30T23:59:59+08:00",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "records": [
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L2",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "50.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "100.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L1",
+            "source_version": "v2",
+            "entity_id": "B1",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T09:00:00+08:00",
+            "amount": "105.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          },
+          {
+            "source_system": "core",
+            "record_id": "L3",
+            "source_version": "v1",
+            "entity_id": "B1",
+            "event_time": "2026-10-01T00:00:00+08:00",
+            "observed_at": "2026-09-30T18:00:00+08:00",
+            "amount": "20.00",
+            "unit": "yuan",
+            "currency": "CNY",
+            "status": "active"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "template_version_mismatch"
+      },
+      "reason": "表号相同不能抹去制度与事实版本。"
+    },
+    {
+      "id": "transport-not-acceptance",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "submission_state",
+        "submission": "S2",
+        "receipts": [
+          {
+            "kind": "transport",
+            "status": "received",
+            "received_at": "2026-10-02T10:00:00+08:00"
+          }
+        ]
+      },
+      "expected": {
+        "submission": "S2",
+        "state": "received",
+        "accepted": false
+      },
+      "reason": "传输回执与监管业务接受分别记录，不用本地校验通过推定监管接受。"
+    },
+    {
+      "id": "business-rejection",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "submission_state",
+        "submission": "S2",
+        "receipts": [
+          {
+            "kind": "business",
+            "status": "rejected",
+            "received_at": "2026-10-02T10:00:00+08:00"
+          }
+        ]
+      },
+      "expected": {
+        "submission": "S2",
+        "state": "rejected",
+        "accepted": false
+      },
+      "reason": "传输回执与监管业务接受分别记录，不用本地校验通过推定监管接受。"
+    },
+    {
+      "id": "draft-revision-preserves-accepted",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "current_accepted",
+        "submissions": [
+          {
+            "id": "S1",
+            "revision": 1,
+            "state": "accepted",
+            "supersedes": null
+          },
+          {
+            "id": "S2",
+            "revision": 2,
+            "state": "draft",
+            "supersedes": "S1"
+          }
+        ]
+      },
+      "expected": {
+        "current_accepted": "S1",
+        "history": [
+          "S1",
+          "S2"
+        ]
+      },
+      "reason": "完整保留修订链，只有新版本业务accepted才替换已接受视图。"
+    },
+    {
+      "id": "accepted-revision-is-current",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "current_accepted",
+        "submissions": [
+          {
+            "id": "S1",
+            "revision": 1,
+            "state": "accepted",
+            "supersedes": null
+          },
+          {
+            "id": "S2",
+            "revision": 2,
+            "state": "accepted",
+            "supersedes": "S1"
+          }
+        ]
+      },
+      "expected": {
+        "current_accepted": "S2",
+        "history": [
+          "S1",
+          "S2"
+        ]
+      },
+      "reason": "完整保留修订链，只有新版本业务accepted才替换已接受视图。"
+    },
+    {
+      "id": "rejected-revision-preserves-accepted",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "input": {
+        "operation": "current_accepted",
+        "submissions": [
+          {
+            "id": "S1",
+            "revision": 1,
+            "state": "accepted",
+            "supersedes": null
+          },
+          {
+            "id": "S2",
+            "revision": 2,
+            "state": "rejected",
+            "supersedes": "S1"
+          }
+        ]
+      },
+      "expected": {
+        "current_accepted": "S1",
+        "history": [
+          "S1",
+          "S2"
+        ]
+      },
+      "reason": "完整保留修订链，只有新版本业务accepted才替换已接受视图。"
+    }
+  ]
+}

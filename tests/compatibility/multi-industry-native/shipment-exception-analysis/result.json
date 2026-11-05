@@ -1,0 +1,33 @@
+{
+  "skill_used": "shipment-exception-analysis",
+  "answer": {
+    "selected_eta_event_id": "E2",
+    "delay_minutes": 240,
+    "delivery_confirmed": false,
+    "delivered_unit_ids": ["U1"]
+  },
+  "identity_rules": [
+    "S的必需单元为U1、U2；来源事件键为(source_system,event_id)，唯一且有效按题设接受。",
+    "同shipment、最终DC及arrival里程碑的estimated按issued_at选择最新；E2的13:00晚于E1的11:00。",
+    "A1支持U1最终DC实际到达；A2仅为U2港口到达，P1仅为计划，均不能证明U2最终DC实际到达。"
+  ],
+  "time_and_units": [
+    "as_of=known_as_of=2026-11-05T14:00:00Z；业务发生时间与证据可见时间分别校验。",
+    "在下列时间假设下，E2的ETA为2026-11-05T16:00:00Z；相对12:00Z计划延误240分钟。",
+    "240严格大于用户阈值30分钟，属于ETA延误；这是预测偏差，不是完整交付的实际延误。",
+    "A1的13:30早于as_of；即使P1的计划时间已到，也不会自动产生actual证据。"
+  ],
+  "source_limits": [
+    "已读取指定SKILL.md及项目内方法、领域、来源、图规格和示例验收资料；仅依据题设合成事实作离线语义判定。",
+    "30分钟是用户参数；ETA选择和完整交付规则是本地项目政策，不宣称为GS1/DCSA官方要求、合同违约或实际签收认证。",
+    "未联网、调用生产系统或修改文件；未运行数据库或标准合规测试。"
+  ],
+  "unresolved": [
+    "时间假设：所有简写时刻均指2026-11-05的UTC时间；日期、偏移及省略秒数待确认，未采用环境时区补值。",
+    "范围假设：E1、E2均预测S在题述最终DC的arrival，且该DC与A1、P1所指最终DC一致。",
+    "可见性假设：所给证据均在known_as_of之前已发布并可见。各记录observed_at、record_time，以及计划基线、A1、A2、P1的issued_at未给，具体值保持未知。",
+    "身份待确认：具体source_system、业务标识命名空间、正式地点ID、计划基线的来源事件ID及版本未给；E1/E2/A1/A2/P1仅作为题内事件引用，不套用示例身份。",
+    "来源优先级仅采用题设相同优先源的关系；具体配置、维护主体及控制记录身份未给，不补造。",
+    "U2缺少截至评价截点可见的最终DC actual arrival证据；完整交付未确认，不等于证明其事实上未到达。"
+  ]
+}

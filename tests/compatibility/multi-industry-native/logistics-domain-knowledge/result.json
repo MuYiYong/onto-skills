@@ -1,0 +1,47 @@
+{
+  "skill_used": "logistics-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "Shipment：端到端货物交付分组；身份范围与生命周期独立于运输服务和物理单元。命名空间、实际标识及成员范围待确认。classification=project-curated；source_ids=[onto-project, gs1-architecture]。",
+      "Consignment：按运输责任和路段组织的运输服务分组；可因转运重组，不能覆盖Shipment身份。服务提供方命名空间及实际标识待确认。classification=project-curated；source_ids=[onto-project, gs1-architecture]。",
+      "LogisticUnit：可独立处理的物理载货单元，SSCC标识此粒度；内部unit_id与SSCC分别保存。具体号码、获配证据及有效关联未提供。classification=project-curated；source_ids=[onto-project, gs1-architecture]。",
+      "Event：分别记录业务类别、classifier、对象、地点、路段、来源和各类时间。卸货与到达是业务类别；planned、estimated、actual是独立分类。classification=project-curated；source_ids=[onto-project, dcsa-event-classifier, gs1-epcis]。"
+    ],
+    "decisions": [
+      "结论：delivery=unconfirmed，现有事实不足以证明最终送达；这也不证明货物实际未送达。classification=model-inference；证据为用户提供的合成事实。",
+      "港口actual卸货仅支持港口处理已经发生，不能推出已离港、已完成后续运输、已到最终仓或已签收。",
+      "最终仓planned到达仅支持计划安排；即使计划时点已过，也不能自动改为actual。",
+      "建议关系：Shipment→LogisticUnit表示交付成员，Consignment→LogisticUnit表示服务承运成员，Event→对象/地点/路段表示事件归属。成员关系保存有效区间与来源；实际端点、基数和区间待确认，不预设一对一。classification=project-curated。",
+      "晚到消息应补入历史轨迹，不能仅因最后收到就覆盖当前业务状态。晚到与重复不同；更正、重放和真实复扫需分别识别。",
+      "补证方向：确认Shipment所需单元、最终仓身份及交付判定口径，取得对应实际事件。技能示例采用全部必需单元在目的地actual arrival确认完整到达；是否还需签收或责任交接应由本项目约定，不能称为官方统一要求。"
+    ]
+  },
+  "identity_rules": [
+    "Shipment、Consignment、LogisticUnit保持独立身份；订舱号、单证号或SSCC不能替代Shipment或Consignment身份。",
+    "建议身份使用命名空间与内部号组合；货主、服务提供方、单元标识管理方及其具体命名空间均未提供，列为待确认。",
+    "SSCC按字符串保留，包括前导零；未提供实际号码及分配证据，不声称校验或合规通过。GSIN、GINC也不从内部号推造。",
+    "建议消息键为source_system+event_id，实际值及唯一性范围待确认。同键同负载可识别为重放；同键冲突负载保留并隔离；不同事件号不能仅因地点、时间相近就合并。此为项目建模建议。",
+    "转运重组应更新带有效区间的成员关系并保留历史；不因此改写Shipment身份。当前未提供重组事实。"
+  ],
+  "time_and_units": [
+    "时间表列：事实｜业务类别｜classifier｜event_time｜issued_at｜record_time｜observed_at。",
+    "港口卸货｜卸货｜actual｜未提供｜未提供｜未提供｜未提供。",
+    "最终仓到达｜到达｜planned｜未提供的计划目标时间｜未提供｜未提供｜未提供。",
+    "较早事件晚到｜业务类别和classifier未提供｜仅知业务发生次序与消息到达次序不一致；无法填入具体时间，也不能认定它是额外第三条事件或就是港口卸货记录。",
+    "event_time表示发生或计划/预测指向时间；issued_at表示发布时点；record_time表示来源记录时点；observed_at表示本系统首次获知时点。来源字段映射与时钟口径待确认，不能互相代填。",
+    "建议actual轨迹按event_time排序，observed_at用于限定当时已知证据；如以后有estimated记录，再按明确的发布时间和来源策略选预测。当前没有估计记录。",
+    "as_of、known_as_of、时间精度和原始时区偏移均未提供；不以当前日期代填。建议归一化UTC并保留原始偏移，不猜测缺失时区。物流单元数量、货物数量及计量单位也未提供。"
+  ],
+  "source_limits": [
+    "仅阅读本项目内SKILL.md、references/domain.json、references/method.md、references/sources.json和examples/worked-example.md；未联网、未修改文件、未访问生产系统。",
+    "本地材料是项目整理与建模建议；来源索引中的GS1/DCSA条目仅提供背景，本次未核验外部标准或认证符合性。示例中的号码、地点、数量和时间均未移植为本题事实。",
+    "概念source_ids指本地知识来源索引，不能充当业务消息来源身份。业务证据仅为用户合成描述，未验证原始消息、扫描凭证或系统运行结果。"
+  ],
+  "unresolved": [
+    "身份：实际Shipment、Consignment、SSCC/internal unit_id、命名空间、最终仓和港口标识分别是什么？事件如何关联这些对象？",
+    "来源与控制：source_system、event_id、发布方、记录方、标识管理方、更正/撤销权限及版本关联均未提供；如需冲突裁定，来源优先级也须另行确认。",
+    "时间：各事件的event_time、issued_at、record_time、observed_at、偏移与精度，以及评价用as_of/known_as_of是什么？",
+    "晚到：是哪条事件晚到、相对哪条记录较早？它是首次接收、重放、更正还是另一真实观测？",
+    "交付口径：需要覆盖哪些物流单元？最终仓实际到达是否等于合同交付，是否另需签收或交接证据？这些均为待确认的业务政策。"
+  ]
+}

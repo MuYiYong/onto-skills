@@ -1,0 +1,32 @@
+[
+  {
+    "command": "/bin/bash -lc 'for p in AGENTS.md .agents/AGENTS.md .agents/skills/AGENTS.md .agents/skills/electric-power-domain-knowledge/AGENTS.md; do if [ -f \"$p\" ]; then printf '\"'\\\\n%s\\\\n' \\\"\"'$p\"; cat \"$p\"; fi; done\ncat .agents/skills/electric-power-domain-knowledge/SKILL.md\nrg --files .agents/skills/electric-power-domain-knowledge'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "7e11c72716cd29f40d027756a2ad681506f7368648796700cfd5e989b2c5f4a1"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/electric-power-domain-knowledge/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "79c4ebe5cfaf70cc12627198e441165dc7b30525d987ed7e414020c58a55e697"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/electric-power-domain-knowledge/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "34c39e936e401ccf2fa7b7a59528c7e719870b43456e707a4410b43be8861ac4"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/electric-power-domain-knowledge/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/electric-power-domain-knowledge/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "6744ccf9448fd1c9b1f6bdb99bf4d1da7d61504559b83c849609cac2d5d6a5dc"
+  }
+]

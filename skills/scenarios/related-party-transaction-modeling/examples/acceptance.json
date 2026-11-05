@@ -1,0 +1,2884 @@
+{
+  "id": "related-party-acceptance",
+  "name": "关联交易证据合成验收",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "独立技能随包知识与模型取舍",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-related",
+    "nfra-related-2025",
+    "cas36",
+    "mof-related-state",
+    "mof-annual-2024"
+  ],
+  "cases": [
+    {
+      "id": "confirmed-control-evidence-only",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1"
+        ],
+        "included_tx_ids": [
+          "T1"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "100.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "共享电话、持股比例、已到期/晚到控制、仅国家持股都不自动进入该有界控制证据规则；未证明不等于法律上不存在。"
+    },
+    {
+      "id": "later-knowledge-does-not-rewrite-history",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-10-03T00:00:00+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1",
+          "T4"
+        ],
+        "included_tx_ids": [
+          "T1",
+          "T4"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "140.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "新的已知截止可看到LATE，原快照的历史结果仍单独保存。"
+    },
+    {
+      "id": "repeated-real-transactions-preserved",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T6",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1",
+          "T6"
+        ],
+        "included_tx_ids": [
+          "T1",
+          "T6"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "150.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "同端点不同真实事件不能折叠；相同源版本重放只计一次。"
+    },
+    {
+      "id": "currencies-separated-not-summed",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T6",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "7.00",
+            "currency": "USD",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "dollar",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1",
+          "T6"
+        ],
+        "included_tx_ids": [
+          "T1",
+          "T6"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "100.00",
+          "USD": "7.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "没有汇率/目标币种就分组呈现，不输出107的跨币种伪合计。"
+    },
+    {
+      "id": "consolidation-is-not-regulatory-exemption",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "financial_statement",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1"
+        ],
+        "included_tx_ids": [],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [
+          "T1"
+        ],
+        "totals_by_currency": {},
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "示例明确选定合并披露视图才剔除内部金额；监管视图原例仍保留。候选关系和事件不删除。"
+    },
+    {
+      "id": "pending-control-is-not-confirmed",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "pending",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [],
+        "included_tx_ids": [],
+        "not_demonstrated": [
+          "T1",
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {},
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "待确认评估不伪装成已核实控制；结果为not_demonstrated而非法律否定。"
+    },
+    {
+      "id": "cyclic-paths-terminate-and-deduplicate",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CYCLE",
+            "controller": "V1",
+            "controlled": "H",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CYCLE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1"
+        ],
+        "included_tx_ids": [
+          "T1"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "100.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "有证据的控制图存在循环时仍须有限遍历、保留冲突说明，不按路径数量重复金额。"
+    },
+    {
+      "id": "conflicting-event-version-blocks",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "99.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "transaction_identity_conflict"
+      },
+      "reason": "同源版本不同金额拒绝，不挑最大值或去重后静默丢失。"
+    },
+    {
+      "id": "late-version-unknown-to-original-cutoff",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v2",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "110.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T00:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "correction",
+            "revises_ref": {
+              "source_system": "payments",
+              "tx_id": "T1",
+              "tx_version": "v1"
+            },
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1"
+        ],
+        "included_tx_ids": [
+          "T1"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T4",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "100.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "源事件版本先按已知截止选择唯一当前版本，晚到更正不覆盖旧快照，冲正不让旧已执行版本继续计入。"
+    },
+    {
+      "id": "corrected-version-counted-once",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-10-03T00:00:00+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v2",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "110.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T00:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "correction",
+            "revises_ref": {
+              "source_system": "payments",
+              "tx_id": "T1",
+              "tx_version": "v1"
+            },
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T1",
+          "T4"
+        ],
+        "included_tx_ids": [
+          "T1",
+          "T4"
+        ],
+        "not_demonstrated": [
+          "T2",
+          "T3",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "150.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "源事件版本先按已知截止选择唯一当前版本，晚到更正不覆盖旧快照，冲正不让旧已执行版本继续计入。"
+    },
+    {
+      "id": "reversal-version-removes-old-contribution",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-10-03T00:00:00+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v2",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "110.00",
+            "currency": "CNY",
+            "status": "reversed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-10-02T00:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "status_update",
+            "revises_ref": {
+              "source_system": "payments",
+              "tx_id": "T1",
+              "tx_version": "v1"
+            },
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "candidate_tx_ids": [
+          "T4"
+        ],
+        "included_tx_ids": [
+          "T4"
+        ],
+        "not_demonstrated": [
+          "T1",
+          "T2",
+          "T3",
+          "T5"
+        ],
+        "excluded_internal": [],
+        "totals_by_currency": {
+          "CNY": "40.00"
+        },
+        "legal_conclusion": "not_determined"
+      },
+      "reason": "源事件版本先按已知截止选择唯一当前版本，晚到更正不覆盖旧快照，冲正不让旧已执行版本继续计入。"
+    },
+    {
+      "id": "same-currency-different-denomination",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related"
+      ],
+      "input": {
+        "operation": "related_candidates",
+        "regime": "demonstration-confirmed-control-only",
+        "rule_version": "demo-control-evidence-v1",
+        "basis": "regulatory",
+        "reporting_entity": "B1",
+        "known_at": "2026-09-30T23:59:59+08:00",
+        "only_state_holding_does_not_qualify": true,
+        "consolidated_members": [
+          "B1",
+          "V1"
+        ],
+        "controls": [
+          {
+            "id": "CB",
+            "controller": "H",
+            "controlled": "B1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CB",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "CV",
+            "controller": "H",
+            "controlled": "V1",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-CV",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "OLD",
+            "controller": "H",
+            "controlled": "OLD",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-OLD",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": "2026-09-30T00:00:00+08:00",
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "LATE",
+            "controller": "H",
+            "controlled": "LATE",
+            "basis": "documented_control",
+            "status": "confirmed",
+            "evidence_id": "E-LATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2026-10-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-B",
+            "controller": "STATE",
+            "controlled": "B1",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          },
+          {
+            "id": "STATE-V",
+            "controller": "STATE",
+            "controlled": "SOE",
+            "basis": "state_only",
+            "status": "confirmed",
+            "evidence_id": "E-STATE",
+            "valid_from": "2025-01-01T00:00:00+08:00",
+            "valid_to": null,
+            "observed_at": "2025-01-02T00:00:00+08:00"
+          }
+        ],
+        "ownership_positions": [
+          {
+            "id": "P1",
+            "owner": "B1",
+            "investee": "N",
+            "percent": 60
+          },
+          {
+            "id": "P2",
+            "owner": "N",
+            "investee": "V2",
+            "percent": 60
+          }
+        ],
+        "weak_links": [
+          {
+            "kind": "shared_phone",
+            "parties": [
+              "B1",
+              "N"
+            ],
+            "evidence_id": "E-PHONE"
+          }
+        ],
+        "transactions": [
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T1",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "100.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T2",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "N",
+            "amount": "20.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T3",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "OLD",
+            "amount": "30.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T4",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "LATE",
+            "amount": "40.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T5",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "SOE",
+            "amount": "50.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "yuan",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          },
+          {
+            "source_system": "payments",
+            "tx_id": "T6",
+            "tx_version": "v1",
+            "from_party": "B1",
+            "to_party": "V1",
+            "amount": "10000.00",
+            "currency": "CNY",
+            "status": "executed",
+            "event_time": "2026-09-30T12:00:00+08:00",
+            "observed_at": "2026-09-30T13:00:00+08:00",
+            "unit": "fen",
+            "change_kind": "original",
+            "revises_ref": null,
+            "reverses_ref": null
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "reason": "transaction_unit_mismatch"
+      },
+      "reason": "同币种不等于同金额单位；没有明确倍率转换不能相加。"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "id": "logistics-domain",
+  "name": "物流行业最小领域知识",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "用于数据库中立本体与业务图建模；不包含标准原文或行业自动决策",
+  "authority": "项目原创摘要与模型建议，不是官方标准定义、认证或业务自动决策",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "gs1-epcis",
+    "gs1-cbv",
+    "gs1-architecture",
+    "dcsa-event-classifier"
+  ],
+  "concepts": [
+    {
+      "id": "shipment",
+      "name": "货物交付分组 Shipment",
+      "meaning": "示例中的端到端交付分组，与一段运输服务分组和单个物理载货单元分别标识。",
+      "modeling_rule": "shipment_id 在货主命名空间稳定；gsin 仅作为经核实的外部标识，不能用订舱号或 SSCC 代替。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "consignment",
+      "name": "运输服务分组 Consignment",
+      "meaning": "按承运/货代的运输责任与路段组合货物，可能重组并承载多个交付分组的单元。",
+      "modeling_rule": "consignment_id 带服务提供方范围；与单元的成员关系有有效区间和来源，不能覆盖端到端 shipment 身份。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "logistic-unit",
+      "name": "物流单元 LogisticUnit",
+      "meaning": "可独立处理的托盘、包裹等载货单元；与产品种类和可复用集装箱资产有不同身份。",
+      "modeling_rule": "内部 unit_id 与可选 SSCC 分开；保留标识字符串与前导零，不把容器编号等同 SSCC。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "trade-item",
+      "name": "货品与载货层级",
+      "meaning": "GTIN 对应商品种类粒度；批次/实例需要附加身份，不能直接当作物流单元。",
+      "modeling_rule": "只在需要货品明细时扩展 Product/Lot；本例以物流单元为交付完整性单位，内容未知不补造。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "运输路段",
+      "meaning": "具有起终点和次序的一次运输路段；换船/转运不是最终交付。",
+      "modeling_rule": "leg_id 在承运人范围唯一，事件关联实际路段与地点，不能仅按时间猜测换段。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "booking-document",
+      "name": "订舱与运输单证",
+      "meaning": "订舱确认和单证签发是商业/文档事实，与实物装载、到达或签收不同。",
+      "modeling_rule": "Booking 与 TransportDocument 独立节点；没有实际事件时不能从文档状态推导已发运或已交付。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "event-classifier",
+      "name": "计划、估计与实际",
+      "meaning": "计划是基线安排，估计是预测，实际是已发生的观测；三类共同保留而不互相覆盖。",
+      "modeling_rule": "classifier 枚举为 planned/estimated/actual；未来计划不产生交付事实。本例是项目词汇映射，不宣称 DCSA 合规。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "dcsa-event-classifier"
+      ]
+    },
+    {
+      "id": "event-time",
+      "name": "事件时间与入库/观测时间",
+      "meaning": "业务发生或预测指向的时间与消息被来源记录、被本系统看到的时间有不同用途。",
+      "modeling_rule": "UTC 存储，原始偏移另存；observed_at 控制当时已知证据，actual 按 event_time 排序，ETA 按 issued_at 选最新预测。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ]
+    },
+    {
+      "id": "event-identity",
+      "name": "消息重放与重复扫描",
+      "meaning": "相同来源事件号的重放与不同事件号的真实重复扫描有不同身份。",
+      "modeling_rule": "键为 source_system+event_id；相同负载重放只计一次，冲突负载整键隔离；不同事件号不按地点/时间折叠。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "handover",
+      "name": "转运与交接",
+      "meaning": "到港、卸货、承运方交接和收货地点到达是不同事实；保管责任不自动等于所有权。",
+      "modeling_rule": "交接需实际事件与前后责任方证据；中转地点的 arrival 不当作目的地交付。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "gs1-cbv"
+      ]
+    },
+    {
+      "id": "eta-selection",
+      "name": "ETA 延误候选",
+      "meaning": "仅比较同一交付地点和里程碑的当前有效预测与用户计划基线。",
+      "modeling_rule": "先过滤 known_as_of 可见记录，再按 issued_at 和给定来源优先级选预测；同优先级同发布时间冲突则不裁定 ETA。阈值由用户给定。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "delivery-completeness",
+      "name": "交付完整性",
+      "meaning": "本例只有所有必需物流单元在指定目的地的实际 arrival 才确认交付。",
+      "modeling_rule": "必须有 unit_id、正确 shipment/location/milestone；计划、估计、单元缺失和部分到达均不能证明完整交付。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "applicability": [
+    "知识在已有输入下可离线使用；外链用于可选核实。",
+    "所列版本是2026-11-05实际观察到的版本，不宣称兼容所有实施版本。",
+    "地方监管、合同义务和具体组织运营规则需任务材料确认。"
+  ],
+  "change_log": [
+    {
+      "id": "initial-2026-11-05",
+      "name": "初始版本",
+      "meaning": "新增稳定概念 ID、来源和原创方法；未废弃 ID。",
+      "modeling_rule": "后续变更记录源版本变化、概念变更和废弃 ID；禁止复用旧 ID。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "finance-regulatory-sources",
+  "name": "金融regulatory来源",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "金融专项知识；源版本与访问范围独立记录",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-reporting",
+    "nfra-statistics",
+    "bcbs239",
+    "bcbs239-2026",
+    "xbrl21",
+    "xbrl-essentials"
+  ],
+  "sources": [
+    {
+      "id": "onto-reporting",
+      "name": "Onto Skills 报送血缘建模",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "合成例子、模型和验收口径",
+      "authority": "原创设计，不是法定报表模板",
+      "kind": "project-curated"
+    },
+    {
+      "id": "nfra-statistics",
+      "name": "银行保险监管统计管理办法",
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1089714&itemId=861&generaltype=1",
+      "version": "中国银保监会令2022年第10号，2022-12-25公布，2023-02-01施行；官方文档1089714于2026-11-05核实",
+      "publisher": "原中国银保监会 / 国家金融监督管理总局",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "中国银行保险机构监管统计的数据治理、质量与职责背景；具体报表须另选现行模板",
+      "authority": "官方监管文本；不证明用户机构/当前报表适用，也不包含具体指标/时限配置",
+      "kind": "official-standard"
+    },
+    {
+      "id": "bcbs239",
+      "name": "Principles for effective risk data aggregation and risk reporting",
+      "uri": "https://www.bis.org/publ/bcbs239.htm",
+      "version": "BCBS239, 2013-01-09",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "风险数据聚合与报告治理背景",
+      "authority": "国际原则，不能直接当成本地监管模板或自动合规规则",
+      "kind": "official-standard"
+    },
+    {
+      "id": "bcbs239-2026",
+      "name": "Implementation of BCBS239 Principles newsletter",
+      "uri": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles",
+      "version": "BCBS Newsletter36, 2026-01-06",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "血缘与跨境数据挑战的最新官方观察",
+      "authority": "官方信息性通讯，明确不是新的监管指引或要求",
+      "kind": "industry-common"
+    },
+    {
+      "id": "xbrl21",
+      "name": "XBRL2.1 Recommendation",
+      "uri": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "version": "REC2003-12-31, corrected errata2013-02-20",
+      "publisher": "XBRL International",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "fact/concept/context/entity/period/unit 身份语义",
+      "authority": "格式标准；本项目的图表示不是完整 XBRL 校验或中国报送要求",
+      "kind": "official-standard"
+    },
+    {
+      "id": "xbrl-essentials",
+      "name": "XBRL Essentials",
+      "uri": "https://specifications.xbrl.org/xbrl-essentials.html",
+      "version": "online official overview observed 2026-11-05; describes XBRL2.1 + Dimensions1.0",
+      "publisher": "XBRL International",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "事实、分类标准和维度分离的官方概述",
+      "authority": "官方概述，图模型为原创裁剪，不复制标准文件",
+      "kind": "official-standard"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "manufacturing-sources",
+  "name": "manufacturing source catalogue",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Source/version observations for the bounded industry examples",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "gs1-epcis",
+    "opc-isa95",
+    "isa95-overview"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original industry modeling methods",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "Original knowledge summaries, models, examples and acceptance rules",
+      "authority": "Original Onto Skills guidance, no standards conformity claim"
+    },
+    {
+      "id": "gs1-epcis",
+      "name": "GS1 EPCIS Standard Archive",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/epcis/archive",
+      "version": "2.0.1 published 2025-07-01 per archive, observed 2026-11-05",
+      "publisher": "GS1",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official visibility-event version index; local lot graph is not an EPCIS-compliant event serialization",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "opc-isa95",
+      "name": "OPC UA Common Object Model: ISA-95",
+      "kind": "official-standard",
+      "uri": "https://reference.opcfoundation.org/specs/OPC-10030/full",
+      "version": "OPC 10030 v1.00 as displayed; applicability selected separately",
+      "publisher": "OPC Foundation",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Public scope and resource separation for material, equipment and manufacturing operations; no full companion-model implementation",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "isa95-overview",
+      "name": "ISA-95 Enterprise-Control System Integration overview",
+      "kind": "industry-common",
+      "uri": "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard",
+      "version": "Live overview observed 2026-11-05; no single part/edition implied",
+      "publisher": "International Society of Automation",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official overview only; select applicable ISA-95 part and edition for a compliance task",
+      "authority": "Official ISA overview for orientation; no normative part/edition or local quality authority implied"
+    }
+  ]
+}

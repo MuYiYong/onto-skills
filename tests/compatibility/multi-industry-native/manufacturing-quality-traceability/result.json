@@ -1,0 +1,30 @@
+{
+  "skill_used": "manufacturing-quality-traceability",
+  "answer": {
+    "candidate_lots": ["FG", "FG2"],
+    "candidate_total_kg": 108,
+    "shared_equipment_batch_included": false
+  },
+  "identity_rules": [
+    "批次按(source_system, site_id, lot_id)去重；候选完整身份为(M,P1,FG)、(M,P1,FG2)。",
+    "有效路径为RAW→混配事件→MIX→拆分事件→FG，以及RAW→混配事件→MIX→拆分事件→RW→返工事件→FG2。",
+    "三个实际事件分别保留身份；具体event_id未提供，不编造。",
+    "MIX、RW为中间批次，SCRAP为报废产出，均不计入终端released候选总量；U仅共享设备，不形成物料谱系。",
+    "下游检验通过不自动切断上游suspect谱系。"
+  ],
+  "time_and_units": [
+    "全部数量为kg：100+10=110，110=60+50，50=48+2；报废2kg不再重复记为损耗。",
+    "终端候选实际产出量为60+48=108kg，按完整批次身份各计一次。",
+    "查询截止已知晚于全部事件；具体事件时间、观测时间、截止时间及其时区均未提供。",
+    "假设题述已知有效谱系在本次knowledge_cutoff下全部可见；event_as_of与knowledge_cutoff的具体定义待确认。"
+  ],
+  "source_limits": [
+    "仅依据用户合成事实及项目内技能和相关参考；未将本地示例的身份、时间、检验阈值或控制规则移植到本例。",
+    "结果为离线召回候选范围，不代表质量放行、批准召回、标准符合性或生产系统执行。"
+  ],
+  "unresolved": [
+    "实际事件的源记录键、版本及更正关系未提供，保持unknown。",
+    "设备、订单及检验/规格/批准控制记录的身份与时间未提供，保持unknown；本次计算不据此补造要求。",
+    "双时间可见性假设需在真实数据查询前确认；不影响题述全部谱系可见前提下的108kg结论。"
+  ]
+}

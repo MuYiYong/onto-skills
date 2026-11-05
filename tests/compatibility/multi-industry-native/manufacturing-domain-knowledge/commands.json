@@ -1,0 +1,38 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "83c7f3f1deb0df7951500260dfdea9a7158211ecbb55fbbd89da57a3afa62080"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "a7ba4f50166b715259cb43b0f7d9256c9d38ab731bdf91955b5fc4c20a985068"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ee943bb907439d1a69fbb85e23d488398040ca3f13a5b0e90c27948f3794783f"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "415ce7b70e8a4e2417ff7986c576ca01a0e471445c3d3118bf1f643ae3630180"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/references/handoff.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-domain-knowledge/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "0c1e9f91374ccac61305a320da65abf646923cab97e9712065cfea6c9c26d306"
+  }
+]

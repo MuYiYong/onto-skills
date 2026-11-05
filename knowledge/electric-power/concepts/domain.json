@@ -1,0 +1,114 @@
+{
+  "id": "electric-power-domain",
+  "name": "electric-power curated domain knowledge",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Database-neutral business semantics; bounded synthetic industry scenarios",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "iec-cim-base",
+    "iec-cim-amd1",
+    "entsoe-cgmes"
+  ],
+  "records": [
+    {
+      "id": "equipment-terminal-connectivity",
+      "name": "设备、端子与连接点",
+      "record_type": "concept",
+      "summary": "Keep equipment identity separate from its terminals and versioned connection points; a connectivity relation alone does not prove energization.",
+      "source_ids": [
+        "iec-cim-base",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "topology-version",
+      "name": "拓扑版本",
+      "record_type": "concept",
+      "summary": "Select one compatible topology snapshot for event_time and knowledge_cutoff; retain original source keys and effective intervals.",
+      "source_ids": [
+        "onto-project",
+        "entsoe-cgmes"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "switch-state",
+      "name": "开关状态观测",
+      "record_type": "concept",
+      "summary": "Record closed/open/unknown, event-time validity, observed_at and evidence. Normal/open design state is not an observed state.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "supply-and-der",
+      "name": "电源与分布式电源",
+      "record_type": "concept",
+      "summary": "Available source reachability is a bounded candidate test; unknown DER availability or tie/backfeed paths create uncertainty. Capacity, protection, phase and islanding require separate study.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "service-customer-circuit",
+      "name": "供电点、客户与回路",
+      "record_type": "relationship",
+      "summary": "Service points are physical connection scope; customers can own several points and circuit assignment can change. Customer counting follows valid bindings, not point count.",
+      "source_ids": [
+        "onto-project",
+        "iec-cim-base"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "planned-actual",
+      "name": "计划与实际停电",
+      "record_type": "concept",
+      "summary": "A planned removal is a scenario input. Actual interruption needs observed evidence; neither reachability nor a work order proves a customer interruption.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "restoration-segment",
+      "name": "恢复分段",
+      "record_type": "relationship",
+      "summary": "Keep per-service-point interruption segments with event intervals and observation evidence; union overlaps before duration totals and preserve repeat interruptions.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "electrical-quantity",
+      "name": "电气量与边界",
+      "record_type": "rule",
+      "summary": "Retain value, unit, phase/reference context, event time and evidence. Do not infer safe switching or electrical feasibility from a topological path.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "cim-boundary",
+      "name": "CIM 与交换配置范围",
+      "record_type": "standard-index",
+      "summary": "The public IEC abstract introduces a shared utility information model; ENTSO-E indexes exchange profiles and their dependencies. Local outage nodes, projections and three-valued decisions are original project choices.",
+      "source_ids": [
+        "iec-cim-base",
+        "iec-cim-amd1",
+        "entsoe-cgmes",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    }
+  ]
+}

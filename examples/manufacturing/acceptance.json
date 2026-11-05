@@ -1,0 +1,699 @@
+{
+  "id": "manufacturing-acceptance",
+  "name": "manufacturing bounded semantic acceptance",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Offline synthetic reference cases; not native runtime or standards compliance",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project"
+  ],
+  "cases": [
+    {
+      "id": "merge-split-rework-recall",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json"
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": "108",
+          "unit": "kg"
+        },
+        "intermediate_lots": [
+          "M1|P1|MIX-110",
+          "M1|P1|RW-50"
+        ],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "The merged input reaches split and rework outputs; count terminal lots once, keep scrap and intermediates out of released exposure."
+    },
+    {
+      "id": "duplicate-event-idempotency",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "append": {
+          "events": [
+            {
+              "source_system": "M1",
+              "event_id": "E2",
+              "event_kind": "split",
+              "event_time": "2026-11-01T09:00:00Z",
+              "observed_at": "2026-11-01T09:00:00Z",
+              "site_id": "P1",
+              "order_id": "PO2",
+              "equipment_id": "PACKER-1",
+              "conservation_basis": "mass",
+              "declared_loss": "0",
+              "loss_unit": "kg",
+              "inputs": [
+                {
+                  "lot_id": "MIX-110",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "110",
+                  "unit": "kg"
+                }
+              ],
+              "outputs": [
+                {
+                  "lot_id": "FG-60",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "60",
+                  "unit": "kg"
+                },
+                {
+                  "lot_id": "RW-50",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "50",
+                  "unit": "kg"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": "108",
+          "unit": "kg"
+        },
+        "intermediate_lots": [
+          "M1|P1|MIX-110",
+          "M1|P1|RW-50"
+        ],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "An identical source event replay adds no genealogy or quantity."
+    },
+    {
+      "id": "conflicting-event-id",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "append": {
+          "events": [
+            {
+              "source_system": "M1",
+              "event_id": "E2",
+              "event_kind": "split",
+              "event_time": "2026-11-01T09:00:00Z",
+              "observed_at": "2026-11-01T09:00:00Z",
+              "site_id": "P1",
+              "order_id": "PO2",
+              "equipment_id": "PACKER-1",
+              "conservation_basis": "mass",
+              "declared_loss": "1",
+              "loss_unit": "kg",
+              "inputs": [
+                {
+                  "lot_id": "MIX-110",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "110",
+                  "unit": "kg"
+                }
+              ],
+              "outputs": [
+                {
+                  "lot_id": "FG-60",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "60",
+                  "unit": "kg"
+                },
+                {
+                  "lot_id": "RW-50",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "50",
+                  "unit": "kg"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "conflicting_event_id",
+        "event_id": "E2"
+      },
+      "reason": "A conflicting replay must be resolved explicitly, not counted or overwritten."
+    },
+    {
+      "id": "unit-mismatch",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "events/E1/inputs/0/unit",
+            "value": "lb"
+          }
+        ]
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "unapproved_unit_conversion",
+        "event_id": "E1",
+        "unit": "lb"
+      },
+      "reason": "No unapproved conversion between lb and kg is invented."
+    },
+    {
+      "id": "split-mass-imbalance",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "events/E2/outputs/0/quantity",
+            "value": "61"
+          }
+        ]
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "mass_imbalance",
+        "event_id": "E2",
+        "input": "110",
+        "output_plus_loss": "111",
+        "unit": "kg"
+      },
+      "reason": "A split with 111kg output from 110kg input is rejected."
+    },
+    {
+      "id": "rework-scrap-double-count",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "events/E3/declared_loss",
+            "value": "2"
+          }
+        ]
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "mass_imbalance",
+        "event_id": "E3",
+        "input": "50",
+        "output_plus_loss": "52",
+        "unit": "kg"
+      },
+      "reason": "Scrap output is already counted and cannot also be declared as a loss."
+    },
+    {
+      "id": "late-merge-not-known",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "knowledge_cutoff": "2026-11-01T23:00:00Z"
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [],
+        "candidate_quantity": {
+          "value": "0",
+          "unit": "kg"
+        },
+        "intermediate_lots": [],
+        "excluded_same_equipment_lots": [],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 3,
+        "reconciliation": {
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "E1 happened earlier but arrived next day; no RAW-100 genealogy path was known at this cutoff. Zero means known candidate sum, not certified absence of exposure."
+    },
+    {
+      "id": "missing-output-quantity",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "events/E3/outputs/0/quantity",
+            "value": null
+          }
+        ]
+      },
+      "expected": {
+        "status": "incomplete",
+        "candidate_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": null,
+          "unit": "kg"
+        },
+        "intermediate_lots": [
+          "M1|P1|MIX-110",
+          "M1|P1|RW-50"
+        ],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "incomplete",
+          "E4": "balanced"
+        }
+      },
+      "reason": "Missing quantity preserves traceability but leaves exposure total unknown rather than treating it as zero."
+    },
+    {
+      "id": "cross-site-same-lot-label",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "append": {
+          "lots": [
+            {
+              "lot_id": "FG-60",
+              "source_system": "M1",
+              "site_id": "P2",
+              "material_id": "MASS-MATERIAL",
+              "status": "released",
+              "opening_quantity": "7",
+              "unit": "kg"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": "108",
+          "unit": "kg"
+        },
+        "intermediate_lots": [
+          "M1|P1|MIX-110",
+          "M1|P1|RW-50"
+        ],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "Same local lot label in another site is a different identity and is not recalled without a material path."
+    },
+    {
+      "id": "same-equipment-not-genealogy",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "seed_lot": {
+            "source_system": "M1",
+            "site_id": "P1",
+            "lot_id": "RAW-U30"
+          }
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "candidate_quantity": {
+          "value": "30",
+          "unit": "kg"
+        },
+        "intermediate_lots": [],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "Reusing MIXER-1 creates no edge from RAW-U30 to earlier production lots."
+    },
+    {
+      "id": "terminal-seed-included",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "seed_lot": {
+            "source_system": "M1",
+            "site_id": "P1",
+            "lot_id": "FG-60"
+          }
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": "60",
+          "unit": "kg"
+        },
+        "intermediate_lots": [],
+        "excluded_same_equipment_lots": [],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 4,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced"
+        }
+      },
+      "reason": "A suspect released/shipped seed lot itself is a candidate even if no downstream event exists."
+    },
+    {
+      "id": "production-consumption-identity",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "append": {
+          "lots": [
+            {
+              "lot_id": "NEW-5",
+              "source_system": "M1",
+              "site_id": "P1",
+              "material_id": "MASS-MATERIAL",
+              "status": "held",
+              "opening_quantity": "0",
+              "unit": "kg"
+            }
+          ],
+          "events": [
+            {
+              "source_system": "M1",
+              "event_id": "E5",
+              "event_kind": "production",
+              "event_time": "2026-11-01T13:00:00Z",
+              "observed_at": "2026-11-01T13:00:00Z",
+              "site_id": "P1",
+              "order_id": "PO1",
+              "equipment_id": "FURNACE-1",
+              "conservation_basis": "not_applicable",
+              "declared_loss": "0",
+              "loss_unit": "kg",
+              "inputs": [],
+              "outputs": [
+                {
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "lot_id": "NEW-5",
+                  "quantity": "5",
+                  "unit": "kg"
+                }
+              ]
+            },
+            {
+              "source_system": "M1",
+              "event_id": "E6",
+              "event_kind": "consumption",
+              "event_time": "2026-11-01T14:00:00Z",
+              "observed_at": "2026-11-01T14:00:00Z",
+              "site_id": "P1",
+              "order_id": "PO1",
+              "equipment_id": "FURNACE-1",
+              "conservation_basis": "not_applicable",
+              "declared_loss": "0",
+              "loss_unit": "kg",
+              "inputs": [
+                {
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "lot_id": "NEW-5",
+                  "quantity": "5",
+                  "unit": "kg"
+                }
+              ],
+              "outputs": []
+            }
+          ],
+          "equipment": [
+            {
+              "source_system": "M1",
+              "site_id": "P1",
+              "equipment_id": "FURNACE-1",
+              "equipment_role": "bounded independent production"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "candidate_lots": [
+          "M1|P1|FG-48",
+          "M1|P1|FG-60"
+        ],
+        "candidate_quantity": {
+          "value": "108",
+          "unit": "kg"
+        },
+        "intermediate_lots": [
+          "M1|P1|MIX-110",
+          "M1|P1|RW-50"
+        ],
+        "excluded_same_equipment_lots": [
+          "M1|P1|FG-U30"
+        ],
+        "inspection_results": {
+          "I1": "fail",
+          "I2": "pass"
+        },
+        "event_count": 6,
+        "reconciliation": {
+          "E1": "balanced",
+          "E2": "balanced",
+          "E3": "balanced",
+          "E4": "balanced",
+          "E5": "not_applicable",
+          "E6": "not_applicable"
+        }
+      },
+      "reason": "Production and consumption remain separate identified events; absent material side is explicit and no mass-conservation premise is invented."
+    },
+    {
+      "id": "input-lot-double-allocation",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "append": {
+          "lots": [
+            {
+              "lot_id": "FG-X50",
+              "source_system": "M1",
+              "site_id": "P1",
+              "material_id": "MASS-MATERIAL",
+              "status": "released",
+              "opening_quantity": "0",
+              "unit": "kg"
+            }
+          ],
+          "events": [
+            {
+              "source_system": "M1",
+              "event_id": "E5",
+              "event_kind": "transformation",
+              "event_time": "2026-11-01T11:00:00Z",
+              "observed_at": "2026-11-01T11:00:00Z",
+              "site_id": "P1",
+              "order_id": "PO2",
+              "equipment_id": "REWORK-1",
+              "conservation_basis": "mass",
+              "declared_loss": "0",
+              "loss_unit": "kg",
+              "inputs": [
+                {
+                  "lot_id": "RW-50",
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "quantity": "50",
+                  "unit": "kg"
+                }
+              ],
+              "outputs": [
+                {
+                  "source_system": "M1",
+                  "site_id": "P1",
+                  "lot_id": "FG-X50",
+                  "quantity": "50",
+                  "unit": "kg"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "overallocated_input_lot",
+        "lot": "M1|P1|RW-50",
+        "available": "50",
+        "consumed": "100",
+        "unit": "kg"
+      },
+      "reason": "Each event can balance while two events spend the same known50kg twice; cumulative allocation must reject the double count."
+    },
+    {
+      "id": "duplicate-input-participation",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "events/E1/inputs",
+            "value": [
+              {
+                "lot_id": "RAW-100",
+                "source_system": "M1",
+                "site_id": "P1",
+                "quantity": "100",
+                "unit": "kg"
+              },
+              {
+                "lot_id": "RAW-100",
+                "source_system": "M1",
+                "site_id": "P1",
+                "quantity": "100",
+                "unit": "kg"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "duplicate_participation",
+        "event_id": "E1"
+      },
+      "reason": "Repeated participation for the same qualified lot is not an additional source lot."
+    }
+  ]
+}

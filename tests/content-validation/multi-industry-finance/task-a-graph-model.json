@@ -1,0 +1,1396 @@
+{
+  "spec_version": "1.0",
+  "model_id": "independent-demo-r1-lineage",
+  "version": "1.0.0",
+  "graph_type": "RegulatoryReportingLineage",
+  "description": "Synthetic C1 DEMO-R1 instant loanBalance lineage; no regulator-specific template or legal requirement inferred.",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-reporting",
+      "name": "Onto Skills 报送血缘建模",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "合成例子、模型和验收口径",
+      "authority": "原创设计，不是法定报表模板",
+      "kind": "project-curated"
+    },
+    {
+      "id": "nfra-statistics",
+      "name": "银行保险监管统计管理办法",
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1089714&itemId=861&generaltype=1",
+      "version": "中国银保监会令2022年第10号，2022-12-25公布，2023-02-01施行；官方文档1089714于2026-11-05核实",
+      "publisher": "原中国银保监会 / 国家金融监督管理总局",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "中国银行保险机构监管统计的数据治理、质量与职责背景；具体报表须另选现行模板",
+      "authority": "官方监管文本；不证明用户机构/当前报表适用，也不包含具体指标/时限配置",
+      "kind": "official-standard"
+    },
+    {
+      "id": "bcbs239",
+      "name": "Principles for effective risk data aggregation and risk reporting",
+      "uri": "https://www.bis.org/publ/bcbs239.htm",
+      "version": "BCBS239, 2013-01-09",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "风险数据聚合与报告治理背景",
+      "authority": "国际原则，不能直接当成本地监管模板或自动合规规则",
+      "kind": "official-standard"
+    },
+    {
+      "id": "bcbs239-2026",
+      "name": "Implementation of BCBS239 Principles newsletter",
+      "uri": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles",
+      "version": "BCBS Newsletter36, 2026-01-06",
+      "publisher": "Basel Committee on Banking Supervision / BIS",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "血缘与跨境数据挑战的最新官方观察",
+      "authority": "官方信息性通讯，明确不是新的监管指引或要求",
+      "kind": "industry-common"
+    },
+    {
+      "id": "xbrl21",
+      "name": "XBRL2.1 Recommendation",
+      "uri": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "version": "REC2003-12-31, corrected errata2013-02-20",
+      "publisher": "XBRL International",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "fact/concept/context/entity/period/unit 身份语义",
+      "authority": "格式标准；本项目的图表示不是完整 XBRL 校验或中国报送要求",
+      "kind": "official-standard"
+    },
+    {
+      "id": "xbrl-essentials",
+      "name": "XBRL Essentials",
+      "uri": "https://specifications.xbrl.org/xbrl-essentials.html",
+      "version": "online official overview observed 2026-11-05; describes XBRL2.1 + Dimensions1.0",
+      "publisher": "XBRL International",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "事实、分类标准和维度分离的官方概述",
+      "authority": "官方概述，图模型为原创裁剪，不复制标准文件",
+      "kind": "official-standard"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "ReportingEntity",
+      "business_meaning": "报送法律主体；与报送范围分开",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "namespace",
+        "entity_id"
+      ],
+      "properties": [
+        {
+          "name": "entity_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "机构身份",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "namespace",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "身份分配空间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "legal_name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "法律名称",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "ReportDefinition",
+      "business_meaning": "按地区和制度版本标识的报表定义",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "jurisdiction",
+        "report_code",
+        "template_version"
+      ],
+      "properties": [
+        {
+          "name": "report_code",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "报表代码",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "template_version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "模板版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "jurisdiction",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "监管地区",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "frequency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "频率定义",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "生效时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "结束时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "MetricDefinition",
+      "business_meaning": "特定版本的业务指标，不等于同名字段",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "metric_id",
+        "definition_version"
+      ],
+      "properties": [
+        {
+          "name": "metric_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "指标代码",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "definition_version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "定义版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "meaning",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务口径",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "金额/数量单位",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "aggregation",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "合成数据的指定计算口径",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "rule_reference",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "具体定义来源",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "ReportContext",
+      "business_meaning": "报送主体、单体/合并范围、期间与维度",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "context_id"
+      ],
+      "properties": [
+        {
+          "name": "context_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "上下文身份",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单体或显式合并边界",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "period_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "instant或duration",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "period_start",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "期间开始；instant允许空",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "period_end",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "时点或排他期间结束",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "timezone",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "期间解释时区",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "dimensions",
+          "logical_type": "json",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "显式维度键值与分类标准版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "SourceRecord",
+      "business_meaning": "可回查的源记录版本，保留晚到和更正",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "source_system",
+        "record_id",
+        "source_version"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源系统",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "record_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "源业务记录",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "source_version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "源版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务有效时点",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "获知时点",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "未知不能置零",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "金额单位",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原币种",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "有效/冲正等原状态",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "TransformationRun",
+      "business_meaning": "固定逻辑、截止与快照的一次转换运行",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "run_id"
+      ],
+      "properties": [
+        {
+          "name": "run_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "运行标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "logic_version",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "逻辑版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "knowledge_cutoff",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "已知截止",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "executed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "实际执行时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "input_snapshot_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "输入快照摘要",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "ReportedFact",
+      "business_meaning": "提交修订中的指标事实；上下文/单位不可丢失",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "submission_id",
+        "fact_id"
+      ],
+      "properties": [
+        {
+          "name": "submission_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "所属提交标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "fact_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "载荷内事实标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "value",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "nil/未知保留空",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "计量单位",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "币种",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "present/nil/blocked",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "nil_reason",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "缺失说明",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "Submission",
+      "business_meaning": "可追加且不可静默覆盖的一次报送修订",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "submission_id"
+      ],
+      "properties": [
+        {
+          "name": "submission_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "报送修订标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "序号",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "created_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "创建时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "submitted_at",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "尚未提交为空",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "draft/sent/received/accepted/rejected",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "载荷摘要",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "ValidationCheck",
+      "business_meaning": "一项规则在一次事实/报送上的检查证据",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "check_id"
+      ],
+      "properties": [
+        {
+          "name": "check_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "检查标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "rule_version",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "规则版本",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "checked_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "检查时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "result",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "passed/failed/unknown",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "可定位原因",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "Receipt",
+      "business_meaning": "监管/传输回执，不能等同",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "receipt_id"
+      ],
+      "properties": [
+        {
+          "name": "receipt_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "回执标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "transport或business",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "received_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "回执时间",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "回执原状态",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "regulator_code",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务响应码",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "name": "Evidence",
+      "business_meaning": "文档与源快照的证据定位",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "证据标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "uri",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "受控证据定位",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "content_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "内容摘要",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "owner_role",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "责任角色",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "CONTEXT_ENTITY",
+      "to": "ReportingEntity",
+      "business_meaning": "每个上下文只关联一个法律主体",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReportContext"
+    },
+    {
+      "name": "DEFINES_METRIC",
+      "to": "MetricDefinition",
+      "business_meaning": "明确模板版本使用的指标版本",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReportDefinition"
+    },
+    {
+      "name": "IN_CONTEXT",
+      "to": "ReportContext",
+      "business_meaning": "事实关联完整上下文",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReportedFact"
+    },
+    {
+      "name": "MEASURES",
+      "to": "MetricDefinition",
+      "business_meaning": "事实测量指定版本指标",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReportedFact"
+    },
+    {
+      "name": "USES_DEFINITION",
+      "to": "ReportDefinition",
+      "business_meaning": "该提交选择的制度与模板",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Submission"
+    },
+    {
+      "name": "CONTAINS_FACT",
+      "to": "ReportedFact",
+      "business_meaning": "提交内事实；跨修订不复用身份",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Submission"
+    },
+    {
+      "name": "DERIVED_BY",
+      "to": "TransformationRun",
+      "business_meaning": "事实的计算与调节血缘",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReportedFact"
+    },
+    {
+      "name": "CONSUMES_RECORD",
+      "to": "SourceRecord",
+      "business_meaning": "逐版本源记录与贡献",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "contribution",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "本次运行的贡献值",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        },
+        {
+          "name": "conversion_reference",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原币/单位转换证据，无转换可说明same-unit",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "TransformationRun"
+    },
+    {
+      "name": "USES_EVIDENCE",
+      "to": "Evidence",
+      "business_meaning": "输入快照/规则版本证据",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "TransformationRun"
+    },
+    {
+      "name": "CHECKS_FACT",
+      "to": "ReportedFact",
+      "business_meaning": "检查事实及失败定位",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ValidationCheck"
+    },
+    {
+      "name": "ACKNOWLEDGES",
+      "to": "Submission",
+      "business_meaning": "回执必须指向实际提交",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Receipt"
+    },
+    {
+      "name": "SUPERSEDES",
+      "to": "Submission",
+      "business_meaning": "后续更正关联旧提交，不删除旧证据",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-reporting"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-reporting"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Submission"
+    }
+  ],
+  "competency_questions": [
+    "截止当时每个指标用了哪些源记录版本和转换？",
+    "收到但未接受的修订能否替换上一已接受版本？",
+    "混币种、缺失值或错模板事实如何显式阻断？"
+  ],
+  "assumptions": [
+    "Baseline amounts are expressed in whole yuan of currency CNY; task gave CNY amounts but no separate unit, so yuan is an explicit synthetic assumption, not a regulatory requirement.",
+    "Date-only task statements are assigned example Asia/Shanghai instants. No extra source arrives on the selected cutoff days, so start/end-of-day choices do not change these results.",
+    "DEMO-R1 and metric DEMO-R1:loanBalance definition synthetic-1 are user-task identifiers, not a real Chinese regulator report/template/threshold.",
+    "S1 has supplied prior business acceptance; its reported amount and source lineage were not supplied and remain unknown.",
+    "Locally created RUN-A-NOV3/S3 are a design draft only, with no new submitted/received/accepted event."
+  ],
+  "unresolved": [
+    "Actual regulator/agency, official template/metric version, governance owner, lawful reporting unit, applicable calendar/deadline and quality formulas.",
+    "S1 exact accepted payload amount/lineage and its payload hash are not supplied.",
+    "TransformationRun in the supplied model has no direct business as_of property; in this adapted design as_of is recoverable through ReportedFact→ReportContext.period_end, and run metadata explicitly retains the selected instant. This difference is recorded rather than concealed."
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "subject": "node:ReportedFact",
+      "rule": "每个事实必须恰好关联一个MetricDefinition、ReportContext、TransformationRun及所属Submission；身份包含submission_id，模板/指标/单位版本匹配。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "id": "C2",
+      "subject": "node:SourceRecord",
+      "rule": "相同(source_system,record_id,source_version)重放必须内容相同；缺失金额或缺少币种/单位转换时不得静默汇总。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "id": "C3",
+      "subject": "edge:SUPERSEDES",
+      "rule": "禁止修订环；保留旧载荷与血缘。只有business accepted回执才能更新本报表范围的已接受版本。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "id": "C4",
+      "subject": "node:ReportDefinition",
+      "rule": "真实适用制度、时间日历、指标与校验规则由责任人核实，不把合成例子当法定义务。",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map-fact",
+      "source_id": "xbrl21",
+      "source_term": "fact/concept/context/unit",
+      "target": "node:ReportedFact",
+      "status": "approximated",
+      "explanation": "图中保留事实、指标、上下文和单位；没有实现XBRL XML、DTS和全部校验。",
+      "constraint_ids": []
+    },
+    {
+      "id": "map-lineage",
+      "source_id": "bcbs239",
+      "source_term": "Accuracy/Integrity, Completeness and governance",
+      "target": "node:TransformationRun",
+      "status": "approximated",
+      "explanation": "用运行、记录和证据实现可审查血缘，是工程实现建议，不等于满足全部原则。",
+      "constraint_ids": []
+    }
+  ]
+}

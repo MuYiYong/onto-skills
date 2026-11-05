@@ -1,0 +1,38 @@
+[
+  {
+    "command": "/bin/bash -lc \"pwd; rg --files -g 'AGENTS.md' -g 'SKILL.md' -g 'domain.json' -g 'sources.json' -g 'method.md' -g 'worked-example.md' -g '\"'!node_modules'\"' -g '\"'!.git'\"' .agents\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "8a349f44924cfe852ee5f2b00f671356b6f128589f77727422ed5bfeed6e3f5b"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-domain-knowledge/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "8306639bf6d63688732d4d46038403f74e10d786401741a788457ba011bed419"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-domain-knowledge/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "2aa453b702f97e854c52ecf951a45ada865c11cca9e57b8e339a8d3f447b48bb"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-domain-knowledge/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "fd649ee4e2e9eee6419d9c85445cc4689962f4fe1d78c525957e3ef10312e714"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-domain-knowledge/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "713a7183fec8b52e8f65d3c28d3ec498090b4928e5d216461ff129eee9615fd2"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-domain-knowledge/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "1a7c85939d6345cee07c90830d043af625922d26b25ad82ed633b3b1270b8084"
+  }
+]

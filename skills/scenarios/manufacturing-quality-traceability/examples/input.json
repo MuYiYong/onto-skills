@@ -1,0 +1,374 @@
+{
+  "id": "manufacturing-traceability-input",
+  "name": "Synthetic blend split and rework recall",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Plant P1; mass conservation with local quality policy",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project"
+  ],
+  "query": {
+    "operation": "recall",
+    "event_as_of": "2026-11-02T12:00:00Z",
+    "knowledge_cutoff": "2026-11-02T12:00:00Z",
+    "seed_lot": {
+      "source_system": "M1",
+      "site_id": "P1",
+      "lot_id": "RAW-100"
+    },
+    "candidate_statuses": [
+      "released",
+      "shipped"
+    ]
+  },
+  "lots": [
+    {
+      "lot_id": "RAW-100",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "RAW-BASE",
+      "status": "received",
+      "opening_quantity": "100",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "ADD-10",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "ADDITIVE",
+      "status": "received",
+      "opening_quantity": "10",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "MIX-110",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "MIXTURE",
+      "status": "intermediate",
+      "opening_quantity": "0",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "FG-60",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "PRODUCT",
+      "status": "shipped",
+      "opening_quantity": "0",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "RW-50",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "MIXTURE",
+      "status": "intermediate",
+      "opening_quantity": "0",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "FG-48",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "PRODUCT",
+      "status": "released",
+      "opening_quantity": "0",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "SCRAP-2",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "SCRAP",
+      "status": "scrap",
+      "opening_quantity": "0",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "RAW-U30",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "RAW-BASE",
+      "status": "received",
+      "opening_quantity": "30",
+      "unit": "kg"
+    },
+    {
+      "lot_id": "FG-U30",
+      "source_system": "M1",
+      "site_id": "P1",
+      "material_id": "PRODUCT",
+      "status": "released",
+      "opening_quantity": "0",
+      "unit": "kg"
+    }
+  ],
+  "events": [
+    {
+      "source_system": "M1",
+      "event_id": "E1",
+      "event_kind": "merge",
+      "event_time": "2026-11-01T08:00:00Z",
+      "observed_at": "2026-11-02T09:00:00Z",
+      "site_id": "P1",
+      "order_id": "PO1",
+      "equipment_id": "MIXER-1",
+      "conservation_basis": "mass",
+      "declared_loss": "0",
+      "loss_unit": "kg",
+      "inputs": [
+        {
+          "lot_id": "RAW-100",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "100",
+          "unit": "kg"
+        },
+        {
+          "lot_id": "ADD-10",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "10",
+          "unit": "kg"
+        }
+      ],
+      "outputs": [
+        {
+          "lot_id": "MIX-110",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "110",
+          "unit": "kg"
+        }
+      ]
+    },
+    {
+      "source_system": "M1",
+      "event_id": "E2",
+      "event_kind": "split",
+      "event_time": "2026-11-01T09:00:00Z",
+      "observed_at": "2026-11-01T09:00:00Z",
+      "site_id": "P1",
+      "order_id": "PO2",
+      "equipment_id": "PACKER-1",
+      "conservation_basis": "mass",
+      "declared_loss": "0",
+      "loss_unit": "kg",
+      "inputs": [
+        {
+          "lot_id": "MIX-110",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "110",
+          "unit": "kg"
+        }
+      ],
+      "outputs": [
+        {
+          "lot_id": "FG-60",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "60",
+          "unit": "kg"
+        },
+        {
+          "lot_id": "RW-50",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "50",
+          "unit": "kg"
+        }
+      ]
+    },
+    {
+      "source_system": "M1",
+      "event_id": "E3",
+      "event_kind": "rework",
+      "event_time": "2026-11-01T10:00:00Z",
+      "observed_at": "2026-11-01T10:00:00Z",
+      "site_id": "P1",
+      "order_id": "PO2",
+      "equipment_id": "REWORK-1",
+      "conservation_basis": "mass",
+      "declared_loss": "0",
+      "loss_unit": "kg",
+      "inputs": [
+        {
+          "lot_id": "RW-50",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "50",
+          "unit": "kg"
+        }
+      ],
+      "outputs": [
+        {
+          "lot_id": "FG-48",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "48",
+          "unit": "kg"
+        },
+        {
+          "lot_id": "SCRAP-2",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "2",
+          "unit": "kg"
+        }
+      ]
+    },
+    {
+      "source_system": "M1",
+      "event_id": "E4",
+      "event_kind": "transformation",
+      "event_time": "2026-11-01T11:00:00Z",
+      "observed_at": "2026-11-01T11:00:00Z",
+      "site_id": "P1",
+      "order_id": "PO1",
+      "equipment_id": "MIXER-1",
+      "conservation_basis": "mass",
+      "declared_loss": "0",
+      "loss_unit": "kg",
+      "inputs": [
+        {
+          "lot_id": "RAW-U30",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "30",
+          "unit": "kg"
+        }
+      ],
+      "outputs": [
+        {
+          "lot_id": "FG-U30",
+          "source_system": "M1",
+          "site_id": "P1",
+          "quantity": "30",
+          "unit": "kg"
+        }
+      ]
+    }
+  ],
+  "equipment": [
+    {
+      "source_system": "M1",
+      "site_id": "P1",
+      "equipment_id": "MIXER-1",
+      "equipment_role": "mixing"
+    },
+    {
+      "source_system": "M1",
+      "site_id": "P1",
+      "equipment_id": "PACKER-1",
+      "equipment_role": "split packaging"
+    },
+    {
+      "source_system": "M1",
+      "site_id": "P1",
+      "equipment_id": "REWORK-1",
+      "equipment_role": "rework"
+    }
+  ],
+  "quality_specifications": [
+    {
+      "specification_id": "LOCAL-CONTAMINANT",
+      "version": "1",
+      "metric": "demo_contaminant",
+      "operator": "<=",
+      "limit_value": "0.10",
+      "unit": "mg/kg",
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_to": null,
+      "approval_evidence": "Synthetic local example, not a standard threshold"
+    }
+  ],
+  "inspections": [
+    {
+      "inspection_id": "I1",
+      "lot_id": "FG-60",
+      "site_id": "P1",
+      "source_system": "M1",
+      "event_time": "2026-11-01T12:00:00Z",
+      "observed_at": "2026-11-01T12:05:00Z",
+      "value": "0.20",
+      "unit": "mg/kg",
+      "metric": "demo_contaminant",
+      "method": "synthetic composite sample",
+      "specification_id": "LOCAL-CONTAMINANT",
+      "specification_version": "1"
+    },
+    {
+      "inspection_id": "I2",
+      "lot_id": "FG-48",
+      "site_id": "P1",
+      "source_system": "M1",
+      "event_time": "2026-11-01T12:10:00Z",
+      "observed_at": "2026-11-01T12:15:00Z",
+      "value": "0.05",
+      "unit": "mg/kg",
+      "metric": "demo_contaminant",
+      "method": "synthetic composite sample",
+      "specification_id": "LOCAL-CONTAMINANT",
+      "specification_version": "1"
+    }
+  ],
+  "unit_conversions": [],
+  "material_definitions": [
+    {
+      "source_system": "M1",
+      "material_id": "RAW-BASE",
+      "name": "Synthetic base material",
+      "base_unit": "kg"
+    },
+    {
+      "source_system": "M1",
+      "material_id": "ADDITIVE",
+      "name": "Synthetic additive",
+      "base_unit": "kg"
+    },
+    {
+      "source_system": "M1",
+      "material_id": "MIXTURE",
+      "name": "Synthetic process mixture",
+      "base_unit": "kg"
+    },
+    {
+      "source_system": "M1",
+      "material_id": "PRODUCT",
+      "name": "Synthetic finished material",
+      "base_unit": "kg"
+    },
+    {
+      "source_system": "M1",
+      "material_id": "SCRAP",
+      "name": "Synthetic waste material",
+      "base_unit": "kg"
+    }
+  ],
+  "production_orders": [
+    {
+      "source_system": "M1",
+      "order_id": "PO1",
+      "planned_quantity": "108",
+      "unit": "kg"
+    },
+    {
+      "source_system": "M1",
+      "order_id": "PO2",
+      "planned_quantity": "30",
+      "unit": "kg"
+    }
+  ],
+  "sites": [
+    {
+      "source_system": "M1",
+      "site_id": "P1",
+      "name": "Synthetic plant"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "skill": "entity-relationship-modeling",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "industry-knowledge-discovery",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "ontology-documentation",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "ontology-evolution",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "ontology-modeling",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "ontology-validation",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "property-graph-mapping",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "banking-business-model",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "credit-risk-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "fibo-ontology",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "finance-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "electric-power-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "healthcare-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "logistics-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "manufacturing-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "retail-domain-knowledge",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "financial-regulatory-reporting",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "fraud-network-modeling",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "healthcare-care-pathway-modeling",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "manufacturing-quality-traceability",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "multi-lending-detection",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "power-outage-impact-analysis",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "related-party-transaction-modeling",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "retail-inventory-replenishment",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  },
+  {
+    "skill": "shipment-exception-analysis",
+    "exit_code": 0,
+    "output": "Skill is valid!",
+    "stderr": ""
+  }
+]

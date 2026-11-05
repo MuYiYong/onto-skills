@@ -1,0 +1,66 @@
+{
+  "id": "electric-power-sources",
+  "name": "electric-power source catalogue",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Source/version observations for the bounded industry examples",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "iec-cim-base",
+    "iec-cim-amd1",
+    "entsoe-cgmes"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original industry modeling methods",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "Original knowledge summaries, models, examples and acceptance rules",
+      "authority": "Original Onto Skills guidance, no standards conformity claim"
+    },
+    {
+      "id": "iec-cim-base",
+      "name": "IEC 61970-301:2020 CIM base",
+      "kind": "official-standard",
+      "uri": "https://webstore.iec.ch/en/publication/62698",
+      "version": "IEC 61970-301:2020 edition 7.0; model IEC61970CIM17v38 per public abstract",
+      "publisher": "IEC TC 57",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Public abstract identifies CIM resource classes, attributes and relationships for utility integration; full standard not accessed",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "iec-cim-amd1",
+      "name": "IEC 61970-301:2020/AMD1:2022",
+      "kind": "official-standard",
+      "uri": "https://webstore.iec.ch/en/publication/68639",
+      "version": "AMD1:2022; public catalogue also lists consolidated edition 7.1",
+      "publisher": "IEC TC 57",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Amendment/version index only; no claim of detailed conformance",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "entsoe-cgmes",
+      "name": "ENTSO-E Common Grid Model Exchange Standard Library",
+      "kind": "official-standard",
+      "uri": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/",
+      "version": "CGMES v3.0 / 3.0.0 branch observed 2026-11-05; applicability selected separately",
+      "publisher": "ENTSO-E",
+      "license": "Publisher terms differ by document/artifact; no third-party artifacts redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official exchange-profile/version context; distribution outage example is not a certified CGMES dataset",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    }
+  ]
+}

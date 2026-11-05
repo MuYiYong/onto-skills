@@ -1,0 +1,20 @@
+[
+  {
+    "command": "/bin/bash -lc \"pwd\nrg --files -g AGENTS.md -g SKILL.md -g domain.json -g sources.json -g method.md -g worked-example.md -g README.md -g '\"'!node_modules'\"' -g '\"'!.git'\"' --hidden .\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "53e9c91f6b36af8b298694f029e5eae83a210c7e68b27836523c3616a250d0d1"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/logistics-domain-knowledge/references/method.md\ncat .agents/skills/logistics-domain-knowledge/examples/worked-example.md\ncat .agents/skills/logistics-domain-knowledge/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "6aa9a0fd15b19502fb0635e1e31efebcf667294f078f0f27bfa4ffdc5969931f"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/logistics-domain-knowledge/SKILL.md\ncat .agents/skills/logistics-domain-knowledge/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "fb2f88b7d0164e6c438731228b444355f7629e302b38534b88d282fbac3550e0"
+  }
+]

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [v26.11.06_Build0721] - 2026-11-06
+
+### Added
+
+- 新增电力、制造、物流、医疗、零售5项行业知识及5项配套业务场景，附来源、独立知识、图模型和具体正反例。
+- 新增中国监管优先的金融监管报送血缘和关联交易2场景。
+- 开发校验支持行业/金融专项最近来源目录，保留原13项原生证据的准确边界。
+- 七个场景共90项具体正反例；全部25项Codex原生发现及12项新增技能独立CLI试用，附最终源码哈希与有界语义复核。
+
 ## [v26.11.05_Build2200] - 2026-11-05
 
 ### Added
@@ -17,3 +26,5 @@
 版本采用 `vYY.MM.DD_BuildHHMM`，日期与时间为 Asia/Shanghai；原生验收范围和未验证项见[兼容报告](docs/compatibility.md)。
 
 [v26.11.05_Build2200]: https://github.com/MuYiYong/onto-skills/releases/tag/v26.11.05_Build2200
+
+[v26.11.06_Build0721]: https://github.com/MuYiYong/onto-skills/compare/v26.11.05_Build2200...v26.11.06_Build0721

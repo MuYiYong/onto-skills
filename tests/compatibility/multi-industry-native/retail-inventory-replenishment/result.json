@@ -1,0 +1,37 @@
+{
+  "skill_used": "retail-inventory-replenishment",
+  "answer": {
+    "sellable": 8,
+    "available": 5,
+    "restock_signal": true,
+    "suggested_quantity": 7,
+    "order_created": false
+  },
+  "identity_rules": [
+    "仅计算merchant M/SKU S/location L/lot B/unit each；sellable与damaged分别核算。",
+    "按source_system+event_id辨重；10:30销售的原样重放不重复扣减，整事件postings仅生效一次。"
+  ],
+  "time_and_units": [
+    "as_of=known_as_of=12:00；数量、预留、阈值和目标均按each计算。",
+    "sellable快照已覆盖10:00及以前；仅叠加其后运动：10-2=8。",
+    "11:00实际退货+1进入damaged，不增加sellable。",
+    "按12:00有效预留3计算：available=8-3=5。",
+    "5严格小于reorder_point 6，形成补货候选；建议量=target 12-available 5=7。",
+    "在途20仅为计划且无receipt，不增加实存，也不抵扣建议量。"
+  ],
+  "source_limits": [
+    "已读取本项目SKILL.md、领域、来源、方法、图规格及相关示例；完成离线算术核对。",
+    "事件posting、单位及完整性采用用户声明；未核验真实源记录。",
+    "available政策和阈值来自用户；本地建模方法不构成官方库存算法或标准认证。",
+    "未联网、未修改文件、未接入生产系统、未创建订单。"
+  ],
+  "unresolved": [
+    "假设：全部钟点属于同一业务日、同一时间基准；具体日期和UTC偏移未提供，不补填。",
+    "假设：所述快照、销售及重放、退货和预留证据在known_as_of=12:00时均已可见；各自observed_at及重放接收时间待确认。",
+    "假设：11:30的active预留3件在12:00仍有效且无后续取代版本；reservation_id、revision、valid_from、valid_to待确认，不将valid_to擅设为null。",
+    "待确认：各记录source_system、销售与退货event_id、快照snapshot_id、在途record_id及其他来源定位键；不套用本地示例身份。",
+    "待确认：lot_issuer及地点运营方身份范围；不把批次B解释为全局唯一。",
+    "待确认：damaged快照的具体时点与覆盖边界；本次不据此推导damaged余额，不影响sellable计算。",
+    "待确认：补货政策policy_id、revision及有效时间，以及候选信号的持久化标识和生成时间；本次仅依据用户给定规则计算，不编造控制记录。"
+  ]
+}

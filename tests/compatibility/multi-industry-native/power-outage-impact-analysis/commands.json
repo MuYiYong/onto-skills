@@ -1,0 +1,56 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "345fd4624a97b6167221b4213267590c0def0102bbac80851dd6febfb42e4188"
+  },
+  {
+    "command": "/bin/bash -lc \"rg --files -g AGENTS.md -g '*.md' -g '*.json' .agents/skills/power-outage-impact-analysis\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "515d26a2aa06644de6beea15ffe009ea84bb5e7d13c2d2d788951686924ffda9"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "05fc78883979f6c11e0e8258bd483f71b20d8b0baf41766ec5de6b7be35702b4"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d99f506c275110a565d4a34b6df1809b03a1f64a2514cce66e98f3d8f9cb67d6"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "6744ccf9448fd1c9b1f6bdb99bf4d1da7d61504559b83c849609cac2d5d6a5dc"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/examples/acceptance.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d853e27e3c6e706139118de7b67bd7e07d5c4b60d491570a48e74e73c9bd7803"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "79c4ebe5cfaf70cc12627198e441165dc7b30525d987ed7e414020c58a55e697"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/power-outage-impact-analysis/references/fixture-contract.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "e9f98660ed7ddd8b39027fa19476ee561283778c6ec0548aa26e8b8819eaea30"
+  }
+]

@@ -5,7 +5,8 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.validate import validate_skill, validate_model, validate_repository, validate_knowledge
+from scripts.validate import (validate_skill, validate_model, validate_repository,
+                              validate_knowledge, knowledge_catalog)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -190,6 +191,55 @@ class KnowledgeTests(unittest.TestCase):
         self.asset['updated_at'] = 'not-a-date'
         self.asset['source_ids'] = 'fibo'
         self.assertTrue(validate_knowledge(self.asset, self.catalog))
+
+
+class IndustryCatalogueTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+
+    def create(self, path, value):
+        target = self.root / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(value))
+        return target
+
+    def test_each_industry_uses_its_own_nearest_catalogue(self):
+        finance = self.create('knowledge/finance/standards/sources.json', {'sources': []})
+        power = self.create('knowledge/electric-power/standards/sources.json', {'sources': []})
+        nested = self.create('knowledge/finance/regulatory/standards/sources.json', {'sources': []})
+        for asset, expected in [
+            ('knowledge/finance/concepts/bank.json', finance),
+            ('knowledge/electric-power/concepts/grid.json', power),
+            ('knowledge/finance/regulatory/concepts/report.json', nested),
+            ('knowledge/finance/regulatory/standards/sources.json', nested),
+        ]:
+            with self.subTest(asset=asset):
+                path = self.create(asset, {}) if not (self.root / asset).exists() else self.root / asset
+                self.assertEqual(knowledge_catalog(path, self.root), expected)
+
+    def test_absent_industry_catalogue_does_not_fall_back_to_finance(self):
+        self.create('knowledge/finance/standards/sources.json', {'sources': []})
+        asset = self.create('knowledge/retail/concepts/stock.json', {})
+        with self.assertRaisesRegex(ValueError, 'missing.*source catalog'):
+            knowledge_catalog(asset, self.root)
+
+    def test_escaping_catalogue_symlink_is_rejected(self):
+        outside = self.create('outside.json', {'sources': []})
+        asset = self.create('knowledge/retail/concepts/stock.json', {})
+        link = self.root / 'knowledge/retail/standards/sources.json'
+        link.parent.mkdir(parents=True)
+        link.symlink_to(outside)
+        with self.assertRaisesRegex(ValueError, 'symlink|escapes'):
+            knowledge_catalog(asset, self.root)
+
+    def test_malformed_nearest_catalogue_is_reported_instead_of_ignored(self):
+        self.create('knowledge/finance/standards/sources.json', {'sources': []})
+        self.create('knowledge/finance/regulatory/standards/sources.json', {'wrong': []})
+        asset = self.create('knowledge/finance/regulatory/concepts/report.json', {})
+        failures = validate_repository(self.root)
+        self.assertTrue(any(str(asset) in e and 'source catalog' in e for e in failures), failures)
 
 
 if __name__ == '__main__':

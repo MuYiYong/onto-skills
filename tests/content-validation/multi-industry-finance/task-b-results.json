@@ -1,0 +1,439 @@
+{
+  "as_known_nov1": {
+    "trade_as_of": "2026-10-31T13:00:00+08:00",
+    "known_at": "2026-11-01T18:00:00+08:00",
+    "regime": "demonstration-confirmed-control-only",
+    "selected_current_transactions": [
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E1",
+          "v1"
+        ],
+        "status": "executed",
+        "source_amount": "40.00",
+        "contribution": "40.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": null,
+        "correction_predecessor_version": null
+      },
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E2",
+          "v1"
+        ],
+        "status": "executed",
+        "source_amount": "30.00",
+        "contribution": "30.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": null,
+        "correction_predecessor_version": null
+      }
+    ],
+    "current_executed_candidate_event_ids": [
+      "E1",
+      "E2"
+    ],
+    "candidate_relation_bank_vendor": {
+      "left": "BANK",
+      "right": "VENDOR",
+      "decision": "candidate",
+      "paths": [
+        {
+          "common_controller": "R",
+          "left_path": [
+            "CTRL-R-BANK"
+          ],
+          "right_path": [
+            "CTRL-R-VENDOR"
+          ],
+          "evidence_ids": [
+            "EV-R-BANK",
+            "EV-R-VENDOR"
+          ]
+        }
+      ],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "bank_other_shared_contact": {
+      "left": "BANK",
+      "right": "OTHER",
+      "decision": "not_demonstrated",
+      "paths": [],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "gross_current_executed_candidate_amount": "70.00",
+    "currency": "CNY",
+    "unit": "yuan",
+    "bank_regulatory_view": {
+      "candidate_amount": "70.00",
+      "consolidation_exclusion_applied": false,
+      "legal_or_approval_result": "not-determined"
+    },
+    "explicit_consolidated_financial_disclosure_view": {
+      "scope": [
+        "BANK",
+        "VENDOR"
+      ],
+      "candidate_relationship_retained": true,
+      "raw_current_executed_amount_retained": "70.00",
+      "internal_scope_adjustment": "70.00",
+      "displayed_disclosure_amount": "0.00",
+      "basis": "financial_statement",
+      "policy": "package-local-demonstration-rule; formal disclosure requirements unresolved"
+    },
+    "retained_version_keys": [
+      [
+        "SYS",
+        "E1",
+        "v1"
+      ],
+      [
+        "SYS",
+        "E2",
+        "v1"
+      ]
+    ],
+    "review_decision": "pending",
+    "ownership_claim": {
+      "accepted": false,
+      "confirmed_control_generated": false,
+      "reason": "OwnershipPosition and ControlAssessment are separate; a percentage or product of percentages supplies no universal control rule."
+    },
+    "input_snapshot_hash": "dd61889c984f8e300652d8554a87332749c7b96970d224e28c232c57ceb13dfd",
+    "legal_determination": "not-made"
+  },
+  "as_known_nov3": {
+    "trade_as_of": "2026-10-31T13:00:00+08:00",
+    "known_at": "2026-11-03T18:00:00+08:00",
+    "regime": "demonstration-confirmed-control-only",
+    "selected_current_transactions": [
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E1",
+          "v2"
+        ],
+        "status": "executed",
+        "source_amount": "45.00",
+        "contribution": "45.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": null,
+        "correction_predecessor_version": "v1"
+      },
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E2",
+          "v1"
+        ],
+        "status": "executed",
+        "source_amount": "30.00",
+        "contribution": "30.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": null,
+        "correction_predecessor_version": null
+      }
+    ],
+    "current_executed_candidate_event_ids": [
+      "E1",
+      "E2"
+    ],
+    "candidate_relation_bank_vendor": {
+      "left": "BANK",
+      "right": "VENDOR",
+      "decision": "candidate",
+      "paths": [
+        {
+          "common_controller": "R",
+          "left_path": [
+            "CTRL-R-BANK"
+          ],
+          "right_path": [
+            "CTRL-R-VENDOR"
+          ],
+          "evidence_ids": [
+            "EV-R-BANK",
+            "EV-R-VENDOR"
+          ]
+        }
+      ],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "bank_other_shared_contact": {
+      "left": "BANK",
+      "right": "OTHER",
+      "decision": "not_demonstrated",
+      "paths": [],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "gross_current_executed_candidate_amount": "75.00",
+    "currency": "CNY",
+    "unit": "yuan",
+    "bank_regulatory_view": {
+      "candidate_amount": "75.00",
+      "consolidation_exclusion_applied": false,
+      "legal_or_approval_result": "not-determined"
+    },
+    "explicit_consolidated_financial_disclosure_view": {
+      "scope": [
+        "BANK",
+        "VENDOR"
+      ],
+      "candidate_relationship_retained": true,
+      "raw_current_executed_amount_retained": "75.00",
+      "internal_scope_adjustment": "75.00",
+      "displayed_disclosure_amount": "0.00",
+      "basis": "financial_statement",
+      "policy": "package-local-demonstration-rule; formal disclosure requirements unresolved"
+    },
+    "retained_version_keys": [
+      [
+        "SYS",
+        "E1",
+        "v1"
+      ],
+      [
+        "SYS",
+        "E1",
+        "v2"
+      ],
+      [
+        "SYS",
+        "E2",
+        "v1"
+      ]
+    ],
+    "review_decision": "pending",
+    "ownership_claim": {
+      "accepted": false,
+      "confirmed_control_generated": false,
+      "reason": "OwnershipPosition and ControlAssessment are separate; a percentage or product of percentages supplies no universal control rule."
+    },
+    "input_snapshot_hash": "dd61889c984f8e300652d8554a87332749c7b96970d224e28c232c57ceb13dfd",
+    "legal_determination": "not-made"
+  },
+  "as_known_nov5": {
+    "trade_as_of": "2026-10-31T13:00:00+08:00",
+    "known_at": "2026-11-05T18:00:00+08:00",
+    "regime": "demonstration-confirmed-control-only",
+    "selected_current_transactions": [
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E1",
+          "v3"
+        ],
+        "status": "reversed",
+        "source_amount": "45.00",
+        "contribution": "0.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": "current-status-reversed",
+        "correction_predecessor_version": "v2"
+      },
+      {
+        "transaction_version_key": [
+          "SYS",
+          "E2",
+          "v1"
+        ],
+        "status": "executed",
+        "source_amount": "30.00",
+        "contribution": "30.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "relationship_decision": "candidate",
+        "path_evidence": [
+          {
+            "common_controller": "R",
+            "left_path": [
+              "CTRL-R-BANK"
+            ],
+            "right_path": [
+              "CTRL-R-VENDOR"
+            ],
+            "evidence_ids": [
+              "EV-R-BANK",
+              "EV-R-VENDOR"
+            ]
+          }
+        ],
+        "exclusion_reason": null,
+        "correction_predecessor_version": null
+      }
+    ],
+    "current_executed_candidate_event_ids": [
+      "E2"
+    ],
+    "candidate_relation_bank_vendor": {
+      "left": "BANK",
+      "right": "VENDOR",
+      "decision": "candidate",
+      "paths": [
+        {
+          "common_controller": "R",
+          "left_path": [
+            "CTRL-R-BANK"
+          ],
+          "right_path": [
+            "CTRL-R-VENDOR"
+          ],
+          "evidence_ids": [
+            "EV-R-BANK",
+            "EV-R-VENDOR"
+          ]
+        }
+      ],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "bank_other_shared_contact": {
+      "left": "BANK",
+      "right": "OTHER",
+      "decision": "not_demonstrated",
+      "paths": [],
+      "legal_determination": "not-made",
+      "identity_merge": false
+    },
+    "gross_current_executed_candidate_amount": "30.00",
+    "currency": "CNY",
+    "unit": "yuan",
+    "bank_regulatory_view": {
+      "candidate_amount": "30.00",
+      "consolidation_exclusion_applied": false,
+      "legal_or_approval_result": "not-determined"
+    },
+    "explicit_consolidated_financial_disclosure_view": {
+      "scope": [
+        "BANK",
+        "VENDOR"
+      ],
+      "candidate_relationship_retained": true,
+      "raw_current_executed_amount_retained": "30.00",
+      "internal_scope_adjustment": "30.00",
+      "displayed_disclosure_amount": "0.00",
+      "basis": "financial_statement",
+      "policy": "package-local-demonstration-rule; formal disclosure requirements unresolved"
+    },
+    "retained_version_keys": [
+      [
+        "SYS",
+        "E1",
+        "v1"
+      ],
+      [
+        "SYS",
+        "E1",
+        "v2"
+      ],
+      [
+        "SYS",
+        "E2",
+        "v1"
+      ],
+      [
+        "SYS",
+        "E1",
+        "v3"
+      ]
+    ],
+    "review_decision": "pending",
+    "ownership_claim": {
+      "accepted": false,
+      "confirmed_control_generated": false,
+      "reason": "OwnershipPosition and ControlAssessment are separate; a percentage or product of percentages supplies no universal control rule."
+    },
+    "input_snapshot_hash": "dd61889c984f8e300652d8554a87332749c7b96970d224e28c232c57ceb13dfd",
+    "legal_determination": "not-made"
+  }
+}

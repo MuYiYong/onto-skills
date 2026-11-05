@@ -1,0 +1,247 @@
+{
+  "party_identity": "namespace + party_id; shared contact creates no sameAs",
+  "control_nodes": [
+    {
+      "assessment_id": "CTRL-R-BANK",
+      "controller": "R",
+      "controlled": "BANK",
+      "regime": "demonstration-confirmed-control-only",
+      "basis": "explicit-confirmed-task-evidence",
+      "status": "confirmed",
+      "valid_from": "2026-01-01T00:00:00+08:00",
+      "valid_to": null,
+      "observed_at": "2026-01-02T09:00:00+08:00",
+      "evidence_id": "EV-R-BANK"
+    },
+    {
+      "assessment_id": "CTRL-R-VENDOR",
+      "controller": "R",
+      "controlled": "VENDOR",
+      "regime": "demonstration-confirmed-control-only",
+      "basis": "explicit-confirmed-task-evidence",
+      "status": "confirmed",
+      "valid_from": "2026-01-01T00:00:00+08:00",
+      "valid_to": null,
+      "observed_at": "2026-01-02T09:00:00+08:00",
+      "evidence_id": "EV-R-VENDOR"
+    }
+  ],
+  "evidence_nodes": [
+    {
+      "evidence_id": "EV-R-BANK",
+      "kind": "synthetic-confirmed-control-evidence",
+      "content": "Task supplies explicit confirmed R control of BANK",
+      "content_hash": "3f8ef942681257b090a7ffa5b0516f0b349a0601b227d7d904e54b30f7039e32",
+      "status": "current",
+      "authority": "Synthetic task evidence only; not a legal source document"
+    },
+    {
+      "evidence_id": "EV-R-VENDOR",
+      "kind": "synthetic-confirmed-control-evidence",
+      "content": "Task supplies explicit confirmed R control of VENDOR",
+      "content_hash": "02d77bd27c6183af47bdd49faaeddf68b3ba70bc9040886eaeb04ef0adadb7bf",
+      "status": "current",
+      "authority": "Synthetic task evidence only; not a legal source document"
+    }
+  ],
+  "control_edges": [
+    {
+      "edge": "CONTROLLER",
+      "from": "CTRL-R-BANK",
+      "to": [
+        "independent-synthetic",
+        "R"
+      ]
+    },
+    {
+      "edge": "CONTROLLED",
+      "from": "CTRL-R-BANK",
+      "to": [
+        "independent-synthetic",
+        "BANK"
+      ]
+    },
+    {
+      "edge": "SUPPORTED_BY",
+      "from": "CTRL-R-BANK",
+      "to": "EV-R-BANK"
+    },
+    {
+      "edge": "CONTROLLER",
+      "from": "CTRL-R-VENDOR",
+      "to": [
+        "independent-synthetic",
+        "R"
+      ]
+    },
+    {
+      "edge": "CONTROLLED",
+      "from": "CTRL-R-VENDOR",
+      "to": [
+        "independent-synthetic",
+        "VENDOR"
+      ]
+    },
+    {
+      "edge": "SUPPORTED_BY",
+      "from": "CTRL-R-VENDOR",
+      "to": "EV-R-VENDOR"
+    }
+  ],
+  "transaction_edges": [
+    {
+      "edge": "FROM_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v1"
+      ],
+      "to": [
+        "independent-synthetic",
+        "BANK"
+      ]
+    },
+    {
+      "edge": "TO_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v1"
+      ],
+      "to": [
+        "independent-synthetic",
+        "VENDOR"
+      ]
+    },
+    {
+      "edge": "FROM_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v2"
+      ],
+      "to": [
+        "independent-synthetic",
+        "BANK"
+      ]
+    },
+    {
+      "edge": "TO_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v2"
+      ],
+      "to": [
+        "independent-synthetic",
+        "VENDOR"
+      ]
+    },
+    {
+      "edge": "FROM_PARTY",
+      "from": [
+        "SYS",
+        "E2",
+        "v1"
+      ],
+      "to": [
+        "independent-synthetic",
+        "BANK"
+      ]
+    },
+    {
+      "edge": "TO_PARTY",
+      "from": [
+        "SYS",
+        "E2",
+        "v1"
+      ],
+      "to": [
+        "independent-synthetic",
+        "VENDOR"
+      ]
+    },
+    {
+      "edge": "FROM_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v3"
+      ],
+      "to": [
+        "independent-synthetic",
+        "BANK"
+      ]
+    },
+    {
+      "edge": "TO_PARTY",
+      "from": [
+        "SYS",
+        "E1",
+        "v3"
+      ],
+      "to": [
+        "independent-synthetic",
+        "VENDOR"
+      ]
+    }
+  ],
+  "assessment_snapshots": {
+    "as_known_nov1": {
+      "known_at": "2026-11-01T18:00:00+08:00",
+      "case_ids": [
+        "case-as_known_nov1-SYS-E1",
+        "case-as_known_nov1-SYS-E2"
+      ],
+      "result": [
+        "E1",
+        "E2"
+      ]
+    },
+    "as_known_nov3": {
+      "known_at": "2026-11-03T18:00:00+08:00",
+      "case_ids": [
+        "case-as_known_nov3-SYS-E1",
+        "case-as_known_nov3-SYS-E2"
+      ],
+      "result": [
+        "E1",
+        "E2"
+      ]
+    },
+    "as_known_nov5": {
+      "known_at": "2026-11-05T18:00:00+08:00",
+      "case_ids": [
+        "case-as_known_nov5-SYS-E1",
+        "case-as_known_nov5-SYS-E2"
+      ],
+      "result": [
+        "E2"
+      ]
+    }
+  },
+  "weak_contact": {
+    "evidence": {
+      "evidence_id": "CONTACT-BANK-OTHER",
+      "left": "BANK",
+      "right": "OTHER",
+      "kind": "shared_contact",
+      "contact_token": "invented-contact-token",
+      "status": "current",
+      "observed_at": "2026-01-02T09:00:00+08:00"
+    },
+    "control_edge_created": false,
+    "identity_merge_created": false
+  },
+  "adaptations": [
+    {
+      "field": "Transaction.unit",
+      "reason": "missing from packaged sample despite method requiring amount units",
+      "classification": "model-inference"
+    },
+    {
+      "field": "corrects_version in task evidence",
+      "reason": "source package lacks explicit correction/reversal link in graph sample; this task version chain is preserved externally and not silently claimed to exist in that graph"
+    }
+  ]
+}

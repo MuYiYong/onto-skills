@@ -1,0 +1,2687 @@
+{
+  "spec_version": "1.0",
+  "model_id": "healthcare-care-pathway-evidence",
+  "version": "1.0.0",
+  "graph_type": "HealthcareCarePathway",
+  "description": "Database-neutral synthetic request/activity/result lineage; a partial FHIR R4 4.0.1 projection, not a clinical guideline or complete FHIR-conformant graph.",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original healthcare knowledge and synthetic modeling examples",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-assets-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "Original summaries, local graph recommendations and wholly synthetic offline fixtures",
+      "authority": "Project curation; not a clinical standard, care guideline or compliance assessment"
+    },
+    {
+      "id": "fhir-r4-resource",
+      "name": "HL7 FHIR R4 Base Resource and record identity",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/resource.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Resource.id, Meta.versionId, lastUpdated and resource/version identity",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-patient",
+      "name": "HL7 FHIR R4 Patient",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/patient.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Organization-scoped patient records and identity boundaries",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-encounter",
+      "name": "HL7 FHIR R4 Encounter",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/encounter.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Encounter lifecycle, patient context and locally determined encounter granularity",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-servicerequest",
+      "name": "HL7 FHIR R4 ServiceRequest detailed descriptions",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/servicerequest-definitions.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Requested service, request status/intent, authoredOn and occurrence",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-observation",
+      "name": "HL7 FHIR R4 Observation detailed descriptions",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/observation-definitions.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Result status, basedOn, effective/issued time, value and dataAbsentReason",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-procedure",
+      "name": "HL7 FHIR R4 Procedure detailed descriptions",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/procedure-definitions.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Performed or not-done activity, basedOn and performed[x]",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-condition",
+      "name": "HL7 FHIR R4 Condition detailed descriptions",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/condition-definitions.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Clinical and verification status, recordedDate and onset; con-4/con-5",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-provenance",
+      "name": "HL7 FHIR R4 Provenance",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/provenance.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Version-targeted record creation/revision provenance; distinct from audit and access authorization",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-datatypes",
+      "name": "HL7 FHIR R4 Datatypes: Coding, Identifier and Quantity",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/datatypes.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "Coding system/version/code, quantity value/comparator/unit/system/code, partial dates",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-request-status",
+      "name": "HL7 FHIR R4 RequestStatus code system",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/codesystem-request-status.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "R4 revoked request status semantics; index only, no bundled code list",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-observation-status",
+      "name": "HL7 FHIR R4 ObservationStatus code system",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/codesystem-observation-status.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "R4 result status semantics including entered-in-error and unknown; no bundled code list",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-event-status",
+      "name": "HL7 FHIR R4 EventStatus code system",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/codesystem-event-status.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "R4 event status semantics including completed/not-done; no bundled code list",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    },
+    {
+      "id": "fhir-r4-license",
+      "name": "HL7 FHIR R4 License and Legal Terms",
+      "kind": "official-standard",
+      "uri": "https://hl7.org/fhir/R4/license.html",
+      "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
+      "publisher": "Health Level Seven International (HL7)",
+      "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
+      "retrieved_at": "2026-11-05",
+      "scope": "FHIR document CC0 terms and HL7/FHIR trademark and non-endorsement boundary",
+      "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Patient",
+      "business_meaning": "Tenant-scoped synthetic subject; not a FHIR logical resource or global person identity.",
+      "identity_scope": "Project namespace plus patient_key",
+      "primary_key": [
+        "namespace",
+        "patient_key"
+      ],
+      "properties": [
+        {
+          "name": "namespace",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Project privacy/purpose namespace.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "patient_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Wholly synthetic pseudonym; not FHIR id or a reidentification secret.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient"
+      ]
+    },
+    {
+      "name": "PatientIdentityLink",
+      "business_meaning": "Evidence-bearing decision mapping a source Patient record to a project pseudonym.",
+      "identity_scope": "Project decision id for this export",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source decision id, preserved for replay.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "logical_patient_ref",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Canonical source-server/Patient/id identity.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "decision",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "accepted/rejected/unresolved from authorized crosswalk policy.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence_id",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Authorized crosswalk evidence reference; no secret matching material.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "authorized_for_purpose",
+          "logical_type": "boolean",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local purpose authorization decision; not consent/compliance proof.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "decision_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Time of mapping decision, not patient birth or event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "name": "ResourceVersion",
+      "business_meaning": "Immutable authorized source snapshot with source identity and record version.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Canonical source URL/type/id/_history/versionId; exact case and opaque version preserved.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "logical_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source endpoint plus resourceType/id; never patient pseudonym.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "source_server",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Canonical source base endpoint; no credentials.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "resource_type",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original FHIR resourceType.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "resource_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original server-local resource id.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Opaque record version from meta.versionId; absence blocks version-key publication.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "fhir_release",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Serialization baseline 4.0.1, distinct from record/terminology versions.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "last_updated",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Source meta.lastUpdated if known; not clinical event time.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Project ingestion instant, labeled separately from source clocks.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "current_claim",
+          "logical_type": "boolean",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source-export current-state assertion, checked for contradictions.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "snapshot_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "SHA-256 of canonical example resource; conflicting same key is rejected.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_payload",
+          "logical_type": "json",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Authorized original source fields, retaining choice type/precision/unmapped extensions without asserting their semantics.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "name": "Encounter",
+      "business_meaning": "Versioned interaction context, retaining repeated visits.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to exact ResourceVersion; a new version is not a new encounter.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original encounter status; finished does not complete an order.",
+          "source_ids": [
+            "fhir-r4-encounter"
+          ]
+        },
+        {
+          "name": "period_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original period boundaries and precision; no fabricated timestamps.",
+          "source_ids": [
+            "fhir-r4-encounter",
+            "fhir-r4-datatypes"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-encounter"
+      ]
+    },
+    {
+      "name": "Order",
+      "business_meaning": "Versioned ServiceRequest: requested act, never automatic evidence of performance.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to ServiceRequest ResourceVersion.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original request status; R4 revoked denotes cancellation.",
+          "source_ids": [
+            "fhir-r4-servicerequest",
+            "fhir-r4-request-status"
+          ]
+        },
+        {
+          "name": "intent",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Request intent such as proposal/order; retained independently of status.",
+          "source_ids": [
+            "fhir-r4-servicerequest"
+          ]
+        },
+        {
+          "name": "code",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original CodeableConcept, all codings/system/version/code.",
+          "source_ids": [
+            "fhir-r4-datatypes"
+          ]
+        },
+        {
+          "name": "authored_on_raw",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original authoredOn dateTime precision and timezone; no requested/performed substitution.",
+          "source_ids": [
+            "fhir-r4-servicerequest"
+          ]
+        },
+        {
+          "name": "occurrence_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original occurrence[x] name/type/value for requested schedule.",
+          "source_ids": [
+            "fhir-r4-servicerequest"
+          ]
+        },
+        {
+          "name": "do_not_perform",
+          "logical_type": "boolean",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original ServiceRequest.doNotPerform modifier. True prohibits the named service; absent has the R4 positive-request default. Preserve original absence without manufacturing an action.",
+          "source_ids": [
+            "fhir-r4-servicerequest"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-request-status"
+      ]
+    },
+    {
+      "name": "Observation",
+      "business_meaning": "Versioned result assertion; retained even when not eligible for a quantitative view.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to Observation ResourceVersion; corrected versions remain separate snapshots.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original modifier result status; entered-in-error is excluded as usable evidence.",
+          "source_ids": [
+            "fhir-r4-observation",
+            "fhir-r4-observation-status"
+          ]
+        },
+        {
+          "name": "code",
+          "logical_type": "json",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original complete code structure; display is not identity.",
+          "source_ids": [
+            "fhir-r4-datatypes"
+          ]
+        },
+        {
+          "name": "value",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original value[x] name/type/value including Quantity value/comparator/unit/system/code. No guessed normality.",
+          "source_ids": [
+            "fhir-r4-observation",
+            "fhir-r4-datatypes"
+          ]
+        },
+        {
+          "name": "data_absent_reason",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reason for absent root value; never a numeric zero or negative result.",
+          "source_ids": [
+            "fhir-r4-observation"
+          ]
+        },
+        {
+          "name": "effective_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original effective[x] choice and temporal precision; biological/event relevance.",
+          "source_ids": [
+            "fhir-r4-observation"
+          ]
+        },
+        {
+          "name": "issued_at",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Availability of this result version, separate from effective and source update time.",
+          "source_ids": [
+            "fhir-r4-observation"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation",
+        "fhir-r4-datatypes"
+      ]
+    },
+    {
+      "name": "Procedure",
+      "business_meaning": "Versioned documented activity, including not-done/error states.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to exact Procedure ResourceVersion.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original event status; local completed view admits completed only.",
+          "source_ids": [
+            "fhir-r4-procedure",
+            "fhir-r4-event-status"
+          ]
+        },
+        {
+          "name": "code",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original activity code; no clinical treatment recommendation.",
+          "source_ids": [
+            "fhir-r4-procedure",
+            "fhir-r4-datatypes"
+          ]
+        },
+        {
+          "name": "performed_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original performed[x] choice; permits dateTime/Period/Age/Range/string without invented precision.",
+          "source_ids": [
+            "fhir-r4-procedure"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-procedure"
+      ]
+    },
+    {
+      "name": "Condition",
+      "business_meaning": "Versioned recorded health concern/assessment; not generated by this model.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to exact Condition ResourceVersion.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "clinical_status",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Source clinical state, independent of assertion verification.",
+          "source_ids": [
+            "fhir-r4-condition"
+          ]
+        },
+        {
+          "name": "verification_status",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Source confidence/verification state; unconfirmed is not confirmed.",
+          "source_ids": [
+            "fhir-r4-condition"
+          ]
+        },
+        {
+          "name": "code",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original assertion code; no derived diagnosis.",
+          "source_ids": [
+            "fhir-r4-condition",
+            "fhir-r4-datatypes"
+          ]
+        },
+        {
+          "name": "onset_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original onset[x] with choice and precision.",
+          "source_ids": [
+            "fhir-r4-condition"
+          ]
+        },
+        {
+          "name": "recorded_date_raw",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original recordedDate; distinct from onset and intake recorded_at.",
+          "source_ids": [
+            "fhir-r4-condition"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-condition"
+      ]
+    },
+    {
+      "name": "Provenance",
+      "business_meaning": "Versioned documentation provenance; not proof of authorization or medical performance.",
+      "identity_scope": "Source server/type/id plus opaque versionId; no demographic identity",
+      "primary_key": [
+        "version_key"
+      ],
+      "properties": [
+        {
+          "name": "version_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "FK to exact Provenance ResourceVersion.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "target_refs",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": true,
+          "business_meaning": "Exact source target references; versionless ones require documented resolution.",
+          "source_ids": [
+            "fhir-r4-provenance"
+          ]
+        },
+        {
+          "name": "activity",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original provenance activity code; not a clinical act status.",
+          "source_ids": [
+            "fhir-r4-provenance"
+          ]
+        },
+        {
+          "name": "occurred_raw",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original occurred[x] temporal choice when supplied.",
+          "source_ids": [
+            "fhir-r4-provenance"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Provenance.recorded in source; not project ResourceVersion.recorded_at.",
+          "source_ids": [
+            "fhir-r4-provenance"
+          ]
+        },
+        {
+          "name": "agent_refs",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": true,
+          "business_meaning": "Original agent references; no implied access grants.",
+          "source_ids": [
+            "fhir-r4-provenance"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "IdentityMapsPatient",
+      "from": "PatientIdentityLink",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Accepted authorized identity decision links to exactly one scoped pseudonym.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "IdentityMapsResource",
+      "from": "PatientIdentityLink",
+      "to": "ResourceVersion",
+      "direction": "outgoing",
+      "business_meaning": "Accepted identity decision points to a resolved Patient record version, never demographic matching.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "EncounterSubject",
+      "from": "Encounter",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Explicit subject reference resolved through accepted authorized crosswalk.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-encounter"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfEncounter",
+      "from": "ResourceVersion",
+      "to": "Encounter",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the typed record; exact one typed row in this projection.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "OrderSubject",
+      "from": "Order",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Explicit subject reference resolved through accepted authorized crosswalk.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "OrderEncounter",
+      "from": "Order",
+      "to": "Encounter",
+      "direction": "outgoing",
+      "business_meaning": "Explicit encounter context; no inference from dates or co-occurrence.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfOrder",
+      "from": "ResourceVersion",
+      "to": "Order",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the typed record; exact one typed row in this projection.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ObservationSubject",
+      "from": "Observation",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Explicit subject reference resolved through accepted authorized crosswalk.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ObservationEncounter",
+      "from": "Observation",
+      "to": "Encounter",
+      "direction": "outgoing",
+      "business_meaning": "Explicit encounter context; no inference from dates or co-occurrence.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfObservation",
+      "from": "ResourceVersion",
+      "to": "Observation",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the typed record; exact one typed row in this projection.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ProcedureSubject",
+      "from": "Procedure",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Explicit subject reference resolved through accepted authorized crosswalk.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-procedure"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ProcedureEncounter",
+      "from": "Procedure",
+      "to": "Encounter",
+      "direction": "outgoing",
+      "business_meaning": "Explicit encounter context; no inference from dates or co-occurrence.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-procedure"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfProcedure",
+      "from": "ResourceVersion",
+      "to": "Procedure",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the typed record; exact one typed row in this projection.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ConditionSubject",
+      "from": "Condition",
+      "to": "Patient",
+      "direction": "outgoing",
+      "business_meaning": "Explicit subject reference resolved through accepted authorized crosswalk.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-condition"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ConditionEncounter",
+      "from": "Condition",
+      "to": "Encounter",
+      "direction": "outgoing",
+      "business_meaning": "Explicit encounter context; no inference from dates or co-occurrence.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-condition"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfCondition",
+      "from": "ResourceVersion",
+      "to": "Condition",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the typed record; exact one typed row in this projection.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "VersionOfProvenance",
+      "from": "ResourceVersion",
+      "to": "Provenance",
+      "direction": "outgoing",
+      "business_meaning": "Common source/version metadata for the provenance record.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ObservationBasedOn",
+      "from": "Observation",
+      "to": "Order",
+      "direction": "outgoing",
+      "business_meaning": "Explicit requested-act link; not a claim that all ordered services were performed.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation"
+      ],
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ProcedureBasedOn",
+      "from": "Procedure",
+      "to": "Order",
+      "direction": "outgoing",
+      "business_meaning": "Explicit request reference; procedure status independently determines completed-view eligibility.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-procedure"
+      ],
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ProvenanceTargets",
+      "from": "Provenance",
+      "to": "ResourceVersion",
+      "direction": "outgoing",
+      "business_meaning": "Resolved exact-version targets of documentation provenance. The original FHIR target list remains raw even if resolution cannot create an edge; neither source provenance nor a graph edge grants patient authorization.",
+      "identity_scope": "Exact source version plus source field path/index and resolved target key; repeated references/events not collapsed",
+      "primary_key": [
+        "edge_id"
+      ],
+      "properties": [
+        {
+          "name": "edge_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Deterministic source-version/field/index/target identity.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_path",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source field path or project crosswalk field.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_reference",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Original reference retained for audit; absent only for project mapping edges.",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "resolved_version_key",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exact version selected by resolution; missing resolution produces no factual edge.",
+          "source_ids": [
+            "onto-project",
+            "fhir-r4-resource"
+          ]
+        },
+        {
+          "name": "recorded_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Reference resolution/intake instant, not a clinical event time.",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance"
+      ],
+      "cardinality": {
+        "per_source": "0..* (source target list is 1..*; unresolved projection references remain in raw evidence)",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "identity-evidence",
+      "subject": "node:PatientIdentityLink",
+      "rule": "Project mapping rule: publish identity association only for accepted decision with nonempty approved evidence_id and authorized_for_purpose; shared demographics/contact cannot authorize a merge.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient"
+      ]
+    },
+    {
+      "id": "version-idempotency",
+      "subject": "node:ResourceVersion",
+      "rule": "Exact source_server/resource_type/resource_id/version_id replay is idempotent; unequal payload hashes under the same key are rejected. Different servers/types/ids/versions survive. Missing versionId needs a distinct documented intake snapshot policy before publication.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "id": "current-version-authority",
+      "subject": "node:ResourceVersion",
+      "rule": "At most one current_claim per logical_key in a view; zero is unresolved. Never choose current state by lexical/numeric versionId or arrival time. Retain historical snapshots and explicit current selection.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "id": "request-performance",
+      "subject": "node:Order",
+      "rule": "Project counting rule: do not synthesize a Procedure from any request status/intent. R4 revoked order is cancelled. A separately documented completed Procedure survives subsequent order revocation; not-done is retained but not counted completed. Preserve doNotPerform negation: true is a prohibition, not an instruction to perform; absent has the R4 positive-request default. No source prohibition is converted to a positive act.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-request-status",
+        "fhir-r4-procedure"
+      ]
+    },
+    {
+      "id": "observation-eligibility",
+      "subject": "node:Observation",
+      "rule": "Official status boundary: entered-in-error is invalid evidence. Project quantitative view additionally requires current final/amended/corrected numeric valueQuantity, no comparator, known system/version/code and coded unit. Unknown/preliminary/missing values are not negative or normal.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation",
+        "fhir-r4-observation-status"
+      ]
+    },
+    {
+      "id": "observation-obs6",
+      "subject": "node:Observation",
+      "rule": "Selected official R4 invariant obs-6: root dataAbsentReason may occur only when root value[x] is absent. Invalid pair quarantines the record; no silent repair.",
+      "enforcement": "application",
+      "source_ids": [
+        "fhir-r4-observation"
+      ]
+    },
+    {
+      "id": "coding-unit-context",
+      "subject": "node:Observation",
+      "rule": "Project comparison rule: aggregate only matching code system/version/code and Quantity.system/code without conversion; preserve comparator, original units/precision. Unknown version/unit prevents comparison, not evidence of normality.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ]
+    },
+    {
+      "id": "time-separation",
+      "subject": "model",
+      "rule": "Preserve authored/requested/performed/effective/issued/onset/source-recorded/source-lastUpdated/intake times and raw type/precision independently. Partial dates remain partial; intake is not a substitute for clinical time.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation",
+        "fhir-r4-procedure",
+        "fhir-r4-servicerequest",
+        "fhir-r4-condition",
+        "fhir-r4-resource"
+      ]
+    },
+    {
+      "id": "condition-verification",
+      "subject": "node:Condition",
+      "rule": "Preserve clinicalStatus versus verificationStatus; unconfirmed is not confirmed. Check selected official con-5 (entered-in-error omits clinicalStatus) and con-4 when abatement is supplied. No diagnoses are inferred from observations.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-condition"
+      ]
+    },
+    {
+      "id": "provenance-retraction",
+      "subject": "node:Provenance",
+      "rule": "Project policy: preserve version-targeted audit history; provenance alone never grants access or changes result validity. Apply retraction only with authorized exact-version instruction, independently of source entered-in-error status.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance"
+      ]
+    },
+    {
+      "id": "authorization-boundary",
+      "subject": "model",
+      "rule": "Purpose authorization is a precondition for ingest/use. Disclosure requires a separate authorization; synthetic example approval grants no real-system operation. No patient-system connection or production write is authorized.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "reference-resolution",
+      "subject": "model",
+      "rule": "Versioned references select exact snapshots. Versionless relative references resolve only within the same canonical source server to one authoritative current version as of intake; cross-server references require explicit base. Record resolution; unresolved/ambiguous targets do not create factual edges.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map-resource-identity",
+      "source_id": "fhir-r4-resource",
+      "source_term": "Resource.id + meta.versionId with canonical source base",
+      "target": "node:ResourceVersion",
+      "status": "preserved",
+      "explanation": "Source record and opaque version identity are explicit; project patient identity is a separate construct.",
+      "constraint_ids": [
+        "version-idempotency",
+        "current-version-authority"
+      ]
+    },
+    {
+      "id": "map-patient",
+      "source_id": "fhir-r4-patient",
+      "source_term": "Patient",
+      "target": "node:Patient",
+      "status": "approximated",
+      "explanation": "Patient node is a scoped pseudonym; source Patient versions remain ResourceVersion snapshots linked through authorized evidence. Demographics and actual identifier secrets are outside this minimal projection.",
+      "constraint_ids": [
+        "identity-evidence"
+      ]
+    },
+    {
+      "id": "map-encounter",
+      "source_id": "fhir-r4-encounter",
+      "source_term": "Encounter",
+      "target": "node:Encounter",
+      "status": "approximated",
+      "explanation": "Selected context/status/period only; class, hospitalization, participants and history remain source snapshot fields without implemented semantics.",
+      "constraint_ids": [
+        "reference-resolution"
+      ]
+    },
+    {
+      "id": "map-servicerequest",
+      "source_id": "fhir-r4-servicerequest",
+      "source_term": "ServiceRequest",
+      "target": "node:Order",
+      "status": "approximated",
+      "explanation": "Order is a graph name; only selected request fields/references are projected. Timing repetition, performers and full request workflow are not implemented. doNotPerform negation is explicit; unmodeled modifier extensions require quarantine/review before use, not raw-retention-only approval.",
+      "constraint_ids": [
+        "time-separation"
+      ]
+    },
+    {
+      "id": "map-observation",
+      "source_id": "fhir-r4-observation",
+      "source_term": "Observation",
+      "target": "node:Observation",
+      "status": "approximated",
+      "explanation": "Root quantity view only. Components, interpretations, reference ranges, specimens and other value choices require additional explicit mapping; not inferred or clinically evaluated.",
+      "constraint_ids": [
+        "time-separation"
+      ]
+    },
+    {
+      "id": "map-procedure",
+      "source_id": "fhir-r4-procedure",
+      "source_term": "Procedure",
+      "target": "node:Procedure",
+      "status": "approximated",
+      "explanation": "Preserves event status/performed choice/reference; not full performer, complication, body-site or clinical semantics.",
+      "constraint_ids": [
+        "time-separation"
+      ]
+    },
+    {
+      "id": "map-condition",
+      "source_id": "fhir-r4-condition",
+      "source_term": "Condition",
+      "target": "node:Condition",
+      "status": "approximated",
+      "explanation": "Preserves assertion statuses/code/onset/recordedDate; not all stages, evidence or terminology semantics.",
+      "constraint_ids": [
+        "time-separation"
+      ]
+    },
+    {
+      "id": "map-provenance",
+      "source_id": "fhir-r4-provenance",
+      "source_term": "Provenance",
+      "target": "node:Provenance",
+      "status": "approximated",
+      "explanation": "Selected targets/activity/agents/recorded only; no signature validation, trust scoring, AuditEvent or access-control implementation.",
+      "constraint_ids": [
+        "reference-resolution"
+      ]
+    },
+    {
+      "id": "map-coding",
+      "source_id": "fhir-r4-datatypes",
+      "source_term": "Coding and Quantity",
+      "target": "property:Observation.value",
+      "status": "preserved",
+      "explanation": "Original JSON preserves system/version/code, quantity comparator/unit code and choice; no terminology equivalence or conversion supplied.",
+      "constraint_ids": [
+        "coding-unit-context"
+      ]
+    },
+    {
+      "id": "map-extensions",
+      "source_id": "fhir-r4-resource",
+      "source_term": "Full profiles, modifierExtensions, conformance and jurisdiction rules",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "Raw snapshot retention is not semantic support. Validate actual source resources/profiles and approve missing mappings before deployment.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Only wholly synthetic offline input is authorized for this example. No clinical or patient-system operation is included.",
+    "R4 4.0.1 is a deliberate published baseline; no R5/development-build equivalence is asserted.",
+    "Export envelope is_current is an authoritative synthetic current-version claim as of as_of; opaque versionIds are not sorted.",
+    "The fixture contains partial resource examples, not a FHIR Bundle or conformance-valid resource test suite.",
+    "For this example, current completed Procedure counts as documented completion; no act is inferred from an order, encounter or Provenance.",
+    "No terminology mapping, unit conversion, diagnosis inference or threshold-based clinical interpretation is authorized.",
+    "Relative references resolve against the envelope source_server and the selected current version at intake; resolution is captured explicitly."
+  ],
+  "unresolved": [
+    "Real deployment must select jurisdiction, profiles, authorized purpose, terminology releases, missing-version identity policy, subject matching governance and access/retention/retraction controls.",
+    "The minimal quantity view omits component observations, complex effective/performed schedules, signatures and unmodeled modifier extensions; these require additional design/validation."
+  ],
+  "competency_questions": [
+    "Which explicit completed Procedure records support fulfillment of a given requested act, and which requests are revoked, missing results or unresolved?",
+    "Which current result versions are quantitatively usable under the local data policy, with their event, issue and intake clocks?",
+    "Which earlier values were corrected or entered in error, while keeping source evidence intact?",
+    "Which repeated encounters and cross-server records remain distinct?",
+    "Which comparisons are blocked by missing coding versions, unknown values or unequal unit codes?",
+    "Which exact authorized evidence supports each patient mapping and each provenance/retraction target?"
+  ]
+}

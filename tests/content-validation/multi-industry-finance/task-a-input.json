@@ -1,0 +1,139 @@
+{
+  "id": "independent-task-a",
+  "classification": "project-curated",
+  "synthetic": true,
+  "assumptions": [
+    "Baseline amounts are expressed in whole yuan of currency CNY; task gave CNY amounts but no separate unit, so yuan is an explicit synthetic assumption, not a regulatory requirement.",
+    "Date-only task statements are assigned example Asia/Shanghai instants. No extra source arrives on the selected cutoff days, so start/end-of-day choices do not change these results.",
+    "DEMO-R1 and metric DEMO-R1:loanBalance definition synthetic-1 are user-task identifiers, not a real Chinese regulator report/template/threshold.",
+    "S1 has supplied prior business acceptance; its reported amount and source lineage were not supplied and remain unknown.",
+    "Locally created RUN-A-NOV3/S3 are a design draft only, with no new submitted/received/accepted event."
+  ],
+  "reporting_entity": {
+    "namespace": "independent-synthetic",
+    "entity_id": "C1",
+    "legal_name": "Synthetic C1"
+  },
+  "report_definition": {
+    "jurisdiction": "CN-regulator-unspecified",
+    "report_code": "DEMO-R1",
+    "template_version": "synthetic-1",
+    "frequency": "unspecified"
+  },
+  "metric_definition": {
+    "metric_id": "DEMO-R1:loanBalance",
+    "definition_version": "synthetic-1",
+    "meaning": "Task-supplied instant loan balance",
+    "unit": "yuan",
+    "aggregation": "sum-selected-active-balance-records",
+    "rule_reference": "synthetic-task-only"
+  },
+  "context": {
+    "context_id": "CTX-C1-DEMO-R1-20261031",
+    "entity_id": "C1",
+    "scope": "individual-C1",
+    "period_kind": "instant",
+    "period_start": null,
+    "period_end": "2026-10-31T23:59:59+08:00",
+    "timezone": "Asia/Shanghai",
+    "dimensions": {}
+  },
+  "known_at_runs": [
+    "2026-11-01T18:00:00+08:00",
+    "2026-11-03T18:00:00+08:00"
+  ],
+  "source_records": [
+    {
+      "source_system": "SYS",
+      "record_id": "K1",
+      "source_version": "v1",
+      "event_time": "2026-10-31T23:59:59+08:00",
+      "observed_at": "2026-10-31T18:00:00+08:00",
+      "amount": "80",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "SYS",
+      "record_id": "K1",
+      "source_version": "v2",
+      "event_time": "2026-10-31T23:59:59+08:00",
+      "observed_at": "2026-11-02T10:00:00+08:00",
+      "amount": "90",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "SYS",
+      "record_id": "K2",
+      "source_version": "v1",
+      "event_time": "2026-10-31T23:59:59+08:00",
+      "observed_at": "2026-10-31T18:00:00+08:00",
+      "amount": "20",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "SYS",
+      "record_id": "K2",
+      "source_version": "v1",
+      "event_time": "2026-10-31T23:59:59+08:00",
+      "observed_at": "2026-10-31T18:00:00+08:00",
+      "amount": "20",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    }
+  ],
+  "submissions": [
+    {
+      "submission_id": "S1",
+      "revision": 1,
+      "scope_key": "C1|DEMO-R1|synthetic-1|CTX-C1-DEMO-R1-20261031",
+      "payload_hash": null,
+      "historical_amount": null
+    },
+    {
+      "submission_id": "S2",
+      "revision": 2,
+      "scope_key": "C1|DEMO-R1|synthetic-1|CTX-C1-DEMO-R1-20261031",
+      "supersedes": "S1",
+      "payload_hash": "computed-from-run-a-nov1"
+    }
+  ],
+  "validation_checks": [
+    {
+      "check_id": "LOCAL-S2",
+      "submission_id": "S2",
+      "kind": "local-business-check",
+      "rule_version": "synthetic-check-1",
+      "checked_at": "2026-11-01T10:00:00+08:00",
+      "result": "passed"
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "BUSINESS-S1",
+      "submission_id": "S1",
+      "kind": "business",
+      "received_at": "2026-11-01T09:00:00+08:00",
+      "status": "accepted",
+      "evidence": "Task-supplied prior acceptance; timestamp is a synthetic scheduling choice."
+    },
+    {
+      "receipt_id": "TRANSPORT-S2",
+      "submission_id": "S2",
+      "kind": "transport",
+      "received_at": "2026-11-01T11:00:00+08:00",
+      "status": "received",
+      "evidence": "Task-supplied transport receipt; timestamp is a synthetic scheduling choice."
+    }
+  ],
+  "unresolved": [
+    "Actual regulator/agency, official template/metric version, governance owner, lawful reporting unit, applicable calendar/deadline and quality formulas.",
+    "S1 exact accepted payload amount/lineage and its payload hash are not supplied."
+  ]
+}

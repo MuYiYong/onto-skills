@@ -1,0 +1,172 @@
+{
+  "id": "retail-domain",
+  "name": "零售行业最小领域知识",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "用于数据库中立本体与业务图建模；不包含标准原文或行业自动决策",
+  "authority": "项目原创摘要与模型建议，不是官方标准定义、认证或业务自动决策",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "gs1-epcis",
+    "gs1-cbv",
+    "gs1-architecture",
+    "gs1-traceability"
+  ],
+  "concepts": [
+    {
+      "id": "sku-gtin",
+      "name": "SKU 与 GTIN",
+      "meaning": "SKU 是商家商品管理身份；GTIN 标识贸易项目，不能由相同商品名直接推断一一对应。",
+      "modeling_rule": "键含 merchant_id+sku；可选 GTIN 为原始字符串，包装级别/单位转换有证据才映射。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "location",
+      "name": "地点与组织角色",
+      "meaning": "门店、仓库、货架区域与经营主体有不同范围；GLN 的用途必须核实。",
+      "modeling_rule": "location_id 带运营方范围，GLN 不是未经确认的任意组织/门店合并依据。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "lot",
+      "name": "批次身份",
+      "meaning": "批次号必须绑定商品及其批次分配范围，单一字符串不是全局身份。",
+      "modeling_rule": "StockPosition 以 merchant/sku/location/lot/condition/unit 为粒度；未知批次不并入已知批次。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture",
+        "gs1-traceability"
+      ]
+    },
+    {
+      "id": "on-hand",
+      "name": "实存与在途",
+      "meaning": "实存是在给定地点与时点已经形成的库存数量，在途/未收货采购量不直接增加实存。",
+      "modeling_rule": "到货必须有实际收货 posting；订单、发运通知和 ETA 只作为商业/在途证据。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "snapshot",
+      "name": "库存快照",
+      "meaning": "盘点/余额快照是某个截面的测量结果，不是可累加的进货事件。",
+      "modeling_rule": "取每个粒度最新有效 snapshot 作为锚，声明覆盖 event_time<=锚时点；只加锚之后的运动，不叠加多张快照。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "movement",
+      "name": "原子库存运动",
+      "meaning": "一次销售、实际收货、退回或状态转移可有多条 posting，共用稳定事件身份。",
+      "modeling_rule": "source_system+event_id 为原子键；任一 posting 的单位/数量/引用无效则整事件隔离；重复导入不重复入账。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "reservation",
+      "name": "库存预留",
+      "meaning": "为业务承诺暂时扣减可用量的状态，与实存运动、订单总量和 CBV 标识 reserving 不同。",
+      "modeling_rule": "同 reservation_id 选择当时可见且valid_from<=as_of的最高版本，再检查有效区间上界和active状态。available=合格实存-reserved 仅在用户明确此政策时成立。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-cbv"
+      ]
+    },
+    {
+      "id": "commerce-line",
+      "name": "订单、销售与退货单据",
+      "meaning": "订单意向、销售明细与退货受理分别作为商业事实；单据不自动等于实物运动。",
+      "modeling_rule": "CommerceLine.kind 保留 purchase_order/sales_order/sale/return；只有关联的有效 movement postings 改库存，不把销售单和运动重复减库存。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "return-condition",
+      "name": "退货与受损状态",
+      "meaning": "退货受理、实际退回、检验后可销售、受损或隔离是不同状态。",
+      "modeling_rule": "退回 damaged 的数量只进 damaged；跨条件转换需要同原子事件内相反 posting，不把损坏品计入 sellable。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "reversal",
+      "name": "冲正与撤销",
+      "meaning": "已记账运动的更正需要引用原事件并以相同粒度逐条反向 posting 保留历史。",
+      "modeling_rule": "一笔原事件最多被一个有效 reversal 冲正；原事件、其逆向 posting 和后续更正并存，不删除历史或二次撤销。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "time-knowledge",
+      "name": "晚到与追溯时点",
+      "meaning": "实物发生时间决定库存期间，observed_at 决定当时是否已知该证据。",
+      "modeling_rule": "event_time<=as_of 且 observed_at<=known_as_of；晚到且发生在快照之前的消息进入对账，不自动叠加已涵盖快照。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ]
+    },
+    {
+      "id": "replenishment",
+      "name": "补货信号与参数",
+      "meaning": "补货建议依赖用户阈值和目标量，不是标准规定或采购指令。",
+      "modeling_rule": "当 available<reorder_point 时建议 target_available-available；输出 signal，不自动下单，不直接净掉在途。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "unit-currency",
+      "name": "单位、金额与精度",
+      "meaning": "库存数量与货币金额是不同度量；箱/件、币种和期间不可直接混算。",
+      "modeling_rule": "数量用精确十进制字符串和显式单位；无转换规则拒绝混单位 posting，销售金额独立带 currency，不进入库存算式。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "applicability": [
+    "知识在已有输入下可离线使用；外链用于可选核实。",
+    "所列版本是2026-11-05实际观察到的版本，不宣称兼容所有实施版本。",
+    "地方监管、合同义务和具体组织运营规则需任务材料确认。"
+  ],
+  "change_log": [
+    {
+      "id": "initial-2026-11-05",
+      "name": "初始版本",
+      "meaning": "新增稳定概念 ID、来源和原创方法；未废弃 ID。",
+      "modeling_rule": "后续变更记录源版本变化、概念变更和废弃 ID；禁止复用旧 ID。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-06",
+  "method": "Manual semantic review of each terminal result and command record against fresh synthetic task facts. Numeric/boolean scenario oracles were withheld from the model. Explicit invocation only; not a trigger-rate or full standards evaluation.",
+  "results": [
+    {
+      "skill": "electric-power-domain-knowledge",
+      "passed": true,
+      "observed": "Separates equipment/terminal/connectivity and topology versions from names/circuits. Unknown tie state and DER remain unknown; no actual outage, energization or switching permission is inferred. Lists evidence/clock gaps and paid-source limits."
+    },
+    {
+      "skill": "financial-regulatory-reporting",
+      "passed": true,
+      "observed": "Deduplicates K2 replay; late correction changes100 to110 with a new knowledge cutoff. S1 remains accepted; transport receipt/local check do not accept S2. Source, cutoff and payload associations missing from prompt are explicitly assumptions/questions: S1 actual accepted amount/lineage is not independently established.",
+      "expected_answer": {
+        "old_value": 100,
+        "new_value": 110,
+        "current_accepted_submission": "S1",
+        "new_submission_accepted": false
+      }
+    },
+    {
+      "skill": "healthcare-care-pathway-modeling",
+      "passed": true,
+      "observed": "No execution from revoked request; no fallback to superseded5mg/L after entered-in-error; unknown is not zero; shared contact does not merge patients. Preserves selected R4 semantics/history and unprovided authorization/version/clock gaps.",
+      "expected_answer": {
+        "procedure_performance_proven": false,
+        "superseded_value_usable": false,
+        "unknown_fill_zero": false,
+        "patients_auto_merged": false
+      }
+    },
+    {
+      "skill": "healthcare-domain-knowledge",
+      "passed": true,
+      "observed": "Pins published FHIR R4 4.0.1. Revoked request without Procedure does not prove performance; entered-in-error/missing value does not become zero. Contact sharing does not merge patients; provenance is not permission."
+    },
+    {
+      "skill": "logistics-domain-knowledge",
+      "passed": true,
+      "observed": "Distinguishes shipment, consignment and SSCC unit identities; planned/estimated/actual and source/event/receipt clocks remain distinct. Port unload and a planned DC event do not prove final delivery."
+    },
+    {
+      "skill": "manufacturing-domain-knowledge",
+      "passed": true,
+      "observed": "Preserves source/site/local batch identity, actual event inputs/outputs, split/rework and units. Shared equipment does not create material lineage. Does not invent quantities, inspection thresholds or unprovided temporal evidence."
+    },
+    {
+      "skill": "manufacturing-quality-traceability",
+      "passed": true,
+      "observed": "Terminal released candidates FG60 and FG2 48 total108kg. Intermediate MIX/RW and scrap are not added again; unrelated U only shares equipment and is excluded. Quality approval is not inferred.",
+      "expected_answer": {
+        "candidate_lots": [
+          "FG",
+          "FG2"
+        ],
+        "candidate_total_kg": 108,
+        "shared_equipment_batch_included": false
+      }
+    },
+    {
+      "skill": "power-outage-impact-analysis",
+      "passed": true,
+      "observed": "Failed S removes the main path. Unknown T gives only a possible B→N2→T→N1→SP1 path; no definite path, actual customer outage proof or switching authority. Separates topology inference from service evidence.",
+      "expected_answer": {
+        "definite_path_to_sp1": false,
+        "possible_path_to_sp1": true,
+        "actual_customer_outage_proven": false,
+        "switching_authorized": false
+      }
+    },
+    {
+      "skill": "related-party-transaction-modeling",
+      "passed": true,
+      "observed": "Common confirmed control yields bounded candidates; source event revisions produce70/75/30, and a shared phone proves neither related status nor identity. Explicitly assumes yuan and same-event status reversal; predecessor evidence and ordering remain unresolved. Regulatory amounts remain separate from the supplied consolidated display.",
+      "expected_answer": {
+        "old_value": 70,
+        "corrected_value": 75,
+        "after_reversal_value": 30,
+        "shared_phone_proves_related_party": false
+      }
+    },
+    {
+      "skill": "retail-domain-knowledge",
+      "passed": true,
+      "observed": "Explains SKU/GTIN, lot/location, snapshots/movements, reservations, transit and returns. Computes conditional available=8-3=5; transit20 and uninspected returns do not inflate sellable. No unprovided policy or order is invented."
+    },
+    {
+      "skill": "retail-inventory-replenishment",
+      "passed": true,
+      "observed": "Deduplicates sale replay: sellable10-2=8; return enters damaged, transit20 is excluded. available8-3=5<6 yields candidate7 to target12. Does not create an order; records evidence and policy identity gaps.",
+      "expected_answer": {
+        "sellable": 8,
+        "available": 5,
+        "restock_signal": true,
+        "suggested_quantity": 7,
+        "order_created": false
+      }
+    },
+    {
+      "skill": "shipment-exception-analysis",
+      "passed": true,
+      "observed": "Selects same-priority later-issued E2 ETA16:00 versus baseline12:00 =240min. Only U1 has final-DC actual arrival. U2 port actual/planned DC do not confirm complete delivery.",
+      "expected_answer": {
+        "selected_eta_event_id": "E2",
+        "delay_minutes": 240,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [
+          "U1"
+        ]
+      }
+    }
+  ]
+}

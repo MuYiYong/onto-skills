@@ -28,6 +28,13 @@
 
 交付物连接步骤：来源/术语 → 概念与角色 → 实体关系 → FIBO 对齐 → 图规格/损失 → 质量结果。Agent 按任务选择技能，不必加载全部。
 
+新增专项场景可按需选择：
+
+- [financial-regulatory-reporting](../../skills/scenarios/financial-regulatory-reporting/SKILL.md)：中国监管制度/模板/指标、源数据血缘、更正提交与回执。
+- [related-party-transaction-modeling](../../skills/scenarios/related-party-transaction-modeling/SKILL.md)：控制/任职证据、交易版本、监管与会计口径及待复核流程。
+
+这两项为本次源码扩展，不能用原13项Release或其原生验收替代当前验证。
+
 ## 可选外部 Skills
 
 来源：[nebula-gql-skills](https://github.com/MuYiYong/nebula-gql-skills)。gql-query-generator 处理查询、支持的 DML 与已有签名调用；gql-procedure-generator 处理过程定义/管理和算法。Graph Type/Schema DDL 检查当前安装能力，未来专门技能优先复用。

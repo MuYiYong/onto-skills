@@ -1,0 +1,317 @@
+{
+  "nov1": {
+    "run_id": "RUN-A-NOV1",
+    "logic_version": "independent-selected-instant-balance-1",
+    "as_of": "2026-10-31T23:59:59+08:00",
+    "known_at": "2026-11-01T18:00:00+08:00",
+    "input_snapshot_hash": "6243330b5152a566607da2873a6c7ed2989e0a6500db3267d6d93cac44588185",
+    "selected_source_versions": [
+      [
+        "SYS",
+        "K1",
+        "v1"
+      ],
+      [
+        "SYS",
+        "K2",
+        "v1"
+      ]
+    ],
+    "duplicate_replays_ignored": 1,
+    "unique_source_version_count": 3,
+    "source_contributions": [
+      {
+        "source_record_key": [
+          "SYS",
+          "K1",
+          "v1"
+        ],
+        "amount": "80.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "conversion_reference": "same-unit"
+      },
+      {
+        "source_record_key": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "amount": "20.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "conversion_reference": "same-unit"
+      }
+    ],
+    "reported_fact": {
+      "submission_id": "S2",
+      "fact_id": "loanBalance",
+      "metric_key": [
+        "DEMO-R1:loanBalance",
+        "synthetic-1"
+      ],
+      "context_id": "CTX-C1-DEMO-R1-20261031",
+      "value": "100.00",
+      "currency": "CNY",
+      "unit": "yuan",
+      "status": "present",
+      "nil_reason": null
+    },
+    "lineage_paths": [
+      {
+        "from": [
+          "SYS",
+          "K1",
+          "v1"
+        ],
+        "via": "RUN-A-NOV1",
+        "fact_key": [
+          "S2",
+          "loanBalance"
+        ],
+        "submission": "S2",
+        "contribution": "80.00",
+        "unit": "yuan"
+      },
+      {
+        "from": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "via": "RUN-A-NOV1",
+        "fact_key": [
+          "S2",
+          "loanBalance"
+        ],
+        "submission": "S2",
+        "contribution": "20.00",
+        "unit": "yuan"
+      }
+    ],
+    "submission_state": {
+      "S1": "business-accepted",
+      "S2": "transport-received-business-pending"
+    },
+    "current_business_accepted_submission_id": "S1",
+    "current_accepted_amount": null,
+    "accepted_amount_unknown_reason": "S1 payload amount was not supplied; calculated S2/draft S3 must not be substituted.",
+    "s2_supersedes_s1": true,
+    "business_acceptance_not_inferred_from": [
+      "passed local check",
+      "transport receipt received",
+      "SUPERSEDES edge"
+    ],
+    "blocked_publication": false
+  },
+  "nov3_new_run": {
+    "run_id": "RUN-A-NOV3",
+    "logic_version": "independent-selected-instant-balance-1",
+    "as_of": "2026-10-31T23:59:59+08:00",
+    "known_at": "2026-11-03T18:00:00+08:00",
+    "input_snapshot_hash": "6243330b5152a566607da2873a6c7ed2989e0a6500db3267d6d93cac44588185",
+    "selected_source_versions": [
+      [
+        "SYS",
+        "K1",
+        "v2"
+      ],
+      [
+        "SYS",
+        "K2",
+        "v1"
+      ]
+    ],
+    "duplicate_replays_ignored": 1,
+    "unique_source_version_count": 3,
+    "source_contributions": [
+      {
+        "source_record_key": [
+          "SYS",
+          "K1",
+          "v2"
+        ],
+        "amount": "90.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "conversion_reference": "same-unit"
+      },
+      {
+        "source_record_key": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "amount": "20.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "conversion_reference": "same-unit"
+      }
+    ],
+    "reported_fact": {
+      "submission_id": "S3-DRAFT",
+      "fact_id": "loanBalance",
+      "metric_key": [
+        "DEMO-R1:loanBalance",
+        "synthetic-1"
+      ],
+      "context_id": "CTX-C1-DEMO-R1-20261031",
+      "value": "110.00",
+      "currency": "CNY",
+      "unit": "yuan",
+      "status": "present",
+      "nil_reason": null
+    },
+    "lineage_paths": [
+      {
+        "from": [
+          "SYS",
+          "K1",
+          "v2"
+        ],
+        "via": "RUN-A-NOV3",
+        "fact_key": [
+          "S3-DRAFT",
+          "loanBalance"
+        ],
+        "submission": "S3-DRAFT",
+        "contribution": "90.00",
+        "unit": "yuan"
+      },
+      {
+        "from": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "via": "RUN-A-NOV3",
+        "fact_key": [
+          "S3-DRAFT",
+          "loanBalance"
+        ],
+        "submission": "S3-DRAFT",
+        "contribution": "20.00",
+        "unit": "yuan"
+      }
+    ],
+    "submission_state": {
+      "S1": "business-accepted",
+      "S2": "transport-received-business-pending"
+    },
+    "current_business_accepted_submission_id": "S1",
+    "current_accepted_amount": null,
+    "accepted_amount_unknown_reason": "S1 payload amount was not supplied; calculated S2/draft S3 must not be substituted.",
+    "s2_supersedes_s1": true,
+    "business_acceptance_not_inferred_from": [
+      "passed local check",
+      "transport receipt received",
+      "SUPERSEDES edge"
+    ],
+    "blocked_publication": false
+  },
+  "nov3_missing_unit": {
+    "run_id": "RUN-A-MISSING-UNIT",
+    "logic_version": "independent-selected-instant-balance-1",
+    "as_of": "2026-10-31T23:59:59+08:00",
+    "known_at": "2026-11-03T18:00:00+08:00",
+    "input_snapshot_hash": "9d7bb037d1505cc8e3f5e7a26d2d23e2bc6fb6e23b301a9c869dd029336c821e",
+    "selected_source_versions": [
+      [
+        "SYS",
+        "K1",
+        "v2"
+      ],
+      [
+        "SYS",
+        "K2",
+        "v1"
+      ]
+    ],
+    "duplicate_replays_ignored": 1,
+    "unique_source_version_count": 3,
+    "source_contributions": [
+      {
+        "source_record_key": [
+          "SYS",
+          "K1",
+          "v2"
+        ],
+        "amount": "90.00",
+        "currency": "CNY",
+        "unit": null,
+        "conversion_reference": null
+      },
+      {
+        "source_record_key": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "amount": "20.00",
+        "currency": "CNY",
+        "unit": "yuan",
+        "conversion_reference": "same-unit"
+      }
+    ],
+    "reported_fact": {
+      "submission_id": "S3-BLOCKED",
+      "fact_id": "loanBalance",
+      "metric_key": [
+        "DEMO-R1:loanBalance",
+        "synthetic-1"
+      ],
+      "context_id": "CTX-C1-DEMO-R1-20261031",
+      "value": null,
+      "currency": "CNY",
+      "unit": "yuan",
+      "status": "blocked",
+      "nil_reason": "missing source unit: SYS/K1/v2"
+    },
+    "lineage_paths": [
+      {
+        "from": [
+          "SYS",
+          "K1",
+          "v2"
+        ],
+        "via": "RUN-A-MISSING-UNIT",
+        "fact_key": [
+          "S3-BLOCKED",
+          "loanBalance"
+        ],
+        "submission": "S3-BLOCKED",
+        "contribution": "90.00",
+        "unit": null
+      },
+      {
+        "from": [
+          "SYS",
+          "K2",
+          "v1"
+        ],
+        "via": "RUN-A-MISSING-UNIT",
+        "fact_key": [
+          "S3-BLOCKED",
+          "loanBalance"
+        ],
+        "submission": "S3-BLOCKED",
+        "contribution": "20.00",
+        "unit": "yuan"
+      }
+    ],
+    "submission_state": {
+      "S1": "business-accepted",
+      "S2": "transport-received-business-pending"
+    },
+    "current_business_accepted_submission_id": "S1",
+    "current_accepted_amount": null,
+    "accepted_amount_unknown_reason": "S1 payload amount was not supplied; calculated S2/draft S3 must not be substituted.",
+    "s2_supersedes_s1": true,
+    "business_acceptance_not_inferred_from": [
+      "passed local check",
+      "transport receipt received",
+      "SUPERSEDES edge"
+    ],
+    "blocked_publication": true
+  }
+}

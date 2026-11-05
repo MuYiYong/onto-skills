@@ -248,6 +248,25 @@ def validate_knowledge(asset, catalog):
     return errors
 
 
+def knowledge_catalog(path, root):
+    """Find a development source index in the asset's closest knowledge scope."""
+    knowledge = (Path(root) / 'knowledge').absolute()
+    path = Path(path).absolute()
+    if not path.resolve().is_relative_to(knowledge.resolve()):
+        raise ValueError('knowledge asset escapes knowledge tree')
+    for parent in path.parents:
+        if not parent.is_relative_to(knowledge):
+            break
+        candidate = parent / 'standards/sources.json'
+        if candidate.exists() or candidate.is_symlink():
+            if candidate.is_symlink() or not candidate.resolve().is_relative_to(knowledge.resolve()):
+                raise ValueError('source catalog symlink or path escapes knowledge tree')
+            if not candidate.is_file():
+                raise ValueError('source catalog must be a file')
+            return candidate
+    raise ValueError('missing knowledge source catalog in asset scope')
+
+
 def validate_repository(root):
     root = Path(root)
     errors = []
@@ -273,7 +292,7 @@ def validate_repository(root):
     for path in (root / 'knowledge').rglob('*.json'):
         try:
             asset = json.loads(path.read_text())
-            catalog = json.loads((root / 'knowledge/finance/standards/sources.json').read_text())
+            catalog = json.loads(knowledge_catalog(path, root).read_text())
             errors.extend(f'{path}: {e}' for e in validate_knowledge(asset, catalog))
         except (ValueError, OSError) as exc:
             errors.append(f'{path}: {exc}')

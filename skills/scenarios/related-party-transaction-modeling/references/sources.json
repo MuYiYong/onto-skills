@@ -1,0 +1,79 @@
+{
+  "id": "finance-related-parties-sources",
+  "name": "金融related-parties来源",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "金融专项知识；源版本与访问范围独立记录",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-related",
+    "nfra-related-2025",
+    "cas36",
+    "mof-related-state",
+    "mof-annual-2024"
+  ],
+  "sources": [
+    {
+      "id": "onto-related",
+      "name": "Onto Skills 关联交易证据模型",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "有效时点/已知时点证据、路径去重、合成例子",
+      "authority": "原创建模与候选分析，不作最终关联方法律认定",
+      "kind": "project-curated"
+    },
+    {
+      "id": "nfra-related-2025",
+      "name": "国家金融监督管理总局关于修改部分规章的决定及重公布的关联交易管理办法",
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1209888&generaltype=0&itemId=928",
+      "version": "国家金融监督管理总局令2025年第4号，2025-05-15；网站2025-05-20发布；2022年第1号规则第一次修正",
+      "publisher": "国家金融监督管理总局",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "中国银行保险关联交易监管；包括2025年第四十五条治理程序修正",
+      "authority": "官方修订与重公布文本；机构类型、交易分类、资本口径及程序适用需逐项确认",
+      "kind": "official-standard"
+    },
+    {
+      "id": "cas36",
+      "name": "企业会计准则第36号——关联方披露",
+      "uri": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "version": "财会〔2006〕3号；官方原页索引及后续官方解释定位，原页直接读取超时，适用时需复核相关解释",
+      "publisher": "中华人民共和国财政部",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "财务报表关联方披露及合并范围背景，区别于银行保险监管口径",
+      "authority": "官方准则索引；不是监管办法的替代，原页访问限制已保留",
+      "kind": "official-standard"
+    },
+    {
+      "id": "mof-related-state",
+      "name": "财政部会计司关联方咨询回复",
+      "uri": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm",
+      "version": "会计司咨询回复2024-01-17；2026-11-05核实",
+      "publisher": "中华人民共和国财政部会计司",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "同一母公司控制与仅同受国家控制的区分",
+      "authority": "官方说明，仅解释对应准则情形，不是所有国企关系的通用豁免",
+      "kind": "official-standard"
+    },
+    {
+      "id": "mof-annual-2024",
+      "name": "关于严格执行企业会计准则 切实做好企业2024年年报工作的通知",
+      "uri": "https://m.mof.gov.cn/czxw/202501/t20250106_3951168.htm",
+      "version": "官方页面2025-01-06；引用CAS36及解释12/13",
+      "publisher": "中华人民共和国财政部",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "提示关联方披露需结合后续准则解释",
+      "authority": "官方年报要求背景；本项目不复刻完整会计判断或阈值",
+      "kind": "official-standard"
+    }
+  ]
+}

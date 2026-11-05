@@ -1,0 +1,80 @@
+[
+  {
+    "command": "/bin/bash -lc pwd",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ec5959eba4381251ab9614e331afbf973773a14c0c4506b2adfd620b06c256b7"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "daf16edf5eabb9fd4b78d2d10bda604864e993b46b703cf591b71ef35263eddb"
+  },
+  {
+    "command": "/bin/bash -lc \"rg --files -g AGENTS.md -g '*.json' -g '*.md' .agents/skills/financial-regulatory-reporting\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "1f98b546339ad7897eafb1f22a386ce2c47302294a38044cfc087cf589f0a72b"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "874db300368bb2e9e88822293987a29e3777beb8da457b33ed2a42580eb77428"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/acceptance.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "02558925c4ff7f25d870228ff2bfbfc717d0c7228b376a13ccbd65d29d2cc5e4"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "dab801ae0386a00ef8e984ca6d0edf8e557466f8c865e4f5a1f32ab207cc9975"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/input.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "0ae53e75512f4767729d53c301f3183fe917bc291af70a62e0e3daa4e13247c1"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "40c08b008223f99048e388bfa904439bf72ce84fdfa1faed9809b2c113505363"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/graph-model.schema.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/graph-model.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "409a82d97110fdffdcd15f31da92c6ac8d68123c03e6abadf09d62239295d017"
+  },
+  {
+    "command": "/bin/bash -lc \"python3 -B - <<'PY'\nimport json\nfrom pathlib import Path\nbase = Path('.agents/skills/financial-regulatory-reporting')\nmodel = json.loads((base / 'examples/graph-model.json').read_text())\nprint(json.dumps({\n    'node_identities': [{\n        'name': n['name'],\n        'primary_key': n['primary_key'],\n        'properties': [p['name'] for p in n['properties']]\n    } for n in model['node_types']],\n    'edges': [{'name': e['name'], 'from': e['from'], 'to': e['to']} for e in model['edge_types']],\n    'assumptions': model['assumptions'],\n    'constraints': model['constraints']\n}, ensure_ascii=False))\nacceptance = json.loads((base / 'examples/acceptance.json').read_text())\nprint(json.dumps({'acceptance_cases': [{'id': c['id'], 'expected': c['expected'], 'reason': c['reason']} for c in acceptance['cases']]}, ensure_ascii=False))\nPY\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "28fc2c6557d715e1824e2556d1cd9fa12756a506bdca1b2e6fc2fe3df3a7c6d8"
+  }
+]

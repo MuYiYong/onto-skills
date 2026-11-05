@@ -1,0 +1,3 @@
+Use $logistics-domain-knowledge from .agents/skills/logistics-domain-knowledge to complete the task below using the supplied synthetic facts. Read its SKILL.md and relevant local references. All source/control identity and times not explicitly specified must be listed as assumptions/questions, not invented official requirements. Read ONLY this isolated project. Do not use networks, other skills, subagents, credentials/config, external tools or production systems. Do not modify files. Return only schema JSON.
+
+设计运输事件知识：shipment与consignment及SSCC标识物流单元不同，最终仓到达只有planned记录，港口已有actual卸货，较早事件晚到。整理身份、事件类别和时间表，判断现有事实是否足以证明最终送达。

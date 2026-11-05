@@ -1,0 +1,3 @@
+Use $manufacturing-domain-knowledge from .agents/skills/manufacturing-domain-knowledge to complete the task below using the supplied synthetic facts. Read its SKILL.md and relevant local references. All source/control identity and times not explicitly specified must be listed as assumptions/questions, not invented official requirements. Read ONLY this isolated project. Do not use networks, other skills, subagents, credentials/config, external tools or production systems. Do not modify files. Return only schema JSON.
+
+工厂批次RAW被一次混配/拆分成FG和返工批，返工再产出不同FG；另一无关批只使用同一台设备。给定材料只含批次本地号、site、source_system、quantity和unit。整理核心概念、身份、谱系、量纲及数据缺口，不把共享设备当谱系。

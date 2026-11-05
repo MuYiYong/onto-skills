@@ -1,6 +1,6 @@
 # 知识资产规范
 
-金融知识按 terminology、concepts、relationships、standards、examples 组织。按内容选择 Markdown、JSON、YAML、CSV、Turtle 或 OWL，不强制一种格式；第一阶段主要采用有元数据的 JSON，示例用 Markdown/JSON。
+各行业知识置于 `knowledge/<industry>/`，按 terminology、concepts、relationships、standards、examples 组织；无需为不存在的内容建空目录。金融专项可以使用 `knowledge/finance/<topic>/`。按内容选择 Markdown、JSON、YAML、CSV、Turtle 或 OWL，不强制一种格式；第一阶段主要采用有元数据的 JSON，示例用 Markdown/JSON。
 
 每个重要资产记录 id、name、version、source_ids、license、updated_at、scope、authority、classification。source_ids 指向 sources.json 内的来源：id、name、uri、version、publisher、license、retrieved_at、scope、authority、kind。知识条目也记录自己的来源与分类，不能仅给整个文档贴“官方”标签。
 
@@ -11,3 +11,5 @@ classification/kind：official-standard（有明确版本的规范定义）、in
 许可证：本项目原创摘要与例子为 MIT；不把第三方规范自动改成 MIT。仅保存标准索引、来源与自主解释；复制原文/本体前核查精确文件及其许可。unknown 表示未确认，不授权重新分发。FIBO 仓库 LICENSE 为 MIT，但链接的出版物与商标各自适用，当前不打包 FIBO 本体。
 
 同步：修改中心资产后显式更新 tests/content-validation/snapshots.json 指定的包内副本；差异检查会阻止遗漏。禁止通过 ../../knowledge 运行时访问。每个包单独复制后必须保有来源索引和基本知识。
+
+每个知识范围有自己的 `standards/sources.json`。开发校验从当前资产向上选择最近的来源目录，并要求它位于knowledge树内；缺失、畸形或软链接越界均报错，不回退到另一行业的金融来源。包内仅携带自己的来源和所需知识副本，不运行该查找逻辑。

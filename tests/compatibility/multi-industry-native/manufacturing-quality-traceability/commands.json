@@ -1,0 +1,56 @@
+[
+  {
+    "command": "/bin/bash -lc pwd",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "a157ab5643c734801e28044b21a97964b00bcad6e4ad1e151034d524ba2f7b0a"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "2a4738e707ed41db7d581643a8388d0949a7fafc827feab6398d66282a49cfc8"
+  },
+  {
+    "command": "/bin/bash -lc 'rg --files .agents/skills/manufacturing-quality-traceability'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d7047ef3c9f281d23f40eaf68d91de78c9fbd43502306727ee4bfa672d1bfd02"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ee943bb907439d1a69fbb85e23d488398040ca3f13a5b0e90c27948f3794783f"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "a7ba4f50166b715259cb43b0f7d9256c9d38ab731bdf91955b5fc4c20a985068"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "0c1e9f91374ccac61305a320da65abf646923cab97e9712065cfea6c9c26d306"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/references/fixture-contract.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "e9f98660ed7ddd8b39027fa19476ee561283778c6ec0548aa26e8b8819eaea30"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "05fc78883979f6c11e0e8258bd483f71b20d8b0baf41766ec5de6b7be35702b4"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/manufacturing-quality-traceability/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "164a282562b3474f1073a79044e1f6ab27a7f3c92ec4af3f728cbd51c3a67c7c"
+  }
+]

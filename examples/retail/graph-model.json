@@ -1,0 +1,2045 @@
+{
+  "spec_version": "1.0",
+  "model_id": "retail-inventory-replenishment",
+  "version": "1.0.0",
+  "graph_type": "RetailInventoryEvidence",
+  "description": "项目原创合成示例；数据库中立，不等同标准模式或执行证明。",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创行业知识与合成示例",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-curation-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "数据库中立业务模型、方法、参数化教学例子",
+      "authority": "项目原创合成例子和建模方法，无外部规范效力"
+    },
+    {
+      "id": "gs1-epcis",
+      "name": "GS1 EPCIS Standard",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/epcis/",
+      "version": "2.0; ratified Jun 2022",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "可见性事件、eventTime/recordTime/eventTimeZoneOffset 背景；不是全量 EPCIS 实现",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "gs1-cbv",
+      "name": "GS1 Core Business Vocabulary Standard",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/cbv/",
+      "version": "2.0; ratified Jun 2022",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "EPCIS 业务步骤与状态的词汇背景；不把 CBV reserving/reserved 当作零售库存预留",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "gs1-architecture",
+      "name": "GS1 System Architecture",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/architecture/system-architecture/",
+      "version": "12.0.0; October 2024",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "标识粒度与 GTIN/GLN/SSCC/GSIN/GINC 对象范围；不验证 GS1 分配或条码合规",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "gs1-traceability",
+      "name": "GS1 Global Traceability Standard",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/global-traceability/2.0.0/",
+      "version": "2.0 (version URL 2.0.0); ratified August 2017",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "追溯粒度与主体、物品、地点、时间、业务上下文；非地区合规规则",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "ProductSKU",
+      "business_meaning": "商家商品管理身份，和可选贸易项目身份分别保存",
+      "identity_scope": "merchant_id+sku",
+      "primary_key": [
+        "merchant_id",
+        "sku"
+      ],
+      "properties": [
+        {
+          "name": "merchant_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商家命名空间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sku",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定内部SKU",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "gtin",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "经核实的可选GTIN字符串，不去前导零",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        },
+        {
+          "name": "base_unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "示例基础计量单位EA；不是自动单位换算规则",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Location",
+      "business_meaning": "有独立库存责任的门店/仓库",
+      "identity_scope": "operator_id+location_id",
+      "primary_key": [
+        "operator_id",
+        "location_id"
+      ],
+      "properties": [
+        {
+          "name": "operator_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "运营方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "location_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定地点号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "physical_gln",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "经核实用途为物理地点的可选GLN",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "InventoryLot",
+      "business_meaning": "商品范围内可追溯批次",
+      "identity_scope": "merchant_id+sku+lot_issuer+lot_id",
+      "primary_key": [
+        "merchant_id",
+        "sku",
+        "lot_issuer",
+        "lot_id"
+      ],
+      "properties": [
+        {
+          "name": "merchant_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商家范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sku",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "批次所属SKU",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "lot_issuer",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "批次分配方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "lot_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "批次字符串",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "expiry_date",
+          "logical_type": "date",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "来源有证据时记录到期日期",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "StockPosition",
+      "business_meaning": "给定SKU/地点/批次/状态/单位的库存粒度",
+      "identity_scope": "所有键字段共同定义一份库存；跨粒度不隐式聚合",
+      "primary_key": [
+        "merchant_id",
+        "sku",
+        "location_id",
+        "lot_issuer",
+        "lot_id",
+        "condition",
+        "unit"
+      ],
+      "properties": [
+        {
+          "name": "merchant_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商家范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sku",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商品",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "location_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "地点",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "lot_issuer",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "批次分配方",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "lot_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "批次",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "condition",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "sellable/damaged/quarantine；在途不属于实存状态",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "该粒度数量单位",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "StockSnapshot",
+      "business_meaning": "覆盖边界明确的库存截面测量",
+      "identity_scope": "source_system+snapshot_id",
+      "primary_key": [
+        "source_system",
+        "snapshot_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "盘点来源",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "snapshot_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定快照号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC截面时间，已覆盖<=该时点的运动",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC本分析看到测量的时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "非负十进制测量数量，不能当作增量累加",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始来源记录或审计定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "StockMovement",
+      "business_meaning": "一次完整、可幂等的库存业务运动，posting不拆分提交",
+      "identity_scope": "source_system+event_id；重放去重但保留负载冲突",
+      "primary_key": [
+        "source_system",
+        "event_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "库存来源系统",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定业务运动号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "receipt/sale/return/damage/disposal/reversal 等项目类型",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC实际发生时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reverses_event_key",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "reversal精确引用source_system:event_id",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_fingerprint",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "包含全部postings的语义负载摘要；不含重投递observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始来源记录或审计定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Reservation",
+      "business_meaning": "某预留身份的一个不可变状态版本",
+      "identity_scope": "source_system+reservation_id+revision",
+      "primary_key": [
+        "source_system",
+        "reservation_id",
+        "revision"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "预留来源",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reservation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定预留号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单调递增状态版本",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "active/released/fulfilled/cancelled",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "非负预留数量；不改变实存",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC有效区间开始",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "UTC区间结束；null明确表示未结束",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC该版本被观察的时点",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始来源记录或审计定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "CommerceLine",
+      "business_meaning": "订单、销售或退货的商业行；类型明确且不自动记库存",
+      "identity_scope": "source_system+document_id+line_id+kind",
+      "primary_key": [
+        "source_system",
+        "document_id",
+        "line_id",
+        "kind"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商业系统范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "document_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单据号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "line_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单据内行号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "purchase_order/sales_order/sale/return/advance_dispatch，意义不互换",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单据数量，须伴quantity_unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity_unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商业数量单位",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "可选金额；与库存数量分开",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "金额存在时必须有币种",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "商业业务时点",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "证据可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ReplenishmentPolicy",
+      "business_meaning": "用户提供并带有效期的补货口径",
+      "identity_scope": "merchant_id+policy_id+revision",
+      "primary_key": [
+        "merchant_id",
+        "policy_id",
+        "revision"
+      ],
+      "properties": [
+        {
+          "name": "merchant_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "政策范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "policy_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定政策号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "政策版本",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "available_rule",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "本例仅允许sellable_on_hand_minus_active_reserved",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "阈值单位",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reorder_point",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "严格小于才触发的用户阈值",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "target_available",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "建议补足到的可用量目标，不是自动采购量",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC有效开始",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "UTC有效结束；null表示未结束",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ReplenishmentSignal",
+      "business_meaning": "可解释的复核信号，不是采购订单",
+      "identity_scope": "run_id+position_key+policy_id",
+      "primary_key": [
+        "run_id",
+        "position_key",
+        "policy_id"
+      ],
+      "properties": [
+        {
+          "name": "run_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "一次分析运行",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "position_key",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "明确序列化的库存复合键",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "policy_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "所用政策",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "as_of",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务评价时点",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "known_as_of",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "证据截点",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "available",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "合格实存减有效预留",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "suggested_quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "目标可用量减当前可用量，仅供复核",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "建议数量单位",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "order_created",
+          "logical_type": "boolean",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "固定false；需要用户另外授权和执行系统",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "PositionSKU",
+      "business_meaning": "库存粒度所属商品",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockPosition",
+      "to": "ProductSKU",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "PositionLocation",
+      "business_meaning": "库存责任地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockPosition",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "PositionLot",
+      "business_meaning": "批次关联，不按lot_id单字段合并",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockPosition",
+      "to": "InventoryLot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "SnapshotPosition",
+      "business_meaning": "一次测量对应唯一粒度",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockSnapshot",
+      "to": "StockPosition",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "Posting",
+      "business_meaning": "原子事件内的一条有符号数量posting",
+      "identity_scope": "完整运动来源身份+posting_index唯一；同事件重复postings不可折叠，所有postings共用原子边界",
+      "primary_key": [
+        "source_system",
+        "event_id",
+        "posting_index"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "posting_index",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原子事件内稳定且唯一的posting序号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity_delta",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "有符号实存变动，禁止混单位",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "必须等于目标StockPosition.unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原子运动来源系统",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原子运动来源事件号",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockMovement",
+      "to": "StockPosition",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "Reverses",
+      "business_meaning": "一次有效冲正对应原始完整事件",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockMovement",
+      "to": "StockMovement",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..1 valid reversal"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "ReservationPosition",
+      "business_meaning": "预留状态适用可销售库存粒度",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "有效区间上界；null 明确表示尚未结束",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Reservation",
+      "to": "StockPosition",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "event_time",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "MovementCommerce",
+      "business_meaning": "实物运动的可选商业依据，不再次计算单据数量",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "StockMovement",
+      "to": "CommerceLine",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "CommerceSKU",
+      "business_meaning": "商业行所属商品",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CommerceLine",
+      "to": "ProductSKU",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CommerceLocation",
+      "business_meaning": "商业行涉及的库存地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CommerceLine",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ReturnOf",
+      "business_meaning": "return行引用原sale行；不证明可销售退回",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CommerceLine",
+      "to": "CommerceLine",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "PolicySKU",
+      "business_meaning": "政策适用商品",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ReplenishmentPolicy",
+      "to": "ProductSKU",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "PolicyLocation",
+      "business_meaning": "政策适用地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ReplenishmentPolicy",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "SignalPosition",
+      "business_meaning": "信号引用计算粒度",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ReplenishmentSignal",
+      "to": "StockPosition",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "SignalPolicy",
+      "business_meaning": "信号引用明确政策版本",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ReplenishmentSignal",
+      "to": "ReplenishmentPolicy",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "ret-grain",
+      "subject": "node:StockPosition",
+      "rule": "stock grain=(merchant_id,sku,location_id,lot_issuer,lot_id,condition,unit)。未知lot与已知lot分开，跨SKU/地点/批次/状态/单位不相加。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "ret-quantity",
+      "subject": "model",
+      "rule": "quantity、delta、reserved、阈值采用精确十进制，不用二进制浮点累计。未提供换算则整事件拒绝混单位posting。币种金额不进入库存数量公式。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-time",
+      "subject": "model",
+      "rule": "全部日期时间转UTC；无偏移拒绝。事件按event_time<=as_of和observed_at<=known_as_of过滤。snapshot同样受双时点控制。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ]
+    },
+    {
+      "id": "ret-snapshot",
+      "subject": "node:StockSnapshot",
+      "rule": "每个StockPosition取最新event_time的有效快照；同一时点冲突数量隔离。快照已覆盖event_time<=锚时点的运动，不相加多快照；先于/等于锚的晚到运动只进入对账。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-idempotent",
+      "subject": "node:StockMovement",
+      "rule": "相同source_system+event_id且完整postings语义一致重放只计一次；不同observed_at不改变负载。负载冲突整键隔离，不能first/last写胜出。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-atomic",
+      "subject": "edge:Posting",
+      "rule": "Posting关系身份必须覆盖source_system+event_id+posting_index；一事件全部posting同时验证后才纳入，任一无效则零posting生效。damage同sku/location/lot/unit中sellable负数与damaged正数净和0。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-reversal",
+      "subject": "edge:Reverses",
+      "rule": "reversal必须精确反向原事件全部posting，引用已知非reversal事件、同粒度单位、event_time不早于原事件；一原事件最多一个有效reversal。未知/重复/部分冲正整事件拒绝。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-reservation",
+      "subject": "node:Reservation",
+      "rule": "按source_system+reservation_id取known_as_of可见且valid_from<=as_of的最高revision；同版本冲突不得任意选择。active且valid_from<=as_of<valid_to或null才扣减，fulfilled/released不扣。此为业务库存预留，不等同CBV reserving/reserved。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "gs1-cbv"
+      ]
+    },
+    {
+      "id": "ret-available",
+      "subject": "model",
+      "rule": "仅用户明确available_rule=sellable_on_hand_minus_active_reserved时计算available=sellable_on_hand-reserved。不截断负数；damaged/quarantine、在途、订单量不加入。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-signal",
+      "subject": "node:ReplenishmentSignal",
+      "rule": "available<reorder_point才生成信号，suggested_quantity=target_available-available；需target>=reorder_point>=0。order_created固定false；在途仅单列，不自动抵消建议。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-commerce",
+      "subject": "node:CommerceLine",
+      "rule": "单据行不直接改变库存；sale/return与StockMovement关联不重复计算。金额有值时currency必填，quantity_unit必填；跨币种不聚合。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-completeness",
+      "subject": "model",
+      "rule": "缺少必需粒度快照、单位政策、冲突预留或无法保证movement完整性时输出不足/对账缺口，不将缺失当0；本例仅提供有锚粒度的有界离线计算。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-temporal-edge",
+      "subject": "edge:ReservationPosition",
+      "rule": "边event_time取reservation.valid_from，valid_to取reservation.valid_to，observed_at取该版本观察时点；bitemporal不是完整系统时间历史，不能覆盖旧版本。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "ret-no-runtime",
+      "subject": "model",
+      "rule": "应用层约束与离线合成验收不是实际数据库执行、标准认证、库存审计或自动采购授权。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map-gtin",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Trade item class / GTIN",
+      "target": "property:ProductSKU.gtin",
+      "status": "approximated",
+      "explanation": "SKU是商家范围内部身份，GTIN只作可选外部映射，包装等级与分配需另验。",
+      "constraint_ids": [
+        "ret-grain"
+      ]
+    },
+    {
+      "id": "map-gln",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Physical location / GLN",
+      "target": "property:Location.physical_gln",
+      "status": "approximated",
+      "explanation": "仅使用已核实的物理地点用途，GLN其他用途另建主体模型。",
+      "constraint_ids": [
+        "ret-grain"
+      ]
+    },
+    {
+      "id": "map-lot",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Trade item batch or lot / GTIN+AI10",
+      "target": "node:InventoryLot",
+      "status": "approximated",
+      "explanation": "内部SKU+分配方+lot不是GS1复合键编码；只能近似对象粒度，不能丢SKU范围。",
+      "constraint_ids": [
+        "ret-grain"
+      ]
+    },
+    {
+      "id": "map-event-time",
+      "source_id": "gs1-epcis",
+      "source_term": "eventTime and recordTime",
+      "target": "node:StockMovement",
+      "status": "approximated",
+      "explanation": "事件发生与本分析观察时间分别保留；本模型不实现EPCIS原生事件或捕获接口。",
+      "constraint_ids": [
+        "ret-time"
+      ]
+    },
+    {
+      "id": "map-trace",
+      "source_id": "gs1-traceability",
+      "source_term": "traceability object identification levels and event context",
+      "target": "node:StockPosition",
+      "status": "approximated",
+      "explanation": "采用批次和地点追溯原则，库存/预留/补货规则完全是项目政策，不是GTS官方定义。",
+      "constraint_ids": [
+        "ret-grain",
+        "ret-available"
+      ]
+    }
+  ],
+  "assumptions": [
+    "内部SKU/地点/lot都是合成身份；没有假设已获配GS1键。",
+    "快照完整覆盖其event_time及以前实际运动，后续运动输入在给定来源范围完整。",
+    "本例建议以单SKU/地点/lot/EA可销售粒度计算；多批次策略需另外明确，不把unknown lot合并。",
+    "available政策和阈值均为示例用户明确给定；在途单列且不净抵建议。"
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "截至评价时点和证据截点，可销售实存与有效预留分别多少？",
+    "损坏退货和在途是否被错误计入可用？",
+    "哪笔原子运动/冲正影响了本次建议？",
+    "给定用户阈值触发什么建议，是否创建订单？"
+  ]
+}

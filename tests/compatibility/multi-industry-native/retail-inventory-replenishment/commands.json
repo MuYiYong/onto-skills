@@ -1,0 +1,50 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "8306639bf6d63688732d4d46038403f74e10d786401741a788457ba011bed419"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "2aa453b702f97e854c52ecf951a45ada865c11cca9e57b8e339a8d3f447b48bb"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "a4db5061a44115cee5c45a3dba443caaf63bcd2cd1b14f2cb869f05425862cc7"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "71e802616b049fbe4683e1424e89edf68cdf6a828e7df95ff29e67fbe6b8109a"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "557f237db31b6fcdccebdc8c1cf17314178e3b05ed6ec9f3810b0b8c245f6e93"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/retail-inventory-replenishment/examples/acceptance.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "763954f2249baef6ee09e26e286bbef301bdb20604e2f3e1519e780e75830a37"
+  },
+  {
+    "command": "/bin/bash -lc \"python3 -B -c 'import json; from pathlib import Path; p=Path(\\\".agents/skills/retail-inventory-replenishment/examples/acceptance.json\\\"); d=json.loads(p.read_text()); keys={\\\"ret-supplied-example\\\", \\\"ret-reservation-state\\\", \\\"ret-threshold-equality\\\"}; print(json.dumps([{k:c[k] for k in (\\\"id\\\", \\\"name\\\", \\\"expected\\\", \\\"reason\\\")} for c in d[\\\"cases\\\"] if c[\\\"id\\\"] in keys], ensure_ascii=False))'\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "4b64ed0340b436a6180ea29282d177c9df8763a0abdeebbd856dabd81e90c7df"
+  }
+]

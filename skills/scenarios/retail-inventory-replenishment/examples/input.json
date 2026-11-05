@@ -1,0 +1,224 @@
+{
+  "scenario": "retail-inventory-replenishment",
+  "as_of": "2026-11-05T12:00:00Z",
+  "known_as_of": "2026-11-05T12:00:00Z",
+  "stock_scope": {
+    "merchant_id": "MERCHANT-A",
+    "sku": "SKU-OAT-1",
+    "location_id": "STORE-A",
+    "lot_issuer": "MILL-A",
+    "lot_id": "LOT-20261101",
+    "unit": "EA"
+  },
+  "policy": {
+    "policy_id": "POLICY-OAT-A",
+    "revision": 1,
+    "available_rule": "sellable_on_hand_minus_active_reserved",
+    "reorder_point": "12",
+    "target_available": "30",
+    "unit": "EA"
+  },
+  "snapshots": [
+    {
+      "source_system": "wms",
+      "snapshot_id": "count-sellable",
+      "event_time": "2026-11-05T08:00:00Z",
+      "observed_at": "2026-11-05T08:01:00Z",
+      "quantity": "20",
+      "merchant_id": "MERCHANT-A",
+      "sku": "SKU-OAT-1",
+      "location_id": "STORE-A",
+      "lot_issuer": "MILL-A",
+      "lot_id": "LOT-20261101",
+      "condition": "sellable",
+      "unit": "EA"
+    },
+    {
+      "source_system": "wms",
+      "snapshot_id": "count-damaged",
+      "event_time": "2026-11-05T08:00:00Z",
+      "observed_at": "2026-11-05T08:01:00Z",
+      "quantity": "2",
+      "merchant_id": "MERCHANT-A",
+      "sku": "SKU-OAT-1",
+      "location_id": "STORE-A",
+      "lot_issuer": "MILL-A",
+      "lot_id": "LOT-20261101",
+      "condition": "damaged",
+      "unit": "EA"
+    }
+  ],
+  "movements": [
+    {
+      "source_system": "pos",
+      "event_id": "sale-1",
+      "kind": "sale",
+      "event_time": "2026-11-05T09:00:00Z",
+      "observed_at": "2026-11-05T09:01:00Z",
+      "postings": [
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "sellable",
+          "unit": "EA",
+          "quantity_delta": "-7"
+        }
+      ]
+    },
+    {
+      "source_system": "pos",
+      "event_id": "sale-1",
+      "kind": "sale",
+      "event_time": "2026-11-05T09:00:00Z",
+      "observed_at": "2026-11-05T09:02:00Z",
+      "postings": [
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "sellable",
+          "unit": "EA",
+          "quantity_delta": "-7"
+        }
+      ]
+    },
+    {
+      "source_system": "wms",
+      "event_id": "receipt-1",
+      "kind": "receipt",
+      "event_time": "2026-11-05T10:00:00Z",
+      "observed_at": "2026-11-05T10:00:00Z",
+      "postings": [
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "sellable",
+          "unit": "EA",
+          "quantity_delta": "5"
+        }
+      ]
+    },
+    {
+      "source_system": "wms",
+      "event_id": "damage-1",
+      "kind": "damage",
+      "event_time": "2026-11-05T10:30:00Z",
+      "observed_at": "2026-11-05T10:30:00Z",
+      "postings": [
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "sellable",
+          "unit": "EA",
+          "quantity_delta": "-3"
+        },
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "damaged",
+          "unit": "EA",
+          "quantity_delta": "3"
+        }
+      ]
+    },
+    {
+      "source_system": "wms",
+      "event_id": "return-1",
+      "kind": "return",
+      "event_time": "2026-11-05T09:30:00Z",
+      "observed_at": "2026-11-05T11:30:00Z",
+      "postings": [
+        {
+          "merchant_id": "MERCHANT-A",
+          "sku": "SKU-OAT-1",
+          "location_id": "STORE-A",
+          "lot_issuer": "MILL-A",
+          "lot_id": "LOT-20261101",
+          "condition": "damaged",
+          "unit": "EA",
+          "quantity_delta": "2"
+        }
+      ]
+    }
+  ],
+  "reservations": [
+    {
+      "source_system": "oms",
+      "reservation_id": "reserve-1",
+      "revision": 1,
+      "status": "active",
+      "quantity": "4",
+      "valid_from": "2026-11-05T08:30:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-05T08:31:00Z",
+      "merchant_id": "MERCHANT-A",
+      "sku": "SKU-OAT-1",
+      "location_id": "STORE-A",
+      "lot_issuer": "MILL-A",
+      "lot_id": "LOT-20261101",
+      "condition": "sellable",
+      "unit": "EA"
+    }
+  ],
+  "in_transit": [
+    {
+      "source_system": "tms",
+      "record_id": "inbound-1",
+      "merchant_id": "MERCHANT-A",
+      "lot_issuer": "MILL-A",
+      "sku": "SKU-OAT-1",
+      "location_id": "STORE-A",
+      "lot_id": "LOT-20261101",
+      "unit": "EA",
+      "outstanding_quantity": "12",
+      "observed_at": "2026-11-05T10:00:00Z",
+      "expected_arrival": "2026-11-06T08:00:00Z"
+    }
+  ],
+  "commercial_lines": [
+    {
+      "source_system": "pos",
+      "document_id": "SALE-1",
+      "line_id": "1",
+      "kind": "sale",
+      "sku": "SKU-OAT-1",
+      "quantity": "7",
+      "quantity_unit": "EA",
+      "amount": "62.30",
+      "currency": "CNY",
+      "movement_key": "pos:sale-1"
+    },
+    {
+      "source_system": "oms",
+      "document_id": "ORDER-9",
+      "line_id": "1",
+      "kind": "sales_order",
+      "sku": "SKU-OAT-1",
+      "quantity": "5",
+      "quantity_unit": "EA",
+      "amount": "44.50",
+      "currency": "CNY"
+    }
+  ],
+  "context": {
+    "identity_namespace": "urn:example:onto-skills:retail; no allocated GS1 codes claimed",
+    "snapshot_coverage": "Each snapshot includes all physical movements at event_time <= its timestamp; late pre-anchor messages require reconciliation.",
+    "movement_completeness": "All in-scope movements after snapshot through as_of supplied for this synthetic example.",
+    "unknown_lot_policy": "Do not merge unknown with this known lot.",
+    "unit_conversion": "None supplied; EA is an explicit example unit."
+  }
+}

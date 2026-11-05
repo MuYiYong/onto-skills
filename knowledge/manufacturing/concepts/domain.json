@@ -1,0 +1,116 @@
+{
+  "id": "manufacturing-domain",
+  "name": "manufacturing curated domain knowledge",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Database-neutral business semantics; bounded synthetic industry scenarios",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "gs1-epcis",
+    "opc-isa95",
+    "isa95-overview"
+  ],
+  "records": [
+    {
+      "id": "material-lot-identity",
+      "name": "物料定义与批次身份",
+      "record_type": "concept",
+      "summary": "Separate material definition from a physical lot. Use source system + site + lot identifier; split, merge and rework produce explicit new lot identities rather than renaming inputs.",
+      "source_ids": [
+        "opc-isa95",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "event-genealogy",
+      "name": "投入、产出与转化",
+      "record_type": "relationship",
+      "summary": "Connect input/output lots through source-identified process events. Classify production, consumption, transformation, split, merge and rework; equipment sharing alone creates no material ancestry.",
+      "source_ids": [
+        "gs1-epcis",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "equipment-role",
+      "name": "设备与生产角色",
+      "record_type": "concept",
+      "summary": "Separate equipment/resource identity, site and production-order role from material identity. Resource reuse does not merge products.",
+      "source_ids": [
+        "opc-isa95",
+        "isa95-overview",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "quantity-reconciliation",
+      "name": "数量与单位核对",
+      "record_type": "rule",
+      "summary": "Keep quantity as decimal text, unit and declared conversion policy on each material participation. Reconcile like quantities only under a declared conservation basis; do not add kg to pieces.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "loss-coproduct",
+      "name": "损耗、副产物与返工",
+      "record_type": "rule",
+      "summary": "Account for scrap, retained material, declared loss and coproducts. Trace each terminal lot once; intermediate inventory plus its descendants is not a valid final exposure sum.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "inspection-evidence",
+      "name": "检验证据",
+      "record_type": "concept",
+      "summary": "Preserve measured value, unit, method, sample scope, event time, observed_at and local specification version. Pass/fail and sampling do not automatically clear an upstream recall.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "recall-scope",
+      "name": "召回候选范围",
+      "record_type": "relationship",
+      "summary": "Follow material genealogy, retaining evidence paths and lot status. Distinguish candidate exposure, quarantine, authorized recall decision and actual recovery; no automatic production command.",
+      "source_ids": [
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "event-observation-clock",
+      "name": "事件与已知时间",
+      "record_type": "rule",
+      "summary": "event_time is when the operation occurred; observed_at is when the source record became known. Late records are excluded from historical knowledge snapshots and then included on refresh.",
+      "source_ids": [
+        "gs1-epcis",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    },
+    {
+      "id": "standards-boundary",
+      "name": "标准适用边界",
+      "record_type": "standard-index",
+      "summary": "GS1 indexes EPCIS 2.0.1 as a visibility-event release; OPC 10030 presents ISA-95 resource categories. Neither is cited as prescribing local inspection limits, recall policy or this graph schema.",
+      "source_ids": [
+        "gs1-epcis",
+        "opc-isa95",
+        "isa95-overview",
+        "onto-project"
+      ],
+      "classification": "project-curated"
+    }
+  ]
+}

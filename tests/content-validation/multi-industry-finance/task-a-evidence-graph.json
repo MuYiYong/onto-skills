@@ -1,0 +1,138 @@
+{
+  "identity_keys": {
+    "ReportingEntity": [
+      "independent-synthetic",
+      "C1"
+    ],
+    "ReportDefinition": [
+      "CN-regulator-unspecified",
+      "DEMO-R1",
+      "synthetic-1"
+    ],
+    "MetricDefinition": [
+      "DEMO-R1:loanBalance",
+      "synthetic-1"
+    ],
+    "ReportContext": [
+      "CTX-C1-DEMO-R1-20261031"
+    ],
+    "SourceRecord": [
+      "source_system",
+      "record_id",
+      "source_version"
+    ],
+    "ReportedFact": [
+      "submission_id",
+      "fact_id"
+    ]
+  },
+  "context": {
+    "context_id": "CTX-C1-DEMO-R1-20261031",
+    "entity_id": "C1",
+    "scope": "individual-C1",
+    "period_kind": "instant",
+    "period_start": null,
+    "period_end": "2026-10-31T23:59:59+08:00",
+    "timezone": "Asia/Shanghai",
+    "dimensions": {}
+  },
+  "run_fact_edges": [
+    {
+      "edge": "DERIVED_BY",
+      "from": [
+        "S2",
+        "loanBalance"
+      ],
+      "to": "RUN-A-NOV1"
+    },
+    {
+      "edge": "DERIVED_BY",
+      "from": [
+        "S3-DRAFT",
+        "loanBalance"
+      ],
+      "to": "RUN-A-NOV3"
+    }
+  ],
+  "contribution_edges": [
+    {
+      "edge": "CONSUMES_RECORD",
+      "from": "RUN-A-NOV1",
+      "to": [
+        "SYS",
+        "K1",
+        "v1"
+      ],
+      "contribution": "80.00",
+      "conversion_reference": "same-unit"
+    },
+    {
+      "edge": "CONSUMES_RECORD",
+      "from": "RUN-A-NOV1",
+      "to": [
+        "SYS",
+        "K2",
+        "v1"
+      ],
+      "contribution": "20.00",
+      "conversion_reference": "same-unit"
+    },
+    {
+      "edge": "CONSUMES_RECORD",
+      "from": "RUN-A-NOV3",
+      "to": [
+        "SYS",
+        "K1",
+        "v2"
+      ],
+      "contribution": "90.00",
+      "conversion_reference": "same-unit"
+    },
+    {
+      "edge": "CONSUMES_RECORD",
+      "from": "RUN-A-NOV3",
+      "to": [
+        "SYS",
+        "K2",
+        "v1"
+      ],
+      "contribution": "20.00",
+      "conversion_reference": "same-unit"
+    }
+  ],
+  "submission_edges": [
+    {
+      "edge": "SUPERSEDES",
+      "from": "S2",
+      "to": "S1"
+    }
+  ],
+  "receipt_edges": [
+    {
+      "edge": "ACKNOWLEDGES",
+      "from": "BUSINESS-S1",
+      "to": "S1",
+      "kind": "business",
+      "status": "accepted"
+    },
+    {
+      "edge": "ACKNOWLEDGES",
+      "from": "TRANSPORT-S2",
+      "to": "S2",
+      "kind": "transport",
+      "status": "received"
+    }
+  ],
+  "local_check_edges": [
+    {
+      "edge": "CHECKS_FACT",
+      "from": "LOCAL-S2",
+      "to": [
+        "S2",
+        "loanBalance"
+      ],
+      "result": "passed"
+    }
+  ],
+  "state_result": "S2 supersedes S1 as a proposed revision; S1 remains the current business-accepted submission until S2 obtains qualifying business acceptance."
+}

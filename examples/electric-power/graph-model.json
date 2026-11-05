@@ -1,0 +1,1541 @@
+{
+  "spec_version": "1.0",
+  "model_id": "power-outage-impact",
+  "version": "1.0.0",
+  "graph_type": "PowerOutageImpact",
+  "description": "Database-neutral, aggregate versioned topology for outage candidate and restoration evidence analysis; not load-flow or operational control.",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original industry modeling methods",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "Original knowledge summaries, models, examples and acceptance rules",
+      "authority": "Original Onto Skills guidance, no standards conformity claim"
+    },
+    {
+      "id": "iec-cim-base",
+      "name": "IEC 61970-301:2020 CIM base",
+      "kind": "official-standard",
+      "uri": "https://webstore.iec.ch/en/publication/62698",
+      "version": "IEC 61970-301:2020 edition 7.0; model IEC61970CIM17v38 per public abstract",
+      "publisher": "IEC TC 57",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Public abstract identifies CIM resource classes, attributes and relationships for utility integration; full standard not accessed",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "iec-cim-amd1",
+      "name": "IEC 61970-301:2020/AMD1:2022",
+      "kind": "official-standard",
+      "uri": "https://webstore.iec.ch/en/publication/68639",
+      "version": "AMD1:2022; public catalogue also lists consolidated edition 7.1",
+      "publisher": "IEC TC 57",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Amendment/version index only; no claim of detailed conformance",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "entsoe-cgmes",
+      "name": "ENTSO-E Common Grid Model Exchange Standard Library",
+      "kind": "official-standard",
+      "uri": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/",
+      "version": "CGMES v3.0 / 3.0.0 branch observed 2026-11-05; applicability selected separately",
+      "publisher": "ENTSO-E",
+      "license": "Publisher terms differ by document/artifact; no third-party artifacts redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official exchange-profile/version context; distribution outage example is not a certified CGMES dataset",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "TopologyVersion",
+      "business_meaning": "Immutable coherent topology and effective/observation window",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "version_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Owning utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable snapshot ID",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive topology applicability",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive applicability; null explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Snapshot received at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original source receipt",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Equipment",
+      "business_meaning": "Durable electrical asset, including source, line, switch and DER roles",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "equipment_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "equipment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Durable asset key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "source, line, switch or DER in this bounded profile",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Display label, never identity",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "rated_value",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Optional rating; not used as an operational limit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "rated_unit",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Unit for rated_value, never inferred",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Asset register source key",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Terminal",
+      "business_meaning": "Equipment connection end; its connection may change by topology version",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "terminal_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "terminal_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Durable terminal key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sequence",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Endpoint ordinal within the asset",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "phase_scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Phase applicability; example is aggregate only",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original terminal record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ConnectivityNode",
+      "business_meaning": "Topological junction identity, distinct from source or service point",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "connectivity_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "connectivity_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Junction key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "voltage_value",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Nominal voltage for context",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "voltage_unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Explicit voltage unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original connectivity record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "StateObservation",
+      "business_meaning": "Time-bounded switch/source/DER state evidence",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "state_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "state_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable observation key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "state",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "closed/open/unknown for switch; available/unavailable/unknown for source/DER",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Compatible topology version",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive state applicability",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive end; null explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "When evidence became known",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Observation origin, quality and uncertainty",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Circuit",
+      "business_meaning": "Business circuit scope, not a guarantee of present electrical connection",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "circuit_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "circuit_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Circuit key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original circuit record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ServicePoint",
+      "business_meaning": "Physical service connection used for impact candidates",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "service_point_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "service_point_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Service connection key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original service record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Customer",
+      "business_meaning": "Customer business identity; one customer may have many service points",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "customer_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "customer_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Verified customer key; example is synthetic",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original customer record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "OutageEvent",
+      "business_meaning": "Planned removal or actual asset unavailability event, separate from customer interruption",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "outage_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "outage_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable event key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "planned or actual",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC event start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "end_time",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive end if known; null ongoing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Event receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Evidence and quality; plan does not prove interruption",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "RestorationSegment",
+      "business_meaning": "Observed interruption interval for one or more service points, not a switching command",
+      "identity_scope": "Stable identity within the utility/source namespace; preserve source keys and do not merge on display names",
+      "primary_key": [
+        "utility_id",
+        "segment_id"
+      ],
+      "properties": [
+        {
+          "name": "utility_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Utility namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "segment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source segment key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "interrupted_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive actual interruption start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "restored_at",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive restoration time; null explicitly not confirmed",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Service observation supporting actual interval",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "IN_VERSION",
+      "from": "Equipment",
+      "to": "TopologyVersion",
+      "direction": "outgoing",
+      "business_meaning": "Asset participates in this snapshot",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "TERMINAL_OF",
+      "from": "Terminal",
+      "to": "Equipment",
+      "direction": "outgoing",
+      "business_meaning": "Terminal belongs to asset in this topology",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable topology version carried by this relation",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "1 active asset per version",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "CONNECTS_TO",
+      "from": "Terminal",
+      "to": "ConnectivityNode",
+      "direction": "outgoing",
+      "business_meaning": "Terminal is connected to junction in this snapshot",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable topology version carried by this relation",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "1 active junction per version",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "STATE_OF",
+      "from": "StateObservation",
+      "to": "Equipment",
+      "direction": "outgoing",
+      "business_meaning": "Observation applies to this asset",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "ON_CIRCUIT",
+      "from": "ServicePoint",
+      "to": "Circuit",
+      "direction": "outgoing",
+      "business_meaning": "Effective business circuit scope",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable topology version carried by this relation",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "ATTACHED_TO",
+      "from": "ServicePoint",
+      "to": "ConnectivityNode",
+      "direction": "outgoing",
+      "business_meaning": "Service physical connection for this version",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable topology version carried by this relation",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "1 active junction per version",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "CUSTOMER_SERVICE",
+      "from": "Customer",
+      "to": "ServicePoint",
+      "direction": "outgoing",
+      "business_meaning": "Effective customer responsibility for service point",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "OUTAGE_ON",
+      "from": "OutageEvent",
+      "to": "Equipment",
+      "direction": "outgoing",
+      "business_meaning": "Event removes asset availability, with planned/actual distinguished",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "SEGMENT_OF",
+      "from": "RestorationSegment",
+      "to": "OutageEvent",
+      "direction": "outgoing",
+      "business_meaning": "Observed service interruption attributed with evidence to outage",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "SEGMENT_SERVICE",
+      "from": "RestorationSegment",
+      "to": "ServicePoint",
+      "direction": "outgoing",
+      "business_meaning": "Service affected by measured interruption segment",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "topology-clock",
+      "subject": "model",
+      "rule": "Use one version valid at event_time and observed by knowledge_cutoff; filter every membership/state on the same two clocks. Incompatible or conflicting active versions reject analysis.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "state-unknown",
+      "subject": "node:StateObservation",
+      "rule": "Unknown or missing switch state creates possible adjacency only; unknown source/DER status creates possible supply only. Conflicting observations remain unresolved, never last-write guessed.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "equipment-path",
+      "subject": "node:Equipment",
+      "rule": "This aggregate example allows line/switch two-terminal assets and source/DER one-terminal assets. Exclude actual unavailable assets before reachability. Multi-terminal, phases, protection, capacity and islands require a richer study.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "planned-actual",
+      "subject": "node:OutageEvent",
+      "rule": "Evaluate planned removal as projected candidates and report actual_outage_count=0; asset outage is distinct from observed customer interruption.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "restore-union",
+      "subject": "node:RestorationSegment",
+      "rule": "Use only actual source-supported segments known by cutoff; union overlapping intervals per service point, preserve recurrence, and do not close an unknown end with a guessed timestamp.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "customer-scope",
+      "subject": "edge:CUSTOMER_SERVICE",
+      "rule": "Deduplicate customer candidates over valid service bindings; retain service and circuit scope, including boundary supply paths outside the requested customer reporting circuit.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "no-switching",
+      "subject": "model",
+      "rule": "Output candidate impacts and uncertainty only; do not emit operational switching instructions or claim safe energization.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "cim-context",
+      "source_id": "iec-cim-base",
+      "source_term": "CIM resources, attributes and relationships (public abstract)",
+      "target": "node:Equipment",
+      "status": "approximated",
+      "explanation": "Only a local asset-role projection; no class-level equivalence or normative cardinalities asserted.",
+      "constraint_ids": [
+        "equipment-path"
+      ]
+    },
+    {
+      "id": "cgmes-context",
+      "source_id": "entsoe-cgmes",
+      "source_term": "CGMES v3.0 exchange profile family",
+      "target": "node:TopologyVersion",
+      "status": "approximated",
+      "explanation": "Source/version context only. This is not a CGMES serialization, conformance result or distribution profile.",
+      "constraint_ids": [
+        "topology-clock"
+      ]
+    },
+    {
+      "id": "not-modeled",
+      "source_id": "iec-cim-base",
+      "source_term": "Detailed phase, protection, power-flow and all CIM packages",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "Full purchased standard was not accessed; these semantics are intentionally outside this example.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-equipment-key",
+      "source_id": "onto-project",
+      "source_term": "input.utility_id + input.equipment[].equipment_id",
+      "target": "node:Equipment",
+      "status": "preserved",
+      "explanation": "Preserve the utility-scoped source key; names are display only.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-terminal-connectivity",
+      "source_id": "onto-project",
+      "source_term": "input.terminals[].terminal_id/connectivity_id/version_id",
+      "target": "edge:CONNECTS_TO",
+      "status": "preserved",
+      "explanation": "Turn each source association into a versioned edge with its source interval and observation clock; do not infer omitted connections.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-state-observation",
+      "source_id": "onto-project",
+      "source_term": "input.states[]",
+      "target": "node:StateObservation",
+      "status": "preserved",
+      "explanation": "Retain state ID, version, validity, observed_at and evidence; the example state vocabulary is local.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-restoration-segment",
+      "source_id": "onto-project",
+      "source_term": "input.restoration_segments[]",
+      "target": "node:RestorationSegment",
+      "status": "preserved",
+      "explanation": "Preserve source segment identity and actual service evidence; do not substitute observation time for restoration time.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Synthetic utility U1; UTC half-open intervals; decimal values retain explicit units.",
+    "Reachability is a candidate screen: definitely reachable does not prove actual supply.",
+    "Immutable observations plus knowledge_cutoff provide a bounded as-known view, not a complete transaction-time database."
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "Which in-scope service points lose all known source paths after an actual asset outage?",
+    "Which candidates remain uncertain because of switch, DER or boundary-source evidence?",
+    "Which customers are candidates without double counting multiple service points?",
+    "What actual interruption durations are supported by restoration segments known at the selected cutoff?"
+  ]
+}

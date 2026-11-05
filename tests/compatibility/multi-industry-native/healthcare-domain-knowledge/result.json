@@ -1,0 +1,52 @@
+{
+  "skill_used": "healthcare-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "local:patient-record → Patient：来源范围内的患者记录，区别于跨系统个人身份和项目假名。题设两名患者共享联系方式；资源身份、identifier及active均未提供。classification=project-curated；source_ids=fhir-r4-patient,fhir-r4-resource,onto-project。",
+      "local:encounter → Encounter：具有独立身份和生命周期的就诊上下文。题设未提供具体就诊、status或患者关联；不能从医嘱推造就诊，重复就诊也不能按患者合并。classification=project-curated；source_ids=fhir-r4-encounter,onto-project。",
+      "local:service-request → ServiceRequest：服务请求，status与intent分别表达请求状态和意图。已知status=revoked；intent、doNotPerform及关联引用未知，不补成已执行事实。classification=project-curated；source_ids=fhir-r4-servicerequest,fhir-r4-request-status,onto-project。",
+      "local:procedure → Procedure：独立的活动记录，其status区别于请求状态。题设没有Procedure；不生成completed或not-done记录，也不赋予执行时间。classification=project-curated；source_ids=fhir-r4-procedure,fhir-r4-event-status,onto-project。",
+      "local:observation → Observation：带状态及版本语义的观测记录。已知status=entered-in-error且缺少值；保留无效及缺值事实，dataAbsentReason、组件、代码和单位均未知。classification=project-curated；source_ids=fhir-r4-observation,fhir-r4-observation-status,onto-project。",
+      "local:provenance → Provenance：记录创建、修订及来源过程的证据。题设未提供该资源是否存在，也未提供target、agent或来源实体；不能补造责任主体、执行证据或授权。classification=model-inference；source_ids=fhir-r4-provenance,onto-project。"
+    ],
+    "decisions": [
+      "范围固定为随包HL7 FHIR R4 4.0.1，仅整理合成数据的概念与证据边界；不混用R5或开发版定义，不作临床建议。",
+      "映射preserved：保留revoked、entered-in-error、缺值、没有Procedure及共享联系方式这些输入事实，不将状态或缺失改写为其他含义。标准语义来源为本包对应R4摘要；事实来源为用户。",
+      "反例一：revoked请求加上没有Procedure，只能支持所供数据没有执行记录，不能证明实际从未执行，也不能生成not-done或completed Procedure。classification=project-curated；source_ids=fhir-r4-servicerequest,fhir-r4-procedure,fhir-r4-request-status,onto-project。",
+      "反例二：entered-in-error使该Observation不能作为有效测量证据；缺值也不等于0、阴性或正常。建议保留历史审计并排除出有效测量视图，不能自行恢复旧版本充当当前结果。状态语义源于R4，视图及历史策略属于项目建模建议。source_ids=fhir-r4-observation,fhir-r4-observation-status,onto-project。",
+      "根value[x]与dataAbsentReason的obs-6约束：dataAbsentReason只能在根value[x]缺失时出现；不能反推缺值必须填写该字段，更不能自动赋unknown。组件需单独核对。classification=official-standard；source_ids=fhir-r4-observation。",
+      "反例三：共享联系方式不足以证明同一人。按题设保留两名患者，不自动合并，不借用包内示例的患者假名或crosswalk。classification=project-curated；source_ids=fhir-r4-patient,onto-project。",
+      "关系仅依据明确提供并可解析的subject、encounter、basedOn、target等引用建立；本题关联未知。不能按联系方式、相近时间或相同代码补连。classification=model-inference；source_ids=onto-project。",
+      "条件正例，仅用于规则复核：若另有独立completed Procedure及明确basedOn引用，可按项目口径记录有完成记录；请求后来revoked不抹除这条独立证据。当前题设没有该Procedure。classification=project-curated；source_ids=fhir-r4-procedure,onto-project。",
+      "映射unmapped：跨系统个人身份、未提供的引用和完整来源控制信息尚未建立映射；完整profile、扩展、签名及术语绑定也未评审。保留原始JSON本身不能补足这些语义。classification=model-inference；source_ids=fhir-r4-resource,onto-project。"
+    ]
+  },
+  "identity_rules": [
+    "建议用经确认的来源范围、resourceType、id共同定位源资源，另用meta.versionId区分版本；这是建模键建议。实际服务器base URL、来源范围及所有资源id/versionId均未知，不生成替代值。classification=project-curated；source_ids=fhir-r4-resource,onto-project。",
+    "Patient.identifier是业务标识，须按已确认的system及签发范围解释；资源id、业务标识、项目假名和自然人身份不能互换。跨系统关联需要获授权的映射证据；本题没有此证据。classification=project-curated；source_ids=fhir-r4-patient,fhir-r4-datatypes,onto-project。",
+    "meta.versionId不能按数字或字典序推定当前版本，也不是FHIR版本或术语版本。权威current声明和历史可用性未知；缺失版本时不得把入库时间伪装成versionId，独立快照策略需另行确认。classification=project-curated；source_ids=fhir-r4-resource,onto-project。",
+    "建议Provenance关联精确资源版本，以支持更正追踪；这是项目建议，不将其宣称为所有R4 target均须带版本的强制要求。记录来源不等于读取、披露或撤回授权，也不证明医疗活动发生。classification=model-inference；source_ids=fhir-r4-provenance,onto-project。"
+  ],
+  "time_and_units": [
+    "全部实际时间均未提供。Encounter.period、ServiceRequest.authoredOn及occurrence[x]分别表示就诊期间、请求形成时间及请求的发生安排；它们不能充当已执行时间。source_ids=fhir-r4-encounter,fhir-r4-servicerequest。",
+    "没有Procedure，因此没有performed[x]证据；请求撤销时间也未知，不能用authoredOn代替。source_ids=fhir-r4-procedure,fhir-r4-servicerequest。",
+    "Observation.effective[x]表示临床相关时间，issued表示该版本结果可用时间；均未知，不能互相替代或由缺值推算。source_ids=fhir-r4-observation。",
+    "Provenance.recorded是来源记录的记录时间；meta.lastUpdated是资源版本更新时间；项目入库时间是另一时钟。相关时间及来源活动发生时间均未知，不视为观测或执行时间。source_ids=fhir-r4-provenance,fhir-r4-resource,onto-project。",
+    "时间choice类型、精度、区间和时区均待确认；不补午夜、不默认时区、不用入库时间填临床时间。该保留策略属于project-curated。source_ids=fhir-r4-datatypes,onto-project。",
+    "代码system/version/code及Quantity的value、comparator、unit、system/code均未提供；保持未知，不按显示文本认定术语或单位等价，不补数值或执行换算。classification=project-curated；source_ids=fhir-r4-datatypes,onto-project。"
+  ],
+  "source_limits": [
+    "仅只读本项目内该技能的SKILL.md、references/domain.json、references/sources.json、references/method.md及examples/worked-example.md；未修改文件，未联网，未访问其他技能、凭据配置或生产系统。",
+    "official-standard表示本包标注的R4标准语义；本次依据本地摘要及来源目录，未核验外链正文。project-curated和model-inference分别表示项目整理与建模推断，不作为官方强制要求或当地政策。",
+    "local:*仅是本答复的概念标签，不是实际资源id、患者假名或官方标准IRI；示例中的身份、版本、单位和时间未移植为本题事实。",
+    "本次完成的是离线语义核对及条件正反例复核，不构成完整FHIR验证、临床有效性判断或合规认证。包内来源日期也不是本题业务时间。"
+  ],
+  "unresolved": [
+    "待确认：来源系统及服务器base URL、机构或租户范围、来源权威控制方；不假设这些身份已存在或已获授权。",
+    "待确认：各资源id、meta.versionId、业务identifier命名空间、权威current依据、历史版本及更正链；不从状态或导入顺序补造。",
+    "待确认：两名患者与请求、观测、就诊的明确引用；患者跨系统映射及其授权证据未提供，共享联系方式不补足这些信息。",
+    "待确认：请求intent、doNotPerform、撤销原因；Observation缺值原因、组件、代码和单位；Encounter及Provenance是否有实际资源。未知字段不自动赋默认业务事实。",
+    "待确认：所有临床、请求安排、报告、撤销、更正、来源记录及入库时间，以及精度和时区；当前不建立事件先后顺序。",
+    "待确认：当地实施指南、来源更正或撤回主体及权限、有效视图口径、历史保留和披露政策；本包建议不替代这些控制要求。"
+  ]
+}

@@ -1,0 +1,1489 @@
+{
+  "spec_version": "1.0",
+  "model_id": "manufacturing-quality-traceability",
+  "version": "1.0.0",
+  "graph_type": "ManufacturingTraceability",
+  "description": "Original synthetic lot/event genealogy with quantity reconciliation, sample evidence and bounded recall candidates; no standards-compliant message or production control.",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original industry modeling methods",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "Original knowledge summaries, models, examples and acceptance rules",
+      "authority": "Original Onto Skills guidance, no standards conformity claim"
+    },
+    {
+      "id": "gs1-epcis",
+      "name": "GS1 EPCIS Standard Archive",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/epcis/archive",
+      "version": "2.0.1 published 2025-07-01 per archive, observed 2026-11-05",
+      "publisher": "GS1",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official visibility-event version index; local lot graph is not an EPCIS-compliant event serialization",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "opc-isa95",
+      "name": "OPC UA Common Object Model: ISA-95",
+      "kind": "official-standard",
+      "uri": "https://reference.opcfoundation.org/specs/OPC-10030/full",
+      "version": "OPC 10030 v1.00 as displayed; applicability selected separately",
+      "publisher": "OPC Foundation",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Public scope and resource separation for material, equipment and manufacturing operations; no full companion-model implementation",
+      "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "isa95-overview",
+      "name": "ISA-95 Enterprise-Control System Integration overview",
+      "kind": "industry-common",
+      "uri": "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard",
+      "version": "Live overview observed 2026-11-05; no single part/edition implied",
+      "publisher": "International Society of Automation",
+      "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "Official overview only; select applicable ISA-95 part and edition for a compliance task",
+      "authority": "Official ISA overview for orientation; no normative part/edition or local quality authority implied"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "MaterialDefinition",
+      "business_meaning": "Material/product definition, not an inventory lot",
+      "identity_scope": "Definition ID within issuer namespace",
+      "primary_key": [
+        "source_system",
+        "material_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Issuer namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "material_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Definition key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Business description",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "base_unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Declared base quantity unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "MaterialLot",
+      "business_meaning": "Physical batch/lot identity; split and rework outputs retain distinct keys",
+      "identity_scope": "source_system + site_id + lot_id; local IDs across sites never collapse",
+      "primary_key": [
+        "source_system",
+        "site_id",
+        "lot_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Issuer namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "site_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Site where identity is issued",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "lot_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Lot/batch key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "received, intermediate, released, shipped, held or scrap",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original lot record",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ProductionOrder",
+      "business_meaning": "Business production authorization, distinct from execution event",
+      "identity_scope": "Order ID within source namespace",
+      "primary_key": [
+        "source_system",
+        "order_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "ERP issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "order_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Order key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "planned_quantity",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Optional planned output, never counted as actual",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Planned quantity unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ProcessEvent",
+      "business_meaning": "Immutable production, consumption, transformation, split, merge or rework event",
+      "identity_scope": "source_system + event_id; exact duplicate is idempotent, conflicting payload rejects",
+      "primary_key": [
+        "source_system",
+        "event_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "MES/event issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable event key for idempotency",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "production, consumption, transformation, split, merge or rework",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC execution time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source record receipt",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "conservation_basis",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "mass or not_applicable; locally declared",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "declared_loss",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Explicit loss beyond output scrap; zero is explicit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "loss_unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Unit of declared_loss",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original execution/source evidence",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Equipment",
+      "business_meaning": "Reusable physical/role resource, never a material-lot equivalence",
+      "identity_scope": "Resource ID within issuer namespace",
+      "primary_key": [
+        "source_system",
+        "equipment_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Asset issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "equipment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Resource key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "equipment_role",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Locally declared manufacturing role",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Site",
+      "business_meaning": "Manufacturing or storage location namespace",
+      "identity_scope": "Site ID within issuer namespace",
+      "primary_key": [
+        "source_system",
+        "site_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Location issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "site_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Site key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Display name",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Inspection",
+      "business_meaning": "Measured result and sample evidence for a specific lot",
+      "identity_scope": "Inspection ID within QMS namespace",
+      "primary_key": [
+        "source_system",
+        "inspection_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "QMS issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "inspection_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable inspection key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "metric",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Measured characteristic",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "value",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Measured value, decimal not binary float",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Measurement unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "method",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Method and sample scope",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Sample/test time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reported_result",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "pass, fail or unknown; requires governing local specification",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "QualitySpecification",
+      "business_meaning": "Local approved quality rule; not inferred from EPCIS/ISA-95",
+      "identity_scope": "Issuer + specification ID + version; do not rewrite historical limits",
+      "primary_key": [
+        "source_system",
+        "specification_id",
+        "version"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local QMS issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "specification_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local rule key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Immutable local version",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "metric",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Metric under test",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "limit_value",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Example limit chosen locally",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Comparable measurement unit",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "operator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local comparison operator",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive effective time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive effective end; null continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "approval_evidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Owner approval evidence; synthetic in example",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "RecallCase",
+      "business_meaning": "Authorized investigation case with seed lots and candidate scope",
+      "identity_scope": "Recall ID within case issuer namespace",
+      "primary_key": [
+        "source_system",
+        "recall_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Case issuer",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "recall_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Case key",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "opened_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Case opening time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "investigation, authorized or closed",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Investigation basis, not proof of product defect",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "LOT_OF",
+      "from": "MaterialLot",
+      "to": "MaterialDefinition",
+      "direction": "outgoing",
+      "business_meaning": "Lot classifies under a material definition",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CONSUMED_BY",
+      "from": "MaterialLot",
+      "to": "ProcessEvent",
+      "direction": "outgoing",
+      "business_meaning": "Actual input lot participation; not a pairwise same-equipment link",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Actual material participation quantity; no planned quantity substitution",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Explicit quantity unit; conversion requires declared factor and basis",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "PRODUCED",
+      "from": "ProcessEvent",
+      "to": "MaterialLot",
+      "direction": "outgoing",
+      "business_meaning": "Actual output lot participation, including scrap/coproduct",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quantity",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Actual material participation quantity; no planned quantity substitution",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Explicit quantity unit; conversion requires declared factor and basis",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "EXECUTES_ORDER",
+      "from": "ProcessEvent",
+      "to": "ProductionOrder",
+      "direction": "outgoing",
+      "business_meaning": "Execution linked to business order",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "USES_EQUIPMENT",
+      "from": "ProcessEvent",
+      "to": "Equipment",
+      "direction": "outgoing",
+      "business_meaning": "Resource usage evidence without ancestry semantics",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "EQUIPMENT_AT",
+      "from": "Equipment",
+      "to": "Site",
+      "direction": "outgoing",
+      "business_meaning": "Effective resource location",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "LOT_AT",
+      "from": "MaterialLot",
+      "to": "Site",
+      "direction": "outgoing",
+      "business_meaning": "Effective lot location; identity never inferred from movement",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inclusive UTC effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive UTC end; null means explicitly continuing",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "INSPECTS",
+      "from": "Inspection",
+      "to": "MaterialLot",
+      "direction": "outgoing",
+      "business_meaning": "Inspection sample/test targets lot",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "TESTS_AGAINST",
+      "from": "Inspection",
+      "to": "QualitySpecification",
+      "direction": "outgoing",
+      "business_meaning": "Exact local specification version used by result",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "RECALL_SEED",
+      "from": "RecallCase",
+      "to": "MaterialLot",
+      "direction": "outgoing",
+      "business_meaning": "Confirmed investigation starting lot; descendants are separate candidates",
+      "identity_scope": "Relation record ID within the source namespace; repeat events keep separate identities",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source-identified relation record, not only the endpoint pair",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC business event time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC source observation/receipt time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "lot-identity",
+      "subject": "node:MaterialLot",
+      "rule": "Never merge lots by product, label, equipment or local lot ID alone; qualify site/issuer and give new output lots to split/merge/rework.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "event-idempotency",
+      "subject": "node:ProcessEvent",
+      "rule": "Deduplicate identical issuer+event_id payloads. A conflicting duplicate is rejected, not counted or silently overwritten. Correction requires explicit supersession, absent from this bounded fixture.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "quantity-basis",
+      "subject": "model",
+      "rule": "Use decimal arithmetic; reject unit mixing without an explicit conversion factor for a compatible dimension. Missing quantity makes reconciliation incomplete, never zero.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "mass-balance",
+      "subject": "node:ProcessEvent",
+      "rule": "When conservation_basis=mass, sum input mass equals output mass plus declared_loss after approved conversions. Scrap is already an output and must not be counted again as declared_loss.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "genealogy-path",
+      "subject": "model",
+      "rule": "Traverse only known CONSUMED_BY→PRODUCED material paths. Sharing USES_EQUIPMENT never creates lot ancestry; reject cycles that reuse a lot identity as its own descendant.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "exposure-sum",
+      "subject": "model",
+      "rule": "Deduplicate candidate terminal released/shipped lots by qualified identity; do not sum intermediate lots together with descendants. Preserve unknown quantities as unknown totals.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "inspection-local",
+      "subject": "node:QualitySpecification",
+      "rule": "Use the supplied local specification version valid at inspection event_time; EPCIS/ISA-95 do not prescribe this example contaminant limit. A downstream pass does not automatically exempt an upstream recall.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "two-clocks",
+      "subject": "node:ProcessEvent",
+      "rule": "Keep event_time and observed_at distinct. Include only events at/before event_as_of and observed by knowledge_cutoff; do not fabricate unobserved paths.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "known-input-allocation",
+      "subject": "model",
+      "rule": "Across known events, a qualified input lot cannot consume more than known opening quantity plus known production. Missing producer observations leave stock completeness unproven. This bounded fixture fully consumes inputs; partial consumption requires explicit residual lots or allocation records before terminal exposure sums.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "material-context",
+      "source_id": "opc-isa95",
+      "source_term": "Material Information and Equipment Information",
+      "target": "node:MaterialLot",
+      "status": "approximated",
+      "explanation": "Conceptual distinction from public resource scope only; no OPC UA type equivalence or node-set conformance.",
+      "constraint_ids": [
+        "lot-identity"
+      ]
+    },
+    {
+      "id": "event-context",
+      "source_id": "gs1-epcis",
+      "source_term": "Visibility event data",
+      "target": "node:ProcessEvent",
+      "status": "approximated",
+      "explanation": "Local event/observation clocks and material participation are a modeling projection, not an EPCIS event serialization.",
+      "constraint_ids": [
+        "two-clocks"
+      ]
+    },
+    {
+      "id": "equipment-context",
+      "source_id": "opc-isa95",
+      "source_term": "Equipment resource information",
+      "target": "node:Equipment",
+      "status": "approximated",
+      "explanation": "Keeps resources separate from material; not the full ISA-95 hierarchy.",
+      "constraint_ids": [
+        "genealogy-path"
+      ]
+    },
+    {
+      "id": "quality-not-standard",
+      "source_id": "isa95-overview",
+      "source_term": "Local quality thresholds and recall decisions",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "No official threshold is claimed; example limits require local owner approval.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-lot-key",
+      "source_id": "onto-project",
+      "source_term": "input.lots[].source_system/site_id/lot_id",
+      "target": "node:MaterialLot",
+      "status": "preserved",
+      "explanation": "Preserve the entire composite source identity; same local ID at another plant remains distinct.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-consumption",
+      "source_id": "onto-project",
+      "source_term": "input.events[].inputs[]",
+      "target": "edge:CONSUMED_BY",
+      "status": "preserved",
+      "explanation": "Retain qualified input lot, event identity, decimal quantity/unit and event/observation clocks; relation_id must retain the source participation key.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-production",
+      "source_id": "onto-project",
+      "source_term": "input.events[].outputs[]",
+      "target": "edge:PRODUCED",
+      "status": "preserved",
+      "explanation": "Retain distinct output lot identity, decimal quantity/unit and clocks; scrap is explicit output.",
+      "constraint_ids": []
+    },
+    {
+      "id": "source-local-specification",
+      "source_id": "onto-project",
+      "source_term": "input.quality_specifications[]",
+      "target": "node:QualitySpecification",
+      "status": "preserved",
+      "explanation": "Preserve the supplied immutable local rule version, unit and applicability; no official threshold is implied.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Synthetic plant P1 and MES namespace M1; UTC timestamps.",
+    "Every fixture transformation conserves mass in kg, including explicit scrap; no chemical or unit conversion rule is implied.",
+    "Candidate exposure includes terminal released/shipped lots; disposition and legal recall require authorized review.",
+    "Fixture inputs are fully consumed; partial residual inventory needs explicit residual lot/allocation semantics. Per-event balance does not itself prove inventory completeness."
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "Which released/shipped terminal lots descend from a suspect raw lot?",
+    "Does every split/merge/rework reconcile quantities under its declared basis?",
+    "Which evidence paths support a candidate, and which same-equipment lots remain unrelated?",
+    "What was knowable at the cutoff before late genealogy observations arrived?"
+  ]
+}

@@ -1,0 +1,1496 @@
+{
+  "spec_version": "1.0",
+  "model_id": "related-party-transaction-v1",
+  "version": "1.0.0",
+  "graph_type": "RelatedPartyTransactionEvidence",
+  "description": "项目原创数据库中立的有界业务模型；标准映射不是完整监管/会计实现",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-related",
+      "name": "Onto Skills 关联交易证据模型",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-worktree-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "有效时点/已知时点证据、路径去重、合成例子",
+      "authority": "原创建模与候选分析，不作最终关联方法律认定",
+      "kind": "project-curated"
+    },
+    {
+      "id": "nfra-related-2025",
+      "name": "国家金融监督管理总局关于修改部分规章的决定及重公布的关联交易管理办法",
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1209888&generaltype=0&itemId=928",
+      "version": "国家金融监督管理总局令2025年第4号，2025-05-15；网站2025-05-20发布；2022年第1号规则第一次修正",
+      "publisher": "国家金融监督管理总局",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "中国银行保险关联交易监管；包括2025年第四十五条治理程序修正",
+      "authority": "官方修订与重公布文本；机构类型、交易分类、资本口径及程序适用需逐项确认",
+      "kind": "official-standard"
+    },
+    {
+      "id": "cas36",
+      "name": "企业会计准则第36号——关联方披露",
+      "uri": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "version": "财会〔2006〕3号；官方原页索引及后续官方解释定位，原页直接读取超时，适用时需复核相关解释",
+      "publisher": "中华人民共和国财政部",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "财务报表关联方披露及合并范围背景，区别于银行保险监管口径",
+      "authority": "官方准则索引；不是监管办法的替代，原页访问限制已保留",
+      "kind": "official-standard"
+    },
+    {
+      "id": "mof-related-state",
+      "name": "财政部会计司关联方咨询回复",
+      "uri": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm",
+      "version": "会计司咨询回复2024-01-17；2026-11-05核实",
+      "publisher": "中华人民共和国财政部会计司",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "同一母公司控制与仅同受国家控制的区分",
+      "authority": "官方说明，仅解释对应准则情形，不是所有国企关系的通用豁免",
+      "kind": "official-standard"
+    },
+    {
+      "id": "mof-annual-2024",
+      "name": "关于严格执行企业会计准则 切实做好企业2024年年报工作的通知",
+      "uri": "https://m.mof.gov.cn/czxw/202501/t20250106_3951168.htm",
+      "version": "官方页面2025-01-06；引用CAS36及解释12/13",
+      "publisher": "中华人民共和国财政部",
+      "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
+      "retrieved_at": "2026-11-05",
+      "scope": "提示关联方披露需结合后续准则解释",
+      "authority": "官方年报要求背景；本项目不复刻完整会计判断或阈值",
+      "kind": "official-standard"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Party",
+      "business_meaning": "有证据的法律主体或自然人身份",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "namespace",
+        "party_id"
+      ],
+      "properties": [
+        {
+          "name": "party_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "命名空间内身份",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "namespace",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源空间",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "party_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "legal_entity/person/state",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "display_name",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "不用于合并身份的名称",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "OwnershipPosition",
+      "business_meaning": "股权位置/关系出现，不自动等于控制",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "position_id"
+      ],
+      "properties": [
+        {
+          "name": "position_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源股权位置标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "percent",
+          "logical_type": "decimal",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "原始持股百分比",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "holding_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "ordinary/state_only",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "生效",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "排他结束；需约定空含义",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "获知时间",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "ControlAssessment",
+      "business_meaning": "带口径/证据的控制或影响判断",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "assessment_id"
+      ],
+      "properties": [
+        {
+          "name": "assessment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "评估标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "regime",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "选定制度",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "basis",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "经核实的控制依据",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "confirmed/pending/retracted",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "生效",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "排他结束",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "获知时间",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "RoleAssignment",
+      "business_meaning": "人员职责/任职及相关关系的证据记录",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "role_id"
+      ],
+      "properties": [
+        {
+          "name": "role_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "任职标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "role",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "董事/高管等选定角色",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "生效",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "结束",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "获知",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "Transaction",
+      "business_meaning": "来源事件版本，重复真实交易不折叠",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "source_system",
+        "tx_id",
+        "tx_version"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源系统",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "tx_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原交易标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "tx_version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "交易版本",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务发生时间",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "获知",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原币金额",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "币种",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "executed/reversed等原状态",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "unit",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "金额单位/倍率，独立于币种；无换算不能跨单位累加",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "change_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "original/correction/status_update/compensation，来自明确来源语义",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "revises_ref",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "显式旧source_system/tx_id/tx_version三元组；无法确认时为空而不猜测",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "reverses_ref",
+          "logical_type": "json",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "独立补偿事件所指的原交易版本三元组；状态修订不冒充补偿事件",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "Contract",
+      "business_meaning": "合同版本与交易事实分开",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "contract_id",
+        "contract_version"
+      ],
+      "properties": [
+        {
+          "name": "contract_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "合同标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "contract_version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "版本",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "agreement_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "签约时间",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "agreement_amount",
+          "logical_type": "decimal",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "合同口径金额",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "currency",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原币种",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "RuleSet",
+      "business_meaning": "明确地区、制度及适用版本",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "rule_id",
+        "version"
+      ],
+      "properties": [
+        {
+          "name": "rule_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "口径ID",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "version",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "版本",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "jurisdiction",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "地区",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "basis",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "regulatory/financial_statement",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "版本生效",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "结束",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "RelatedPartyAssessment",
+      "business_meaning": "可解释关联交易候选，不是违法认定",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "case_id"
+      ],
+      "properties": [
+        {
+          "name": "case_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "候选评估身份",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "as_of",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "业务判断时点",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "known_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "已知证据截止",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "decision",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "candidate/not_demonstrated/unknown",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "依据或缺口",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "reporting_scope",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单体/合并边界",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "RelationshipEvidence",
+      "business_meaning": "证明关系/反证的具体材料",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源证据身份",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "控制文件/任职/同地址等",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "uri",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "受控定位",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "content_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "摘要",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "confidence",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "匹配说明，不当通用法律概率",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "current/retracted",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "name": "ReviewDecision",
+      "business_meaning": "按版本与章程的人工治理流程记录",
+      "identity_scope": "来源命名空间内稳定业务/版本身份；不以展示名称或端点对合并",
+      "primary_key": [
+        "review_id"
+      ],
+      "properties": [
+        {
+          "name": "review_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "审查记录",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "decision",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "pending/approved/rejected",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "reviewed_at",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "待审为空",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "reviewer_role",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "实际审查机构/角色",
+          "source_ids": [
+            "onto-related"
+          ]
+        },
+        {
+          "name": "policy_version",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "程序适用版本",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "HAS_POSITION",
+      "to": "OwnershipPosition",
+      "business_meaning": "股权持有人",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Party"
+    },
+    {
+      "name": "INVESTEE",
+      "to": "Party",
+      "business_meaning": "股权被投资主体",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "OwnershipPosition"
+    },
+    {
+      "name": "CONTROLLER",
+      "to": "Party",
+      "business_meaning": "控制评估中的控制方",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ControlAssessment"
+    },
+    {
+      "name": "CONTROLLED",
+      "to": "Party",
+      "business_meaning": "被控制/影响方",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ControlAssessment"
+    },
+    {
+      "name": "HAS_ROLE",
+      "to": "RoleAssignment",
+      "business_meaning": "角色对应人员",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Party"
+    },
+    {
+      "name": "AT_ENTITY",
+      "to": "Party",
+      "business_meaning": "角色对应机构",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "RoleAssignment"
+    },
+    {
+      "name": "FROM_PARTY",
+      "to": "Party",
+      "business_meaning": "交易一方",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Transaction"
+    },
+    {
+      "name": "TO_PARTY",
+      "to": "Party",
+      "business_meaning": "交易另一方",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Transaction"
+    },
+    {
+      "name": "UNDER_CONTRACT",
+      "to": "Contract",
+      "business_meaning": "业务事件与合同金额分开",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Transaction"
+    },
+    {
+      "name": "ASSESSES_TRANSACTION",
+      "to": "Transaction",
+      "business_meaning": "候选回查单一交易事件版本",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "RelatedPartyAssessment"
+    },
+    {
+      "name": "USES_RULESET",
+      "to": "RuleSet",
+      "business_meaning": "保留监管/会计口径版本",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "RelatedPartyAssessment"
+    },
+    {
+      "name": "SUPPORTED_BY",
+      "to": "RelationshipEvidence",
+      "business_meaning": "控制结论具体证据",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ControlAssessment"
+    },
+    {
+      "name": "HAS_PATH_EVIDENCE",
+      "to": "RelationshipEvidence",
+      "business_meaning": "候选保留证据路径与反证",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "RelatedPartyAssessment"
+    },
+    {
+      "name": "REVIEWS",
+      "to": "RelatedPartyAssessment",
+      "business_meaning": "独立审查结论，不自动执行审批",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "ReviewDecision"
+    },
+    {
+      "name": "REVISES_TRANSACTION",
+      "to": "Transaction",
+      "business_meaning": "源版本更正/状态更新指向明确旧交易版本，保留原载荷",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Transaction"
+    },
+    {
+      "name": "REVERSES_TRANSACTION",
+      "to": "Transaction",
+      "business_meaning": "独立补偿事件回指原事件，币种/单位/金额作用及业务政策须另校验",
+      "identity_scope": "重复真实关系/事件保留不同link_id",
+      "primary_key": [
+        "link_id"
+      ],
+      "properties": [
+        {
+          "name": "link_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源可回查的关系/出现标识",
+          "source_ids": [
+            "onto-related"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-related"
+      ],
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      },
+      "from": "Transaction"
+    }
+  ],
+  "competency_questions": [
+    "在交易发生且当时已知的证据中，哪些交易存在经确认的控制路径？",
+    "共享电话、已到期控制或仅共同国家持股是否被错误当关联方？",
+    "多路径、事件重放与合并披露边界如何避免双计？"
+  ],
+  "assumptions": [
+    "演示只分析明确confirmed控制证据下的候选，不复刻监管/会计完整关联方定义、交易金额或程序判断。",
+    "图中持股、任职、控制评估与主体身份分开；不乘股权比例推定控制。",
+    "示例发生额仅使用executed原币事件，不能当监管合同/余额口径。",
+    "合成金额计算仅处理同一源业务事件的版本更新；独立补偿事件的净额/发生额/监管合同额规则必须另选，不能自动净抵监管统计。"
+  ],
+  "unresolved": [],
+  "constraints": [
+    {
+      "id": "C1",
+      "subject": "node:Transaction",
+      "rule": "每个事件恰有一个FROM_PARTY和TO_PARTY；同源版本重放必须内容一致，真实重复交易保留不同tx_id。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "C2",
+      "subject": "node:ControlAssessment",
+      "rule": "生效区间、observed_at、制度、状态与来源证据均满足时才可用于该快照；仅持股不生成confirmed。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "C3",
+      "subject": "node:RelatedPartyAssessment",
+      "rule": "候选保留制度与证据；共同国家持股单一事实不作通用关联推论，多路径不重复金额，币种分组。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "C4",
+      "subject": "node:ReviewDecision",
+      "rule": "按2025修正及实际机构、人员关系与章程确认审查程序；不把候选或旧豁免标签当审批完成。",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-related"
+      ]
+    },
+    {
+      "id": "C5",
+      "subject": "node:Transaction",
+      "rule": "同币种不同金额单位不得直接合计；correction/status_update须明确revises_ref，独立compensation须明确reverses_ref及获授权的金额作用政策；缺失/歧义/自循环引用不生成事实边。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-related"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map-rules",
+      "source_id": "nfra-related-2025",
+      "source_term": "2025修正关联交易规则和治理程序",
+      "target": "node:RuleSet",
+      "status": "approximated",
+      "explanation": "保留适用制度版本和独立审查；示例不覆盖全量关联方/交易分类及所有时限。",
+      "constraint_ids": []
+    },
+    {
+      "id": "map-state",
+      "source_id": "mof-related-state",
+      "source_term": "仅同受国家控制与其他关联关系区分",
+      "target": "node:ControlAssessment",
+      "status": "approximated",
+      "explanation": "演示排除仅有state_only证据的推断；附加关系仍单独复核。",
+      "constraint_ids": []
+    },
+    {
+      "id": "map-cas",
+      "source_id": "cas36",
+      "source_term": "关联方披露和合并报表边界",
+      "target": "node:RelatedPartyAssessment",
+      "status": "approximated",
+      "explanation": "财务披露与监管范围分开，不能自动共享豁免，后续准则解释需确认。",
+      "constraint_ids": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "finance-regulatory-domain",
+  "name": "金融regulatory业务知识",
+  "version": "1.0.0",
+  "license": "MIT (original summaries only; external sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "独立技能随包知识与模型取舍",
+  "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-reporting",
+    "nfra-statistics",
+    "bcbs239",
+    "bcbs239-2026",
+    "xbrl21",
+    "xbrl-essentials"
+  ],
+  "concepts": [
+    {
+      "id": "regime",
+      "name": "报送制度范围",
+      "meaning": "先选择监管机关、机构类型、单体/合并范围、报表制度与生效版本；示例DEMO-LINEAGE-01不是1104正式表号。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "nfra-statistics"
+      ]
+    },
+    {
+      "id": "definition",
+      "name": "指标定义",
+      "meaning": "ReportDefinition与MetricDefinition按版本单独标识，数值、公式及维度不能靠同名字段推定。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "xbrl21"
+      ]
+    },
+    {
+      "id": "context",
+      "name": "事实身份",
+      "meaning": "事实关联主体、时点/期间、范围和维度；单位独立保留。相同指标在不同上下文不是重复事实。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "xbrl21",
+        "xbrl-essentials"
+      ]
+    },
+    {
+      "id": "clocks",
+      "name": "双时钟",
+      "meaning": "有效/event_time决定业务归属；observed_at决定截止当时已知版本。晚到修订另建运行与更正，不覆盖原报送。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "id": "lineage",
+      "name": "可复现血缘",
+      "meaning": "源系统/记录/版本→转换运行→指标事实→提交修订→回执；保存逻辑版本、输入快照哈希和调节项。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "bcbs239",
+        "bcbs239-2026"
+      ]
+    },
+    {
+      "id": "amounts",
+      "name": "金额与缺失",
+      "meaning": "先确认币种、金额单位和余额/发生额口径。未知不置零；混币种无约定汇率时阻断汇总；不把授信加到贷款余额。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting"
+      ]
+    },
+    {
+      "id": "quality",
+      "name": "校验与责任",
+      "meaning": "把完整性、恒等/勾稽、历史波动、跨表一致性与责任确认独立建模，记录规则版本和差异原因。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "nfra-statistics",
+        "bcbs239"
+      ]
+    },
+    {
+      "id": "receipt",
+      "name": "传输与业务结果",
+      "meaning": "已发送/已收到不等于监管接受。提交载荷、传输回执和监管业务回执分别保留，拒绝不覆盖上一已接受版本。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "xbrl-essentials"
+      ]
+    },
+    {
+      "id": "jurisdiction",
+      "name": "适用性边界",
+      "meaning": "BCBS239原则及2026信息性通讯不能替代中国具体报表。阈值、校验公式、报送频率/截止与日历来自用户选定正式材料。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "bcbs239",
+        "bcbs239-2026"
+      ]
+    }
+  ]
+}

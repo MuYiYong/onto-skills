@@ -1,0 +1,336 @@
+{
+  "id": "electric-power-acceptance",
+  "name": "electric-power bounded semantic acceptance",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Offline synthetic reference cases; not native runtime or standards compliance",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project"
+  ],
+  "cases": [
+    {
+      "id": "unknown-tie-and-der",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json"
+      },
+      "expected": {
+        "status": "ok",
+        "mode": "actual",
+        "topology_version": "TV1",
+        "actual_outage_count": 1,
+        "disconnected_candidates": [],
+        "uncertain_service_points": [
+          "SP2"
+        ],
+        "unaffected_service_points": [
+          "SP1"
+        ],
+        "outside_scope_service_points": [
+          "SP3"
+        ],
+        "customer_candidates": [
+          "CUS2"
+        ],
+        "uncertainty_reasons": [
+          "DER-1:unknown_source",
+          "SW-TIE:unknown_switch"
+        ]
+      },
+      "reason": "Unknown tie and DER create possible supply; never infer connected or disconnected."
+    },
+    {
+      "id": "known-isolation",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "states/S-SW-TIE/state",
+            "value": "open"
+          },
+          {
+            "path": "states/S-DER-1/state",
+            "value": "unavailable"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "mode": "actual",
+        "topology_version": "TV1",
+        "actual_outage_count": 1,
+        "disconnected_candidates": [
+          "SP2"
+        ],
+        "uncertain_service_points": [],
+        "unaffected_service_points": [
+          "SP1"
+        ],
+        "outside_scope_service_points": [
+          "SP3"
+        ],
+        "customer_candidates": [
+          "CUS2"
+        ],
+        "uncertainty_reasons": []
+      },
+      "reason": "Known open tie and unavailable DER leave no possible supply path."
+    },
+    {
+      "id": "known-backfeed-path",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "states/S-SW-TIE/state",
+            "value": "closed"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "mode": "actual",
+        "topology_version": "TV1",
+        "actual_outage_count": 1,
+        "disconnected_candidates": [],
+        "uncertain_service_points": [],
+        "unaffected_service_points": [
+          "SP1",
+          "SP2"
+        ],
+        "outside_scope_service_points": [
+          "SP3"
+        ],
+        "customer_candidates": [],
+        "uncertainty_reasons": []
+      },
+      "reason": "Known tie path reaches alternate source outside reporting circuit; reachability still is not operational feasibility."
+    },
+    {
+      "id": "late-state-evidence",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "states/S-SW-TIE/state",
+            "value": "closed"
+          },
+          {
+            "path": "states/S-SW-TIE/observed_at",
+            "value": "2026-11-01T10:25:00Z"
+          },
+          {
+            "path": "states/S-DER-1/state",
+            "value": "unavailable"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "mode": "actual",
+        "topology_version": "TV1",
+        "actual_outage_count": 1,
+        "disconnected_candidates": [],
+        "uncertain_service_points": [
+          "SP2"
+        ],
+        "unaffected_service_points": [
+          "SP1"
+        ],
+        "outside_scope_service_points": [
+          "SP3"
+        ],
+        "customer_candidates": [
+          "CUS2"
+        ],
+        "uncertainty_reasons": [
+          "SW-TIE:missing_state"
+        ]
+      },
+      "reason": "A late closed-state receipt is unavailable at the historical cutoff; missing is unknown."
+    },
+    {
+      "id": "planned-is-projection",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "outages/O-A/event_kind",
+            "value": "planned"
+          }
+        ]
+      },
+      "expected": {
+        "status": "ok",
+        "mode": "planned",
+        "topology_version": "TV1",
+        "actual_outage_count": 0,
+        "disconnected_candidates": [],
+        "uncertain_service_points": [
+          "SP2"
+        ],
+        "unaffected_service_points": [
+          "SP1"
+        ],
+        "outside_scope_service_points": [
+          "SP3"
+        ],
+        "customer_candidates": [
+          "CUS2"
+        ],
+        "uncertainty_reasons": [
+          "DER-1:unknown_source",
+          "SW-TIE:unknown_switch"
+        ]
+      },
+      "reason": "Projected impact does not become an actual customer or asset interruption count."
+    },
+    {
+      "id": "outage-not-yet-known",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "knowledge_cutoff": "2026-11-01T10:10:00Z"
+        }
+      },
+      "expected": {
+        "status": "not_known",
+        "outage_id": "O-A"
+      },
+      "reason": "An actual event not observed by cutoff cannot be used in an as-known analysis."
+    },
+    {
+      "id": "incompatible-topology",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "patches": [
+          {
+            "path": "topology_versions/TV1/observed_at",
+            "value": "2026-11-01T10:25:00Z"
+          }
+        ]
+      },
+      "expected": {
+        "status": "rejected",
+        "reason": "no_unique_known_topology"
+      },
+      "reason": "No coherent topology known at cutoff blocks the analysis rather than borrowing future data."
+    },
+    {
+      "id": "restoration-recurrence",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "operation": "restoration",
+          "knowledge_cutoff": "2026-11-01T12:00:00Z",
+          "event_as_of": "2026-11-01T12:00:00Z"
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "minutes_by_service_point": {
+          "SP2": "40"
+        },
+        "closed_segment_count": 2,
+        "open_service_points": []
+      },
+      "reason": "Two separate actual interruption segments remain separate; union before duration totals."
+    },
+    {
+      "id": "restoration-known-cutoff",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "operation": "restoration",
+          "knowledge_cutoff": "2026-11-01T10:50:00Z",
+          "event_as_of": "2026-11-01T10:50:00Z"
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "minutes_by_service_point": {
+          "SP2": "20"
+        },
+        "closed_segment_count": 1,
+        "open_service_points": []
+      },
+      "reason": "The second segment receipt arrives later; its end and interval cannot be claimed as known."
+    },
+    {
+      "id": "overlapping-segment-union",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "input": {
+        "fixture": "input.json",
+        "query": {
+          "operation": "restoration",
+          "knowledge_cutoff": "2026-11-01T12:00:00Z",
+          "event_as_of": "2026-11-01T12:00:00Z"
+        },
+        "append": {
+          "restoration_segments": [
+            {
+              "segment_id": "R3",
+              "outage_id": "O-A",
+              "service_point_id": "SP2",
+              "event_kind": "actual",
+              "interrupted_from": "2026-11-01T10:20:00Z",
+              "restored_at": "2026-11-01T10:35:00Z",
+              "observed_at": "2026-11-01T10:36:00Z",
+              "evidence": "synthetic overlap"
+            }
+          ]
+        }
+      },
+      "expected": {
+        "status": "ok",
+        "minutes_by_service_point": {
+          "SP2": "45"
+        },
+        "closed_segment_count": 3,
+        "open_service_points": []
+      },
+      "reason": "Overlapping observations must not double count customer interruption minutes."
+    }
+  ]
+}

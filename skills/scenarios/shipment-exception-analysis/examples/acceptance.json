@@ -1,0 +1,861 @@
+{
+  "id": "logistics-acceptance",
+  "name": "物流异常分析有界离线验收",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "只证明合成数据的指定身份/时序/证据规则，不是标准合规或数据库执行",
+  "authority": "项目原创摘要与模型建议，不是官方标准定义、认证或业务自动决策",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "gs1-epcis",
+    "dcsa-event-classifier"
+  ],
+  "cases": [
+    {
+      "id": "log-delay-current",
+      "name": "晚到旧预测不覆盖当前ETA",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "plan-arrival",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "planned",
+            "event_time": "2026-11-05T15:00:00+01:00",
+            "issued_at": "2026-11-04T10:00:00Z",
+            "record_time": "2026-11-04T10:00:00Z",
+            "observed_at": "2026-11-04T10:01:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "carrier",
+            "event_id": "eta-old",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T16:00:00+01:00",
+            "issued_at": "2026-11-05T08:00:00Z",
+            "record_time": "2026-11-05T08:00:00Z",
+            "observed_at": "2026-11-05T11:00:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "carrier",
+            "event_id": "eta-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T18:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "scan-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-SEA-20",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-SEA-2",
+            "location_id": "NL-PORT",
+            "milestone": "discharge",
+            "classifier": "actual",
+            "event_time": "2026-11-05T09:00:00+01:00",
+            "issued_at": "2026-11-05T08:01:00Z",
+            "record_time": "2026-11-05T08:01:00Z",
+            "observed_at": "2026-11-05T08:02:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "scan-old",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-FEEDER-10",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-FEEDER-1",
+            "location_id": "SG-PORT",
+            "milestone": "discharge",
+            "classifier": "actual",
+            "event_time": "2026-10-12T12:00:00+08:00",
+            "issued_at": "2026-10-12T04:01:00Z",
+            "record_time": "2026-10-12T04:01:00Z",
+            "observed_at": "2026-11-05T11:05:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "eta_delay",
+        "selected_eta_event_id": "eta-new",
+        "latest_eta": "2026-11-05T17:00:00Z",
+        "delay_minutes": 180,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [
+          "scan-new"
+        ],
+        "actual_event_count": 2,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "最新issued_at预测17Z比计划14Z晚180分钟；最新到达消息却是旧扫描，不能取observed_at最大作为当前实际位置。"
+    },
+    {
+      "id": "log-order-replay",
+      "name": "反向接收ETA消息",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "eta-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T18:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "carrier",
+            "event_id": "eta-old",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T16:00:00+01:00",
+            "issued_at": "2026-11-05T08:00:00Z",
+            "record_time": "2026-11-05T08:00:00Z",
+            "observed_at": "2026-11-05T11:00:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "eta_delay",
+        "selected_eta_event_id": "eta-new",
+        "latest_eta": "2026-11-05T17:00:00Z",
+        "delay_minutes": 180,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "08Z发布的旧预测虽11Z才看到，仍不能覆盖10Z发布的预测。"
+    },
+    {
+      "id": "log-plan-not-delivery",
+      "name": "计划到达不能证明交付",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "plan-arrival",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "planned",
+            "event_time": "2026-11-05T15:00:00+01:00",
+            "issued_at": "2026-11-04T10:00:00Z",
+            "record_time": "2026-11-04T10:00:00Z",
+            "observed_at": "2026-11-04T10:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "计划指向未来/过去均不产生actual，也不能作为ETA预测；必需单元没有目的地实际到达。"
+    },
+    {
+      "id": "log-complete-delivery",
+      "name": "两个单元均有实际目的地到达",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "terminal",
+            "event_id": "delivery-1",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "actual",
+            "event_time": "2026-11-05T11:00:00Z",
+            "issued_at": "2026-11-05T11:01:00Z",
+            "record_time": "2026-11-05T11:01:00Z",
+            "observed_at": "2026-11-05T11:02:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "delivery-2",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": "LU-2",
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "actual",
+            "event_time": "2026-11-05T11:15:00Z",
+            "issued_at": "2026-11-05T11:16:00Z",
+            "record_time": "2026-11-05T11:16:00Z",
+            "observed_at": "2026-11-05T11:17:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "delivered",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": true,
+        "delivered_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "latest_actual_event_ids": [
+          "delivery-2"
+        ],
+        "actual_event_count": 2,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "所有必需单元有已发生且当时已知的目的地actual arrival。"
+    },
+    {
+      "id": "log-duplicate-versus-scan",
+      "name": "消息重放与真实复扫",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "terminal",
+            "event_id": "scan-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-SEA-20",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-SEA-2",
+            "location_id": "NL-PORT",
+            "milestone": "discharge",
+            "classifier": "actual",
+            "event_time": "2026-11-05T09:00:00+01:00",
+            "issued_at": "2026-11-05T08:01:00Z",
+            "record_time": "2026-11-05T08:01:00Z",
+            "observed_at": "2026-11-05T08:02:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "scan-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-SEA-20",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-SEA-2",
+            "location_id": "NL-PORT",
+            "milestone": "discharge",
+            "classifier": "actual",
+            "event_time": "2026-11-05T09:00:00+01:00",
+            "issued_at": "2026-11-05T08:01:00Z",
+            "record_time": "2026-11-05T08:01:00Z",
+            "observed_at": "2026-11-05T11:00:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "scan-repeat",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-SEA-20",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-SEA-2",
+            "location_id": "NL-PORT",
+            "milestone": "discharge",
+            "classifier": "actual",
+            "event_time": "2026-11-05T08:03:00Z",
+            "issued_at": "2026-11-05T08:03:30Z",
+            "record_time": "2026-11-05T08:03:30Z",
+            "observed_at": "2026-11-05T08:04:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [
+          "scan-repeat"
+        ],
+        "actual_event_count": 2,
+        "duplicate_receipts": 1,
+        "rejected_event_keys": []
+      },
+      "reason": "同来源事件号相同负载只计一次；不同事件号的第二次真实扫描保留，二者都发生在NL港区中转点，不是NL-DC最终配送地点。"
+    },
+    {
+      "id": "log-conflicting-id",
+      "name": "冲突事件身份隔离",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "eta-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T18:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "carrier",
+            "event_id": "eta-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T19:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": [
+          "carrier:eta-new"
+        ]
+      },
+      "reason": "相同事件号两个不同预测时间不是合法修订，整键隔离，不能先到或后到覆盖。"
+    },
+    {
+      "id": "log-timezones",
+      "name": "不同时区同一时刻",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "eta-equal",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T14:00:00Z",
+            "issued_at": "2026-11-05T09:00:00Z",
+            "record_time": "2026-11-05T09:00:00Z",
+            "observed_at": "2026-11-05T09:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "on_schedule",
+        "selected_eta_event_id": "eta-equal",
+        "latest_eta": "2026-11-05T14:00:00Z",
+        "delay_minutes": 0,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "15:00+01和14:00Z为同一时刻，没有延误。"
+    },
+    {
+      "id": "log-partial-delivery",
+      "name": "单个单元到达",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "terminal",
+            "event_id": "delivery-1",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "actual",
+            "event_time": "2026-11-05T11:00:00Z",
+            "issued_at": "2026-11-05T11:01:00Z",
+            "record_time": "2026-11-05T11:01:00Z",
+            "observed_at": "2026-11-05T11:02:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [
+          "LU-1"
+        ],
+        "latest_actual_event_ids": [
+          "delivery-1"
+        ],
+        "actual_event_count": 1,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "两单元交付只有一单元有证据，完整交付仍未确认。"
+    },
+    {
+      "id": "log-knowledge-cutoff",
+      "name": "未来已知消息与未来实际",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "eta-new",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T18:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T12:30:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "terminal",
+            "event_id": "future-scan",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": "LU-1",
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "actual",
+            "event_time": "2026-11-05T13:00:00Z",
+            "issued_at": "2026-11-05T09:00:00Z",
+            "record_time": "2026-11-05T09:00:00Z",
+            "observed_at": "2026-11-05T09:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": [
+          "terminal:future-scan"
+        ]
+      },
+      "reason": "已知截点之后才看到的预测不能参与当时结论；event_time晚于as_of的actual是错误证据。"
+    },
+    {
+      "id": "log-ambiguous-eta",
+      "name": "同优先级预测冲突",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "eta-a",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T18:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          },
+          {
+            "source_system": "carrier",
+            "event_id": "eta-b",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T19:00:00+01:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "ambiguous_eta",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": []
+      },
+      "reason": "同一发布时间与相同来源优先级的两个不同ETA需复核，不能按消息顺序挑一个。"
+    },
+    {
+      "id": "log-missing-zone",
+      "name": "无时区时间拒绝",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis",
+        "dcsa-event-classifier"
+      ],
+      "input": {
+        "scenario": "shipment-exception-analysis",
+        "as_of": "2026-11-05T12:00:00Z",
+        "known_as_of": "2026-11-05T12:00:00Z",
+        "shipment_id": "SH-100",
+        "required_unit_ids": [
+          "LU-1",
+          "LU-2"
+        ],
+        "delivery_location_id": "NL-DC",
+        "delivery_milestone": "arrival",
+        "planned_arrival": "2026-11-05T15:00:00+01:00",
+        "delay_threshold_minutes": 60,
+        "source_priority": [
+          "carrier",
+          "terminal"
+        ],
+        "events": [
+          {
+            "source_system": "carrier",
+            "event_id": "no-zone",
+            "shipment_id": "SH-100",
+            "consignment_id": "C-ROAD-30",
+            "unit_id": null,
+            "leg_id": "LEG-ROAD-3",
+            "location_id": "NL-DC",
+            "milestone": "arrival",
+            "classifier": "estimated",
+            "event_time": "2026-11-05T17:00:00",
+            "issued_at": "2026-11-05T10:00:00Z",
+            "record_time": "2026-11-05T10:00:00Z",
+            "observed_at": "2026-11-05T10:01:00Z",
+            "valid": true
+          }
+        ]
+      },
+      "expected": {
+        "status": "insufficient_evidence",
+        "selected_eta_event_id": null,
+        "latest_eta": null,
+        "delay_minutes": null,
+        "delivery_confirmed": false,
+        "delivered_unit_ids": [],
+        "latest_actual_event_ids": [],
+        "actual_event_count": 0,
+        "duplicate_receipts": 0,
+        "rejected_event_keys": [
+          "carrier:no-zone"
+        ]
+      },
+      "reason": "没有偏移不能安全比较跨地ETA，不猜测本地时区。"
+    }
+  ]
+}

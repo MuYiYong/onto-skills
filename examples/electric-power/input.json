@@ -1,0 +1,313 @@
+{
+  "id": "power-outage-input",
+  "name": "Synthetic feeder outage and uncertain tie/DER",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "U1 aggregate topology with synthetic observations",
+  "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project"
+  ],
+  "utility_id": "U1",
+  "query": {
+    "operation": "impact",
+    "event_as_of": "2026-11-01T10:20:00Z",
+    "knowledge_cutoff": "2026-11-01T10:20:00Z",
+    "circuit_id": "C1",
+    "outage_id": "O-A"
+  },
+  "topology_versions": [
+    {
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    }
+  ],
+  "equipment": [
+    {
+      "equipment_id": "SRC-A",
+      "kind": "source",
+      "terminal_ids": [
+        "T-A"
+      ]
+    },
+    {
+      "equipment_id": "SW-A",
+      "kind": "switch",
+      "terminal_ids": [
+        "T-SA0",
+        "T-SA1"
+      ]
+    },
+    {
+      "equipment_id": "LINE-B",
+      "kind": "line",
+      "terminal_ids": [
+        "T-LB1",
+        "T-LB2"
+      ]
+    },
+    {
+      "equipment_id": "SW-TIE",
+      "kind": "switch",
+      "terminal_ids": [
+        "T-ST2",
+        "T-ST3"
+      ]
+    },
+    {
+      "equipment_id": "SRC-B",
+      "kind": "source",
+      "terminal_ids": [
+        "T-B"
+      ]
+    },
+    {
+      "equipment_id": "DER-1",
+      "kind": "DER",
+      "terminal_ids": [
+        "T-D2"
+      ]
+    }
+  ],
+  "terminals": [
+    {
+      "terminal_id": "T-A",
+      "connectivity_id": "N0",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-SA0",
+      "connectivity_id": "N0",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-SA1",
+      "connectivity_id": "N1",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-LB1",
+      "connectivity_id": "N1",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-LB2",
+      "connectivity_id": "N2",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-ST2",
+      "connectivity_id": "N2",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-ST3",
+      "connectivity_id": "N3",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-B",
+      "connectivity_id": "N3",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "terminal_id": "T-D2",
+      "connectivity_id": "N2",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    }
+  ],
+  "states": [
+    {
+      "state_id": "S-SRC-A",
+      "equipment_id": "SRC-A",
+      "version_id": "TV1",
+      "state": "available",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z",
+      "evidence": "synthetic observation; no switching authority"
+    },
+    {
+      "state_id": "S-SW-A",
+      "equipment_id": "SW-A",
+      "version_id": "TV1",
+      "state": "closed",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z",
+      "evidence": "synthetic observation; no switching authority"
+    },
+    {
+      "state_id": "S-SW-TIE",
+      "equipment_id": "SW-TIE",
+      "version_id": "TV1",
+      "state": "unknown",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z",
+      "evidence": "synthetic observation; no switching authority"
+    },
+    {
+      "state_id": "S-SRC-B",
+      "equipment_id": "SRC-B",
+      "version_id": "TV1",
+      "state": "available",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z",
+      "evidence": "synthetic observation; no switching authority"
+    },
+    {
+      "state_id": "S-DER-1",
+      "equipment_id": "DER-1",
+      "version_id": "TV1",
+      "state": "unknown",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z",
+      "evidence": "synthetic observation; no switching authority"
+    }
+  ],
+  "service_points": [
+    {
+      "service_point_id": "SP1",
+      "connectivity_id": "N1",
+      "circuit_id": "C1",
+      "customer_id": "CUS1",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "service_point_id": "SP2",
+      "connectivity_id": "N2",
+      "circuit_id": "C1",
+      "customer_id": "CUS2",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    },
+    {
+      "service_point_id": "SP3",
+      "connectivity_id": "N3",
+      "circuit_id": "C2",
+      "customer_id": "CUS3",
+      "version_id": "TV1",
+      "valid_from": "2026-11-01T10:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T10:00:00Z"
+    }
+  ],
+  "outages": [
+    {
+      "outage_id": "O-A",
+      "equipment_id": "LINE-B",
+      "event_kind": "actual",
+      "event_time": "2026-11-01T10:10:00Z",
+      "end_time": null,
+      "observed_at": "2026-11-01T10:11:00Z",
+      "evidence": "synthetic actual asset unavailability receipt"
+    }
+  ],
+  "restoration_segments": [
+    {
+      "segment_id": "R1",
+      "outage_id": "O-A",
+      "service_point_id": "SP2",
+      "event_kind": "actual",
+      "interrupted_from": "2026-11-01T10:10:00Z",
+      "restored_at": "2026-11-01T10:30:00Z",
+      "observed_at": "2026-11-01T10:31:00Z",
+      "evidence": "synthetic service telemetry"
+    },
+    {
+      "segment_id": "R2",
+      "outage_id": "O-A",
+      "service_point_id": "SP2",
+      "event_kind": "actual",
+      "interrupted_from": "2026-11-01T10:40:00Z",
+      "restored_at": "2026-11-01T11:00:00Z",
+      "observed_at": "2026-11-01T11:10:00Z",
+      "evidence": "synthetic repeated interruption receipt"
+    }
+  ],
+  "connectivity_nodes": [
+    {
+      "connectivity_id": "N0",
+      "voltage_value": "11",
+      "voltage_unit": "kV"
+    },
+    {
+      "connectivity_id": "N1",
+      "voltage_value": "11",
+      "voltage_unit": "kV"
+    },
+    {
+      "connectivity_id": "N2",
+      "voltage_value": "11",
+      "voltage_unit": "kV"
+    },
+    {
+      "connectivity_id": "N3",
+      "voltage_value": "11",
+      "voltage_unit": "kV"
+    }
+  ],
+  "circuits": [
+    {
+      "circuit_id": "C1",
+      "name": "Synthetic primary reporting feeder"
+    },
+    {
+      "circuit_id": "C2",
+      "name": "Synthetic alternate feeder"
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": "CUS1",
+      "source_record": "fixture-customer-1"
+    },
+    {
+      "customer_id": "CUS2",
+      "source_record": "fixture-customer-2"
+    },
+    {
+      "customer_id": "CUS3",
+      "source_record": "fixture-customer-3"
+    }
+  ]
+}

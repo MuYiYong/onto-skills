@@ -1,0 +1,13 @@
+# Current multi-industry native evidence — 2026-11-06
+
+Codex CLI0.166.0 on Linux discovered all25 source packages in isolated project and legacy Codex-home layouts:199 readable files, single/all inventory cases. [Discovery](discovery.json) uses the existing opt-in `python3 tests/compatibility/codex_probe.py`; it calls the native app-server, not a model.
+
+All12 added packages were then used separately via actual `codex exec --ephemeral --sandbox read-only --skip-git-repo-check`, one copied package per fresh `.agents/skills/<name>` project, explicit `$skill-name`, supplied fresh synthetic task facts and a JSON output schema. All12 reached turn.completed and exit0. [Receipt](receipt.json) binds every copied package byte and saved prompt/schema/result/command artifact. [Manual review](review.json) records domain observations and seven scenario oracles, withheld from the model. [Quick validation](quick-validate.json) records all25 packages passing the installed skill-creator metadata validator.
+
+Each named directory contains prompt.txt, schema.json, result.json and commands.json. Commands retain terminal exit codes and output hashes, without raw model events, reasoning or configuration. Related-party use recovered from an optional no-match search and a missing `python` alias by successfully using `python3`; these failures remain explicit rather than being discarded.
+
+The reporting graph model gained business_as_of after its first copied use. That older result is preserved under `superseded/financial-regulatory-reporting`; only the later complete rerun, whose package bytes equal current source, counts in the12 final cases. Its missing source-to-S1/S2 payload associations are explicitly assumptions, not independently verified accepted payloads.
+
+To repeat a case, copy that named current package into a fresh project's `.agents/skills`, copy its prompt/schema, and run the receipt argv with that project path and prompt on stdin. Normal existing native authentication is required; never copy credentials into the project. New inference may vary. Offline CI verifies receipt hashes/schema/oracles only and never repeats model or native operations.
+
+Scope: bounded explicit use with synthetic data, local bundled references and no production/network business access. No implicit-trigger rate, independent repeated accuracy, full standards/FHIR/XBRL/legal/clinical conformance, new database execution, CC-Switch25 GUI, macOS or remote install/upgrade is established. The original13-skill GUI/database/native receipts remain separate historical evidence. This expansion is local unpublished source.

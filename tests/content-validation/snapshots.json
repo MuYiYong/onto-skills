@@ -43,7 +43,14 @@
       "skills/core/property-graph-mapping/references/graph-model.schema.json",
       "skills/core/ontology-validation/references/graph-model.schema.json",
       "skills/scenarios/multi-lending-detection/references/graph-model.schema.json",
-      "skills/scenarios/fraud-network-modeling/references/graph-model.schema.json"
+      "skills/scenarios/fraud-network-modeling/references/graph-model.schema.json",
+      "skills/scenarios/power-outage-impact-analysis/references/graph-model.schema.json",
+      "skills/scenarios/manufacturing-quality-traceability/references/graph-model.schema.json",
+      "skills/scenarios/shipment-exception-analysis/references/graph-model.schema.json",
+      "skills/scenarios/healthcare-care-pathway-modeling/references/graph-model.schema.json",
+      "skills/scenarios/retail-inventory-replenishment/references/graph-model.schema.json",
+      "skills/scenarios/financial-regulatory-reporting/references/graph-model.schema.json",
+      "skills/scenarios/related-party-transaction-modeling/references/graph-model.schema.json"
     ]
   },
   {
@@ -56,6 +63,250 @@
     "source": "examples/finance/fraud-graph-model.json",
     "copies": [
       "skills/scenarios/fraud-network-modeling/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "knowledge/electric-power/standards/sources.json",
+    "copies": [
+      "skills/industries/electric-power-domain-knowledge/references/sources.json",
+      "skills/scenarios/power-outage-impact-analysis/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/electric-power/concepts/domain.json",
+    "copies": [
+      "skills/industries/electric-power-domain-knowledge/references/domain.json",
+      "skills/scenarios/power-outage-impact-analysis/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/electric-power/graph-model.json",
+    "copies": [
+      "skills/scenarios/power-outage-impact-analysis/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/electric-power/input.json",
+    "copies": [
+      "skills/scenarios/power-outage-impact-analysis/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/electric-power/acceptance.json",
+    "copies": [
+      "skills/scenarios/power-outage-impact-analysis/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "LICENSE",
+    "copies": [
+      "skills/industries/electric-power-domain-knowledge/LICENSE",
+      "skills/scenarios/power-outage-impact-analysis/LICENSE",
+      "skills/industries/manufacturing-domain-knowledge/LICENSE",
+      "skills/scenarios/manufacturing-quality-traceability/LICENSE",
+      "skills/industries/logistics-domain-knowledge/LICENSE",
+      "skills/scenarios/shipment-exception-analysis/LICENSE",
+      "skills/industries/healthcare-domain-knowledge/LICENSE",
+      "skills/scenarios/healthcare-care-pathway-modeling/LICENSE",
+      "skills/industries/retail-domain-knowledge/LICENSE",
+      "skills/scenarios/retail-inventory-replenishment/LICENSE",
+      "skills/scenarios/financial-regulatory-reporting/LICENSE",
+      "skills/scenarios/related-party-transaction-modeling/LICENSE"
+    ]
+  },
+  {
+    "source": "knowledge/manufacturing/standards/sources.json",
+    "copies": [
+      "skills/industries/manufacturing-domain-knowledge/references/sources.json",
+      "skills/scenarios/manufacturing-quality-traceability/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/manufacturing/concepts/domain.json",
+    "copies": [
+      "skills/industries/manufacturing-domain-knowledge/references/domain.json",
+      "skills/scenarios/manufacturing-quality-traceability/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/manufacturing/graph-model.json",
+    "copies": [
+      "skills/scenarios/manufacturing-quality-traceability/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/manufacturing/input.json",
+    "copies": [
+      "skills/scenarios/manufacturing-quality-traceability/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/manufacturing/acceptance.json",
+    "copies": [
+      "skills/scenarios/manufacturing-quality-traceability/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/logistics/standards/sources.json",
+    "copies": [
+      "skills/industries/logistics-domain-knowledge/references/sources.json",
+      "skills/scenarios/shipment-exception-analysis/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/logistics/concepts/domain.json",
+    "copies": [
+      "skills/industries/logistics-domain-knowledge/references/domain.json",
+      "skills/scenarios/shipment-exception-analysis/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/logistics/graph-model.json",
+    "copies": [
+      "skills/scenarios/shipment-exception-analysis/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/logistics/input.json",
+    "copies": [
+      "skills/scenarios/shipment-exception-analysis/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/logistics/acceptance.json",
+    "copies": [
+      "skills/scenarios/shipment-exception-analysis/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/healthcare/standards/sources.json",
+    "copies": [
+      "skills/industries/healthcare-domain-knowledge/references/sources.json",
+      "skills/scenarios/healthcare-care-pathway-modeling/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/healthcare/concepts/domain.json",
+    "copies": [
+      "skills/industries/healthcare-domain-knowledge/references/domain.json",
+      "skills/scenarios/healthcare-care-pathway-modeling/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/healthcare/graph-model.json",
+    "copies": [
+      "skills/scenarios/healthcare-care-pathway-modeling/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/healthcare/input.json",
+    "copies": [
+      "skills/scenarios/healthcare-care-pathway-modeling/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/healthcare/acceptance.json",
+    "copies": [
+      "skills/scenarios/healthcare-care-pathway-modeling/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/retail/standards/sources.json",
+    "copies": [
+      "skills/industries/retail-domain-knowledge/references/sources.json",
+      "skills/scenarios/retail-inventory-replenishment/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/retail/concepts/domain.json",
+    "copies": [
+      "skills/industries/retail-domain-knowledge/references/domain.json",
+      "skills/scenarios/retail-inventory-replenishment/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/retail/graph-model.json",
+    "copies": [
+      "skills/scenarios/retail-inventory-replenishment/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/retail/input.json",
+    "copies": [
+      "skills/scenarios/retail-inventory-replenishment/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/retail/acceptance.json",
+    "copies": [
+      "skills/scenarios/retail-inventory-replenishment/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/regulatory/standards/sources.json",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/regulatory/concepts/domain.json",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/finance/regulatory-reporting/graph-model.json",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/finance/regulatory-reporting/input.json",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/finance/regulatory-reporting/acceptance.json",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "skills/core/ontology-validation/references/graph-model-specification.md",
+    "copies": [
+      "skills/scenarios/financial-regulatory-reporting/references/graph-model-specification.md",
+      "skills/scenarios/related-party-transaction-modeling/references/graph-model-specification.md"
+    ]
+  },
+  {
+    "source": "knowledge/finance/related-parties/standards/sources.json",
+    "copies": [
+      "skills/scenarios/related-party-transaction-modeling/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/finance/related-parties/concepts/domain.json",
+    "copies": [
+      "skills/scenarios/related-party-transaction-modeling/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/finance/related-party/graph-model.json",
+    "copies": [
+      "skills/scenarios/related-party-transaction-modeling/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/finance/related-party/input.json",
+    "copies": [
+      "skills/scenarios/related-party-transaction-modeling/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/finance/related-party/acceptance.json",
+    "copies": [
+      "skills/scenarios/related-party-transaction-modeling/examples/acceptance.json"
     ]
   }
 ]

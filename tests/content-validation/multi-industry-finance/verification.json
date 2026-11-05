@@ -1,0 +1,80 @@
+{
+  "scope": "Independent forward-test computations using copied package guidance and new synthetic task input; no packaged acceptance files or repository tests read.",
+  "checks": [
+    {
+      "id": "A-Nov1-selects-80-plus-20",
+      "result": "passed"
+    },
+    {
+      "id": "A-Nov3-selects-90-plus-20",
+      "result": "passed"
+    },
+    {
+      "id": "A-exact-replay-not-doubled",
+      "result": "passed"
+    },
+    {
+      "id": "A-transport-and-local-check-do-not-accept-S2",
+      "result": "passed"
+    },
+    {
+      "id": "A-missing-unit-blocks-no-partial-total",
+      "result": "passed"
+    },
+    {
+      "id": "A-accepted-S1-amount-is-unknown",
+      "result": "passed"
+    },
+    {
+      "id": "B-Nov1-40-plus-30",
+      "result": "passed"
+    },
+    {
+      "id": "B-Nov3-45-plus-30",
+      "result": "passed"
+    },
+    {
+      "id": "B-Nov5-reversal-retains-E2-only",
+      "result": "passed"
+    },
+    {
+      "id": "B-reversed-E1-still-related-by-evidence",
+      "result": "passed"
+    },
+    {
+      "id": "B-shared-contact-not-related-or-identity-merged",
+      "result": "passed"
+    },
+    {
+      "id": "B-financial-scope-does-not-exempt-regulatory-view",
+      "result": "passed"
+    },
+    {
+      "id": "B-no-ownership-to-control-inference",
+      "result": "passed"
+    },
+    {
+      "id": "B-late-control-not-backdated",
+      "result": "passed"
+    },
+    {
+      "id": "B-confirmed-label-without-evidence-insufficient",
+      "result": "passed"
+    },
+    {
+      "id": "A-version-labels-not-sorted",
+      "result": "passed"
+    },
+    {
+      "id": "A-conflicting-same-version-rejected",
+      "result": "passed"
+    }
+  ],
+  "count": 17,
+  "clinical_or_legal_or_native_validation": false,
+  "json_schema_validation": {
+    "status": "not-run",
+    "reason": "Host python3 has no jsonschema package; no external dependencies installed",
+    "model_json_serialization": "completed"
+  }
+}

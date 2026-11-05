@@ -1,0 +1,51 @@
+[
+  {
+    "command": "/bin/bash -lc \"pwd && rg --files -g 'AGENTS.md' -g 'SKILL.md' -g '*.json' -g '*.md' .agents/skills/financial-regulatory-reporting\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "7b85a9dbb113dd5882073558e6b4de1b27b439ce47db80024449f7f6105cc35f"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/input.json .agents/skills/financial-regulatory-reporting/examples/acceptance.json .agents/skills/financial-regulatory-reporting/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ae0a4a14b4c42b128725d2455abcadb90eb95e43485d7da12c9b7edb6fd4bb4b"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/SKILL.md .agents/skills/financial-regulatory-reporting/references/domain.json .agents/skills/financial-regulatory-reporting/references/sources.json .agents/skills/financial-regulatory-reporting/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "c3187ab7b3f4d35e08f9b23259b9304589f018771bba2af2ddcf31512261ba98"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/references/graph-model-specification.md .agents/skills/financial-regulatory-reporting/examples/graph-model.json .agents/skills/financial-regulatory-reporting/references/graph-model.schema.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "5dbd9efa9b18727b939ee0019e91c0b103106b08b4dc485723d3a3e60acefbc1"
+  },
+  {
+    "command": "/bin/bash -lc \"python3 -B - <<'PY'\nimport json\nfrom pathlib import Path\nbase = Path('.agents/skills/financial-regulatory-reporting')\na = json.loads((base / 'examples/acceptance.json').read_text())\nfor case in a['cases']:\n    data = case['input']\n    print(json.dumps({'case': case['id'], 'input_controls': {k: v for k, v in data.items() if k \"'!= '\"'records'}, 'records': data.get('records'), 'expected': case.get('expected')}, ensure_ascii=False))\ng = json.loads((base / 'examples/graph-model.json').read_text())\nprint(json.dumps({'model_id': g['model_id'], 'nodes': [{'name': n['name'], 'primary_key': n['primary_key'], 'properties': [p['name'] for p in n['properties']]} for n in g['node_types']], 'edges': [{'name': e['name'], 'from': e['from'], 'to': e['to'], 'primary_key': e['primary_key']} for e in g['edge_types']], 'constraints': g['constraints'], 'assumptions': g['assumptions']}, ensure_ascii=False))\nPY\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "5b5e285795e026d14c6edeb0524891cff8d5c493f45be7e94e498f3b3398b8b1"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/financial-regulatory-reporting/examples/worked-example.md .agents/skills/financial-regulatory-reporting/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "c839fac2c8d1ac9ae0d015f8ce6a92cdb8cf64cea6a282980554f43db5c745f7"
+  },
+  {
+    "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g '*.py' -g 'README*' -g 'pyproject.toml' -g 'Makefile' .\"",
+    "exit_code": 1,
+    "status": "failed",
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "explanation": "No optional files matched; package references were read successfully by subsequent commands."
+  },
+  {
+    "command": "/bin/bash -lc \"python3 -B - <<'PY'\nfrom decimal import Decimal\nimport json\nrows = [\n    ('SYS', 'K1', 'v1', Decimal('80')),\n    ('SYS', 'K1', 'v2', Decimal('90')),\n    ('SYS', 'K2', 'v1', Decimal('20')),\n    ('SYS', 'K2', 'v1', Decimal('20')),\n]\nunique = {}\nfor system, record, version, amount in rows:\n    key = (system, record, version)\n    assert key not in unique or unique[key] == amount\n    unique[key] = amount\nold_keys = [('SYS', 'K1', 'v1'), ('SYS', 'K2', 'v1')]\nnew_keys = [('SYS', 'K1', 'v2'), ('SYS', 'K2', 'v1')]\nold_value = sum((unique[key] for key in old_keys), Decimal('0'))\nnew_value = sum((unique[key] for key in new_keys), Decimal('0'))\ns2_evidence = {('local_check', 'passed'), ('transport', 'received')}\ns2_accepted = ('business', 'accepted') in s2_evidence\ncurrent_accepted = 'S2' if s2_accepted else 'S1'\nassert (old_value, new_value, new_value - old_value) == (Decimal('100'), Decimal('110'), Decimal('10'))\nassert current_accepted == 'S1' and not s2_accepted\nprint(json.dumps({'old_value': str(old_value), 'new_value': str(new_value), 'delta': str(new_value - old_value), 'current_accepted_submission': current_accepted, 'new_submission_accepted': s2_accepted, 'verification_scope': 'supplied synthetic contributions and receipt-state evidence, subject to explicit date/visibility/context assumptions'}, ensure_ascii=False))\nPY\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "b5f10605f5dc9171a48e31b45bc7ecbecd29cb8ec3847d54149869a5d87fdaa9"
+  }
+]

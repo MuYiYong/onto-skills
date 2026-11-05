@@ -1,0 +1,78 @@
+{
+  "operation": "reporting_balance",
+  "report_code": "DEMO-LINEAGE-01",
+  "template_version": "2026.1",
+  "metric_id": "urn:onto:demo:loanBalance",
+  "metric_version": "2026.1",
+  "definition_period_kind": "instant",
+  "fact_template_version": "2026.1",
+  "entity_id": "B1",
+  "scope": "standalone",
+  "period_kind": "instant",
+  "as_of": "2026-09-30T23:59:59+08:00",
+  "known_at": "2026-09-30T23:59:59+08:00",
+  "currency": "CNY",
+  "unit": "yuan",
+  "records": [
+    {
+      "source_system": "core",
+      "record_id": "L1",
+      "source_version": "v1",
+      "entity_id": "B1",
+      "event_time": "2026-09-30T12:00:00+08:00",
+      "observed_at": "2026-09-30T18:00:00+08:00",
+      "amount": "100.00",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "core",
+      "record_id": "L2",
+      "source_version": "v1",
+      "entity_id": "B1",
+      "event_time": "2026-09-30T12:00:00+08:00",
+      "observed_at": "2026-09-30T18:00:00+08:00",
+      "amount": "50.00",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "core",
+      "record_id": "L1",
+      "source_version": "v1",
+      "entity_id": "B1",
+      "event_time": "2026-09-30T12:00:00+08:00",
+      "observed_at": "2026-09-30T18:00:00+08:00",
+      "amount": "100.00",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "core",
+      "record_id": "L1",
+      "source_version": "v2",
+      "entity_id": "B1",
+      "event_time": "2026-09-30T12:00:00+08:00",
+      "observed_at": "2026-10-02T09:00:00+08:00",
+      "amount": "105.00",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    },
+    {
+      "source_system": "core",
+      "record_id": "L3",
+      "source_version": "v1",
+      "entity_id": "B1",
+      "event_time": "2026-10-01T00:00:00+08:00",
+      "observed_at": "2026-09-30T18:00:00+08:00",
+      "amount": "20.00",
+      "unit": "yuan",
+      "currency": "CNY",
+      "status": "active"
+    }
+  ]
+}

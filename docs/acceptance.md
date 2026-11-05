@@ -1,4 +1,6 @@
-# 初始交付验收记录
+# 初始13项交付验收记录
+
+本页保留已发布首版13项的历史验收。当前25项及五个新增行业/金融场景的范围见[扩展记录](multi-industry-expansion.md)，不能将以下原生结果自动外推。
 
 按用户开发提示词第 1–20 节及最终 21 条标准逐项核对。本记录涵盖首版资产和发布前验证；提交、Release 与 CI 的实时状态以 GitHub 仓库记录为准。无法实际运行的检查依提示词 14.3 明确列为未验证，不用静态证据代替。
 
@@ -28,7 +30,7 @@
 
 ## 提示词的其他明确交付
 
-- 七项 Core、四项 Finance、两个 Scenario 完整目录见 [库存](../README.md)。related-party-transaction 仅为未来范围，与阶段 5 指定两项场景一致。
+- 七项 Core、四项 Finance、两个 Scenario 完整目录见 [库存](../README.md)。关联交易当时属于后续范围，本次已新增 `related-party-transaction-modeling`，按扩展记录另验。
 - 八份要求文档：architecture、skill-specification、knowledge-specification、pack-specification、installation-guide、contribution-guide、roadmap，以及独立 Graph Model Specification 文档均存在；README、CONTRIBUTING、CHANGELOG、LICENSE 齐备。
 - 两条建模路径及融合：[输入、模型与完整流程](../examples/finance/README.md)。标准裁剪草案含未决项，会被 ready 门槛拒绝；关键语义损失明确保留。
 - 外部核查：当前上游 README、两个 SKILL、Release、查询语法目录均已查看；本地已装 query Skill 的适用资源和 lint 实际使用，未复制其文件。

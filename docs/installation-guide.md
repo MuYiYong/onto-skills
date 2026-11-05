@@ -1,6 +1,6 @@
 # 安装与更新
 
-安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [最新 Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 提供13个单技能 ZIP、全量 ZIP 和六项金融/场景选择 ZIP，均使用普通目录并附 SHA-256。
+安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。当前版本 `v26.11.06_Build0721` 包含全部25项。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [最新 Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 提供25个单技能 ZIP、全量 ZIP 和八项金融/场景组合 ZIP，均使用普通目录并附 SHA-256。
 
 ## Codex CLI
 
@@ -37,13 +37,30 @@ test ! -e "$HOME/.agents/skills/ontology-modeling" && cp -R skills/core/ontology
 | multi-lending-detection | skills/scenarios/multi-lending-detection |
 | fraud-network-modeling | skills/scenarios/fraud-network-modeling |
 
+本次新增技能的独立安装目录：
+
+| Skill | 源目录 |
+| --- | --- |
+| electric-power-domain-knowledge | skills/industries/electric-power-domain-knowledge |
+| power-outage-impact-analysis | skills/scenarios/power-outage-impact-analysis |
+| manufacturing-domain-knowledge | skills/industries/manufacturing-domain-knowledge |
+| manufacturing-quality-traceability | skills/scenarios/manufacturing-quality-traceability |
+| logistics-domain-knowledge | skills/industries/logistics-domain-knowledge |
+| shipment-exception-analysis | skills/scenarios/shipment-exception-analysis |
+| healthcare-domain-knowledge | skills/industries/healthcare-domain-knowledge |
+| healthcare-care-pathway-modeling | skills/scenarios/healthcare-care-pathway-modeling |
+| retail-domain-knowledge | skills/industries/retail-domain-knowledge |
+| retail-inventory-replenishment | skills/scenarios/retail-inventory-replenishment |
+| financial-regulatory-reporting | skills/scenarios/financial-regulatory-reporting |
+| related-party-transaction-modeling | skills/scenarios/related-party-transaction-modeling |
+
 ## CC-Switch
 
 官方 Linux 4.0.25 已在隔离账户中通过原生界面验收；用户自己的安装版本仍未确认。以下注明实际菜单和需单独验收的仓库流程，见 [兼容报告](compatibility.md)。
 
 1. 打开 Skills → 顶部 ⋯ → Manage repositories。
 2. 4.0.25 的 Repository URL 填 `https://github.com/MuYiYong/onto-skills`，Branch 填 `main`。此界面没有子目录字段，不能填写 `tree/main/skills` URL，实测会拒绝。若旧版本有独立子目录字段，填 `skills`。
-3. 重新读取/刷新仓库。上游扫描器递归识别 `skills/core/<name>`、`skills/finance/<name>`、`skills/scenarios/<name>`。发布前原生验收时该配置显示 0 项；该历史结果只证明配置可添加。发布后的仓库安装仍需单独验证。
+3. 重新读取/刷新仓库。上游扫描器递归识别 `skills/core/<name>`、`skills/finance/<name>`、`skills/industries/<name>`、`skills/scenarios/<name>`。发布前原生验收时该配置显示 0 项；该历史结果只证明配置可添加。发布后的仓库安装仍需单独验证。
 4. 在发现页选择安装目标 Codex，只安装需要的 Skill。已安装页可调整各应用开关；多项选择按当前版本批量启用。
 5. 确认 SKILL.md、references、examples、LICENSE 都安装成功，且 Codex 可发现。存储主副本默认 `~/.cc-switch/skills/`，Codex 目标默认 `~/.codex/skills/`，实际配置可修改。
 

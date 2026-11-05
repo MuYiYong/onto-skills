@@ -1,0 +1,1734 @@
+{
+  "spec_version": "1.0",
+  "model_id": "logistics-shipment-exceptions",
+  "version": "1.0.0",
+  "graph_type": "LogisticsShipmentEvidence",
+  "description": "项目原创合成示例；数据库中立，不等同标准模式或执行证明。",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills 原创行业知识与合成示例",
+      "kind": "project-curated",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "multi-industry-curation-2026-11-05",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "retrieved_at": "2026-11-05",
+      "scope": "数据库中立业务模型、方法、参数化教学例子",
+      "authority": "项目原创合成例子和建模方法，无外部规范效力"
+    },
+    {
+      "id": "gs1-epcis",
+      "name": "GS1 EPCIS Standard",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/epcis/",
+      "version": "2.0; ratified Jun 2022",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "可见性事件、eventTime/recordTime/eventTimeZoneOffset 背景；不是全量 EPCIS 实现",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "gs1-cbv",
+      "name": "GS1 Core Business Vocabulary Standard",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/standards/cbv/",
+      "version": "2.0; ratified Jun 2022",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "EPCIS 业务步骤与状态的词汇背景；不把 CBV reserving/reserved 当作零售库存预留",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "gs1-architecture",
+      "name": "GS1 System Architecture",
+      "kind": "official-standard",
+      "uri": "https://ref.gs1.org/architecture/system-architecture/",
+      "version": "12.0.0; October 2024",
+      "publisher": "GS1 AISBL",
+      "license": "Copyright GS1 AISBL; link and original summary only; standard text/schema not redistributed",
+      "retrieved_at": "2026-11-05",
+      "scope": "标识粒度与 GTIN/GLN/SSCC/GSIN/GINC 对象范围；不验证 GS1 分配或条码合规",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    },
+    {
+      "id": "dcsa-event-classifier",
+      "name": "DCSA Information Model — Event Classifier Code",
+      "kind": "official-standard",
+      "uri": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm",
+      "version": "Information Model 2024.4 (2024Q4); page modified 2024-12-20",
+      "publisher": "Digital Container Shipping Association",
+      "license": "unknown for exact model artifact; link and original summary only, no redistribution permission assumed",
+      "retrieved_at": "2026-11-05",
+      "scope": "ACT/PLN/EST/REQ 的分类背景；本例仅采用 actual/planned/estimated 三类，不实现全模型",
+      "authority": "官方一手来源；仅对所列版本和范围提供背景，项目模型不因此成为标准定义"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "Shipment",
+      "business_meaning": "端到端交付分组",
+      "identity_scope": "shipper_id+shipment_id；GSIN 为可选外部核实身份",
+      "primary_key": [
+        "shipper_id",
+        "shipment_id"
+      ],
+      "properties": [
+        {
+          "name": "shipper_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "货主命名空间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "shipment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定交付分组号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "gsin",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "经核实的可选 GSIN；字符串保留前导零",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        },
+        {
+          "name": "required_unit_ids",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": true,
+          "business_meaning": "合同确认的必需交付单元",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "planned_arrival",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "用户给定的 UTC 计划基线",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "delay_threshold_minutes",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "用户给定的延误分钟阈值",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Consignment",
+      "business_meaning": "一段运输服务分组",
+      "identity_scope": "provider_id+consignment_id；不与 shipment 合并",
+      "primary_key": [
+        "provider_id",
+        "consignment_id"
+      ],
+      "properties": [
+        {
+          "name": "provider_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "运输服务提供方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "consignment_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定运输服务分组号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "ginc",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "可选经核实 GINC；不代表同一端到端 Shipment",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "LogisticUnit",
+      "business_meaning": "可独立处理的物理载货单元",
+      "identity_scope": "issuer_id+unit_id；可选已核实 SSCC 独立存储",
+      "primary_key": [
+        "issuer_id",
+        "unit_id"
+      ],
+      "properties": [
+        {
+          "name": "issuer_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单元分配方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "内部物流单元号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sscc",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "可选 SSCC 字符串；本例内部号不是获配 GS1 号",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        },
+        {
+          "name": "unit_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "pallet/carton 等项目词汇，不是设备资产号",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "TransportLeg",
+      "business_meaning": "运输路段",
+      "identity_scope": "carrier_id+leg_id",
+      "primary_key": [
+        "carrier_id",
+        "leg_id"
+      ],
+      "properties": [
+        {
+          "name": "carrier_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "路段承运方",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "leg_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定路段号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sequence",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "同一给定行程版本内路段顺序",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "mode",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "用户给定的运输方式",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "journey_version",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "行程变更版本",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Party",
+      "business_meaning": "运输和交接参与方",
+      "identity_scope": "party_namespace+party_id；不把角色当成新法律主体",
+      "primary_key": [
+        "party_namespace",
+        "party_id"
+      ],
+      "properties": [
+        {
+          "name": "party_namespace",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "身份分配命名空间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "party_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "参与方稳定身份",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "party_gln",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "核实用途为主体的可选 GLN",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Location",
+      "business_meaning": "港口、仓库或最终交付地点",
+      "identity_scope": "operator_id+location_id；地点与组织分别建模",
+      "primary_key": [
+        "operator_id",
+        "location_id"
+      ],
+      "properties": [
+        {
+          "name": "operator_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "地点运营方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "location_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定地点号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "physical_gln",
+          "logical_type": "identifier",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "核实用途为物理地点的可选 GLN",
+          "source_ids": [
+            "onto-project",
+            "gs1-architecture"
+          ]
+        },
+        {
+          "name": "location_role",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "origin/transshipment/delivery 等项目角色",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Booking",
+      "business_meaning": "订舱承诺与版本",
+      "identity_scope": "provider_id+booking_id+revision",
+      "primary_key": [
+        "provider_id",
+        "booking_id",
+        "revision"
+      ],
+      "properties": [
+        {
+          "name": "provider_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "订舱服务提供方",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "booking_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "订舱号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "保留订舱修订",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "requested/confirmed/cancelled 等输入状态",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "issued_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 来源发布时点",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "TransportDocument",
+      "business_meaning": "运输单证版本；不是物理到达事实",
+      "identity_scope": "issuer_id+document_id+revision",
+      "primary_key": [
+        "issuer_id",
+        "document_id",
+        "revision"
+      ],
+      "properties": [
+        {
+          "name": "issuer_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "签发方范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "document_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单证号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "integer",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "版本号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "document_kind",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单证种类",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "单证状态",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "issued_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 签发或修订时点",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "VisibilityEvent",
+      "business_meaning": "有主体、地点与路段的计划、预测或实际事件",
+      "identity_scope": "source_system+event_id；冲突负载不覆盖，进入隔离",
+      "primary_key": [
+        "source_system",
+        "event_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源系统范围",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "稳定来源事件号",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "classifier",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "planned/estimated/actual；项目对齐 DCSA 类别",
+          "source_ids": [
+            "onto-project",
+            "dcsa-event-classifier"
+          ]
+        },
+        {
+          "name": "milestone",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "项目里程碑 arrival/load/discharge/handover 等，原代码另存",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "business_step_uri",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "可选原始业务步骤 URI；不伪造词汇映射",
+          "source_ids": [
+            "onto-project",
+            "gs1-cbv"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 发生时间或计划/预测指向的时点",
+          "source_ids": [
+            "onto-project",
+            "gs1-epcis"
+          ]
+        },
+        {
+          "name": "issued_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 来源发布/预测修订时点；ETA 新旧按此排序",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "record_time",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "UTC 来源仓库记录时间，不替代 event_time",
+          "source_ids": [
+            "onto-project",
+            "gs1-epcis"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 本分析首次看到消息的时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "original_time_zone_offset",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "保留事件发生地的来源偏移上下文；不从UTC反推",
+          "source_ids": [
+            "onto-project",
+            "gs1-epcis"
+          ]
+        },
+        {
+          "name": "payload_fingerprint",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "规范化语义负载摘要；排除重投递 observed_at",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid",
+          "logical_type": "boolean",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "经校验且未被有效更正撤销的事件；更正引用另见 source_record_ref",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始来源记录或审计定位，非另一个事件身份",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "corrects_event_key",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "显式更正引用；source_system:event_id，null表示非更正",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "ShipmentUnit",
+      "business_meaning": "交付分组和单元归属",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "有效区间上界；null 明确表示尚未结束",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Shipment",
+      "to": "LogisticUnit",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "event_time",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "ConsignmentUnit",
+      "business_meaning": "运输服务范围内的有效成员关系；转运可改变",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "有效区间上界；null 明确表示尚未结束",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Consignment",
+      "to": "LogisticUnit",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "event_time",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "ConsignmentLeg",
+      "business_meaning": "服务分组关联实际执行路段",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Consignment",
+      "to": "TransportLeg",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "LegOrigin",
+      "business_meaning": "路段始发地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "TransportLeg",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "LegDestination",
+      "business_meaning": "路段目的地点，可能为中转点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "TransportLeg",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "DeliveryLocation",
+      "business_meaning": "本次完整交付检验的目标地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Shipment",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "BookingFor",
+      "business_meaning": "订舱对运输服务分组的承诺，不能证明装载",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Booking",
+      "to": "Consignment",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "DocumentFor",
+      "business_meaning": "单证记载运输服务分组，不能证明实际到达",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "TransportDocument",
+      "to": "Consignment",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "EventForShipment",
+      "business_meaning": "事件关联经验证的交付分组",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "Shipment",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "EventForUnit",
+      "business_meaning": "实际单元扫描或声明的事件主体；预测可以仅按shipment",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "LogisticUnit",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "EventOnLeg",
+      "business_meaning": "事件所属路段",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "TransportLeg",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "EventAt",
+      "business_meaning": "事件地点",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "Location",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "HandoverFrom",
+      "business_meaning": "有证据的实际交接前保管方；不推断所有权",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "Party",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "HandoverTo",
+      "business_meaning": "有证据的实际交接后保管方",
+      "identity_scope": "合成数据命名空间内 relation_id 全局唯一；保留源记录身份和重复事件",
+      "primary_key": [
+        "relation_id"
+      ],
+      "properties": [
+        {
+          "name": "relation_id",
+          "logical_type": "identifier",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "来源范围内稳定关系编号；不得由端点去重重复业务事件",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_ref",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "原始记录定位信息",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "event_time",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 事件时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "UTC 首次可见时间",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VisibilityEvent",
+      "to": "Party",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "event_time",
+        "start": "event_time",
+        "end": null,
+        "observed_at": "observed_at"
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "log-identity",
+      "subject": "model",
+      "rule": "保留 source/issuer/provider 命名空间；Shipment、Consignment、LogisticUnit、Booking、TransportDocument 不按相同字符串合并。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "gs1-architecture"
+      ]
+    },
+    {
+      "id": "log-event-id",
+      "subject": "node:VisibilityEvent",
+      "rule": "相同(source_system,event_id)语义负载一致时幂等；只改变 observed_at 为重投递。冲突负载整键隔离，不按到达顺序覆盖。不同 event_id 的真实重复扫描分别保留。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-time",
+      "subject": "node:VisibilityEvent",
+      "rule": "所有 datetime 规范化为带Z的UTC，拒绝无偏移输入；保留原始偏移。event_time 是业务时点，record_time 是来源记录，observed_at 是本分析已知时点，issued_at 是发布/预测修订时点。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ]
+    },
+    {
+      "id": "log-known",
+      "subject": "node:VisibilityEvent",
+      "rule": "只采用 observed_at<=known_as_of 且 issued_at<=known_as_of 的证据。actual 的 event_time<=as_of；未来 actual 作为错误隔离。valid=false 不用于判定。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-class",
+      "subject": "property:VisibilityEvent.classifier",
+      "rule": "只支持 planned/estimated/actual 项目枚举；不得将计划/估计写成 actual。DCSA REQ 等不在本例范围，需显式未映射处理。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "dcsa-event-classifier"
+      ]
+    },
+    {
+      "id": "log-eta",
+      "subject": "model",
+      "rule": "ETA 仅取正确 shipment+delivery location+arrival milestone 的 estimated 事件。依 issued_at 最新、用户 source_priority 优先选择；相同级别同发布时间不同 event_time 为 ambiguous_eta。晚到旧预测不覆盖新预测。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-delay",
+      "subject": "model",
+      "rule": "delay_minutes=(selected_eta-planned_arrival)/60；仅严格大于用户 delay_threshold_minutes 标 eta_delay。无估计则 insufficient_evidence，不能用计划冒充估计。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-delivery",
+      "subject": "model",
+      "rule": "delivery_confirmed 当且仅当 required_unit_ids 中每个单元都有同shipment、目的地点、arrival、valid actual且event_time<=as_of的证据。缺单元或仅中转不确认。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-handover",
+      "subject": "edge:HandoverTo",
+      "rule": "交接必须有 actual 事件、前后责任方和同一路段/地点依据；到港/卸货或单证不能单独建立责任转移，更不能推断所有权。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-membership",
+      "subject": "edge:ConsignmentUnit",
+      "rule": "有效区间 [event_time,valid_to)，null仅表示已明确尚未结束；未知结束另报缺口。observed_at 仅是观测时间，完整系统时间历史需另加 recorded_to，禁止覆盖历史。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-endpoints",
+      "subject": "model",
+      "rule": "事件主体、路段、地点外键须引用已声明实体；预测可以shipment粒度，实际交付必须单元粒度。事件所述地点与路段/交接证据矛盾时进入复核。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "log-no-physical",
+      "subject": "model",
+      "rule": "所有约束执行位置仅为应用层设计；没有实际数据库、GS1/DCSA认证、所有权或合同履约证明。",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "map-gsin",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Shipment / GSIN",
+      "target": "node:Shipment",
+      "status": "approximated",
+      "explanation": "内部复合键独立于可选GSIN；未证明分配规则或完整生命周期对齐。",
+      "constraint_ids": [
+        "log-identity"
+      ]
+    },
+    {
+      "id": "map-ginc",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Consignment / GINC",
+      "target": "node:Consignment",
+      "status": "approximated",
+      "explanation": "仅对齐对象范围；服务重组与成员时序属于项目模型。",
+      "constraint_ids": [
+        "log-identity",
+        "log-membership"
+      ]
+    },
+    {
+      "id": "map-sscc",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Logistic unit / SSCC",
+      "target": "node:LogisticUnit",
+      "status": "approximated",
+      "explanation": "SSCC可选且独立于内部unit_id；本例不分配或验证GS1键。",
+      "constraint_ids": [
+        "log-identity"
+      ]
+    },
+    {
+      "id": "map-gln",
+      "source_id": "gs1-architecture",
+      "source_term": "Table4-1 Physical location / GLN",
+      "target": "node:Location",
+      "status": "approximated",
+      "explanation": "GLN用途须核实；组织角色不并入物理地点。",
+      "constraint_ids": [
+        "log-identity"
+      ]
+    },
+    {
+      "id": "map-epcis-time",
+      "source_id": "gs1-epcis",
+      "source_term": "eventTime, recordTime, eventTimeZoneOffset",
+      "target": "node:VisibilityEvent",
+      "status": "approximated",
+      "explanation": "保留时间含义但并非EPCIS事件模式，issued_at和observed_at为额外项目字段。",
+      "constraint_ids": [
+        "log-time"
+      ]
+    },
+    {
+      "id": "map-dcsa-class",
+      "source_id": "dcsa-event-classifier",
+      "source_term": "ACT, PLN, EST, REQ",
+      "target": "property:VisibilityEvent.classifier",
+      "status": "approximated",
+      "explanation": "项目取actual/planned/estimated三类；REQ未实施，不能声称完整DCSA映射。",
+      "constraint_ids": [
+        "log-class"
+      ]
+    }
+  ],
+  "assumptions": [
+    "输入全部为原创合成数据；内部LU/SH等号不是已获配GS1标识。",
+    "as_of为业务评价时点，known_as_of为证据截点，两者独立。",
+    "阈值和source_priority均由示例用户给定，不是行业标准。",
+    "交付仅使用指定地点arrival完整性政策；签收、货损或合同履约不在本例证明范围。"
+  ],
+  "unresolved": [],
+  "competency_questions": [
+    "晚到旧ETA是否改变当前延误结论？",
+    "当前已知的最新实际扫描在何处、属于哪个路段？",
+    "两个必需单元是否都有目的地点实际到达？",
+    "转运交接有何来源证据？"
+  ]
+}

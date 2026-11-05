@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-06",
+  "scope": "Independent frozen forward review followed by narrow current-source recheck; bounded synthetic tasks only",
+  "source_packages_sha256": {
+    "financial-regulatory-reporting": {
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "SKILL.md": "daf16edf5eabb9fd4b78d2d10bda604864e993b46b703cf591b71ef35263eddb",
+      "examples/acceptance.json": "02558925c4ff7f25d870228ff2bfbfc717d0c7228b376a13ccbd65d29d2cc5e4",
+      "examples/graph-model.json": "409a82d97110fdffdcd15f31da92c6ac8d68123c03e6abadf09d62239295d017",
+      "examples/input.json": "0ae53e75512f4767729d53c301f3183fe917bc291af70a62e0e3daa4e13247c1",
+      "examples/worked-example.md": "874db300368bb2e9e88822293987a29e3777beb8da457b33ed2a42580eb77428",
+      "references/domain.json": "dab801ae0386a00ef8e984ca6d0edf8e557466f8c865e4f5a1f32ab207cc9975",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "references/method.md": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586",
+      "references/sources.json": "40c08b008223f99048e388bfa904439bf72ce84fdfa1faed9809b2c113505363"
+    },
+    "related-party-transaction-modeling": {
+      "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "SKILL.md": "c55909c34082ab7e8c148a3adc7052b37c50ed97f36af5516a7d81edbc6a9d32",
+      "examples/acceptance.json": "0aa7ed886e9a4ce8f34b0f4ece44491fd646c7a2b513713ed101ba5ff94b22e0",
+      "examples/graph-model.json": "6c9953dd05f615aaf661ccc3c6b13883e1de5c35943796cdacb5c65ba4c49ee5",
+      "examples/input.json": "37270acc7229edc5ff0b79e445df5b28aa56f101ae5abf506f55e9ced5841cdf",
+      "examples/worked-example.md": "a86d66348b247cf2f977b1dee6dca955aba1a0cf961126a20bb2568bfc551f3f",
+      "references/domain.json": "c22f2604c0f23beccdfdb1319b54a1d88194e2bcb5011794ac59957d9b676469",
+      "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+      "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+      "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+      "references/method.md": "f27a19814de12e7b5559c3d7aef0b004366d9b482421296ce1ac602f572b41d6",
+      "references/sources.json": "990dd18781a54cbd3315231e6359de13dda98a0e3983792b1ab1f0c36327cbac"
+    }
+  },
+  "artifact_sha256": {
+    "README.md": "7e4d4aa794c9cd9e9b066e1ae81f0823a50333d49d6b0c81eb29701970af6b67",
+    "assessment.md": "1879430b20274725f8ef4ecd2c291d5370d26f107ed97b288fe6071c56c9dbb0",
+    "independent_review.py": "e6cd9550b133295ffb2743cefed9193ee4a9a9b258988be8233434a1e3035df9",
+    "recheck.json": "7f81417cefef097d741493ceb1a6ff551d46c09936fba2c5c92863d182b6dfec",
+    "recheck.md": "8ecd4b12b4100a387f717a17edf1149b4f99de20851b6f6a68777cd6f9d6da85",
+    "reproduce.md": "0263cf4834a994395396f34d96a319bc7dff175adbb7e154622a2e072da0593a",
+    "reviewed-files.json": "ed64e7d8737e0a78120e7ea4de19f683bb44a62ef978d80ca85be66392350c9f",
+    "task-a-evidence-graph.json": "7bb72b0b367b8394a6e0578f043f851ef8fdca301177f0c409c7641d24e87720",
+    "task-a-graph-model.json": "21faa03d02dcfdee0f39cf7411b7e5ae63ea75cc56e4f83d64911b5bd09b3a4f",
+    "task-a-input.json": "291b3d92c8e8f6f809786feca834d7770beb667c44a41f319b79f8e6eb0ccde1",
+    "task-a-missing-unit-input.json": "9e47704961ccced978d80d6c5546f972df67cc55fdb8aaa8c188d4e8fadfa4fe",
+    "task-a-results.json": "329cf4218907423e2acaf390452e26777572b8711f528a51d56e1770d476e7e3",
+    "task-b-evidence-graph.json": "11908baa1954c289d369fa40df8f4ee1386c8ae9e9af44d24a73e544b0fbf2f8",
+    "task-b-graph-model.json": "15530a80c918e4a1681892947a789637410ce12fad5287d7940221b33c788724",
+    "task-b-input.json": "32f6dd860081c5455ee1aabebd9a71647c1d32f30b0018b39b57d26fd7b28c4e",
+    "task-b-results.json": "83e015c606858cf5d77aff1aa484fca2fea17d4996af48c8d6f0910a3b8db11a",
+    "verification.json": "370bd2b71801f3793965cc253b8b61555a52249c2318e7ee38ea3262f50825e6"
+  }
+}

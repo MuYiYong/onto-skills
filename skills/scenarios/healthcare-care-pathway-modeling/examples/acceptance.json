@@ -1,0 +1,456 @@
+{
+  "id": "healthcare-care-pathway-acceptance",
+  "name": "医疗照护路径数据语义验收 / offline care-pathway acceptance",
+  "version": "1.0.0",
+  "license": "MIT (original project curation; third-party sources retain their terms)",
+  "updated_at": "2026-11-05",
+  "scope": "Deterministic synthetic offline cases; not clinical, FHIR conformance, native database or compliance evidence",
+  "authority": "Onto Skills original data-modeling guidance; no clinical, regulatory or FHIR conformance authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "fhir-r4-resource",
+    "fhir-r4-observation",
+    "fhir-r4-servicerequest",
+    "fhir-r4-procedure",
+    "fhir-r4-datatypes"
+  ],
+  "fixture": "input.json",
+  "contract": "operations-v1 documented in the bundled method reference; each case starts from a fresh fixture copy; mutations are deliberate test inputs, not new authenticated source history",
+  "cases": [
+    {
+      "id": "positive-explicit-completion",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-procedure"
+      ],
+      "input": {
+        "operation": "completed_procedures",
+        "fixture": "input.json",
+        "order_id": "ord-1"
+      },
+      "expected": {
+        "procedure_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Procedure/proc-1/_history/1"
+        ],
+        "count": 1
+      },
+      "reason": "Completed activity is established by current Procedure.status, with explicit basedOn; no synthetic procedures from orders."
+    },
+    {
+      "id": "revoked-not-performed",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-request-status",
+        "fhir-r4-procedure"
+      ],
+      "input": {
+        "operation": "completed_procedures",
+        "fixture": "input.json",
+        "order_id": "ord-2"
+      },
+      "expected": {
+        "procedure_version_keys": [],
+        "count": 0,
+        "documented_not_done_keys": [
+          "https://clinic-a.example.invalid/fhir/Procedure/proc-cancelled/_history/1"
+        ]
+      },
+      "reason": "R4 revoked request and explicit not-done Procedure remain distinct from completed activity."
+    },
+    {
+      "id": "revoked-after-completed",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-procedure"
+      ],
+      "input": {
+        "operation": "completed_procedures",
+        "fixture": "input.json",
+        "order_id": "ord-1",
+        "mutations": [
+          {
+            "resource_type": "ServiceRequest",
+            "resource_id": "ord-1",
+            "set": {
+              "status": "revoked"
+            }
+          }
+        ]
+      },
+      "expected": {
+        "procedure_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Procedure/proc-1/_history/1"
+        ],
+        "count": 1
+      },
+      "reason": "A later order revocation does not erase an independent completed Procedure."
+    },
+    {
+      "id": "entered-in-error-excluded",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation",
+        "fhir-r4-observation-status"
+      ],
+      "input": {
+        "operation": "observation_state",
+        "fixture": "input.json",
+        "observation_id": "obs-error"
+      },
+      "expected": {
+        "version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-error/_history/1",
+        "state": "entered-in-error",
+        "quantitative_eligible": false,
+        "normality": "not-assessed"
+      },
+      "reason": "Retain the invalid source record for audit but exclude it as usable measurement."
+    },
+    {
+      "id": "missing-result-is-not-negative",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-servicerequest",
+        "fhir-r4-observation"
+      ],
+      "input": {
+        "operation": "order_result_state",
+        "fixture": "input.json",
+        "order_id": "ord-3"
+      },
+      "expected": {
+        "order_id": "ord-3",
+        "observation_version_keys": [],
+        "state": "missing-result",
+        "negative_result": null
+      },
+      "reason": "An active request without a supplied result is not a negative test."
+    },
+    {
+      "id": "unknown-value-is-not-normal",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation"
+      ],
+      "input": {
+        "operation": "observation_state",
+        "fixture": "input.json",
+        "observation_id": "obs-unknown"
+      },
+      "expected": {
+        "version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-unknown/_history/1",
+        "state": "unknown-value",
+        "quantitative_eligible": false,
+        "normality": "not-assessed"
+      },
+      "reason": "dataAbsentReason unknown is explicit absence of a value, not normal/zero/negative."
+    },
+    {
+      "id": "versions-and-repeat-encounters",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource",
+        "fhir-r4-encounter"
+      ],
+      "input": {
+        "operation": "identity_inventory",
+        "fixture": "input.json"
+      },
+      "expected": {
+        "resource_version_count": 20,
+        "logical_resource_count": 19,
+        "patient_count": 2,
+        "encounter_logical_ids": [
+          "enc-1",
+          "enc-2"
+        ],
+        "observation_version_count": 6,
+        "current_observation_count": 5,
+        "obs_1_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v1",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+        ],
+        "obs_1_current_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+      },
+      "reason": "Keep corrected snapshots, repeat visits and source-scoped patients distinct; choose current from authority."
+    },
+    {
+      "id": "exact-replay-idempotent",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "input": {
+        "operation": "identity_inventory",
+        "fixture": "input.json",
+        "replay_version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+      },
+      "expected": {
+        "resource_version_count": 20,
+        "logical_resource_count": 19,
+        "patient_count": 2,
+        "encounter_logical_ids": [
+          "enc-1",
+          "enc-2"
+        ],
+        "observation_version_count": 6,
+        "current_observation_count": 5,
+        "obs_1_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v1",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+        ],
+        "obs_1_current_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+      },
+      "reason": "Replaying an identical version snapshot adds no graph record."
+    },
+    {
+      "id": "same-demographics-do-not-merge",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-patient"
+      ],
+      "input": {
+        "operation": "identity_decision",
+        "fixture": "input.json",
+        "attempt_id": "shared-contact-attempt"
+      },
+      "expected": {
+        "attempt_id": "shared-contact-attempt",
+        "merge_authorized": false,
+        "patient_count": 2,
+        "patient_keys": [
+          "synthetic-p-001",
+          "synthetic-p-002"
+        ]
+      },
+      "reason": "Shared synthetic contact/demographics are insufficient identity evidence."
+    },
+    {
+      "id": "units-are-not-interchangeable",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "input": {
+        "operation": "compare_observations",
+        "fixture": "input.json",
+        "observation_ids": [
+          "obs-1",
+          "obs-unit"
+        ]
+      },
+      "expected": {
+        "version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-unit/_history/1"
+        ],
+        "comparable": false,
+        "reason_code": "unit-mismatch",
+        "aggregate_value": null
+      },
+      "reason": "mg/L and g/L are kept as supplied; no conversion is enabled."
+    },
+    {
+      "id": "known-compatible-values",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "input": {
+        "operation": "compare_observations",
+        "fixture": "input.json",
+        "observation_ids": [
+          "obs-1",
+          "obs-repeat"
+        ]
+      },
+      "expected": {
+        "version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-repeat/_history/1"
+        ],
+        "comparable": true,
+        "reason_code": "same-code-version-and-unit",
+        "aggregate_value": 13,
+        "clinical_interpretation": "not-assessed"
+      },
+      "reason": "Arithmetic on matching synthetic quantities is a data exercise; repeat encounters remain distinct."
+    },
+    {
+      "id": "coding-version-mismatch",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "input": {
+        "operation": "compare_observations",
+        "fixture": "input.json",
+        "observation_ids": [
+          "obs-1",
+          "obs-repeat"
+        ],
+        "mutations": [
+          {
+            "resource_type": "Observation",
+            "resource_id": "obs-repeat",
+            "set": {
+              "code.coding.0.version": "training-2"
+            }
+          }
+        ]
+      },
+      "expected": {
+        "version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-repeat/_history/1"
+        ],
+        "comparable": false,
+        "reason_code": "coding-mismatch",
+        "aggregate_value": null
+      },
+      "reason": "Same display/code with another code-system version has no assumed equivalence."
+    },
+    {
+      "id": "conflicting-snapshot-rejected",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-resource"
+      ],
+      "input": {
+        "operation": "validate_intake",
+        "fixture": "input.json",
+        "conflicting_replay": {
+          "version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "set": {
+            "valueQuantity.value": 88
+          }
+        }
+      },
+      "expected": {
+        "accepted": false,
+        "error_codes": [
+          "conflicting-version-payload"
+        ]
+      },
+      "reason": "Same source/type/id/version cannot silently change value on replay."
+    },
+    {
+      "id": "absent-value-conflict-rejected",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-observation"
+      ],
+      "input": {
+        "operation": "validate_intake",
+        "fixture": "input.json",
+        "mutations": [
+          {
+            "resource_type": "Observation",
+            "resource_id": "obs-repeat",
+            "set": {
+              "dataAbsentReason": {
+                "text": "unknown"
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "error_codes": [
+          "obs-6-value-and-absent-reason"
+        ]
+      },
+      "reason": "Selected official obs-6 rejects root value plus dataAbsentReason instead of repairing it."
+    },
+    {
+      "id": "exact-version-retraction",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance",
+        "fhir-r4-resource"
+      ],
+      "input": {
+        "operation": "retraction_decision",
+        "fixture": "input.json",
+        "instruction": {
+          "target_version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "authorized": true,
+          "evidence_id": "synthetic-retraction-001"
+        }
+      },
+      "expected": {
+        "applied": true,
+        "excluded_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+        ],
+        "retained_history_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v1",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+        ],
+        "fallback_to_prior_version": false
+      },
+      "reason": "Authorized local view retraction is exact-version and preserves history; no automatic fallback to a superseded value."
+    },
+    {
+      "id": "unauthorized-retraction-denied",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-provenance"
+      ],
+      "input": {
+        "operation": "retraction_decision",
+        "fixture": "input.json",
+        "instruction": {
+          "target_version_key": "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2",
+          "authorized": false,
+          "evidence_id": null
+        }
+      },
+      "expected": {
+        "applied": false,
+        "excluded_version_keys": [],
+        "retained_history_version_keys": [
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v1",
+          "https://clinic-a.example.invalid/fhir/Observation/obs-1/_history/v2"
+        ],
+        "fallback_to_prior_version": false
+      },
+      "reason": "Provenance or a caller instruction alone does not authorize a view change."
+    },
+    {
+      "id": "disclosure-not-authorized",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "onto-project"
+      ],
+      "input": {
+        "operation": "disclosure_decision",
+        "fixture": "input.json"
+      },
+      "expected": {
+        "disclosure_allowed": false,
+        "released_record_count": 0
+      },
+      "reason": "Synthetic purpose approval is not separate disclosure approval; no data release occurs."
+    }
+  ]
+}

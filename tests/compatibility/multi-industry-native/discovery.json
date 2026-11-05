@@ -1,0 +1,159 @@
+{
+  "codex_version": "codex-cli 0.166.0",
+  "platform": "Linux",
+  "results": [
+    {
+      "scope": "project",
+      "phase": "single",
+      "skill_names": [
+        "entity-relationship-modeling"
+      ],
+      "resource_files_read": 4,
+      "native_metadata_discovery": "passed",
+      "package_sha256": {
+        "entity-relationship-modeling": "1cda28c8dfd6a88a6d8fc8b424033db558f9e61324f50f95eca890089d69aab7"
+      },
+      "model_invocation": "not-run"
+    },
+    {
+      "scope": "project",
+      "phase": "multiple",
+      "skill_names": [
+        "banking-business-model",
+        "credit-risk-knowledge",
+        "electric-power-domain-knowledge",
+        "entity-relationship-modeling",
+        "fibo-ontology",
+        "finance-domain-knowledge",
+        "financial-regulatory-reporting",
+        "fraud-network-modeling",
+        "healthcare-care-pathway-modeling",
+        "healthcare-domain-knowledge",
+        "industry-knowledge-discovery",
+        "logistics-domain-knowledge",
+        "manufacturing-domain-knowledge",
+        "manufacturing-quality-traceability",
+        "multi-lending-detection",
+        "ontology-documentation",
+        "ontology-evolution",
+        "ontology-modeling",
+        "ontology-validation",
+        "power-outage-impact-analysis",
+        "property-graph-mapping",
+        "related-party-transaction-modeling",
+        "retail-domain-knowledge",
+        "retail-inventory-replenishment",
+        "shipment-exception-analysis"
+      ],
+      "resource_files_read": 199,
+      "native_metadata_discovery": "passed",
+      "package_sha256": {
+        "banking-business-model": "d6a89427b1139ca99b3a8004a282633f347993d2de96507de46c032ed2b6ad13",
+        "credit-risk-knowledge": "84b4d665743c79971e99535f66702b6f5d6d840e8bfbd473364039c527cb896d",
+        "electric-power-domain-knowledge": "48bab9b668e67b8a502c25302dbf20d51754cb18dfc04ee5e0eb3e470d409ffa",
+        "entity-relationship-modeling": "1cda28c8dfd6a88a6d8fc8b424033db558f9e61324f50f95eca890089d69aab7",
+        "fibo-ontology": "c813ec798b416eb8f3eaca9807bc9ccac3d3346199100ca979c438128e16e4f3",
+        "finance-domain-knowledge": "0f4adc7cad204eb6f783b76d40257ad3ea38c428ce151b2011ac4c7f1d95bb60",
+        "financial-regulatory-reporting": "42fe8479ec04407836f58c4c4c9cd63dd3603f95a7fcaab67b34c5618da406ad",
+        "fraud-network-modeling": "cd9672da55c9329f035d566bb9c0bc4105c34704e232f54ea2e5b6e5e708f6b6",
+        "healthcare-care-pathway-modeling": "aba46c2b7b36944dfe2e020e699c758e51eccd1de6e08e2de3103518d270fbea",
+        "healthcare-domain-knowledge": "d21b8e2cd2c106feaf042da2e429abc62132a13214a01b8a71a01442ed83ce9e",
+        "industry-knowledge-discovery": "10a3744fb588c2c72e63653cda6f14af032be440d44eee3db8279c2f42eb5898",
+        "logistics-domain-knowledge": "0783e3d5daf600a2deb7ed1021c9bc0892e4b58efac5c37583cfeafd983560b8",
+        "manufacturing-domain-knowledge": "9a0c92a9182af07ea6f8c7d721cf57e0614f58f5bd3c1df616b722f14b7ef970",
+        "manufacturing-quality-traceability": "f997a20636a49574208cd9178c52b4d8f55d2b36280811f09d9c6eb90be3b129",
+        "multi-lending-detection": "a3a63f343d52630d4e63bf7bcd0d2eecc34b4756ffe4c9b3caf2c8150e3f5550",
+        "ontology-documentation": "648764adb312fe0ae5b1efebc8515b4ecf7c81d718eb26dda016c47f5023c86e",
+        "ontology-evolution": "d92c0611e61e44bf8b92b4cb083dfff20d98ddcd783b267c27abd3c15362aa08",
+        "ontology-modeling": "d929b1f51f5fa1abd82820a3e26ea7726325f612583119420673c4c10e63a2a6",
+        "ontology-validation": "29845a0187b995ede836ae9483adec594351157ca821e459c6c75563554d28df",
+        "power-outage-impact-analysis": "c63a8ca777ae16810594afadabdc7ef1edf8d5ad4de0016905cfca8986b8d352",
+        "property-graph-mapping": "4d76a96ea876b0d02b7c98d2dc917a359f6b80bd2e4b24c66cb3f3cedfcdb98b",
+        "related-party-transaction-modeling": "cef4b48df5542abb75785049d10872fd0e0a10b0e8012051ff71de2d662c8019",
+        "retail-domain-knowledge": "cd2e11ab30c8a7fef2deaca6ff03b1881301cd7ab10b2fd383aa1803e1c0ecc9",
+        "retail-inventory-replenishment": "d7fa47a04b8348462346e49dfb287c0e8aecae730d62dafe611a08b362a1f0e6",
+        "shipment-exception-analysis": "054c51b5771822064a74155a5460af955e0eac11cd3794883b34e5472fb48fc3"
+      },
+      "model_invocation": "not-run"
+    },
+    {
+      "scope": "legacy-codex-home",
+      "phase": "single",
+      "skill_names": [
+        "entity-relationship-modeling"
+      ],
+      "resource_files_read": 4,
+      "native_metadata_discovery": "passed",
+      "package_sha256": {
+        "entity-relationship-modeling": "1cda28c8dfd6a88a6d8fc8b424033db558f9e61324f50f95eca890089d69aab7"
+      },
+      "model_invocation": "not-run"
+    },
+    {
+      "scope": "legacy-codex-home",
+      "phase": "multiple",
+      "skill_names": [
+        "banking-business-model",
+        "credit-risk-knowledge",
+        "electric-power-domain-knowledge",
+        "entity-relationship-modeling",
+        "fibo-ontology",
+        "finance-domain-knowledge",
+        "financial-regulatory-reporting",
+        "fraud-network-modeling",
+        "healthcare-care-pathway-modeling",
+        "healthcare-domain-knowledge",
+        "industry-knowledge-discovery",
+        "logistics-domain-knowledge",
+        "manufacturing-domain-knowledge",
+        "manufacturing-quality-traceability",
+        "multi-lending-detection",
+        "ontology-documentation",
+        "ontology-evolution",
+        "ontology-modeling",
+        "ontology-validation",
+        "power-outage-impact-analysis",
+        "property-graph-mapping",
+        "related-party-transaction-modeling",
+        "retail-domain-knowledge",
+        "retail-inventory-replenishment",
+        "shipment-exception-analysis"
+      ],
+      "resource_files_read": 199,
+      "native_metadata_discovery": "passed",
+      "package_sha256": {
+        "banking-business-model": "d6a89427b1139ca99b3a8004a282633f347993d2de96507de46c032ed2b6ad13",
+        "credit-risk-knowledge": "84b4d665743c79971e99535f66702b6f5d6d840e8bfbd473364039c527cb896d",
+        "electric-power-domain-knowledge": "48bab9b668e67b8a502c25302dbf20d51754cb18dfc04ee5e0eb3e470d409ffa",
+        "entity-relationship-modeling": "1cda28c8dfd6a88a6d8fc8b424033db558f9e61324f50f95eca890089d69aab7",
+        "fibo-ontology": "c813ec798b416eb8f3eaca9807bc9ccac3d3346199100ca979c438128e16e4f3",
+        "finance-domain-knowledge": "0f4adc7cad204eb6f783b76d40257ad3ea38c428ce151b2011ac4c7f1d95bb60",
+        "financial-regulatory-reporting": "42fe8479ec04407836f58c4c4c9cd63dd3603f95a7fcaab67b34c5618da406ad",
+        "fraud-network-modeling": "cd9672da55c9329f035d566bb9c0bc4105c34704e232f54ea2e5b6e5e708f6b6",
+        "healthcare-care-pathway-modeling": "aba46c2b7b36944dfe2e020e699c758e51eccd1de6e08e2de3103518d270fbea",
+        "healthcare-domain-knowledge": "d21b8e2cd2c106feaf042da2e429abc62132a13214a01b8a71a01442ed83ce9e",
+        "industry-knowledge-discovery": "10a3744fb588c2c72e63653cda6f14af032be440d44eee3db8279c2f42eb5898",
+        "logistics-domain-knowledge": "0783e3d5daf600a2deb7ed1021c9bc0892e4b58efac5c37583cfeafd983560b8",
+        "manufacturing-domain-knowledge": "9a0c92a9182af07ea6f8c7d721cf57e0614f58f5bd3c1df616b722f14b7ef970",
+        "manufacturing-quality-traceability": "f997a20636a49574208cd9178c52b4d8f55d2b36280811f09d9c6eb90be3b129",
+        "multi-lending-detection": "a3a63f343d52630d4e63bf7bcd0d2eecc34b4756ffe4c9b3caf2c8150e3f5550",
+        "ontology-documentation": "648764adb312fe0ae5b1efebc8515b4ecf7c81d718eb26dda016c47f5023c86e",
+        "ontology-evolution": "d92c0611e61e44bf8b92b4cb083dfff20d98ddcd783b267c27abd3c15362aa08",
+        "ontology-modeling": "d929b1f51f5fa1abd82820a3e26ea7726325f612583119420673c4c10e63a2a6",
+        "ontology-validation": "29845a0187b995ede836ae9483adec594351157ca821e459c6c75563554d28df",
+        "power-outage-impact-analysis": "c63a8ca777ae16810594afadabdc7ef1edf8d5ad4de0016905cfca8986b8d352",
+        "property-graph-mapping": "4d76a96ea876b0d02b7c98d2dc917a359f6b80bd2e4b24c66cb3f3cedfcdb98b",
+        "related-party-transaction-modeling": "cef4b48df5542abb75785049d10872fd0e0a10b0e8012051ff71de2d662c8019",
+        "retail-domain-knowledge": "cd2e11ab30c8a7fef2deaca6ff03b1881301cd7ab10b2fd383aa1803e1c0ecc9",
+        "retail-inventory-replenishment": "d7fa47a04b8348462346e49dfb287c0e8aecae730d62dafe611a08b362a1f0e6",
+        "shipment-exception-analysis": "054c51b5771822064a74155a5460af955e0eac11cd3794883b34e5472fb48fc3"
+      },
+      "model_invocation": "not-run"
+    }
+  ],
+  "limits": [
+    "No model inference or implicit-trigger evaluation",
+    "No CC-Switch GUI install/update/uninstall",
+    "No macOS runtime"
+  ]
+}

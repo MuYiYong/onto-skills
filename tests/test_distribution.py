@@ -36,7 +36,7 @@ class DistributionTests(unittest.TestCase):
                 if not (dest / entry.parent.name).exists():
                     shutil.copytree(entry.parent, dest / entry.parent.name)
             names = [metadata(p)[0]['name'] for p in dest.glob('*/SKILL.md')]
-            self.assertEqual(len(names), 13)
+            self.assertEqual(len(names), len(entries))
             self.assertEqual(len(names), len(set(names)))
 
     def test_standard_draft_does_not_pass_ready_gate(self):

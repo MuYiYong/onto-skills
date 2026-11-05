@@ -1,0 +1,32 @@
+[
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-domain-knowledge/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ab852dd0229f248c8aefd7e854c0b52e7bd796fdc4fcc189a180fca0f28ca824"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-domain-knowledge/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "01934c72415b8a7269ac59b33dbcd2611047a74e4453780fb7af2b19ad5d64d8"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-domain-knowledge/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "11845aeeb21e49d7cc6bfd1f6d3515c59819b50b642c034f3458586459035952"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-domain-knowledge/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "dce16573960b3d5cf86bb9c8f66239a7723be9bc9b45c8f2afd27ea98518c2a0"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-domain-knowledge/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "342654a4f1fc2d29e3e5f1141ed3e37515c10ef574b8a9e0943cd9720efd49f4"
+  }
+]

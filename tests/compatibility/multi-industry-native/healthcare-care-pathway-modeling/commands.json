@@ -1,0 +1,62 @@
+[
+  {
+    "command": "/bin/bash -lc pwd",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "667fb6ef958fe9ffeb722a55eadbc93372b962dc41985766fd78ce7cfa2fd474"
+  },
+  {
+    "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g 'SKILL.md' -g 'domain.json' -g 'sources.json' -g 'method.md' -g 'graph-model-specification.md' -g 'graph-model.schema.json' -g 'acceptance.json' -g 'worked-example.md' -g 'input.json' -g 'graph-model.json' --hidden\"",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d44bfa25bea5263096ddb1b667b57dd60007133537c0e40955534a9ee0b07169"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/references/domain.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "ab852dd0229f248c8aefd7e854c0b52e7bd796fdc4fcc189a180fca0f28ca824"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/references/sources.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "342654a4f1fc2d29e3e5f1141ed3e37515c10ef574b8a9e0943cd9720efd49f4"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/SKILL.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "f1151160fc38d13074fec8f1b1308e733672f22108af20886cd8b1362de40c34"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/references/method.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "b96a145cd7b8741e590e295e386807eebf998b2acc4c22c5aefa0242608aae1c"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/references/graph-model.schema.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/references/graph-model-specification.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "d785cbc407c06cce3fbe21370f526395f53aaef43dc1b2c69bda8e533d6a9297"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/examples/worked-example.md'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "997699e65ebd66deb3c0e075eceeebcdc4bb4d64b2ebed10f22282581349eabe"
+  },
+  {
+    "command": "/bin/bash -lc 'cat .agents/skills/healthcare-care-pathway-modeling/examples/acceptance.json'",
+    "exit_code": 0,
+    "status": "completed",
+    "output_sha256": "7e16cac63b6e8fb786f21b6d671c7e5c25ad495eb330cc2797cda6f31dac3b04"
+  }
+]
