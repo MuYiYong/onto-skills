@@ -1,0 +1,44 @@
+{
+  "projection": "Original SensorThings field projection, not a complete service response",
+  "known_as_of": "2026-11-06T12:00:00Z",
+  "policy": {
+    "id": "local-demo-1",
+    "version": "1",
+    "authority": "synthetic user policy, NOT a legal environmental limit",
+    "service": "https://sensors.example/v1.1",
+    "foi_id": "river-A",
+    "observed_property": "urn:example:property:nitrate",
+    "unit_definition": "urn:example:unit:mg-per-litre",
+    "upper": "3",
+    "window_start": "2026-11-06T10:00:00Z",
+    "window_end": "2026-11-06T11:00:00Z"
+  },
+  "datastreams": [
+    {
+      "service": "https://sensors.example/v1.1",
+      "id": "1",
+      "observed_property": "urn:example:property:nitrate",
+      "unit_definition": "urn:example:unit:mg-per-litre",
+      "observation_type": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
+      "sensor_id": "sensor-1",
+      "thing_id": "station-1",
+      "observed_at": "2026-11-06T09:00:00Z"
+    }
+  ],
+  "observations": [
+    {
+      "service": "https://sensors.example/v1.1",
+      "id": "7",
+      "stream_id": "1",
+      "foi_id": "river-A",
+      "phenomenonTime": "2026-11-06T10:30:00Z",
+      "resultTime": "2026-11-06T10:31:00Z",
+      "result": "3.5",
+      "resultQuality": {
+        "source_note": "laboratory check supplied"
+      },
+      "quality_decision": "accepted",
+      "observed_at": "2026-11-06T10:32:00Z"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "projection": "Original Open Badges VC2 field projection; no signed credential",
+  "as_of": "2026-11-06T12:00:00Z",
+  "known_as_of": "2026-11-06T12:00:00Z",
+  "policy": {
+    "id": "demo-review-1",
+    "version": "1",
+    "trusted_issuers": [
+      "https://academy.example/issuer"
+    ],
+    "subject_id": "did:example:learner-a",
+    "status_max_age_seconds": 86400
+  },
+  "credentials": [
+    {
+      "id": "https://academy.example/credentials/7",
+      "issuer_id": "https://academy.example/issuer",
+      "subject_id": "did:example:learner-a",
+      "achievement_id": "https://academy.example/achievements/graph-intro",
+      "creator_id": "https://curriculum.example/creator",
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validUntil": "2027-01-01T00:00:00Z",
+      "credential_status_id": "https://academy.example/status/7",
+      "evidence": [
+        "https://academy.example/evidence/7"
+      ],
+      "observed_at": "2026-11-06T10:00:00Z"
+    }
+  ],
+  "reports": [
+    {
+      "credential_id": "https://academy.example/credentials/7",
+      "issuer_id": "https://academy.example/issuer",
+      "subject_id": "did:example:learner-a",
+      "artifact": "credential-payload-1",
+      "credential_content": {
+        "id": "https://academy.example/credentials/7",
+        "issuer_id": "https://academy.example/issuer",
+        "subject_id": "did:example:learner-a",
+        "achievement_id": "https://academy.example/achievements/graph-intro",
+        "creator_id": "https://curriculum.example/creator",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": "2027-01-01T00:00:00Z",
+        "credential_status_id": "https://academy.example/status/7",
+        "evidence": [
+          "https://academy.example/evidence/7"
+        ]
+      },
+      "schema": "pass",
+      "proof": "pass",
+      "status": "active",
+      "status_reference": "https://academy.example/status/7",
+      "checked_at": "2026-11-06T11:00:00Z",
+      "observed_at": "2026-11-06T11:01:00Z",
+      "simulated": true,
+      "report_id": "report-1"
+    }
+  ]
+}

@@ -1,0 +1,1086 @@
+{
+  "spec_version": "1.0",
+  "model_id": "observation-quality-assessment",
+  "version": "1.0.0",
+  "graph_type": "EnvironmentalMonitoringEvidence",
+  "description": "环境观测质量与阈值候选；数据库中立、标准字段投影与本地政策分层",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "sta11",
+      "name": "OGC SensorThings API Part 1: Sensing",
+      "uri": "https://docs.ogc.org/is/18-088/18-088.html",
+      "version": "1.1 / 18-088; published 2021-08-04",
+      "publisher": "Open Geospatial Consortium",
+      "scope": "Entities, control information, observation times, quality and feature of interest",
+      "license": "OGC document license applies; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "SourceRecord",
+      "business_meaning": "Immutable delivered source or check report; retention and collection times are local provenance",
+      "identity_scope": "record_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "record_id"
+      ],
+      "properties": [
+        {
+          "name": "record_id",
+          "logical_type": "identifier",
+          "business_meaning": "record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_uri",
+          "logical_type": "string",
+          "business_meaning": "source_uri",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_revision",
+          "logical_type": "string",
+          "business_meaning": "source_revision",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "business_meaning": "SHA-256 of retained original bytes; integrity does not establish publisher authenticity",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "source_locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "supersedes_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Explicit correction, never inferred from ingestion order",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "derived_from_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Separate transformation lineage",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "DatastreamSnapshot",
+      "business_meaning": "Datastream metadata as observed in a source payload",
+      "identity_scope": "service_root + datastream_id + payload_hash; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "service_root",
+        "datastream_id",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "service_root",
+          "logical_type": "identifier",
+          "business_meaning": "service_root",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "datastream_id",
+          "logical_type": "identifier",
+          "business_meaning": "datastream_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "sensor_id",
+          "logical_type": "string",
+          "business_meaning": "sensor_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "thing_id",
+          "logical_type": "string",
+          "business_meaning": "thing_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_property",
+          "logical_type": "string",
+          "business_meaning": "observed_property",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit_definition",
+          "logical_type": "string",
+          "business_meaning": "unit_definition",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observation_type",
+          "logical_type": "string",
+          "business_meaning": "observation_type",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "sta11",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "FeatureOfInterest",
+      "business_meaning": "Scoped observed feature, not automatically sensor location",
+      "identity_scope": "service_root + feature_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "service_root",
+        "feature_id"
+      ],
+      "properties": [
+        {
+          "name": "service_root",
+          "logical_type": "identifier",
+          "business_meaning": "service_root",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "feature_id",
+          "logical_type": "identifier",
+          "business_meaning": "feature_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "description",
+          "logical_type": "string",
+          "business_meaning": "description",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "sta11",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ObservationRecord",
+      "business_meaning": "A source version of an observation, including unknown result time",
+      "identity_scope": "service_root + observation_id + payload_hash; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "service_root",
+        "observation_id",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "service_root",
+          "logical_type": "identifier",
+          "business_meaning": "service_root",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observation_id",
+          "logical_type": "identifier",
+          "business_meaning": "observation_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "phenomenon_time",
+          "logical_type": "string",
+          "business_meaning": "Original instant or interval; preserve interval rather than coercing to timestamp",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "result_time",
+          "logical_type": "datetime",
+          "business_meaning": "May be null in SensorThings",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "result",
+          "logical_type": "json",
+          "business_meaning": "Raw typed result including null",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "result_quality",
+          "logical_type": "json",
+          "business_meaning": "Original quality metadata; no assumed enumeration",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_time",
+          "logical_type": "string",
+          "business_meaning": "Optional original interval",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "source_record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "sta11",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ThresholdPolicy",
+      "business_meaning": "User policy with explicitly nonstandard synthetic limits",
+      "identity_scope": "policy_id + version; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "policy_id",
+        "version"
+      ],
+      "properties": [
+        {
+          "name": "policy_id",
+          "logical_type": "identifier",
+          "business_meaning": "policy_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version",
+          "logical_type": "identifier",
+          "business_meaning": "version",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_property",
+          "logical_type": "string",
+          "business_meaning": "observed_property",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "unit_definition",
+          "logical_type": "string",
+          "business_meaning": "unit_definition",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "upper",
+          "logical_type": "decimal",
+          "business_meaning": "upper",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "window_start",
+          "logical_type": "datetime",
+          "business_meaning": "window_start",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "window_end",
+          "logical_type": "datetime",
+          "business_meaning": "window_end",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "authority",
+          "logical_type": "string",
+          "business_meaning": "authority",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ObservationAssessment",
+      "business_meaning": "Bounded comparison and quality finding",
+      "identity_scope": "assessment_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "assessment_id"
+      ],
+      "properties": [
+        {
+          "name": "assessment_id",
+          "logical_type": "identifier",
+          "business_meaning": "assessment_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "business_meaning": "status",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "business_meaning": "reason",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "quality_decision",
+          "logical_type": "string",
+          "business_meaning": "Local reviewed quality admission, not an OGC code",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "assessed_at",
+          "logical_type": "datetime",
+          "business_meaning": "assessed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "known_as_of",
+          "logical_type": "datetime",
+          "business_meaning": "known_as_of",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "IN_STREAM",
+      "business_meaning": "Observation stream in the correct service and metadata version",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObservationRecord",
+      "to": "DatastreamSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "OBSERVES_FEATURE",
+      "business_meaning": "Actual feature of interest, independent of installation location",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObservationRecord",
+      "to": "FeatureOfInterest",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "FROM_SOURCE",
+      "business_meaning": "Immutable observation source",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObservationRecord",
+      "to": "SourceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "METADATA_FROM",
+      "business_meaning": "Immutable metadata source",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "DatastreamSnapshot",
+      "to": "SourceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ASSESSES_OBSERVATION",
+      "business_meaning": "Record assessed; conflicting variants require separate linked evidence",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObservationAssessment",
+      "to": "ObservationRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "USES_POLICY",
+      "business_meaning": "Exact local policy version",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObservationAssessment",
+      "to": "ThresholdPolicy",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "POLICY_FOR_FEATURE",
+      "business_meaning": "Scope by observed feature",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ThresholdPolicy",
+      "to": "FeatureOfInterest",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "source-binding",
+      "subject": "model",
+      "rule": "Every assertion source_record_id resolves to an immutable SourceRecord and its exact source_locator; source changes create new records. Never overwrite conflicting payloads.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "evidence-boundary",
+      "subject": "model",
+      "rule": "Facts, reviewed equivalence, local policy and candidate conclusions remain separate. No confidence score proves a claim or authorizes identity merging.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "no-deployment",
+      "subject": "model",
+      "rule": "Graph structure and synthetic evidence do not establish standard conformance or target database execution.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "measurement-context",
+      "subject": "model",
+      "rule": "IN_STREAM must have the same service root as the observation; resolve exactly one metadata version. Preserve @iot.id type or use canonical resource URI; never merge different services.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "time-semantics",
+      "subject": "node:ObservationRecord",
+      "rule": "phenomenon_time, result_time, valid_time and observed_at are independent. Null result_time is allowed; interval comparison requires an explicit policy.",
+      "enforcement": "review",
+      "source_ids": [
+        "sta11"
+      ]
+    },
+    {
+      "id": "threshold-scope",
+      "subject": "node:ObservationAssessment",
+      "rule": "Match property definition, feature, unit, numeric measurement type, time window and reviewed quality before local comparison; missing/conflicting evidence remains unknown.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "not-regulation",
+      "subject": "node:ThresholdPolicy",
+      "rule": "Synthetic threshold is not an environmental regulation. Real use requires authoritative applicable limit, sampling/averaging method, geography and date.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "stream",
+      "source_id": "sta11",
+      "source_term": "8.2.4 Datastream",
+      "target": "node:DatastreamSnapshot",
+      "status": "approximated",
+      "explanation": "Sensor/Thing/property references retained as scoped identifiers; no complete service entity serialization.",
+      "constraint_ids": []
+    },
+    {
+      "id": "observation",
+      "source_id": "sta11",
+      "source_term": "8.2.7 Observation",
+      "target": "node:ObservationRecord",
+      "status": "approximated",
+      "explanation": "Original time, quality and result fields plus local immutable versioning; no automatic correction precedence.",
+      "constraint_ids": []
+    },
+    {
+      "id": "foi",
+      "source_id": "sta11",
+      "source_term": "8.2.8 FeatureOfInterest",
+      "target": "edge:OBSERVES_FEATURE",
+      "status": "approximated",
+      "explanation": "Feature relation retained; geometry stored externally in source; sensor position cannot replace it.",
+      "constraint_ids": []
+    },
+    {
+      "id": "quality",
+      "source_id": "sta11",
+      "source_term": "8.2.7 Table 18 resultQuality",
+      "target": "property:ObservationRecord.result_quality",
+      "status": "approximated",
+      "explanation": "Original metadata retained; quality_decision is separately supplied local interpretation.",
+      "constraint_ids": []
+    },
+    {
+      "id": "interval",
+      "source_id": "sta11",
+      "source_term": "8.2.7 phenomenonTime / validTime",
+      "target": "property:ObservationRecord.phenomenon_time",
+      "status": "approximated",
+      "explanation": "String keeps original interval; no continuous-time or aggregation reasoning.",
+      "constraint_ids": []
+    },
+    {
+      "id": "multi",
+      "source_id": "sta11",
+      "source_term": "12 MultiDatastream",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "Multi-dimensional observations unsupported by bounded scalar example.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Original bounded source projection; not a full standard serialization or compliance validator.",
+    "SourceRecord observed_at is local collection time, not domain time or publisher revision order.",
+    "Retain original source bytes externally with locator and hash; hashing does not prove authenticity."
+  ],
+  "unresolved": [
+    "Select real source profile, data access authority and completeness scope.",
+    "Resolve local policy, identity mapping, retention, and conflict handling against real evidence.",
+    "Choose target database/version and verify physical constraint enforcement before handoff."
+  ],
+  "competency_questions": [
+    "哪些观测在指定被测对象、时间与质量条件下超过本地阈值？",
+    "同一局部ID跨服务或同ID不同载荷如何保留？",
+    "区间结果、缺质量、单位不符和晚到记录为何不能直接判断？"
+  ]
+}

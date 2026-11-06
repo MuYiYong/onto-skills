@@ -1,0 +1,40 @@
+{
+  "id": "built-environment-sources",
+  "name": "建筑与设施来源索引",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "BIM属性变更与空间影响候选的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "ifc432"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "ifc432",
+      "name": "Industry Foundation Classes 4.3 ADD2",
+      "uri": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/",
+      "version": "4.3.2.0 / IFC4X3_ADD2; RELEASE snapshot aac6189946c9f3116198b03ee482152dd3981c76",
+      "publisher": "buildingSMART International",
+      "scope": "IfcRoot, containment/reference, type/occurrence property and units",
+      "license": "Final IFC CC BY-ND 4.0; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ]
+}

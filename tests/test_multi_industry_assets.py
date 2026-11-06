@@ -14,6 +14,9 @@ INDUSTRIES = {
     'healthcare': ('healthcare-domain-knowledge', 'healthcare-care-pathway-modeling'),
     'retail': ('retail-domain-knowledge', 'retail-inventory-replenishment'),
     'cybersecurity': ('cybersecurity-domain-knowledge', 'software-vulnerability-impact'),
+    'built-environment': ('built-environment-domain-knowledge', 'bim-change-impact'),
+    'environmental-monitoring': ('environmental-monitoring-domain-knowledge', 'observation-quality-assessment'),
+    'education': ('education-domain-knowledge', 'learning-credential-verification'),
 }
 FINANCE = {
     'regulatory': ('financial-regulatory-reporting', 'regulatory-reporting'),

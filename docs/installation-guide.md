@@ -1,6 +1,6 @@
 # 安装与更新
 
-安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。仓库提供27项，逐项路径见下表。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 内容以具体版本的发布清单为准，不据源码目录推定已发布。ZIP使用普通目录并附SHA-256。
+安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。仓库提供33项，逐项路径见下表。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 内容以具体版本的发布清单为准，不据源码目录推定已发布。ZIP使用普通目录并附SHA-256。
 
 ## Codex CLI
 
@@ -55,6 +55,14 @@ test ! -e "$HOME/.agents/skills/ontology-modeling" && cp -R skills/core/ontology
 | related-party-transaction-modeling | skills/scenarios/related-party-transaction-modeling |
 | cybersecurity-domain-knowledge | skills/industries/cybersecurity-domain-knowledge |
 | software-vulnerability-impact | skills/scenarios/software-vulnerability-impact |
+| built-environment-domain-knowledge | skills/industries/built-environment-domain-knowledge |
+| bim-change-impact | skills/scenarios/bim-change-impact |
+| environmental-monitoring-domain-knowledge | skills/industries/environmental-monitoring-domain-knowledge |
+| observation-quality-assessment | skills/scenarios/observation-quality-assessment |
+| education-domain-knowledge | skills/industries/education-domain-knowledge |
+| learning-credential-verification | skills/scenarios/learning-credential-verification |
+
+新增建筑、环境监测和教育的六项可按完整目录复制；此前27项原生证据不覆盖这六项。
 
 ## CC-Switch
 

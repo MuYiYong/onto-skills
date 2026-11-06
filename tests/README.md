@@ -31,3 +31,5 @@ test_native_evidence.py 离线检查 [5.3.2 原生验收记录](compatibility/na
 [标准优先原生记录](compatibility/standards-first-native/README.md)绑定最终27包227文件：实际Codex两布局发现、Linux CC-Switch全量管理，以及与CLI失败分开保存的21项当前代理应用。`test_standards_first_native_evidence.py`只做冻结来源/读取/输出/终态的离线完整性复核。
 
 [逐项标准核验](../docs/standards-verification.md)明确149个对象的依据和非标准范围；`test_standard_document_evidence.py`复核实际SPDX/CSAF/CVSS工具收据及EPCIS同ID纠错语义，CI不会重新下载标准或调用外部校验器。
+
+建筑/环境监测/教育扩展：`test_standards_expansion_examples.py`复算41个手工预期及附加边界，`test_expansion_traceability.py`检查问题→模型→案例和新增知识账本的闭合。所有新案例为原创投影，教育报告明确模拟，不运行完整IFC/OGC/凭证处理器。见[说明](../docs/standards-industry-expansion.md)。

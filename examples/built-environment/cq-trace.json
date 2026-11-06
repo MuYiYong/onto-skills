@@ -1,0 +1,47 @@
+{
+  "scope": "Manual question-to-model-to-case trace; not NLP answerability inference",
+  "questions": [
+    {
+      "question": "哪个实例的所选属性发生可比变化，类型变更被哪些实例覆盖？",
+      "model_elements": [
+        "PropertyAssertion",
+        "HAS_TYPE",
+        "ChangeAssessment"
+      ],
+      "case_ids": [
+        "type-change",
+        "null-value",
+        "equivalent-unit",
+        "unknown-unit",
+        "project-unit",
+        "missing-type"
+      ]
+    },
+    {
+      "question": "变化涉及哪些主包含或引用空间，证据来自哪个修订？",
+      "model_elements": [
+        "CONTAINED_IN",
+        "REFERENCED_IN",
+        "CANDIDATE_SPACE"
+      ],
+      "case_ids": [
+        "multiple-containment",
+        "missing-space"
+      ]
+    },
+    {
+      "question": "哪些对象因身份、单位或缺失数据不能比较？",
+      "model_elements": [
+        "ModelRevision",
+        "ObjectSnapshot",
+        "SourceRecord"
+      ],
+      "case_ids": [
+        "different-lineage",
+        "partial-delivery",
+        "duplicate-receipt",
+        "conflicting-object"
+      ]
+    }
+  ]
+}

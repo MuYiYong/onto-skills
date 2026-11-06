@@ -1,0 +1,151 @@
+{
+  "id": "education-domain",
+  "name": "教育与学习凭证知识",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "学习成就凭证证据核对的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "ob30",
+    "vc20"
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_status": "nonstandard-modeling",
+  "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+  "records": [
+    {
+      "id": "credential-identity",
+      "name": "凭证与发行者身份",
+      "summary": "使用凭证id与issuer.id对齐同一发行关系；同一名称或课程不自动等同。保留不同载荷和validFrom，避免覆盖冲突。 OB§10建议比较时解码百分号转义并去除首尾空白；源标识原文与比较键分别保留。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ob30"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "10 Credential equality and comparison algorithm; B.1.2 AchievementCredential",
+          "relation": "supports",
+          "scope": "同发行者下的凭证比较。"
+        }
+      ],
+      "standard_gap": "载荷指纹、接收时间及冲突隔离为本地证据策略；本例不自动刷新或选最新版本。 本例只使用已规范化的明确标识，不实现通用URI规范化；其他输入先明确规范化规则和原值到比较键的映射。"
+    },
+    {
+      "id": "achievement-subject",
+      "name": "成就定义与获颁断言",
+      "summary": "Achievement是成就定义，AchievementSubject是关于接收者的声明；同课程、同名或相同邮箱展示值不证明同一个人。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ob30"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "B.1.1 Achievement; B.1.3 AchievementSubject; 9.3 Verify the Recipient Using an Identifier",
+          "relation": "supports",
+          "scope": "成就与接收者标识分层。"
+        }
+      ],
+      "standard_gap": "本例只支持明确的subject.id匹配；哈希identifier、跨平台身份与授权需另提供验证证据。"
+    },
+    {
+      "id": "issuer-creator",
+      "name": "发行者与创建者",
+      "summary": "颁发凭证的issuer与定义Achievement的creator可不同；保留双方标识和权限依据。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ob30"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "2.4.1 Differentiating Issuers and Achievement Creators; B.1.14 Profile",
+          "relation": "supports",
+          "scope": "角色区分。"
+        }
+      ],
+      "standard_gap": "机构声誉、颁发权限与学历认可由具体任务政策决定。"
+    },
+    {
+      "id": "evidence-results",
+      "name": "证据与结果",
+      "summary": "保留Evidence、Criteria和Result的定位、版本与来源；一个证据URL不是已读取内容，更不是已经核实真实性。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ob30"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "B.1.6 Criteria; B.1.9 Evidence; B.1.16 Result",
+          "relation": "supports",
+          "scope": "条件、证据和结果的表达。"
+        }
+      ],
+      "standard_gap": "对能力现状、成绩等价和学分互认的判断不由这些字段自动推出。"
+    },
+    {
+      "id": "validity-period",
+      "name": "凭证有效期间",
+      "summary": "固定VC2.0上下文后使用validFrom和validUntil并按时间比较；旧VC1.1字段不能无记录地混入。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "vc20"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "vc20",
+          "locator": "4.9 Validity Period",
+          "relation": "supports",
+          "scope": "两个时间字段及次序约束。"
+        }
+      ],
+      "standard_gap": "OB文档9.1兼容注记存在字段版本标签歧义，本例以VC2.0正式条文和OB B.1.2字段为准；相等边界采用本地半开区间政策并明示。"
+    },
+    {
+      "id": "verification-status",
+      "name": "验签、状态与业务核验",
+      "summary": "格式通过、proof通过、状态查询和接收者核对是不同证据；未查询撤销状态保持未知；通过验签不证明凭证中的事实为真。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ob30"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "9 Verification and Validation; 9.1 OpenBadgeCredential Verification; 8 Proofs",
+          "relation": "supports",
+          "scope": "验证过程边界。"
+        }
+      ],
+      "standard_gap": "本例只消费明确标为模拟的校验报告，不执行密码学验签、状态列表解析或联网查询；不能称为真实凭证已验证。"
+    },
+    {
+      "id": "recognition-policy",
+      "name": "认可与资格判断",
+      "summary": "把可信发行者、指定学习者、时间、状态及外部校验报告连接成待复核材料；保留政策版本和不足。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "standard_status": "nonstandard-modeling",
+      "standard_gap": "学历、职业资格、入学录用与当前能力认可均需机构或法定政策；本例candidate_for_review不代表认证、通过或自动决策。"
+    }
+  ]
+}

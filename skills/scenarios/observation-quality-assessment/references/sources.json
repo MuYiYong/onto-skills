@@ -1,0 +1,40 @@
+{
+  "id": "environmental-monitoring-sources",
+  "name": "环境监测来源索引",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "环境观测质量与阈值候选的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "sta11"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "sta11",
+      "name": "OGC SensorThings API Part 1: Sensing",
+      "uri": "https://docs.ogc.org/is/18-088/18-088.html",
+      "version": "1.1 / 18-088; published 2021-08-04",
+      "publisher": "Open Geospatial Consortium",
+      "scope": "Entities, control information, observation times, quality and feature of interest",
+      "license": "OGC document license applies; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ]
+}

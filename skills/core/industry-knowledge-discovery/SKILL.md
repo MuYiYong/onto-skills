@@ -30,7 +30,7 @@ license: MIT
 
 ## 输出
 
-来源索引；术语/别名表；概念与关系候选；流程/规则表；冲突决定；知识缺口；适用范围和可用性结论。每项含稳定ID、分类和source_ids，以及standard_basis（source_id、locator、relation、scope）或standard_gap。直接支持与背景参考分开，原创解释和政策保留原分类。
+来源索引；术语/别名表；概念与关系候选；流程/规则表；冲突决定；知识缺口；适用范围和可用性结论。每项含稳定ID、classification、source_ids、standard_status，以及standard_basis（source_id、locator、relation、scope）或standard_gap。standard-backed必须有具体范围的正式标准supports；仅有背景或本地政策时用nonstandard-modeling并说明standard_gap。原创解释仍为project-curated，不因有标准依据变成official-standard。交付JSON知识资产时按[字段契约](references/method.md)补齐资产元数据与standards_policy。
 
 ## 资源
 

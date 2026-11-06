@@ -1,0 +1,444 @@
+{
+  "observed_at": "2026-11-06",
+  "scope": "Increment to unchanged149-object review;24 new objects manually checked against selected clauses and explicit local gaps",
+  "identified_objects": 24,
+  "status_counts": {
+    "nonstandard-modeling": 6,
+    "standard-backed": 18
+  },
+  "catalogues": [
+    {
+      "path": "knowledge/built-environment/standards/sources.json",
+      "sha256": "e807440ed9f7fde0935114e7f4933326716eab94f3204922dbde446b46afcf71"
+    },
+    {
+      "path": "knowledge/environmental-monitoring/standards/sources.json",
+      "sha256": "ad46297535d5af90791784685a4a4edcca4c0dc15ecafcb26d4e9af05b58ea18"
+    },
+    {
+      "path": "knowledge/education/standards/sources.json",
+      "sha256": "c80de051c9de805eb538a8de1ca931f3423a8059157168fd300a264dea40982b"
+    }
+  ],
+  "primary_retrieval_receipts_not_conformance": [
+    {
+      "id": "ogc",
+      "url": "https://docs.ogc.org/is/18-088/18-088.html",
+      "final_url": "https://docs.ogc.org/is/18-088/18-088.html",
+      "sha256": "76d3bb035eabd6a690b93532ca94cc610dd868abe54d9988b07d24ec4cac25ae",
+      "bytes": 1730821
+    },
+    {
+      "id": "ob",
+      "url": "https://www.imsglobal.org/spec/ob/v3p0/main/",
+      "final_url": "https://www.imsglobal.org/spec/ob/v3p0",
+      "sha256": "01528fa11c0a52fa5104534bbf3048007327464a5cf2763ee67da4f196247c68",
+      "bytes": 3655052
+    },
+    {
+      "id": "vc",
+      "url": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+      "final_url": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+      "sha256": "a9196a3d0b6601356c4e127bad24f8c7f2c17f6ed22e41b35755a910104156f8",
+      "bytes": 1023165
+    },
+    {
+      "id": "ifcroot",
+      "url": "https://raw.githubusercontent.com/buildingSMART/Standards-builds/aac6189946c9f3116198b03ee482152dd3981c76/IFC/RELEASE/IFC4_3/HTML/lexical/IfcRoot.htm",
+      "sha256": "948709cd400e7a45cbb53120c2f76fcce1db263fd454dd3527c12541f056b3ef",
+      "bytes": 31883
+    },
+    {
+      "id": "ifccontain",
+      "url": "https://raw.githubusercontent.com/buildingSMART/Standards-builds/aac6189946c9f3116198b03ee482152dd3981c76/IFC/RELEASE/IFC4_3/HTML/lexical/IfcRelContainedInSpatialStructure.htm",
+      "sha256": "4b003173db5b68cc63971797c11192eda03a52af1b21f3cc0935ee9f98fcbfb2",
+      "bytes": 23087
+    },
+    {
+      "id": "ifctype",
+      "url": "https://raw.githubusercontent.com/buildingSMART/Standards-builds/aac6189946c9f3116198b03ee482152dd3981c76/IFC/RELEASE/IFC4_3/HTML/lexical/IfcRelDefinesByType.htm",
+      "sha256": "908084e73f3688ad2e21a078378e82ba7a72fb6e26babcd875989bdbd644eaed",
+      "bytes": 30067
+    },
+    {
+      "id": "ifcproperty",
+      "url": "https://raw.githubusercontent.com/buildingSMART/Standards-builds/aac6189946c9f3116198b03ee482152dd3981c76/IFC/RELEASE/IFC4_3/HTML/lexical/IfcPropertySingleValue.htm",
+      "sha256": "289114322ae9e8312269fe1edfb4e25e11316ae55908db0c5b5b7623b89db171",
+      "bytes": 23592
+    },
+    {
+      "id": "ifcref",
+      "url": "https://raw.githubusercontent.com/buildingSMART/Standards-builds/aac6189946c9f3116198b03ee482152dd3981c76/IFC/RELEASE/IFC4_3/HTML/lexical/IfcRelReferencedInSpatialStructure.htm",
+      "sha256": "e81f047ae8133a1b54b115b484f22bd25d3842989a996d5768e82f049890bdc6",
+      "bytes": 24843
+    }
+  ],
+  "records": [
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/",
+      "id": "built-environment-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/0",
+      "id": "object-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.44 IfcRoot, Attributes GlobalId and UR1",
+          "relation": "supports",
+          "scope": "GlobalId与名称的区别。"
+        }
+      ],
+      "standard_gap": "文件指纹、模型谱系和接收时点是本地溯源；GlobalId本身不证明两个文件属于同一受控谱系。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/1",
+      "id": "containment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.4.3.52 IfcRelContainedInSpatialStructure, Semantic definition and RelatingStructure",
+          "relation": "supports",
+          "scope": "主包含的层次性与单一主空间。"
+        }
+      ],
+      "standard_gap": "缺少主包含的投影保持未知；并不宣称每类IfcProduct必须有主包含。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/2",
+      "id": "spatial-reference",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.4.3.57 IfcRelReferencedInSpatialStructure, Semantic definition",
+          "relation": "supports",
+          "scope": "非层次的空间引用关系。"
+        }
+      ],
+      "standard_gap": "引用空间并不自动受施工、停运或安全影响。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/3",
+      "id": "type-occurrence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.40 IfcRelDefinesByType, Semantic definition",
+          "relation": "supports",
+          "scope": "类型/实例属性的覆盖语义。"
+        }
+      ],
+      "standard_gap": "本例只比较一个明确选择的单值属性；不解析全部属性模板、复杂属性和类型一致性规则。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/4",
+      "id": "property-unit",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "8.16.3.12 IfcPropertySingleValue, Semantic definition, NominalValue and Unit",
+          "relation": "supports",
+          "scope": "单值与单位的继承/覆盖。"
+        }
+      ],
+      "standard_gap": "仅支持本例长度m/cm/mm的明确换算；不按名称猜量纲，项目自定义间隙属性不称为标准Pset。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/5",
+      "id": "revision-evidence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.44 IfcRoot, OwnerHistory",
+          "relation": "supports",
+          "scope": "OwnerHistory的可选性与最近修改范围。"
+        }
+      ],
+      "standard_gap": "快照完备性、变更差异和影响规则由项目定义；缺失对象不自动表示拆除。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/built-environment/concepts/domain.json",
+      "asset_sha256": "e18894c96cb871099895d21d1c9d54e83b142fcfa54a4990fd80d9e7a539392a",
+      "json_pointer": "/records/6",
+      "id": "impact-policy",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "变更候选算法、审批与运维规则无本例直接标准依据；不是结构验算、施工指令或竣工符合性结论。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/",
+      "id": "environmental-monitoring-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/0",
+      "id": "entity-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.1 Common Control Information Table 2; 9.1 URI Components",
+          "relation": "supports",
+          "scope": "服务根、资源路径与实体标识。"
+        }
+      ],
+      "standard_gap": "源载荷指纹和接收时点是本地溯源字段。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/1",
+      "id": "datastream",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.4 Datastream, Tables 10 and 11",
+          "relation": "supports",
+          "scope": "观测流的属性与关联。"
+        }
+      ],
+      "standard_gap": "本例只支持OM_Measurement数值投影；不覆盖MultiDatastream、分类、计数和任意JSON结果。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/2",
+      "id": "feature-of-interest",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 19; 8.2.8 FeatureOfInterest",
+          "relation": "supports",
+          "scope": "被测对象及一条观测的关联。"
+        }
+      ],
+      "standard_gap": "跨站点空间聚合与污染归因需另给方法和地理证据。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/3",
+      "id": "observation-time",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 18",
+          "relation": "supports",
+          "scope": "三个标准时间字段及resultTime空值语义。"
+        }
+      ],
+      "standard_gap": "本地已知时点不等于标准resultTime；区间结果是否可与瞬时阈值比较需政策，不能拆成若干瞬时值。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/4",
+      "id": "quality",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 18 resultQuality",
+          "relation": "supports",
+          "scope": "可选质量信息的承载。"
+        }
+      ],
+      "standard_gap": "quality_decision=accepted是本例经过人工核实的本地准入判断，不是OGC定义的resultQuality枚举。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/5",
+      "id": "result-and-unit",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.4 Datastream Table 10; 8.2.7 Observation Table 18 result",
+          "relation": "supports",
+          "scope": "结果类型由observationType约束、单位来自观测流。"
+        }
+      ],
+      "standard_gap": "本例只做精确单位匹配，不自动做温度、浓度或标准状态换算。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/environmental-monitoring/concepts/domain.json",
+      "asset_sha256": "5a595d8d5c6194dbdad4b23468af24333cf06dd7a383d3f3098ef3f1dfbbe997",
+      "json_pointer": "/records/6",
+      "id": "threshold-policy",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "SensorThings定义交换模型，不规定环境质量限值。本例合成阈值不是GB、行业排放限值或违法判断；真实任务需用户提供适用标准和地区/日期/采样口径。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/",
+      "id": "education-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/0",
+      "id": "credential-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "10 Credential equality and comparison algorithm; B.1.2 AchievementCredential",
+          "relation": "supports",
+          "scope": "同发行者下的凭证比较。"
+        }
+      ],
+      "standard_gap": "载荷指纹、接收时间及冲突隔离为本地证据策略；本例不自动刷新或选最新版本。 本例只使用已规范化的明确标识，不实现通用URI规范化；其他输入先明确规范化规则和原值到比较键的映射。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/1",
+      "id": "achievement-subject",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "B.1.1 Achievement; B.1.3 AchievementSubject; 9.3 Verify the Recipient Using an Identifier",
+          "relation": "supports",
+          "scope": "成就与接收者标识分层。"
+        }
+      ],
+      "standard_gap": "本例只支持明确的subject.id匹配；哈希identifier、跨平台身份与授权需另提供验证证据。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/2",
+      "id": "issuer-creator",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "2.4.1 Differentiating Issuers and Achievement Creators; B.1.14 Profile",
+          "relation": "supports",
+          "scope": "角色区分。"
+        }
+      ],
+      "standard_gap": "机构声誉、颁发权限与学历认可由具体任务政策决定。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/3",
+      "id": "evidence-results",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "B.1.6 Criteria; B.1.9 Evidence; B.1.16 Result",
+          "relation": "supports",
+          "scope": "条件、证据和结果的表达。"
+        }
+      ],
+      "standard_gap": "对能力现状、成绩等价和学分互认的判断不由这些字段自动推出。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/4",
+      "id": "validity-period",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "vc20",
+          "locator": "4.9 Validity Period",
+          "relation": "supports",
+          "scope": "两个时间字段及次序约束。"
+        }
+      ],
+      "standard_gap": "OB文档9.1兼容注记存在字段版本标签歧义，本例以VC2.0正式条文和OB B.1.2字段为准；相等边界采用本地半开区间政策并明示。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/5",
+      "id": "verification-status",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ob30",
+          "locator": "9 Verification and Validation; 9.1 OpenBadgeCredential Verification; 8 Proofs",
+          "relation": "supports",
+          "scope": "验证过程边界。"
+        }
+      ],
+      "standard_gap": "本例只消费明确标为模拟的校验报告，不执行密码学验签、状态列表解析或联网查询；不能称为真实凭证已验证。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    },
+    {
+      "asset": "knowledge/education/concepts/domain.json",
+      "asset_sha256": "3fb149a0ff7407f37f862e0b00e10b2ecaf52240a862be1e137e462c38dd117e",
+      "json_pointer": "/records/6",
+      "id": "recognition-policy",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "学历、职业资格、入学录用与当前能力认可均需机构或法定政策；本例candidate_for_review不代表认证、通过或自动决策。",
+      "review_note": "Checked selected publisher field/clause semantics; graph organization and bounded local policy remain original curation. No full conformance claim."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "Manual question-to-model-to-case trace; not NLP answerability inference",
+  "questions": [
+    {
+      "question": "哪些明确学习者的凭证有内容绑定且足够新鲜的核查报告？",
+      "model_elements": [
+        "CredentialRecord",
+        "VerificationReport",
+        "REPORT_FOR"
+      ],
+      "case_ids": [
+        "reported-checks-pass",
+        "no-report",
+        "changed-payload",
+        "wrong-status-target",
+        "late-report",
+        "stale-status"
+      ]
+    },
+    {
+      "question": "未知、撤销、过期或同ID冲突时为何不能声称验证通过？",
+      "model_elements": [
+        "RecognitionReview",
+        "CredentialRecord",
+        "SourceRecord"
+      ],
+      "case_ids": [
+        "revoked",
+        "unknown-status",
+        "proof-failed",
+        "expired",
+        "future-validity",
+        "conflicting-credential",
+        "duplicate-receipt"
+      ]
+    },
+    {
+      "question": "成就创建者、凭证发行者、证据来源与机构认可如何区分？",
+      "model_elements": [
+        "Issuer",
+        "LearnerIdentity",
+        "AchievementDefinition"
+      ],
+      "case_ids": [
+        "wrong-subject",
+        "untrusted-issuer"
+      ]
+    }
+  ]
+}

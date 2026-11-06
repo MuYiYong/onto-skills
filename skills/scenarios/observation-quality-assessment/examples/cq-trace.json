@@ -1,0 +1,48 @@
+{
+  "scope": "Manual question-to-model-to-case trace; not NLP answerability inference",
+  "questions": [
+    {
+      "question": "哪些观测在指定被测对象、时间与质量条件下超过本地阈值？",
+      "model_elements": [
+        "ObservationAssessment",
+        "ThresholdPolicy",
+        "OBSERVES_FEATURE"
+      ],
+      "case_ids": [
+        "above-local-threshold",
+        "equal-threshold",
+        "other-foi",
+        "window-boundary",
+        "wrong-property"
+      ]
+    },
+    {
+      "question": "同一局部ID跨服务或同ID不同载荷如何保留？",
+      "model_elements": [
+        "ObservationRecord",
+        "DatastreamSnapshot",
+        "SourceRecord"
+      ],
+      "case_ids": [
+        "duplicate-observation",
+        "conflicting-result",
+        "other-service-id"
+      ]
+    },
+    {
+      "question": "区间结果、缺质量、单位不符和晚到记录为何不能直接判断？",
+      "model_elements": [
+        "ObservationRecord",
+        "ObservationAssessment"
+      ],
+      "case_ids": [
+        "missing-result",
+        "quality-unknown",
+        "wrong-unit",
+        "late-known",
+        "time-interval",
+        "null-result-time"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "built-environment-domain",
+  "name": "建筑与设施知识",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "BIM属性变更与空间影响候选的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "ifc432"
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_status": "nonstandard-modeling",
+  "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+  "records": [
+    {
+      "id": "object-identity",
+      "name": "对象身份与交付版本",
+      "summary": "IfcRoot.GlobalId标识有根对象；同名不构成同一对象。保留交付文件、模型谱系、修订和原始GlobalId，跨修订对应需有连续性证据。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.44 IfcRoot, Attributes GlobalId and UR1",
+          "relation": "supports",
+          "scope": "GlobalId与名称的区别。"
+        }
+      ],
+      "standard_gap": "文件指纹、模型谱系和接收时点是本地溯源；GlobalId本身不证明两个文件属于同一受控谱系。"
+    },
+    {
+      "id": "containment",
+      "name": "主空间包含",
+      "summary": "分别保存对象的主空间包含与其他空间引用；不能把两条引用算成两个主包含。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.4.3.52 IfcRelContainedInSpatialStructure, Semantic definition and RelatingStructure",
+          "relation": "supports",
+          "scope": "主包含的层次性与单一主空间。"
+        }
+      ],
+      "standard_gap": "缺少主包含的投影保持未知；并不宣称每类IfcProduct必须有主包含。"
+    },
+    {
+      "id": "spatial-reference",
+      "name": "空间引用",
+      "summary": "一个构件可以被多个空间引用；范围候选可列这些空间，但不证明几何相交或设施停用。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.4.3.57 IfcRelReferencedInSpatialStructure, Semantic definition",
+          "relation": "supports",
+          "scope": "非层次的空间引用关系。"
+        }
+      ],
+      "standard_gap": "引用空间并不自动受施工、停运或安全影响。"
+    },
+    {
+      "id": "type-occurrence",
+      "name": "类型与实例属性",
+      "summary": "保留类型和实例属性及来源；匹配相应属性集和属性名后，实例属性覆盖类型值，不能用类型变更覆盖已有实例值。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.40 IfcRelDefinesByType, Semantic definition",
+          "relation": "supports",
+          "scope": "类型/实例属性的覆盖语义。"
+        }
+      ],
+      "standard_gap": "本例只比较一个明确选择的单值属性；不解析全部属性模板、复杂属性和类型一致性规则。"
+    },
+    {
+      "id": "property-unit",
+      "name": "单值与单位",
+      "summary": "保留NominalValue及其类型，显式Unit优先；无显式单位时按值的量纲从项目UnitsInContext解析。空值保持未知。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "8.16.3.12 IfcPropertySingleValue, Semantic definition, NominalValue and Unit",
+          "relation": "supports",
+          "scope": "单值与单位的继承/覆盖。"
+        }
+      ],
+      "standard_gap": "仅支持本例长度m/cm/mm的明确换算；不按名称猜量纲，项目自定义间隙属性不称为标准Pset。"
+    },
+    {
+      "id": "revision-evidence",
+      "name": "修订不是完整历史",
+      "summary": "IfcRoot的可选OwnerHistory记录最近修改信息，不能代替完整修订账本；另保留每次源交付、载荷和已知时点。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "ifc432"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "ifc432",
+          "locator": "5.1.3.44 IfcRoot, OwnerHistory",
+          "relation": "supports",
+          "scope": "OwnerHistory的可选性与最近修改范围。"
+        }
+      ],
+      "standard_gap": "快照完备性、变更差异和影响规则由项目定义；缺失对象不自动表示拆除。"
+    },
+    {
+      "id": "impact-policy",
+      "name": "影响候选边界",
+      "summary": "只在受控谱系、明确的两个修订及完整范围内比较可比值；给出改变、未变、未知和待审空间。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "standard_status": "nonstandard-modeling",
+      "standard_gap": "变更候选算法、审批与运维规则无本例直接标准依据；不是结构验算、施工指令或竣工符合性结论。"
+    }
+  ]
+}

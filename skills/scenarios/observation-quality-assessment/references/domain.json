@@ -1,0 +1,150 @@
+{
+  "id": "environmental-monitoring-domain",
+  "name": "环境监测知识",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "环境观测质量与阈值候选的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "sta11"
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_status": "nonstandard-modeling",
+  "standard_gap": "原创知识集合及图模型组织，不是发布机构定义的合并标准。",
+  "records": [
+    {
+      "id": "entity-identity",
+      "name": "服务范围身份",
+      "summary": "以服务根、实体集合、保留类型的@iot.id识别记录；跨服务同ID、同名称都不能自动合并。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.1 Common Control Information Table 2; 9.1 URI Components",
+          "relation": "supports",
+          "scope": "服务根、资源路径与实体标识。"
+        }
+      ],
+      "standard_gap": "源载荷指纹和接收时点是本地溯源字段。"
+    },
+    {
+      "id": "datastream",
+      "name": "观测流上下文",
+      "summary": "Datastream关联Thing、Sensor与ObservedProperty；保存observationType和unitOfMeasurement的name/symbol/definition，不能只拿显示名决定单位。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.4 Datastream, Tables 10 and 11",
+          "relation": "supports",
+          "scope": "观测流的属性与关联。"
+        }
+      ],
+      "standard_gap": "本例只支持OM_Measurement数值投影；不覆盖MultiDatastream、分类、计数和任意JSON结果。"
+    },
+    {
+      "id": "feature-of-interest",
+      "name": "被测对象与设备位置",
+      "summary": "Observation属于一个Datastream并观测一个FeatureOfInterest；测量河段不等同于传感器安装地点。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 19; 8.2.8 FeatureOfInterest",
+          "relation": "supports",
+          "scope": "被测对象及一条观测的关联。"
+        }
+      ],
+      "standard_gap": "跨站点空间聚合与污染归因需另给方法和地理证据。"
+    },
+    {
+      "id": "observation-time",
+      "name": "现象时间、结果时间和有效期",
+      "summary": "phenomenonTime可为时刻或区间；resultTime是结果生成时间，未知可为null；validTime是结果可使用期间。保持三者与本地observed_at分开。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 18",
+          "relation": "supports",
+          "scope": "三个标准时间字段及resultTime空值语义。"
+        }
+      ],
+      "standard_gap": "本地已知时点不等于标准resultTime；区间结果是否可与瞬时阈值比较需政策，不能拆成若干瞬时值。"
+    },
+    {
+      "id": "quality",
+      "name": "结果质量",
+      "summary": "保留resultQuality原文、质量类型与来源；缺失质量记录不等于质量通过。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.7 Observation Table 18 resultQuality",
+          "relation": "supports",
+          "scope": "可选质量信息的承载。"
+        }
+      ],
+      "standard_gap": "quality_decision=accepted是本例经过人工核实的本地准入判断，不是OGC定义的resultQuality枚举。"
+    },
+    {
+      "id": "result-and-unit",
+      "name": "结果与量纲",
+      "summary": "按观测流observationType解释result；保留原始值、单位定义和换算来源，缺失/非数值不得填0。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "sta11"
+      ],
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "sta11",
+          "locator": "8.2.4 Datastream Table 10; 8.2.7 Observation Table 18 result",
+          "relation": "supports",
+          "scope": "结果类型由observationType约束、单位来自观测流。"
+        }
+      ],
+      "standard_gap": "本例只做精确单位匹配，不自动做温度、浓度或标准状态换算。"
+    },
+    {
+      "id": "threshold-policy",
+      "name": "阈值与法规适用",
+      "summary": "阈值需注明政策版本、指标、被测对象、单位、窗口和质量条件；单次超限仅产生复核候选。",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project"
+      ],
+      "standard_status": "nonstandard-modeling",
+      "standard_gap": "SensorThings定义交换模型，不规定环境质量限值。本例合成阈值不是GB、行业排放限值或违法判断；真实任务需用户提供适用标准和地区/日期/采样口径。"
+    }
+  ]
+}

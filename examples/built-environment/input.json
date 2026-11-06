@@ -1,0 +1,121 @@
+{
+  "projection": "original bounded IFC projection, not an IFC file",
+  "property": {
+    "pset": "Project_Clearance",
+    "name": "RequiredGap"
+  },
+  "before": {
+    "lineage": "project-A/architecture",
+    "revision": "r1",
+    "delivery_id": "delivery-r1",
+    "complete_scope": true,
+    "project_length_unit": "m",
+    "objects": [
+      {
+        "global_id": "0AAAAAAAAAAAAAAAAAAAAA",
+        "name": "Door",
+        "ifc_class": "IfcDoor",
+        "type_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "primary_spaces": [
+          "0LLLLLLLLLLLLLLLLLLLLL"
+        ],
+        "referenced_spaces": [
+          "0MMMMMMMMMMMMMMMMMMMMM"
+        ],
+        "properties": []
+      },
+      {
+        "global_id": "0BBBBBBBBBBBBBBBBBBBBB",
+        "name": "Door",
+        "ifc_class": "IfcDoor",
+        "type_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "primary_spaces": [
+          "0LLLLLLLLLLLLLLLLLLLLL"
+        ],
+        "referenced_spaces": [
+          "0MMMMMMMMMMMMMMMMMMMMM"
+        ],
+        "properties": [
+          {
+            "pset": "Project_Clearance",
+            "name": "RequiredGap",
+            "value": "1",
+            "unit": "m",
+            "measure_type": "IfcLengthMeasure"
+          }
+        ]
+      }
+    ],
+    "types": [
+      {
+        "global_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "properties": [
+          {
+            "pset": "Project_Clearance",
+            "name": "RequiredGap",
+            "value": "1",
+            "unit": "m",
+            "measure_type": "IfcLengthMeasure"
+          }
+        ]
+      }
+    ]
+  },
+  "after": {
+    "lineage": "project-A/architecture",
+    "revision": "r2",
+    "delivery_id": "delivery-r2",
+    "complete_scope": true,
+    "project_length_unit": "m",
+    "objects": [
+      {
+        "global_id": "0AAAAAAAAAAAAAAAAAAAAA",
+        "name": "Door",
+        "ifc_class": "IfcDoor",
+        "type_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "primary_spaces": [
+          "0LLLLLLLLLLLLLLLLLLLLL"
+        ],
+        "referenced_spaces": [
+          "0MMMMMMMMMMMMMMMMMMMMM"
+        ],
+        "properties": []
+      },
+      {
+        "global_id": "0BBBBBBBBBBBBBBBBBBBBB",
+        "name": "Door",
+        "ifc_class": "IfcDoor",
+        "type_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "primary_spaces": [
+          "0LLLLLLLLLLLLLLLLLLLLL"
+        ],
+        "referenced_spaces": [
+          "0MMMMMMMMMMMMMMMMMMMMM"
+        ],
+        "properties": [
+          {
+            "pset": "Project_Clearance",
+            "name": "RequiredGap",
+            "value": "1",
+            "unit": "m",
+            "measure_type": "IfcLengthMeasure"
+          }
+        ]
+      }
+    ],
+    "types": [
+      {
+        "global_id": "0TTTTTTTTTTTTTTTTTTTTT",
+        "properties": [
+          {
+            "pset": "Project_Clearance",
+            "name": "RequiredGap",
+            "value": "2",
+            "unit": "m",
+            "measure_type": "IfcLengthMeasure"
+          }
+        ]
+      }
+    ]
+  }
+}

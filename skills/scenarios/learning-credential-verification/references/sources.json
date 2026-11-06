@@ -1,0 +1,53 @@
+{
+  "id": "education-sources",
+  "name": "教育与学习凭证来源索引",
+  "version": "1.0.0",
+  "license": "MIT (original curation; cited standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "学习成就凭证证据核对的数据库中立建模",
+  "authority": "Original bounded modeling guidance, not a standard conformance claim",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "ob30",
+    "vc20"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "ob30",
+      "name": "Open Badges Specification",
+      "uri": "https://www.imsglobal.org/spec/ob/v3p0/",
+      "version": "Spec 3.0; Document 1.4.5, 2026-06-29; VC2 context3.0.3 selected",
+      "publisher": "1EdTech Consortium",
+      "scope": "Achievement, subject, issuer, evidence and verification/comparison boundaries",
+      "license": "1EdTech specification license and IPR notice apply; original summaries only",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "vc20",
+      "name": "Verifiable Credentials Data Model v2.0",
+      "uri": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+      "version": "W3C Recommendation 2025-05-15",
+      "publisher": "W3C",
+      "scope": "Issuer/subject, validity period, status and evidence",
+      "license": "W3C document terms; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ]
+}

@@ -1,0 +1,1204 @@
+{
+  "spec_version": "1.0",
+  "model_id": "learning-credential-verification",
+  "version": "1.0.0",
+  "graph_type": "EducationEvidence",
+  "description": "学习成就凭证证据核对；数据库中立、标准字段投影与本地政策分层",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "ob30",
+      "name": "Open Badges Specification",
+      "uri": "https://www.imsglobal.org/spec/ob/v3p0/",
+      "version": "Spec 3.0; Document 1.4.5, 2026-06-29; VC2 context3.0.3 selected",
+      "publisher": "1EdTech Consortium",
+      "scope": "Achievement, subject, issuer, evidence and verification/comparison boundaries",
+      "license": "1EdTech specification license and IPR notice apply; original summaries only",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "vc20",
+      "name": "Verifiable Credentials Data Model v2.0",
+      "uri": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+      "version": "W3C Recommendation 2025-05-15",
+      "publisher": "W3C",
+      "scope": "Issuer/subject, validity period, status and evidence",
+      "license": "W3C document terms; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "SourceRecord",
+      "business_meaning": "Immutable delivered source or check report; retention and collection times are local provenance",
+      "identity_scope": "record_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "record_id"
+      ],
+      "properties": [
+        {
+          "name": "record_id",
+          "logical_type": "identifier",
+          "business_meaning": "record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_uri",
+          "logical_type": "string",
+          "business_meaning": "source_uri",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_revision",
+          "logical_type": "string",
+          "business_meaning": "source_revision",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "business_meaning": "SHA-256 of retained original bytes; integrity does not establish publisher authenticity",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "source_locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "supersedes_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Explicit correction, never inferred from ingestion order",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "derived_from_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Separate transformation lineage",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "Issuer",
+      "business_meaning": "Credential issuer, distinct from achievement creator",
+      "identity_scope": "issuer_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "issuer_id"
+      ],
+      "properties": [
+        {
+          "name": "issuer_id",
+          "logical_type": "identifier",
+          "business_meaning": "issuer_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "business_meaning": "name",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ob30",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "LearnerIdentity",
+      "business_meaning": "Explicit source subject identity; no display-name merge",
+      "identity_scope": "subject_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "subject_id"
+      ],
+      "properties": [
+        {
+          "name": "subject_id",
+          "logical_type": "identifier",
+          "business_meaning": "subject_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "identity_evidence",
+          "logical_type": "string",
+          "business_meaning": "Supplied matching evidence",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ob30",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "AchievementDefinition",
+      "business_meaning": "Source-bound achievement definition and criteria",
+      "identity_scope": "achievement_id + payload_hash; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "achievement_id",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "achievement_id",
+          "logical_type": "identifier",
+          "business_meaning": "achievement_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "creator_id",
+          "logical_type": "string",
+          "business_meaning": "creator_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "criteria",
+          "logical_type": "json",
+          "business_meaning": "criteria",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "source_record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ob30",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "CredentialRecord",
+      "business_meaning": "Issuer assertion in an immutable source payload",
+      "identity_scope": "issuer_id + credential_id + payload_hash; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "issuer_id",
+        "credential_id",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "issuer_id",
+          "logical_type": "identifier",
+          "business_meaning": "issuer_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "credential_id",
+          "logical_type": "identifier",
+          "business_meaning": "credential_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "business_meaning": "valid_from",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_until",
+          "logical_type": "datetime",
+          "business_meaning": "valid_until",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "credential_status_id",
+          "logical_type": "identifier",
+          "business_meaning": "credential_status_id",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "evidence",
+          "logical_type": "json",
+          "business_meaning": "Original evidence references; not content verification",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "source_record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ob30",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "VerificationReport",
+      "business_meaning": "External report bound to exact credential bytes and method",
+      "identity_scope": "report_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "report_id"
+      ],
+      "properties": [
+        {
+          "name": "report_id",
+          "logical_type": "identifier",
+          "business_meaning": "report_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "credential_payload_hash",
+          "logical_type": "string",
+          "business_meaning": "credential_payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "schema_result",
+          "logical_type": "string",
+          "business_meaning": "schema_result",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "proof_result",
+          "logical_type": "string",
+          "business_meaning": "proof_result",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status_result",
+          "logical_type": "string",
+          "business_meaning": "status_result",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status_reference",
+          "logical_type": "identifier",
+          "business_meaning": "status_reference",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "checked_at",
+          "logical_type": "datetime",
+          "business_meaning": "checked_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "verifier_id",
+          "logical_type": "string",
+          "business_meaning": "verifier_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "simulated",
+          "logical_type": "boolean",
+          "business_meaning": "Example reports true; actual external evidence needed for any real validation claim",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "RecognitionReview",
+      "business_meaning": "Local policy review; never equivalent to credential or competence verification",
+      "identity_scope": "review_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "review_id"
+      ],
+      "properties": [
+        {
+          "name": "review_id",
+          "logical_type": "identifier",
+          "business_meaning": "review_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "policy_id",
+          "logical_type": "string",
+          "business_meaning": "policy_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "policy_version",
+          "logical_type": "string",
+          "business_meaning": "policy_version",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "assessed_at",
+          "logical_type": "datetime",
+          "business_meaning": "assessed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "state",
+          "logical_type": "string",
+          "business_meaning": "state",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "business_meaning": "reason",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status_max_age_seconds",
+          "logical_type": "integer",
+          "business_meaning": "status_max_age_seconds",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "trusted_issuer_ids",
+          "logical_type": "json",
+          "business_meaning": "trusted_issuer_ids",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "expected_subject_id",
+          "logical_type": "identifier",
+          "business_meaning": "expected_subject_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "known_as_of",
+          "logical_type": "datetime",
+          "business_meaning": "Knowledge cutoff for this assessment, distinct from policy version and business time",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "ISSUED_BY",
+      "business_meaning": "Credential issuer",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CredentialRecord",
+      "to": "Issuer",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ABOUT_SUBJECT",
+      "business_meaning": "Subject identity, not inferred from badge title",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CredentialRecord",
+      "to": "LearnerIdentity",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CLAIMS_ACHIEVEMENT",
+      "business_meaning": "Definition asserted in that credential version",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CredentialRecord",
+      "to": "AchievementDefinition",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CREDENTIAL_SOURCE",
+      "business_meaning": "Retained original source",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "CredentialRecord",
+      "to": "SourceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "REPORT_FOR",
+      "business_meaning": "Exact content-bound report",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VerificationReport",
+      "to": "CredentialRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "REPORT_SOURCE",
+      "business_meaning": "Immutable external report payload",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "VerificationReport",
+      "to": "SourceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "REVIEWS_CREDENTIAL",
+      "business_meaning": "Local policy review target",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "RecognitionReview",
+      "to": "CredentialRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "USES_REPORT",
+      "business_meaning": "Reports supporting or conflicting with review",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "RecognitionReview",
+      "to": "VerificationReport",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "source-binding",
+      "subject": "model",
+      "rule": "Every assertion source_record_id resolves to an immutable SourceRecord and its exact source_locator; source changes create new records. Never overwrite conflicting payloads.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "evidence-boundary",
+      "subject": "model",
+      "rule": "Facts, reviewed equivalence, local policy and candidate conclusions remain separate. No confidence score proves a claim or authorizes identity merging.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "no-deployment",
+      "subject": "model",
+      "rule": "Graph structure and synthetic evidence do not establish standard conformance or target database execution.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "content-bound-report",
+      "subject": "edge:REPORT_FOR",
+      "rule": "Bind report to issuer, credential id and exact payload hash, subject and status reference. A report about an earlier payload cannot validate a changed credential.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "verification-separation",
+      "subject": "node:VerificationReport",
+      "rule": "Schema, cryptographic proof, status and subject checks are distinct. Synthetic reports must remain simulated and cannot prove real verification.",
+      "enforcement": "review",
+      "source_ids": [
+        "ob30"
+      ]
+    },
+    {
+      "id": "time-and-trust",
+      "subject": "node:RecognitionReview",
+      "rule": "Use explicit validity/knowledge cutoffs, trusted issuer policy and report freshness. Unknown/unavailable/stale status is not active. The fixture uses a declared half-open validity interval.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "truth-boundary",
+      "subject": "node:RecognitionReview",
+      "rule": "candidate_for_review never proves claim truth, current competence, credit equivalence, degree accreditation or employment eligibility.",
+      "enforcement": "review",
+      "source_ids": [
+        "ob30"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "credential",
+      "source_id": "ob30",
+      "source_term": "B.1.2 AchievementCredential",
+      "target": "node:CredentialRecord",
+      "status": "approximated",
+      "explanation": "Bounded selected VC2 fields; not a complete OpenBadgeCredential serialization. Source identifiers are preserved; OB section10 comparison normalization requires an explicit mapping outside this already-normalized fixture.",
+      "constraint_ids": []
+    },
+    {
+      "id": "subject",
+      "source_id": "ob30",
+      "source_term": "B.1.3 AchievementSubject",
+      "target": "edge:ABOUT_SUBJECT",
+      "status": "approximated",
+      "explanation": "Only explicit id projection supported; hashed identifiers and holder binding require separate verification.",
+      "constraint_ids": []
+    },
+    {
+      "id": "achievement",
+      "source_id": "ob30",
+      "source_term": "B.1.1 Achievement / B.1.6 Criteria",
+      "target": "node:AchievementDefinition",
+      "status": "approximated",
+      "explanation": "Preserve criterion source and creator distinct from issuer; no claim of learning outcome validity.",
+      "constraint_ids": []
+    },
+    {
+      "id": "validity",
+      "source_id": "vc20",
+      "source_term": "4.9 Validity Period",
+      "target": "property:CredentialRecord.valid_from",
+      "status": "approximated",
+      "explanation": "VC2 validFrom/validUntil; OB legacy verification support models are not silently mapped.",
+      "constraint_ids": []
+    },
+    {
+      "id": "verification",
+      "source_id": "ob30",
+      "source_term": "9 Verification and Validation",
+      "target": "node:VerificationReport",
+      "status": "approximated",
+      "explanation": "Models report evidence, not the execution of a proof algorithm.",
+      "constraint_ids": []
+    },
+    {
+      "id": "proof",
+      "source_id": "ob30",
+      "source_term": "8 Proofs",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "Original signed bytes retained at SourceRecord. Graph transformation cannot preserve cryptographic signature validity; no cryptographic verification implemented.",
+      "constraint_ids": []
+    },
+    {
+      "id": "status",
+      "source_id": "vc20",
+      "source_term": "4.10 Status",
+      "target": "property:CredentialRecord.credential_status_id",
+      "status": "approximated",
+      "explanation": "Status mechanism reference retained, not dereferenced or decoded by this skill.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Original bounded source projection; not a full standard serialization or compliance validator.",
+    "SourceRecord observed_at is local collection time, not domain time or publisher revision order.",
+    "Retain original source bytes externally with locator and hash; hashing does not prove authenticity."
+  ],
+  "unresolved": [
+    "Select real source profile, data access authority and completeness scope.",
+    "Resolve local policy, identity mapping, retention, and conflict handling against real evidence.",
+    "Choose target database/version and verify physical constraint enforcement before handoff."
+  ],
+  "competency_questions": [
+    "哪些明确学习者的凭证有内容绑定且足够新鲜的核查报告？",
+    "未知、撤销、过期或同ID冲突时为何不能声称验证通过？",
+    "成就创建者、凭证发行者、证据来源与机构认可如何区分？"
+  ]
+}

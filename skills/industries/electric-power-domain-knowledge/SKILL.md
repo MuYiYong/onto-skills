@@ -29,7 +29,7 @@ license: MIT
 
 ## 资源与质量检查
 
-[方法](references/method.md) 包含最小决策规则；[工作示例](examples/worked-example.md) 展示 unknown 与两种时间。核对每个重要概念的来源/分类、身份、时效和单位。引用 CIM/CGMES 仅提供背景，不声称本包是标准实现。外部数据库语法生成是可选后续工作，遵循 [交接边界](references/handoff.md)。
+[方法](references/method.md) 包含最小决策规则；[工作示例](examples/worked-example.md) 展示 unknown 与两种时间。核对每个重要概念的来源/分类、身份、时效和单位。已取得CGMES3配置的类、字段与基数按条目scope提供直接依据；IEC目录摘要仅作背景，其他本地政策保留缺口，不声称本包是完整标准实现。外部数据库语法生成是可选后续工作，遵循 [交接边界](references/handoff.md)。
 
 ## 标准依据与缺口
 

@@ -1,5 +1,7 @@
 # 初始13项交付验收记录
 
+本轮新增六项的范围与离线验收见[扩展说明](standards-industry-expansion.md)，不计入以下历史原生记录。
+
 > 本页保留首版历史验收。最终27项/227文件、21项当前代理应用与本轮CLI429限制见[原生记录](../tests/compatibility/standards-first-native/README.md)；逐项标准依据与非标准范围见[核验报告](standards-verification.md)。历史原始记录未重写。
 
 

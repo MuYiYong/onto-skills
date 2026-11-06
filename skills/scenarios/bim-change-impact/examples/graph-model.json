@@ -1,0 +1,1117 @@
+{
+  "spec_version": "1.0",
+  "model_id": "bim-change-impact",
+  "version": "1.0.0",
+  "graph_type": "BuiltEnvironmentEvidence",
+  "description": "BIM属性变更与空间影响候选；数据库中立、标准字段投影与本地政策分层",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling and synthetic examples",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "industry-expansion-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "scope": "Original projections, evidence review, test policies and graph design",
+      "license": "MIT",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    },
+    {
+      "id": "ifc432",
+      "name": "Industry Foundation Classes 4.3 ADD2",
+      "uri": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/",
+      "version": "4.3.2.0 / IFC4X3_ADD2; RELEASE snapshot aac6189946c9f3116198b03ee482152dd3981c76",
+      "publisher": "buildingSMART International",
+      "scope": "IfcRoot, containment/reference, type/occurrence property and units",
+      "license": "Final IFC CC BY-ND 4.0; only links and original summaries bundled",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06",
+      "authority": "Selected publisher semantics only; local graph policies are original project curation"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "SourceRecord",
+      "business_meaning": "Immutable delivered source or check report; retention and collection times are local provenance",
+      "identity_scope": "record_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "record_id"
+      ],
+      "properties": [
+        {
+          "name": "record_id",
+          "logical_type": "identifier",
+          "business_meaning": "record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_uri",
+          "logical_type": "string",
+          "business_meaning": "source_uri",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_revision",
+          "logical_type": "string",
+          "business_meaning": "source_revision",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "business_meaning": "SHA-256 of retained original bytes; integrity does not establish publisher authenticity",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "source_locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "business_meaning": "observed_at",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "supersedes_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Explicit correction, never inferred from ingestion order",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "derived_from_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Separate transformation lineage",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ModelRevision",
+      "business_meaning": "Explicitly selected delivered model snapshot",
+      "identity_scope": "lineage + revision + payload_hash; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "lineage",
+        "revision",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "lineage",
+          "logical_type": "identifier",
+          "business_meaning": "lineage",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "identifier",
+          "business_meaning": "revision",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "source_record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "complete_scope",
+          "logical_type": "boolean",
+          "business_meaning": "Completeness only for declared exchange scope",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "project_length_unit",
+          "logical_type": "string",
+          "business_meaning": "Resolved project length unit",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ObjectSnapshot",
+      "business_meaning": "Occurrence, type or spatial object in one source snapshot",
+      "identity_scope": "lineage + revision + payload_hash + global_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "lineage",
+        "revision",
+        "payload_hash",
+        "global_id"
+      ],
+      "properties": [
+        {
+          "name": "lineage",
+          "logical_type": "identifier",
+          "business_meaning": "lineage",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "identifier",
+          "business_meaning": "revision",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "identifier",
+          "business_meaning": "payload_hash",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "global_id",
+          "logical_type": "identifier",
+          "business_meaning": "global_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "ifc_class",
+          "logical_type": "string",
+          "business_meaning": "ifc_class",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "name",
+          "logical_type": "string",
+          "business_meaning": "Display label, not identity",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ifc432",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "PropertyAssertion",
+      "business_meaning": "Property on an occurrence or type with provenance and raw measure",
+      "identity_scope": "assertion_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "pset",
+          "logical_type": "string",
+          "business_meaning": "pset",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "property_name",
+          "logical_type": "string",
+          "business_meaning": "property_name",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "nominal_value",
+          "logical_type": "json",
+          "business_meaning": "Original typed single value including null",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "measure_type",
+          "logical_type": "string",
+          "business_meaning": "measure_type",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "explicit_unit",
+          "logical_type": "string",
+          "business_meaning": "explicit_unit",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "source_record_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "source_locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ifc432",
+        "onto-project"
+      ]
+    },
+    {
+      "name": "ChangeAssessment",
+      "business_meaning": "One selected-property comparison across explicit snapshots",
+      "identity_scope": "assessment_id; preserve original source identity and conflicting payload versions",
+      "primary_key": [
+        "assessment_id"
+      ],
+      "properties": [
+        {
+          "name": "assessment_id",
+          "logical_type": "identifier",
+          "business_meaning": "assessment_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "pset",
+          "logical_type": "string",
+          "business_meaning": "pset",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "property_name",
+          "logical_type": "string",
+          "business_meaning": "property_name",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "before_m",
+          "logical_type": "decimal",
+          "business_meaning": "before_m",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "after_m",
+          "logical_type": "decimal",
+          "business_meaning": "after_m",
+          "nullable": true,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "state",
+          "logical_type": "string",
+          "business_meaning": "changed, unchanged or unknown",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "reason",
+          "logical_type": "string",
+          "business_meaning": "reason",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "policy_version",
+          "logical_type": "string",
+          "business_meaning": "policy_version",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "IN_REVISION",
+      "business_meaning": "Snapshot membership",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObjectSnapshot",
+      "to": "ModelRevision",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_TYPE",
+      "business_meaning": "IfcRelDefinesByType occurrence to type in same revision",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObjectSnapshot",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CONTAINED_IN",
+      "business_meaning": "Primary spatial containment in same snapshot",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObjectSnapshot",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "REFERENCED_IN",
+      "business_meaning": "Additional spatial reference; not a second primary parent",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObjectSnapshot",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_PROPERTY",
+      "business_meaning": "Owner of raw property assertion",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ObjectSnapshot",
+      "to": "PropertyAssertion",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "FROM_OBJECT",
+      "business_meaning": "Before comparison endpoint",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ChangeAssessment",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "TO_OBJECT",
+      "business_meaning": "After comparison endpoint",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ChangeAssessment",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "CANDIDATE_SPACE",
+      "business_meaning": "Union of before/after spatial assertions for review; no geometric claim",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "ChangeAssessment",
+      "to": "ObjectSnapshot",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..*",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "EXTRACTED_FROM",
+      "business_meaning": "Original source payload",
+      "identity_scope": "assertion_id belongs to an immutable source record; endpoints and context retained",
+      "primary_key": [
+        "assertion_id"
+      ],
+      "properties": [
+        {
+          "name": "assertion_id",
+          "logical_type": "identifier",
+          "business_meaning": "assertion_id",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_record_id",
+          "logical_type": "identifier",
+          "business_meaning": "Bound SourceRecord identifier",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "business_meaning": "Original field/relationship locator",
+          "nullable": false,
+          "multivalued": false,
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "PropertyAssertion",
+      "to": "SourceRecord",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..*"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "source-binding",
+      "subject": "model",
+      "rule": "Every assertion source_record_id resolves to an immutable SourceRecord and its exact source_locator; source changes create new records. Never overwrite conflicting payloads.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "evidence-boundary",
+      "subject": "model",
+      "rule": "Facts, reviewed equivalence, local policy and candidate conclusions remain separate. No confidence score proves a claim or authorizes identity merging.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "no-deployment",
+      "subject": "model",
+      "rule": "Graph structure and synthetic evidence do not establish standard conformance or target database execution.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "snapshot-scope",
+      "subject": "model",
+      "rule": "HAS_TYPE, CONTAINED_IN, REFERENCED_IN and HAS_PROPERTY endpoints share lineage/revision/payload_hash. Types and spaces retain their actual IFC class.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "id": "containment",
+      "subject": "edge:CONTAINED_IN",
+      "rule": "No conflicting primary parent; multiple REFERENCED_IN edges remain distinct. Missing parent is unknown for this scenario, not universal IFC invalidity.",
+      "enforcement": "review",
+      "source_ids": [
+        "ifc432"
+      ]
+    },
+    {
+      "id": "property-override",
+      "subject": "node:PropertyAssertion",
+      "rule": "Resolve matching pset/property on occurrence before type. Present null occurrence value remains unknown. Explicit unit overrides the project unit for the measure type.",
+      "enforcement": "review",
+      "source_ids": [
+        "ifc432"
+      ]
+    },
+    {
+      "id": "comparison",
+      "subject": "node:ChangeAssessment",
+      "rule": "Compare only reviewed same-lineage identities and explicit before/after revisions. Missing object never proves physical demolition. All changes are candidates, not construction or safety decisions.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "root",
+      "source_id": "ifc432",
+      "source_term": "IfcRoot.GlobalId",
+      "target": "node:ObjectSnapshot",
+      "status": "approximated",
+      "explanation": "GlobalId retained with local revision provenance; no automatic cross-lineage equivalence.",
+      "constraint_ids": []
+    },
+    {
+      "id": "contained",
+      "source_id": "ifc432",
+      "source_term": "IfcRelContainedInSpatialStructure",
+      "target": "edge:CONTAINED_IN",
+      "status": "approximated",
+      "explanation": "Objectified relationship reduced to edge with assertion locator. Full EXPRESS/inverse/hierarchy rules not enforced.",
+      "constraint_ids": [
+        "containment"
+      ]
+    },
+    {
+      "id": "reference",
+      "source_id": "ifc432",
+      "source_term": "IfcRelReferencedInSpatialStructure",
+      "target": "edge:REFERENCED_IN",
+      "status": "approximated",
+      "explanation": "Reference distinct from primary containment; geometry and service coverage not inferred.",
+      "constraint_ids": []
+    },
+    {
+      "id": "type",
+      "source_id": "ifc432",
+      "source_term": "IfcRelDefinesByType",
+      "target": "edge:HAS_TYPE",
+      "status": "approximated",
+      "explanation": "Type and occurrence retained as distinct objects; subset of property semantics.",
+      "constraint_ids": [
+        "property-override"
+      ]
+    },
+    {
+      "id": "single-value",
+      "source_id": "ifc432",
+      "source_term": "IfcPropertySingleValue",
+      "target": "node:PropertyAssertion",
+      "status": "approximated",
+      "explanation": "Preserve value/type/unit/source; complex properties, quantities and templates outside subset.",
+      "constraint_ids": []
+    },
+    {
+      "id": "geometry",
+      "source_id": "ifc432",
+      "source_term": "IfcProduct.Representation",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "No geometry, placement transforms, clash detection or EXPRESS validation in this projection.",
+      "constraint_ids": []
+    }
+  ],
+  "assumptions": [
+    "Original bounded source projection; not a full standard serialization or compliance validator.",
+    "SourceRecord observed_at is local collection time, not domain time or publisher revision order.",
+    "Retain original source bytes externally with locator and hash; hashing does not prove authenticity."
+  ],
+  "unresolved": [
+    "Select real source profile, data access authority and completeness scope.",
+    "Resolve local policy, identity mapping, retention, and conflict handling against real evidence.",
+    "Choose target database/version and verify physical constraint enforcement before handoff."
+  ],
+  "competency_questions": [
+    "哪个实例的所选属性发生可比变化，类型变更被哪些实例覆盖？",
+    "变化涉及哪些主包含或引用空间，证据来自哪个修订？",
+    "哪些对象因身份、单位或缺失数据不能比较？"
+  ]
+}

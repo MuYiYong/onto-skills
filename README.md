@@ -2,7 +2,7 @@
 
 面向行业知识理解与本体工程的可组合 AI Skills 资产库。
 
-将业务需求、数据 Schema 与行业标准转化为有来源、可验证、数据库中立的属性图本体。覆盖金融、电力、制造、物流、医疗、零售和网络安全的行业知识与业务场景，使用 Codex CLI 与 CC-Switch 现有安装机制；FIBO 是金融重点标准。
+将业务需求、数据 Schema 与行业标准转化为有来源、可验证、数据库中立的属性图本体。覆盖金融、电力、制造、物流、医疗、零售、网络安全、建筑、环境监测和教育的行业知识与业务场景，使用 Codex CLI 与 CC-Switch 现有安装机制；FIBO 是金融重点标准。
 
 ## 设计与架构
 
@@ -25,7 +25,7 @@ tests/ + scripts/  仅开发验证
 
 ## Skills
 
-共 27 项：7 项通用方法、20 项行业技能。按金融、电力、制造、物流、医疗、零售和网络安全七个行业，将相关知识、标准本体与业务场景集中列出；每项均可独立安装，也可按任务组合使用。
+共 33 项：7 项通用方法、26 项行业技能。按金融、电力、制造、物流、医疗、零售、网络安全、建筑、环境监测和教育十个行业，将相关知识、标准本体与业务场景集中列出；每项均可独立安装，也可按任务组合使用。
 
 ### 通用方法（Core）
 
@@ -94,6 +94,27 @@ tests/ + scripts/  仅开发验证
 | 行业知识 | [cybersecurity-domain-knowledge](skills/industries/cybersecurity-domain-knowledge/SKILL.md) | 软件组件、通告产品、漏洞状态与部署证据 |
 | 业务场景 | [software-vulnerability-impact](skills/scenarios/software-vulnerability-impact/SKILL.md) | SBOM、漏洞适用性、通告修订与修复证据 |
 
+### 建筑与设施（Built Environment）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [built-environment-domain-knowledge](skills/industries/built-environment-domain-knowledge/SKILL.md) | 建筑与设施身份、角色与标准语义 |
+| 业务场景 | [bim-change-impact](skills/scenarios/bim-change-impact/SKILL.md) | BIM属性变更与空间影响候选 |
+
+### 环境监测（Environmental Monitoring）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [environmental-monitoring-domain-knowledge](skills/industries/environmental-monitoring-domain-knowledge/SKILL.md) | 环境监测身份、角色与标准语义 |
+| 业务场景 | [observation-quality-assessment](skills/scenarios/observation-quality-assessment/SKILL.md) | 环境观测质量与阈值候选 |
+
+### 教育与学习凭证（Education）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [education-domain-knowledge](skills/industries/education-domain-knowledge/SKILL.md) | 教育与学习凭证身份、角色与标准语义 |
+| 业务场景 | [learning-credential-verification](skills/scenarios/learning-credential-verification/SKILL.md) | 学习成就凭证证据核对 |
+
 ## 标准依据
 
 知识优先核实发布机构的正式标准、版本和具体条目，再形成项目解释与图设计。每条知识记录标准定位和适用范围；无直接规范支持、未取得正文或精确映射未核实的内容明确标为“非标准建模”，并说明缺口。标准依据只覆盖所列scope，本地策略仍单列。引用官方标准不会把项目解释变成官方定义。
@@ -110,6 +131,9 @@ tests/ + scripts/  仅开发验证
 | 医疗 | [HL7 FHIR R4 4.0.1](https://hl7.org/fhir/R4/) | 固定R4基线，资源身份/版本/状态/量；[来源](knowledge/healthcare/standards/sources.json)，非完整FHIR认证 |
 | 零售 | GS1 Architecture12.0.0、EPCIS2.0.0、CBV2.0.0；[Traceability2.0](https://ref.gs1.org/standards/global-traceability/2.0.0/) | 商品/地点/追溯背景；[来源](knowledge/retail/standards/sources.json)，库存预留与补货公式另定 |
 | 网络安全 | [SPDX2.3](https://github.com/spdx/spdx-spec/tree/v2.3)；[OASIS CSAF2.0](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html)；[FIRST CVSS4.0](https://www.first.org/cvss/v4.0/specification-document) | 组件身份、产品状态与严重度分层；[来源](knowledge/cybersecurity/standards/sources.json)，不从依赖或补丁发布推断已修复 |
+| 建筑与设施 | [IFC4.3.2.0 / IFC4X3_ADD2](https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/)，固定官方RELEASE快照 | 对象、类型/实例属性、主包含/引用与单位；[来源](knowledge/built-environment/standards/sources.json)，无几何或结构安全结论 |
+| 环境监测 | [OGC SensorThings API1.1 /18-088](https://docs.ogc.org/is/18-088/18-088.html)，2021-08-04 | 观测、质量、时间与被测对象；[来源](knowledge/environmental-monitoring/standards/sources.json)，阈值为本地政策，非环境法规 |
+| 教育与学习凭证 | [Open Badges3.0](https://www.imsglobal.org/spec/ob/v3p0/) 文档1.4.5；[W3C VC2.0](https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/) | 成就/凭证/发行者与核查证据；[来源](knowledge/education/standards/sources.json)，不自动验签或认可学历能力 |
 
 条目级定位、实质知识补强、标准映射损失与缺口处理见[标准优先知识说明](docs/standards-first-knowledge.md)。固定版次是建模基线，检索日期不代表标准版本；法律、机构和行业Profile的适用性仍按具体任务核实。
 
@@ -117,7 +141,7 @@ tests/ + scripts/  仅开发验证
 
 单个 Skill 的安装单位是其完整目录。例如在仓库根目录将 `skills/core/ontology-modeling/` 复制到 Codex 用户 `~/.agents/skills/`，保留 references、examples 和 LICENSE，然后用 `$ontology-modeling` 调用。目录已存在时先检查管理方式和本地修改；项目级可放 `.agents/skills/`。
 
-CC-Switch 使用 Skills → Add Skill → Install from ZIP 导入本地包并同步到 Codex；Linux 4.0.25 已完成全部27项包的原生安装、同步、开关与卸载验收。在 ⋯ → Manage repositories 可添加仓库根 URL `https://github.com/MuYiYong/onto-skills`、分支 main；仓库 GUI 安装/升级尚未单独验证。逐项路径、更新、卸载与版本差异见 [安装指南](docs/installation-guide.md)。
+CC-Switch 使用 Skills → Add Skill → Install from ZIP 导入本地包并同步到 Codex；Linux 4.0.25 的既有原生验收覆盖此前27项包的安装、同步、开关与卸载；新增六项尚未做原生验收。在 ⋯ → Manage repositories 可添加仓库根 URL `https://github.com/MuYiYong/onto-skills`、分支 main；仓库 GUI 安装/升级尚未单独验证。逐项路径、更新、卸载与版本差异见 [安装指南](docs/installation-guide.md)。
 
 [Release](https://github.com/MuYiYong/onto-skills/releases/latest) 提供独立 ZIP、组合 ZIP、发布清单和 SHA-256；具体包含项以该版本发布清单为准。上表每项均可从仓库复制完整目录使用，解压后仍是普通 Skill 目录。
 
@@ -134,8 +158,13 @@ Pack 提供选用顺序和交付物衔接说明，可按任务选择其中的技
 | 医疗 | [Healthcare Ontology Pack](packs/healthcare-ontology/README.md) | [照护路径数据与版本](examples/healthcare/README.md) |
 | 零售 | [Retail Ontology Pack](packs/retail-ontology/README.md) | [库存、预留与补货](examples/retail/README.md) |
 | 网络安全 | [Cybersecurity Ontology Pack](packs/cybersecurity-ontology/README.md) | [组件、漏洞与通告修订证据](examples/cybersecurity/README.md) |
+| 建筑与设施 | [建筑与设施 Pack](packs/built-environment-ontology/README.md) | [BIM属性变更与空间影响候选](examples/built-environment/README.md) |
+| 环境监测 | [环境监测 Pack](packs/environmental-monitoring-ontology/README.md) | [环境观测质量与阈值候选](examples/environmental-monitoring/README.md) |
+| 教育与学习凭证 | [教育与学习凭证 Pack](packs/education-ontology/README.md) | [学习成就凭证证据核对](examples/education/README.md) |
 
 行业与金融专项示例包含图模型、合成输入和具体正反例；知识来源、设计取舍及验证范围见 [多行业知识与业务场景](docs/multi-industry-expansion.md)。
+
+本轮新增三行业、六项技能、41个正反例及条目级标准核查，见[扩展说明](docs/standards-industry-expansion.md)。[Semantica调研与采用点](docs/semantica-review.md)记录固定源码版本，以及来源追踪、身份候选和质量问题设计。
 
 ## 建模交付
 
@@ -148,12 +177,14 @@ Pack 提供选用顺序和交付物衔接说明，可按任务选择其中的技
 | 验证层次 | 已记录的范围 |
 | --- | --- |
 | 离线检查 | 资产格式、独立资源闭包、知识副本、图模型结构及合成示例正反例 |
-| Codex 原生发现 | Linux Codex0.166.0，两种布局发现全部27项并读取227文件；本轮CLI推理因429未产生结果 |
-| Codex代理应用 | 当前代理运行时完成21项修改/新增技能的有界任务；与CLI证据分开记录 |
-| CC-Switch 原生 | Linux4.0.25，最终27项ZIP安装/同步、227文件哈希、Codex开关和全量卸载通过 |
-| 标准核验 | 全部149个知识对象逐项标明依据与缺口；标准原生样例含实际工具校验，范围见[报告](docs/standards-verification.md) |
+| Codex 原生发现 | Linux Codex0.166.0，两种布局发现此前27项并读取227文件；该次CLI推理因429未产生结果 |
+| Codex代理应用 | 此前代理运行时完成21项修改/新增技能的有界任务；与CLI证据分开记录 |
+| CC-Switch 原生 | Linux4.0.25，此前27项ZIP安装/同步、227文件哈希、Codex开关和全量卸载通过 |
+| 标准核验 | 现有173个知识对象逐项标明依据与缺口；原149项及标准工具证据见[报告](docs/standards-verification.md)，新增24项见[扩展核查](docs/standards-industry-expansion.md) |
 
-具体来源与限制见 [兼容报告](docs/compatibility.md) 和 [验收说明](docs/acceptance.md)。原生记录以[冻结源码和日期化证据](tests/compatibility/standards-first-native/README.md)为准，代理应用包含两项独立先导和共享审阅上下文的其余任务。macOS 原生应用、远程安装/升级、隐式触发准确率与性能尚未验证；格式检查和有界合成任务不证明完整行业标准符合性或生产部署效果。开发校验命令见 [测试说明](tests/README.md)。
+发布前另对全部33项做了[技能审查](docs/skill-review-2026-11-06.md)，修正4项既有技能的输出契约或语义说明；这些修改尚未重新做原生验收。
+
+新增六项仅有本轮离线资产检查与合成案例验证，尚无原生应用或独立模型调用证据。具体来源与限制见 [兼容报告](docs/compatibility.md) 和 [验收说明](docs/acceptance.md)。原生记录以[冻结源码和日期化证据](tests/compatibility/standards-first-native/README.md)为准，代理应用包含两项独立先导和共享审阅上下文的其余任务。macOS 原生应用、远程安装/升级、隐式触发准确率与性能尚未验证；格式检查和有界合成任务不证明完整行业标准符合性或生产部署效果。开发校验命令见 [测试说明](tests/README.md)。
 
 贡献见 [CONTRIBUTING](CONTRIBUTING.md)；规范见 [Skill](docs/skill-specification.md)、[Knowledge](docs/knowledge-specification.md)、[Pack](docs/pack-specification.md)，未来范围见 [路线图](docs/roadmap.md)。
 

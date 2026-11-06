@@ -51,7 +51,10 @@
       "skills/scenarios/retail-inventory-replenishment/references/graph-model.schema.json",
       "skills/scenarios/financial-regulatory-reporting/references/graph-model.schema.json",
       "skills/scenarios/related-party-transaction-modeling/references/graph-model.schema.json",
-      "skills/scenarios/software-vulnerability-impact/references/graph-model.schema.json"
+      "skills/scenarios/software-vulnerability-impact/references/graph-model.schema.json",
+      "skills/scenarios/bim-change-impact/references/graph-model.schema.json",
+      "skills/scenarios/observation-quality-assessment/references/graph-model.schema.json",
+      "skills/scenarios/learning-credential-verification/references/graph-model.schema.json"
     ]
   },
   {
@@ -114,7 +117,13 @@
       "skills/scenarios/financial-regulatory-reporting/LICENSE",
       "skills/scenarios/related-party-transaction-modeling/LICENSE",
       "skills/industries/cybersecurity-domain-knowledge/LICENSE",
-      "skills/scenarios/software-vulnerability-impact/LICENSE"
+      "skills/scenarios/software-vulnerability-impact/LICENSE",
+      "skills/industries/built-environment-domain-knowledge/LICENSE",
+      "skills/scenarios/bim-change-impact/LICENSE",
+      "skills/industries/environmental-monitoring-domain-knowledge/LICENSE",
+      "skills/scenarios/observation-quality-assessment/LICENSE",
+      "skills/industries/education-domain-knowledge/LICENSE",
+      "skills/scenarios/learning-credential-verification/LICENSE"
     ]
   },
   {
@@ -409,6 +418,138 @@
     "source": "examples/cybersecurity/standards-native/sbom-b.spdx.json",
     "copies": [
       "skills/scenarios/software-vulnerability-impact/examples/standards-native/sbom-b.spdx.json"
+    ]
+  },
+  {
+    "source": "knowledge/built-environment/concepts/domain.json",
+    "copies": [
+      "skills/industries/built-environment-domain-knowledge/references/domain.json",
+      "skills/scenarios/bim-change-impact/references/domain.json"
+    ]
+  },
+  {
+    "source": "knowledge/built-environment/standards/sources.json",
+    "copies": [
+      "skills/industries/built-environment-domain-knowledge/references/sources.json",
+      "skills/scenarios/bim-change-impact/references/sources.json"
+    ]
+  },
+  {
+    "source": "examples/built-environment/graph-model.json",
+    "copies": [
+      "skills/scenarios/bim-change-impact/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/built-environment/input.json",
+    "copies": [
+      "skills/scenarios/bim-change-impact/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/built-environment/acceptance.json",
+    "copies": [
+      "skills/scenarios/bim-change-impact/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/environmental-monitoring/concepts/domain.json",
+    "copies": [
+      "skills/industries/environmental-monitoring-domain-knowledge/references/domain.json",
+      "skills/scenarios/observation-quality-assessment/references/domain.json"
+    ]
+  },
+  {
+    "source": "knowledge/environmental-monitoring/standards/sources.json",
+    "copies": [
+      "skills/industries/environmental-monitoring-domain-knowledge/references/sources.json",
+      "skills/scenarios/observation-quality-assessment/references/sources.json"
+    ]
+  },
+  {
+    "source": "examples/environmental-monitoring/graph-model.json",
+    "copies": [
+      "skills/scenarios/observation-quality-assessment/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/environmental-monitoring/input.json",
+    "copies": [
+      "skills/scenarios/observation-quality-assessment/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/environmental-monitoring/acceptance.json",
+    "copies": [
+      "skills/scenarios/observation-quality-assessment/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/education/concepts/domain.json",
+    "copies": [
+      "skills/industries/education-domain-knowledge/references/domain.json",
+      "skills/scenarios/learning-credential-verification/references/domain.json"
+    ]
+  },
+  {
+    "source": "knowledge/education/standards/sources.json",
+    "copies": [
+      "skills/industries/education-domain-knowledge/references/sources.json",
+      "skills/scenarios/learning-credential-verification/references/sources.json"
+    ]
+  },
+  {
+    "source": "examples/education/graph-model.json",
+    "copies": [
+      "skills/scenarios/learning-credential-verification/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/education/input.json",
+    "copies": [
+      "skills/scenarios/learning-credential-verification/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/education/acceptance.json",
+    "copies": [
+      "skills/scenarios/learning-credential-verification/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "examples/built-environment/scenario-guide.md",
+    "copies": [
+      "skills/scenarios/bim-change-impact/examples/scenario-guide.md"
+    ]
+  },
+  {
+    "source": "examples/built-environment/cq-trace.json",
+    "copies": [
+      "skills/scenarios/bim-change-impact/examples/cq-trace.json"
+    ]
+  },
+  {
+    "source": "examples/environmental-monitoring/scenario-guide.md",
+    "copies": [
+      "skills/scenarios/observation-quality-assessment/examples/scenario-guide.md"
+    ]
+  },
+  {
+    "source": "examples/environmental-monitoring/cq-trace.json",
+    "copies": [
+      "skills/scenarios/observation-quality-assessment/examples/cq-trace.json"
+    ]
+  },
+  {
+    "source": "examples/education/scenario-guide.md",
+    "copies": [
+      "skills/scenarios/learning-credential-verification/examples/scenario-guide.md"
+    ]
+  },
+  {
+    "source": "examples/education/cq-trace.json",
+    "copies": [
+      "skills/scenarios/learning-credential-verification/examples/cq-trace.json"
     ]
   }
 ]

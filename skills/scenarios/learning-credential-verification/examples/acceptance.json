@@ -1,0 +1,1158 @@
+{
+  "basis": "Manually expected interpretation of SIMULATED validation reports. Not cryptographic verification, an awarded credential, or recognition decision.",
+  "cases": [
+    {
+      "id": "reported-checks-pass",
+      "purpose": "模拟报告通过仅成为复核候选；未运行真实验签",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "candidate_for_review",
+            "reason": "simulated_checks_only"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "no-report",
+      "purpose": "只有凭证JSON不等于验签",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": []
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "missing_bound_report"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "revoked",
+      "purpose": "已报告撤销不可进入候选",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "revoked",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "not_eligible",
+            "reason": "reported_revoked"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "unknown-status",
+      "purpose": "未查到状态不能当作有效",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "unknown",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "status_unresolved"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "proof-failed",
+      "purpose": "格式通过不能弥补验签失败",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "fail",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "not_eligible",
+            "reason": "reported_check_failure"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "wrong-subject",
+      "purpose": "同课程不能证明同一接收者",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-b",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "not_eligible",
+            "reason": "subject_mismatch"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "untrusted-issuer",
+      "purpose": "签名通过不替代机构信任政策",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "issuer_not_trusted"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "expired",
+      "purpose": "本地半开有效期右端不接纳",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2027-01-01T00:00:00Z",
+        "known_as_of": "2027-01-01T00:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "not_eligible",
+            "reason": "outside_validity"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "future-validity",
+      "purpose": "尚未生效不能接纳",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2025-12-31T00:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "not_eligible",
+            "reason": "outside_validity"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "stale-status",
+      "purpose": "旧状态报告不能表示当前撤销状态",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-01T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "stale_or_future_report"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "late-report",
+      "purpose": "后来获得的报告不能回填历史已知状态",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-07T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "missing_bound_report"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "changed-payload",
+      "purpose": "同ID新内容不能沿用旧验签报告",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/advanced",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "missing_bound_report"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "conflicting-credential",
+      "purpose": "同身份不同载荷同时保留并显式待决",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          },
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/advanced",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "conflicting_identity"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "duplicate-receipt",
+      "purpose": "重放不增加候选",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          },
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/7",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "candidate_for_review",
+            "reason": "simulated_checks_only"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    },
+    {
+      "id": "wrong-status-target",
+      "purpose": "状态结果必须绑定声明的状态引用",
+      "input": {
+        "projection": "Original Open Badges VC2 field projection; no signed credential",
+        "as_of": "2026-11-06T12:00:00Z",
+        "known_as_of": "2026-11-06T12:00:00Z",
+        "policy": {
+          "id": "demo-review-1",
+          "version": "1",
+          "trusted_issuers": [
+            "https://academy.example/issuer"
+          ],
+          "subject_id": "did:example:learner-a",
+          "status_max_age_seconds": 86400
+        },
+        "credentials": [
+          {
+            "id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "achievement_id": "https://academy.example/achievements/graph-intro",
+            "creator_id": "https://curriculum.example/creator",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": "2027-01-01T00:00:00Z",
+            "credential_status_id": "https://academy.example/status/7",
+            "evidence": [
+              "https://academy.example/evidence/7"
+            ],
+            "observed_at": "2026-11-06T10:00:00Z"
+          }
+        ],
+        "reports": [
+          {
+            "credential_id": "https://academy.example/credentials/7",
+            "issuer_id": "https://academy.example/issuer",
+            "subject_id": "did:example:learner-a",
+            "artifact": "credential-payload-1",
+            "credential_content": {
+              "id": "https://academy.example/credentials/7",
+              "issuer_id": "https://academy.example/issuer",
+              "subject_id": "did:example:learner-a",
+              "achievement_id": "https://academy.example/achievements/graph-intro",
+              "creator_id": "https://curriculum.example/creator",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": "2027-01-01T00:00:00Z",
+              "credential_status_id": "https://academy.example/status/7",
+              "evidence": [
+                "https://academy.example/evidence/7"
+              ]
+            },
+            "schema": "pass",
+            "proof": "pass",
+            "status": "active",
+            "status_reference": "https://academy.example/status/8",
+            "checked_at": "2026-11-06T11:00:00Z",
+            "observed_at": "2026-11-06T11:01:00Z",
+            "simulated": true,
+            "report_id": "report-1"
+          }
+        ]
+      },
+      "expected": {
+        "assessments": [
+          {
+            "credential": [
+              "https://academy.example/issuer",
+              "https://academy.example/credentials/7"
+            ],
+            "status": "unknown",
+            "reason": "missing_bound_report"
+          }
+        ],
+        "credential_verified": false,
+        "competence_confirmed": null
+      }
+    }
+  ]
+}
