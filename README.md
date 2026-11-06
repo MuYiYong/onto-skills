@@ -23,64 +23,94 @@ examples/          完整业务示例
 tests/ + scripts/  仅开发验证
 ```
 
-## 当前 Skills
+## Skills
 
-| 分类 | Skill | 职责 |
+共 25 项：7 项通用方法、4 项金融知识与标准、5 项行业知识、9 项业务场景。每项均可独立安装，也可按任务组合使用。
+
+### 通用方法（Core）
+
+| Skill | 职责 |
+| --- | --- |
+| [ontology-modeling](skills/core/ontology-modeling/SKILL.md) | 概念、边界、身份与生命周期 |
+| [industry-knowledge-discovery](skills/core/industry-knowledge-discovery/SKILL.md) | 术语、标准、来源与缺口 |
+| [entity-relationship-modeling](skills/core/entity-relationship-modeling/SKILL.md) | 实体、关系、基数、稳定键 |
+| [property-graph-mapping](skills/core/property-graph-mapping/SKILL.md) | OWL/概念到图规格与映射损失 |
+| [ontology-validation](skills/core/ontology-validation/SKILL.md) | 业务、结构、图设计与实现边界 |
+| [ontology-documentation](skills/core/ontology-documentation/SKILL.md) | 可审查的设计文档 |
+| [ontology-evolution](skills/core/ontology-evolution/SKILL.md) | 变更、兼容、迁移与回滚规划 |
+
+### 金融知识与标准（Finance）
+
+| Skill | 职责 |
+| --- | --- |
+| [finance-domain-knowledge](skills/finance/finance-domain-knowledge/SKILL.md) | 金融概念及角色边界 |
+| [fibo-ontology](skills/finance/fibo-ontology/SKILL.md) | FIBO 裁剪、扩展、映射与版本 |
+| [banking-business-model](skills/finance/banking-business-model/SKILL.md) | 银行业务流程和实体关系 |
+| [credit-risk-knowledge](skills/finance/credit-risk-knowledge/SKILL.md) | 信用风险口径与时序关联 |
+
+### 行业知识（Industries）
+
+| 行业 | Skill | 职责 |
 | --- | --- | --- |
-| Core | [ontology-modeling](skills/core/ontology-modeling/SKILL.md) | 概念、边界、身份与生命周期 |
-| Core | [industry-knowledge-discovery](skills/core/industry-knowledge-discovery/SKILL.md) | 术语、标准、来源与缺口 |
-| Core | [entity-relationship-modeling](skills/core/entity-relationship-modeling/SKILL.md) | 实体、关系、基数、稳定键 |
-| Core | [property-graph-mapping](skills/core/property-graph-mapping/SKILL.md) | OWL/概念到图规格与损失 |
-| Core | [ontology-validation](skills/core/ontology-validation/SKILL.md) | 业务、结构、图设计与实现边界 |
-| Core | [ontology-documentation](skills/core/ontology-documentation/SKILL.md) | 可审查的设计文档 |
-| Core | [ontology-evolution](skills/core/ontology-evolution/SKILL.md) | 变更、兼容、迁移与回滚规划 |
-| Finance | [finance-domain-knowledge](skills/finance/finance-domain-knowledge/SKILL.md) | 金融概念及角色边界 |
-| Finance | [fibo-ontology](skills/finance/fibo-ontology/SKILL.md) | FIBO 裁剪/扩展/映射与版本 |
-| Finance | [banking-business-model](skills/finance/banking-business-model/SKILL.md) | 银行业务流程和实体关系 |
-| Finance | [credit-risk-knowledge](skills/finance/credit-risk-knowledge/SKILL.md) | 信用风险口径与时序关联 |
-| Scenario | [multi-lending-detection](skills/scenarios/multi-lending-detection/SKILL.md) | 多机构有效贷款与共债关联 |
-| Scenario | [fraud-network-modeling](skills/scenarios/fraud-network-modeling/SKILL.md) | 证据网络、风险链路与复核假设 |
+| 电力 | [electric-power-domain-knowledge](skills/industries/electric-power-domain-knowledge/SKILL.md) | 设备、端子、连通性与拓扑版本 |
+| 制造 | [manufacturing-domain-knowledge](skills/industries/manufacturing-domain-knowledge/SKILL.md) | 产品、批次、生产事件与资源 |
+| 物流 | [logistics-domain-knowledge](skills/industries/logistics-domain-knowledge/SKILL.md) | 货运、物流单元、交接与运输事件 |
+| 医疗 | [healthcare-domain-knowledge](skills/industries/healthcare-domain-knowledge/SKILL.md) | 照护记录、资源身份与版本 |
+| 零售 | [retail-domain-knowledge](skills/industries/retail-domain-knowledge/SKILL.md) | 产品、地点、库存与销售事件 |
 
-### 本次新增行业与场景
+### 业务场景（Scenarios）
 
-当前源码共25项：7项Core、4项Finance、5项行业知识、9项Scenario。以下12项随本次扩展加入；[当前版本 `v26.11.06_Build0721`](https://github.com/MuYiYong/onto-skills/releases/tag/v26.11.06_Build0721) 提供全部25项。`v26.11.05_Build2200` 为原13项的历史版本。
-
-| 分类 | Skill | 职责 |
+| 行业 | Skill | 职责 |
 | --- | --- | --- |
-| 电力知识 | [electric-power-domain-knowledge](skills/industries/electric-power-domain-knowledge/SKILL.md) | 电力概念、身份、事件/状态、来源与映射边界 |
-| 电力场景 | [power-outage-impact-analysis](skills/scenarios/power-outage-impact-analysis/SKILL.md) | 停电影响与恢复分段 |
-| 制造知识 | [manufacturing-domain-knowledge](skills/industries/manufacturing-domain-knowledge/SKILL.md) | 制造概念、身份、事件/状态、来源与映射边界 |
-| 制造场景 | [manufacturing-quality-traceability](skills/scenarios/manufacturing-quality-traceability/SKILL.md) | 批次质量与拆分/合并/返工追溯 |
-| 物流知识 | [logistics-domain-knowledge](skills/industries/logistics-domain-knowledge/SKILL.md) | 物流概念、身份、事件/状态、来源与映射边界 |
-| 物流场景 | [shipment-exception-analysis](skills/scenarios/shipment-exception-analysis/SKILL.md) | 运输异常、交接与事件时序 |
-| 医疗知识 | [healthcare-domain-knowledge](skills/industries/healthcare-domain-knowledge/SKILL.md) | 医疗概念、身份、事件/状态、来源与映射边界 |
-| 医疗场景 | [healthcare-care-pathway-modeling](skills/scenarios/healthcare-care-pathway-modeling/SKILL.md) | 照护事实、医嘱/执行与结果版本 |
-| 零售知识 | [retail-domain-knowledge](skills/industries/retail-domain-knowledge/SKILL.md) | 零售概念、身份、事件/状态、来源与映射边界 |
-| 零售场景 | [retail-inventory-replenishment](skills/scenarios/retail-inventory-replenishment/SKILL.md) | 库存、预留与补货候选 |
-| 金融场景 | [financial-regulatory-reporting](skills/scenarios/financial-regulatory-reporting/SKILL.md) | 监管报送、指标血缘与更正回执 |
-| 金融场景 | [related-party-transaction-modeling](skills/scenarios/related-party-transaction-modeling/SKILL.md) | 关联交易控制证据与口径审查 |
-
-行业组合见 [电力](packs/electric-power-ontology/README.md)、[制造](packs/manufacturing-ontology/README.md)、[物流](packs/logistics-ontology/README.md)、[医疗](packs/healthcare-ontology/README.md)、[零售](packs/retail-ontology/README.md)；[新增能力与验证范围](docs/multi-industry-expansion.md)列出模型、输入和反例。
+| 金融 | [multi-lending-detection](skills/scenarios/multi-lending-detection/SKILL.md) | 多机构有效贷款与共债关联 |
+| 金融 | [fraud-network-modeling](skills/scenarios/fraud-network-modeling/SKILL.md) | 证据网络、风险链路与复核假设 |
+| 金融 | [financial-regulatory-reporting](skills/scenarios/financial-regulatory-reporting/SKILL.md) | 监管报送、指标血缘与更正回执 |
+| 金融 | [related-party-transaction-modeling](skills/scenarios/related-party-transaction-modeling/SKILL.md) | 关联交易控制证据与口径审查 |
+| 电力 | [power-outage-impact-analysis](skills/scenarios/power-outage-impact-analysis/SKILL.md) | 停电影响与恢复分段 |
+| 制造 | [manufacturing-quality-traceability](skills/scenarios/manufacturing-quality-traceability/SKILL.md) | 批次质量与拆分、合并、返工追溯 |
+| 物流 | [shipment-exception-analysis](skills/scenarios/shipment-exception-analysis/SKILL.md) | 运输异常、交接与事件时序 |
+| 医疗 | [healthcare-care-pathway-modeling](skills/scenarios/healthcare-care-pathway-modeling/SKILL.md) | 照护事实、医嘱与执行、结果版本 |
+| 零售 | [retail-inventory-replenishment](skills/scenarios/retail-inventory-replenishment/SKILL.md) | 库存、预留与补货候选 |
 
 ## 安装与使用
 
 单个 Skill 的安装单位是其完整目录。例如在仓库根目录将 `skills/core/ontology-modeling/` 复制到 Codex 用户 `~/.agents/skills/`，保留 references、examples 和 LICENSE，然后用 `$ontology-modeling` 调用。目录已存在时先检查管理方式和本地修改；项目级可放 `.agents/skills/`。
 
-CC-Switch 4.0.25 的 Skills → Add Skill → Install from ZIP 已实测支持单项、选择组合和全量本地包，并同步到 Codex。在 ⋯ → Manage repositories 可添加仓库根 URL `https://github.com/MuYiYong/onto-skills`、分支 main；仓库 GUI 安装/升级尚未单独验证。逐项路径、更新、卸载与版本差异见 [安装指南](docs/installation-guide.md)。
+CC-Switch 使用 Skills → Add Skill → Install from ZIP 导入本地包并同步到 Codex；Linux 4.0.25 已完成单项、两项组合及 13 项包的原生验收。在 ⋯ → Manage repositories 可添加仓库根 URL `https://github.com/MuYiYong/onto-skills`、分支 main；仓库 GUI 安装/升级尚未单独验证。逐项路径、更新、卸载与版本差异见 [安装指南](docs/installation-guide.md)。
 
-[当前发布版](https://github.com/MuYiYong/onto-skills/releases/tag/v26.11.06_Build0721) 提供25个独立 ZIP、全量 ZIP、八项金融/场景组合 ZIP、发布清单和 SHA-256；解压后每项仍是普通完整 Skill 目录。
+[最新 Release](https://github.com/MuYiYong/onto-skills/releases/latest) 提供 25 个独立 ZIP、全量 ZIP、八项金融/场景组合 ZIP、发布清单和 SHA-256；解压后每项仍是普通完整 Skill 目录。
 
-金融组合见 [Finance Ontology Pack](packs/finance-ontology/README.md)，可只选择部分技能，不必装齐。完整案例见 [业务 + Schema → 双路径本体 → 图规格 → GQL 交接](examples/finance/README.md)。
+## 行业组合与示例
+
+Pack 提供选用顺序和交付物衔接说明，可按任务选择其中的技能。
+
+| 行业 | 组合指南 | 示例 |
+| --- | --- | --- |
+| 金融 | [Finance Ontology Pack](packs/finance-ontology/README.md) | [业务 + Schema → 双路径本体 → 图规格 → GQL 交接](examples/finance/README.md)、[监管报送](examples/finance/regulatory-reporting/README.md)、[关联交易](examples/finance/related-party/README.md) |
+| 电力 | [Electric Power Ontology Pack](packs/electric-power-ontology/README.md) | [故障线路、未知联络与 DER](examples/electric-power/README.md) |
+| 制造 | [Manufacturing Ontology Pack](packs/manufacturing-ontology/README.md) | [批次质量与谱系追溯](examples/manufacturing/README.md) |
+| 物流 | [Logistics Ontology Pack](packs/logistics-ontology/README.md) | [运输异常与交接事件](examples/logistics/README.md) |
+| 医疗 | [Healthcare Ontology Pack](packs/healthcare-ontology/README.md) | [照护路径数据与版本](examples/healthcare/README.md) |
+| 零售 | [Retail Ontology Pack](packs/retail-ontology/README.md) | [库存、预留与补货](examples/retail/README.md) |
+
+行业与金融专项示例包含图模型、合成输入和具体正反例；知识来源、设计取舍及验证范围见 [多行业知识与业务场景](docs/multi-industry-expansion.md)。
 
 ## 外部 GQL Skills
 
-本项目负责业务语义、Node/Edge/属性/身份/约束设计。NebulaGraph DDL、DML、DQL 和 Procedure 的具体表达复用独立的 [nebula-gql-skills](https://github.com/MuYiYong/nebula-gql-skills)。查询使用 gql-query-generator，过程/算法使用 gql-procedure-generator；Graph Type DDL 须检查其当前资源/未来专门技能的实际覆盖。
+本项目负责业务语义、Node/Edge/属性/身份/约束设计。NebulaGraph DDL、DML、DQL 和 Procedure 的具体表达复用独立的 [nebula-gql-skills](https://github.com/MuYiYong/nebula-gql-skills)。查询使用 gql-query-generator，过程/算法使用 gql-procedure-generator；Graph Type DDL 须检查已安装资源或专门技能的实际覆盖。
 
-先形成 [Graph Model Specification](docs/graph-model-specification.md)，再交接当前已安装能力；缺技能或能力时说明缺口和官方安装方式。仅本体设计无需该外部项目。这里不复制其语法、资源或长期固定其版本。
+先形成 [Graph Model Specification](docs/graph-model-specification.md)，再根据目标数据库版本交接已安装能力；缺技能或能力时说明缺口和官方安装方式。仅本体设计无需该外部项目。这里不复制其语法、资源或长期固定其版本。
 
 ## 验证、贡献与许可
 
-[兼容报告](docs/compatibility.md) 区分当前25项Codex发现与12项新增独立调用、原13项中的四项历史调用、离线闭包、5.3.2数据库原生验收、CC-Switch Linux原生操作和macOS/远程升级未验证项；[逐项验收](docs/acceptance.md) 对照首版要求；[扩展验收](docs/multi-industry-expansion.md)覆盖本次新增范围；[测试说明](tests/README.md) 提供开发命令。格式通过不等于行业语义或数据库运行通过。
+| 验证层次 | 已记录的范围 |
+| --- | --- |
+| 离线检查 | 资产格式、独立资源闭包、知识副本、图模型结构及合成示例正反例 |
+| Codex 原生 | Linux Codex 0.166.0 发现全部 25 项，读取 199 个包内文件；独立单包显式调用与有界语义复核 |
+| CC-Switch 原生 | Linux 4.0.25 的单项、两项组合及 13 项 ZIP 安装、同步、卸载和 Codex 开关 |
+| 数据库原生 | 5.3.2 的信贷与欺诈模型、合成数据、查询正反例、模型回读及清理 |
+
+具体来源与限制见 [兼容报告](docs/compatibility.md) 和 [验收说明](docs/acceptance.md)。macOS 原生应用、远程安装/升级、隐式触发准确率、Procedure 与性能尚未验证；格式检查和有界合成任务不证明完整行业标准符合性或所有模型的数据库执行。开发校验命令见 [测试说明](tests/README.md)。
 
 贡献见 [CONTRIBUTING](CONTRIBUTING.md)；规范见 [Skill](docs/skill-specification.md)、[Knowledge](docs/knowledge-specification.md)、[Pack](docs/pack-specification.md)，未来范围见 [路线图](docs/roadmap.md)。
 
