@@ -12,8 +12,8 @@ Skills 提供方法，Knowledge 提供行业知识，Packs 说明组合。每个
 
 ```text
 skills/core/       通用方法
-skills/finance/    金融知识与标准
-skills/industries/ 其他行业知识
+skills/finance/    金融知识、标准与业务建模
+skills/industries/ 行业知识
 skills/scenarios/  业务场景
 knowledge/         分行业、分专项的有来源知识资产
 packs/             推荐组合说明
@@ -25,7 +25,7 @@ tests/ + scripts/  仅开发验证
 
 ## Skills
 
-共 27 项：7 项通用方法、4 项金融知识与标准、6 项行业知识、10 项业务场景。每项均可独立安装，也可按任务组合使用。
+共 27 项：7 项通用方法、20 项行业技能。按金融、电力、制造、物流、医疗、零售和网络安全七个行业，将相关知识、标准本体与业务场景集中列出；每项均可独立安装，也可按任务组合使用。
 
 ### 通用方法（Core）
 
@@ -39,40 +39,60 @@ tests/ + scripts/  仅开发验证
 | [ontology-documentation](skills/core/ontology-documentation/SKILL.md) | 可审查的设计文档 |
 | [ontology-evolution](skills/core/ontology-evolution/SKILL.md) | 变更、兼容、迁移与回滚规划 |
 
-### 金融知识与标准（Finance）
+### 金融（Finance）
 
-| Skill | 职责 |
-| --- | --- |
-| [finance-domain-knowledge](skills/finance/finance-domain-knowledge/SKILL.md) | 金融概念及角色边界 |
-| [fibo-ontology](skills/finance/fibo-ontology/SKILL.md) | FIBO 裁剪、扩展、映射与版本 |
-| [banking-business-model](skills/finance/banking-business-model/SKILL.md) | 银行业务流程和实体关系 |
-| [credit-risk-knowledge](skills/finance/credit-risk-knowledge/SKILL.md) | 信用风险口径与时序关联 |
-
-### 行业知识（Industries）
-
-| 行业 | Skill | 职责 |
+| 类型 | Skill | 职责 |
 | --- | --- | --- |
-| 电力 | [electric-power-domain-knowledge](skills/industries/electric-power-domain-knowledge/SKILL.md) | 设备、端子、连通性与拓扑版本 |
-| 制造 | [manufacturing-domain-knowledge](skills/industries/manufacturing-domain-knowledge/SKILL.md) | 产品、批次、生产事件与资源 |
-| 物流 | [logistics-domain-knowledge](skills/industries/logistics-domain-knowledge/SKILL.md) | 货运、物流单元、交接与运输事件 |
-| 医疗 | [healthcare-domain-knowledge](skills/industries/healthcare-domain-knowledge/SKILL.md) | 照护记录、资源身份与版本 |
-| 零售 | [retail-domain-knowledge](skills/industries/retail-domain-knowledge/SKILL.md) | 产品、地点、库存与销售事件 |
-| 网络安全 | [cybersecurity-domain-knowledge](skills/industries/cybersecurity-domain-knowledge/SKILL.md) | 软件组件、通告产品、漏洞状态与部署证据 |
+| 行业知识 | [finance-domain-knowledge](skills/finance/finance-domain-knowledge/SKILL.md) | 金融概念及角色边界 |
+| 标准本体 | [fibo-ontology](skills/finance/fibo-ontology/SKILL.md) | FIBO 裁剪、扩展、映射与版本 |
+| 业务建模 | [banking-business-model](skills/finance/banking-business-model/SKILL.md) | 银行业务流程和实体关系 |
+| 风险知识 | [credit-risk-knowledge](skills/finance/credit-risk-knowledge/SKILL.md) | 信用风险口径与时序关联 |
+| 业务场景 | [multi-lending-detection](skills/scenarios/multi-lending-detection/SKILL.md) | 多机构有效贷款与共债关联 |
+| 业务场景 | [fraud-network-modeling](skills/scenarios/fraud-network-modeling/SKILL.md) | 证据网络、风险链路与复核假设 |
+| 业务场景 | [financial-regulatory-reporting](skills/scenarios/financial-regulatory-reporting/SKILL.md) | 监管报送、指标血缘与更正回执 |
+| 业务场景 | [related-party-transaction-modeling](skills/scenarios/related-party-transaction-modeling/SKILL.md) | 关联交易控制证据与口径审查 |
 
-### 业务场景（Scenarios）
+### 电力（Electric Power）
 
-| 行业 | Skill | 职责 |
+| 类型 | Skill | 职责 |
 | --- | --- | --- |
-| 金融 | [multi-lending-detection](skills/scenarios/multi-lending-detection/SKILL.md) | 多机构有效贷款与共债关联 |
-| 金融 | [fraud-network-modeling](skills/scenarios/fraud-network-modeling/SKILL.md) | 证据网络、风险链路与复核假设 |
-| 金融 | [financial-regulatory-reporting](skills/scenarios/financial-regulatory-reporting/SKILL.md) | 监管报送、指标血缘与更正回执 |
-| 金融 | [related-party-transaction-modeling](skills/scenarios/related-party-transaction-modeling/SKILL.md) | 关联交易控制证据与口径审查 |
-| 电力 | [power-outage-impact-analysis](skills/scenarios/power-outage-impact-analysis/SKILL.md) | 停电影响与恢复分段 |
-| 制造 | [manufacturing-quality-traceability](skills/scenarios/manufacturing-quality-traceability/SKILL.md) | 批次质量与拆分、合并、返工追溯 |
-| 物流 | [shipment-exception-analysis](skills/scenarios/shipment-exception-analysis/SKILL.md) | 运输异常、交接与事件时序 |
-| 医疗 | [healthcare-care-pathway-modeling](skills/scenarios/healthcare-care-pathway-modeling/SKILL.md) | 照护事实、医嘱与执行、结果版本 |
-| 零售 | [retail-inventory-replenishment](skills/scenarios/retail-inventory-replenishment/SKILL.md) | 库存、预留与补货候选 |
-| 网络安全 | [software-vulnerability-impact](skills/scenarios/software-vulnerability-impact/SKILL.md) | SBOM、漏洞适用性、通告修订与修复证据 |
+| 行业知识 | [electric-power-domain-knowledge](skills/industries/electric-power-domain-knowledge/SKILL.md) | 设备、端子、连通性与拓扑版本 |
+| 业务场景 | [power-outage-impact-analysis](skills/scenarios/power-outage-impact-analysis/SKILL.md) | 停电影响与恢复分段 |
+
+### 制造（Manufacturing）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [manufacturing-domain-knowledge](skills/industries/manufacturing-domain-knowledge/SKILL.md) | 产品、批次、生产事件与资源 |
+| 业务场景 | [manufacturing-quality-traceability](skills/scenarios/manufacturing-quality-traceability/SKILL.md) | 批次质量与拆分、合并、返工追溯 |
+
+### 物流（Logistics）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [logistics-domain-knowledge](skills/industries/logistics-domain-knowledge/SKILL.md) | 货运、物流单元、交接与运输事件 |
+| 业务场景 | [shipment-exception-analysis](skills/scenarios/shipment-exception-analysis/SKILL.md) | 运输异常、交接与事件时序 |
+
+### 医疗（Healthcare）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [healthcare-domain-knowledge](skills/industries/healthcare-domain-knowledge/SKILL.md) | 照护记录、资源身份与版本 |
+| 业务场景 | [healthcare-care-pathway-modeling](skills/scenarios/healthcare-care-pathway-modeling/SKILL.md) | 照护事实、医嘱与执行、结果版本 |
+
+### 零售（Retail）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [retail-domain-knowledge](skills/industries/retail-domain-knowledge/SKILL.md) | 产品、地点、库存与销售事件 |
+| 业务场景 | [retail-inventory-replenishment](skills/scenarios/retail-inventory-replenishment/SKILL.md) | 库存、预留与补货候选 |
+
+### 网络安全（Cybersecurity）
+
+| 类型 | Skill | 职责 |
+| --- | --- | --- |
+| 行业知识 | [cybersecurity-domain-knowledge](skills/industries/cybersecurity-domain-knowledge/SKILL.md) | 软件组件、通告产品、漏洞状态与部署证据 |
+| 业务场景 | [software-vulnerability-impact](skills/scenarios/software-vulnerability-impact/SKILL.md) | SBOM、漏洞适用性、通告修订与修复证据 |
 
 ## 标准依据
 
