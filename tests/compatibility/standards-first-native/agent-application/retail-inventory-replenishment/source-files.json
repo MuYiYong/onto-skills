@@ -1,0 +1,13 @@
+{
+  "SKILL.md": "982081c679a6e7ae9c4a4e8dc0db98469d320bc4011aeca19275626f5a00686a",
+  "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+  "references/method.md": "e400fc08c02c39bc8453ed2391108c4f95024283ab6f4cf3666c77ec610f42bf",
+  "references/domain.json": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+  "references/sources.json": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311",
+  "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+  "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+  "examples/worked-example.md": "557f237db31b6fcdccebdc8c1cf17314178e3b05ed6ec9f3810b0b8c245f6e93",
+  "examples/graph-model.json": "e1362ff911d54a624c6b108df14bbb0ce85084a4d2dc6f89052c55cbb9c667b5",
+  "examples/input.json": "1e06dd631450ff0e50dd37a67bb5aa7f1a364332c1f5361d5fddd2c50578fc2b",
+  "examples/acceptance.json": "763954f2249baef6ee09e26e286bbef301bdb20604e2f3e1519e780e75830a37"
+}

@@ -1,0 +1,34 @@
+{
+  "skill_used": "industry-knowledge-discovery",
+  "answer": {
+    "concepts": [
+      "知识依据表应含稳定id、术语/定义/别名、classification、source_ids、source_locator、scope、confidence及open_questions；原定义、原创解释、图设计分栏。",
+      "来源索引记录id/name/URI/version/publisher/license/retrieved_at/scope/authority；未给的发布机构、目录标准号/版次、许可和检索日标unknown，不伪造。",
+      "厂商博客是该主张的来源，不是正式标准；无法访问正文的标准目录仅支持标准存在/目录范围的背景，不能支持具体条款。"
+    ],
+    "decisions": [
+      "先明确设备业务范围、地区、日期及要验证的物料谱系问题，再优先定位正式发布机构的适用标准版次/勘误及具体条文、字段或IRI。",
+      "共享设备只记录资源共用关系；没有投入/产出、转换、批次和时间证据时，不能认定物料血缘。该保守决策是本地model-inference，非未经读取标准的规范断言。",
+      "每项standard_basis写source_id/locator/relation/scope；supports仅用于实际核实且直接支持该范围的正式标准，background用于目录或一般背景；当前不能填写已核实条文supports。",
+      "质量限值、谱系判断公式和本地政策无证据时列standard_gap，保留非标准建模；独立可完成来源清单及缺口，不依赖未知阈值。",
+      "不能认证完整标准符合性；静态知识整理不等于标准全文审阅、专家确认、OWL推理或数据库运行。"
+    ]
+  },
+  "identity_rules": [
+    "不同来源同名概念先保留有范围的独立ID；设备、物料批次、转换事件、来源记录分别标识，不能通过共用设备合并批次身份。"
+  ],
+  "time_and_units": [
+    "记录适用地区/业务日期、标准版次/勘误、来源检索日与事件发生/获知时间；检索日不替代标准版本。",
+    "数量与单位及换算依据未给时保持未知，不编造质量限值或等价换算。"
+  ],
+  "standard_basis": [
+    "本包references/method.md是项目原创知识工程方法，提供标准优先交付顺序及supports/background区别；不是外部行业规范。",
+    "用户仅给厂商博客主张与不可访问正文的目录，没有可核实正式条款、质量限值或授权材料；当前所有行业规范性映射均有standard_gap，非标准建模。"
+  ],
+  "source_limits": [
+    "离线、无网络检索；未访问目录正文、核实博客原文或复制受限材料。许可未知仅保留索引和原创摘要。"
+  ],
+  "unresolved": [
+    "标准标识/版次、适用范围与合法可读正文及具体条文；用户授权业务流程/投入产出记录；质量限值来源；博客位置、作者、时间及反例证据。"
+  ]
+}

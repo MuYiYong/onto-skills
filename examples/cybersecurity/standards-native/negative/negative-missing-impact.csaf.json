@@ -1,0 +1,60 @@
+{
+  "document": {
+    "category": "csaf_vex",
+    "csaf_version": "2.0",
+    "title": "Synthetic product vulnerability applicability example",
+    "publisher": {
+      "category": "vendor",
+      "name": "Synthetic Vendor",
+      "namespace": "https://vendor.example/security"
+    },
+    "tracking": {
+      "id": "ADV1",
+      "status": "final",
+      "version": "2",
+      "initial_release_date": "2026-11-01T00:00:00Z",
+      "current_release_date": "2026-11-07T00:00:00Z",
+      "revision_history": [
+        {
+          "number": "1",
+          "date": "2026-11-01T00:00:00Z",
+          "summary": "Initial synthetic advisory"
+        },
+        {
+          "number": "2",
+          "date": "2026-11-07T00:00:00Z",
+          "summary": "Synthetic impact correction"
+        }
+      ]
+    }
+  },
+  "product_tree": {
+    "full_product_names": [
+      {
+        "name": "Synthetic sample-lib1.0 buildA",
+        "product_id": "product-p"
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "ids": [
+        {
+          "system_name": "Onto Skills synthetic vulnerability namespace",
+          "text": "TEST-VULN-1"
+        }
+      ],
+      "notes": [
+        {
+          "category": "description",
+          "text": "Original synthetic vulnerability assertion for conformance testing only."
+        }
+      ],
+      "product_status": {
+        "known_not_affected": [
+          "product-p"
+        ]
+      }
+    }
+  ]
+}

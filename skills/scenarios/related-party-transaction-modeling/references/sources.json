@@ -1,9 +1,9 @@
 {
   "id": "finance-related-parties-sources",
   "name": "金融related-parties来源",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original summaries only; external sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "金融专项知识；源版本与访问范围独立记录",
   "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
   "classification": "project-curated",
@@ -34,8 +34,8 @@
       "version": "国家金融监督管理总局令2025年第4号，2025-05-15；网站2025-05-20发布；2022年第1号规则第一次修正",
       "publisher": "国家金融监督管理总局",
       "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
-      "retrieved_at": "2026-11-05",
-      "scope": "中国银行保险关联交易监管；包括2025年第四十五条治理程序修正",
+      "retrieved_at": "2026-11-06",
+      "scope": "官方正文经DocInfo/SelectByDocId/data_docId=1209888.json读取；定位须指定重公布的银行保险机构关联交易管理办法；决定第三项及第45条第三款为2025治理修正",
       "authority": "官方修订与重公布文本；机构类型、交易分类、资本口径及程序适用需逐项确认",
       "kind": "official-standard"
     },
@@ -43,12 +43,12 @@
       "id": "cas36",
       "name": "企业会计准则第36号——关联方披露",
       "uri": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
-      "version": "财会〔2006〕3号；官方原页索引及后续官方解释定位，原页直接读取超时，适用时需复核相关解释",
+      "version": "财会〔2006〕3号；原页显示2006-03-09发布；2026-11-06已成功读取原文；适用时仍须核实解释12/13等后续规定",
       "publisher": "中华人民共和国财政部",
       "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
-      "retrieved_at": "2026-11-05",
-      "scope": "财务报表关联方披露及合并范围背景，区别于银行保险监管口径",
-      "authority": "官方准则索引；不是监管办法的替代，原页访问限制已保留",
+      "retrieved_at": "2026-11-06",
+      "scope": "第2-8、10-12条：合并披露范围、关联方与交易语义、披露要素；不取代银行保险监管关联交易口径",
+      "authority": "官方会计准则原文于2026-11-06成功读取；具体机构与后续解释适用须另行确认，不等于银行保险监管口径",
       "kind": "official-standard"
     },
     {
@@ -58,7 +58,7 @@
       "version": "会计司咨询回复2024-01-17；2026-11-05核实",
       "publisher": "中华人民共和国财政部会计司",
       "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "同一母公司控制与仅同受国家控制的区分",
       "authority": "官方说明，仅解释对应准则情形，不是所有国企关系的通用豁免",
       "kind": "official-standard"
@@ -70,7 +70,7 @@
       "version": "官方页面2025-01-06；引用CAS36及解释12/13",
       "publisher": "中华人民共和国财政部",
       "license": "原出版物版权及条款；只链接并原创摘要，不分发原文",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "提示关联方披露需结合后续准则解释",
       "authority": "官方年报要求背景；本项目不复刻完整会计判断或阈值",
       "kind": "official-standard"

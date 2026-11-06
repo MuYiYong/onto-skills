@@ -1,0 +1,1 @@
+使用随包FHIR版本分析合成记录：同server A患者Patient/p1，有已授权身份映射到匿名P1。ServiceRequest/r1 current版本2 status=revoked，无Procedure。Observation/o1 v1 final value5mg/L已被current v2 entered-in-error替代；另有Observation/o2 final dataAbsentReason=unknown无值。所有已知截止均晚于修订。第二患者p2只与p1共享联系人，无批准映射。输出能否证明执行、原5mg/L能否继续使用、未知能否填0、能否合并患者；保留历史与时钟/单位边界。

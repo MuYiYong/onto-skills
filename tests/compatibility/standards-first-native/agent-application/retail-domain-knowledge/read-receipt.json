@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/request.txt",
+      "sha256": "63aca09bfaf9a90a45e28f8e24839b5a16039a96cc05d44ce2d6edfb73c1e1bd"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/source-files.json",
+      "sha256": "93d9981a6611319b124cd97e4fbe0c65c5b0dd570e409876237c3e72515a9bd2"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/.agents/skills/retail-domain-knowledge/SKILL.md",
+      "sha256": "b919f421ae262725c209a44d19ffc08ec6b722c2f66aa8df52667db300083e59"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/.agents/skills/retail-domain-knowledge/references/method.md",
+      "sha256": "95ffef56419a667bb635f6dd7a81ae4d9ece4848ff0a9d581870a25601dbbfd3"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/.agents/skills/retail-domain-knowledge/references/sources.json",
+      "sha256": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-domain-knowledge/.agents/skills/retail-domain-knowledge/references/domain.json",
+      "sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical retail reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

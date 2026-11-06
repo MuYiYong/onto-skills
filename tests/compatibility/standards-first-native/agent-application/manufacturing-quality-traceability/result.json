@@ -1,0 +1,33 @@
+{
+  "skill_used": "manufacturing-quality-traceability",
+  "answer": {
+    "candidate_lots": [
+      "FG",
+      "FG2"
+    ],
+    "candidate_total_kg": 108,
+    "shared_equipment_batch_included": false
+  },
+  "identity_rules": [
+    "批次完整键=M+P1+lot_id，候选FG与FG2各计一次；每个实际混配/拆分/返工事件有不同source event key，依题设有效谱系，不按设备连边。",
+    "证据路径RAW→混配→MIX→拆分→FG，以及RAW→混配→MIX→拆分→RW→返工→FG2；U仅共享设备，无物料路径，不纳入。",
+    "只选终端released FG60kg与FG2 48kg；RAW/MIX/RW是已消耗中间批次，SCRAP2kg为报废非目标released终端，均不加到候选总量。",
+    "下游检验通过不自动清除上游suspect seed的谱系候选；候选与批准召回/实际回收分离。"
+  ],
+  "time_and_units": [
+    "业务及知识截止晚于所有实际事件，保留每步event_time/observed_at及源引用；未提供具体时间值则不补造。",
+    "单位均kg且输入完整：100+10=110，拆分110=60+50，返工50=48+2；报废2已为产出，不再另记损耗。",
+    "终端候选实际总质量60+48=108kg，为整批候选暴露量，不是RAW在产品中的归因质量，也不将中间品叠加为累计产量。"
+  ],
+  "standard_basis": [
+    "GS1 EPCIS2.0.1包，7.4.5 TransformationEvent支持输入/输出转化语义；7.3.3.1 QuantityElement仅为量与单位背景，未规定本地质量守恒/召回算法。",
+    "OPC10030 v1.00 8.4.3.3/8.4.3.4支持MaterialDefinition/MaterialLot，8.2/8.3/8.4区分资源与物料；8.4.2.1/8.4.3.1/9.6.3为检验结果/规格关系。",
+    "domain material-lot-identity/event-genealogy/equipment-role为有界standard-backed；quantity-reconciliation/loss-coproduct/recall-scope为nonstandard-modeling，本题终端released筛选、去重和全批质量加总为本地政策。"
+  ],
+  "source_limits": [
+    "只对题设合成实际谱系/数量应用包内方法，没有例子/验收答案读取；未证明真实库存完整性、质量不合格、交叉污染或法定召回；未生成完整Graph Model或运行数据库。"
+  ],
+  "unresolved": [
+    "实际event ID及payload、具体event/knowledge时钟、质量/召回批准依据尚未提供；题设已保证谱系和输入完整，因此不影响本次数值。"
+  ]
+}

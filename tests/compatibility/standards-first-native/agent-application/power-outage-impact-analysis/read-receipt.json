@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/request.txt",
+      "sha256": "4f9895fede5104b3316da74509828990c80e726b52a78c05ae0a80313b92e7b5"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/schema.json",
+      "sha256": "631c74334c7cea602313dc340c6099a22f67fb8d489e65f3a454378e30ff4f27"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/source-files.json",
+      "sha256": "03f2e5ade39ff33963df504db6274bb47b7de7ec024e4343ffb41aefe0690965"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/.agents/skills/power-outage-impact-analysis/SKILL.md",
+      "sha256": "c246fbd812e7be1272a50c98bde0bc316f0975127615ad6230a7a98176571782"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/.agents/skills/power-outage-impact-analysis/references/method.md",
+      "sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/.agents/skills/power-outage-impact-analysis/references/sources.json",
+      "sha256": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/power-outage-impact-analysis/.agents/skills/power-outage-impact-analysis/references/domain.json",
+      "sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical retail reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

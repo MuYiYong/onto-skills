@@ -1,0 +1,38 @@
+{
+  "skill_used": "logistics-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "Shipment是货主范围的端到端交付分组，可有经核实GSIN；Consignment是服务提供方范围的运输服务分组，可有GINC；LogisticUnit是可独立处理物理单元，可有SSCC，三者独立。",
+      "物流单元、商品GTIN/批次、可复用集装箱资产和订舱/单证分别标识；转运成员关系带有效区间。",
+      "DCSA2024.4 ACT/PLN/EST/REQ分别为实际、计划、估计、请求；最终仓只有planned不能成为actual事实；港口actual卸货是不同地点/里程碑事实。",
+      "event_time表示发生/指向时点；issued_at是计划/预测发布时间；来源record_time、系统observed_at分别保存。"
+    ],
+    "decisions": [
+      "现有事实不足以证明最终送达；港口实际卸货不等同最终仓到达、签收、所有权转移或完整交付。",
+      "较早事件晚到时保留其观测历史；actual轨迹按event_time排序，不能按入库先后让旧事件覆盖新位置；ETA按issued_at及声明来源优先级选择。",
+      "可形成概念/关系和证据表，但实际交接仍需前后保管方与地点里程碑、必需单元集合及实际事件证据。",
+      "本地身份键、完整交付、ETA选择与阈值为非标准建模；标准对象范围和时钟支持不意味着实现GS1或DCSA接口/认证。"
+    ]
+  },
+  "identity_rules": [
+    "shipment_id限定货主namespace、consignment_id限定承运/服务方namespace；unit_id与外部SSCC分开，保留前导零与分配证据。",
+    "事件键source_system+event_id；相同语义负载重放计一次，不同真实扫描ID保留；同键异文先核查EPCIS允许的错误声明配对，否则隔离冲突。",
+    "readPoint与bizLocation分别映射，港口/最终仓的地点与里程碑不能因时间接近而合并。"
+  ],
+  "time_and_units": [
+    "业务as_of与知识known_as_of分离；eventTime、recordTime、eventTimeZoneOffset与本地observed_at不能混同；保留原始偏移和UTC可比较值。",
+    "当前未给确切日期、源事件号、单元成员时效和量/单位；不补造批次内容或最终送达时间。"
+  ],
+  "standard_basis": [
+    "GS1 System Architecture12.0.0 October2024，section4.2 identification keys：GSIN shipment、GINC consignment、SSCC logistic unit、GTIN trade item粒度；sections6.1.2-6.1.3交易与可见性数据分离。",
+    "GS1 EPCIS2.0.0 baseline2022-06-22：7.3.4/7.4.1时钟、7.3.5地点、7.3.6.4业务转移端点；7.4.1.2允许同eventID且仅errorDeclaration/recordTime不同的错误声明，不代表实物冲正。",
+    "GS1 CBV2.0.0 section7.4.3 owning_party/possessing_party/location；DCSA Information Model2024.4 Event Classifier ACT/PLN/EST/REQ页面EA2575.htm。",
+    "domain的eta-selection/delivery-completeness/leg为nonstandard-modeling；其他standard-backed仅限字段/对象范围supports，非通用交付判据。"
+  ],
+  "source_limits": [
+    "包内有界索引与摘要，未读取外部全文、验证GS1编号获配/条码或执行EPCIS/DCSA接口；无实际客户签收/交接证明。"
+  ],
+  "unresolved": [
+    "评价与知识截止、最终目的地点/arrival里程碑、必需单元及成员区间、源事件身份和时区、实际最终送达/签收证据、GS1标识获配证明。"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "runtime_name": "Current Codex collaboration runtime",
+  "application_mode": "Explicit independent behavioral application of the installed packet skill in this collaboration agent; not a local Codex CLI invocation or native-host probe",
+  "skill_used": "electric-power-domain-knowledge",
+  "packet_root": "/tmp/onto-current-codex-use-ol08kvts/electric-power-domain-knowledge",
+  "actual_read_paths": [
+    {
+      "path": "request.txt",
+      "sha256": "dcaeddb16af61aea05bb326c13ce043850a72d0955289b36ec730fc2ec523b3a"
+    },
+    {
+      "path": "schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "source-files.json",
+      "sha256": "2b4bdb19ba4eecaf26a3ca30615ff8d6bd8d12136a535acb736dccaf1297ebf3"
+    },
+    {
+      "path": ".agents/skills/electric-power-domain-knowledge/SKILL.md",
+      "sha256": "c93033baa8b5946aa94cedb4cfc425daab3d2acabe552fbdb434c6009fdaa94e"
+    },
+    {
+      "path": ".agents/skills/electric-power-domain-knowledge/references/domain.json",
+      "sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a"
+    },
+    {
+      "path": ".agents/skills/electric-power-domain-knowledge/references/sources.json",
+      "sha256": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa"
+    },
+    {
+      "path": ".agents/skills/electric-power-domain-knowledge/references/method.md",
+      "sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e"
+    },
+    {
+      "path": ".agents/skills/electric-power-domain-knowledge/references/handoff.md",
+      "sha256": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644"
+    }
+  ],
+  "declared_package_hash_comparisons": [
+    {
+      "package_path": "LICENSE",
+      "declared_sha256": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+      "actual_sha256": null,
+      "status": "not_read_not_compared"
+    },
+    {
+      "package_path": "SKILL.md",
+      "declared_sha256": "c93033baa8b5946aa94cedb4cfc425daab3d2acabe552fbdb434c6009fdaa94e",
+      "actual_sha256": "c93033baa8b5946aa94cedb4cfc425daab3d2acabe552fbdb434c6009fdaa94e",
+      "status": "match"
+    },
+    {
+      "package_path": "references/sources.json",
+      "declared_sha256": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa",
+      "actual_sha256": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa",
+      "status": "match"
+    },
+    {
+      "package_path": "references/domain.json",
+      "declared_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "actual_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "status": "match"
+    },
+    {
+      "package_path": "references/method.md",
+      "declared_sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e",
+      "actual_sha256": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e",
+      "status": "match"
+    },
+    {
+      "package_path": "references/handoff.md",
+      "declared_sha256": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+      "actual_sha256": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+      "status": "match"
+    },
+    {
+      "package_path": "examples/worked-example.md",
+      "declared_sha256": "34c39e936e401ccf2fa7b7a59528c7e719870b43456e707a4410b43be8861ac4",
+      "actual_sha256": null,
+      "status": "not_read_not_compared"
+    }
+  ],
+  "package_read_hashes_match_declared": true,
+  "package_hash_scope": "Five actually read package files compared; LICENSE and examples/worked-example.md were deliberately not read or hashed, so no whole-package identity claim",
+  "output_validation": {
+    "schema_path": "schema.json",
+    "result": "passed",
+    "method": "Recursive stdlib validation of all schema object/array/string types, required keys and additionalProperties=false"
+  },
+  "limits": [
+    "Only the eight listed input/package files were read; no example or expected-answer file, other packet, repository, network, authentication or configuration was read.",
+    "The package source catalogue and summaries were applied; underlying external standards were not fetched or independently revalidated in this run.",
+    "No local CLI version, native-host version, GUI/macOS compatibility, full standards certification or real electric-network operational validity is claimed.",
+    "No live topology, field telemetry, physical-engineering study, database query or SHACL instance validation was available or executed.",
+    "Package and inputs were not modified; only result.json and read-receipt.json were created."
+  ]
+}

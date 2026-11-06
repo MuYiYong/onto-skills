@@ -1,0 +1,37 @@
+{
+  "skill_used": "banking-business-model",
+  "answer": {
+    "concepts": [
+      "Party独立主体；CustomerRole为机构上下文角色；主合同与角色分开标识并以有效期关联。",
+      "CommittedCreditFacility为承诺授信安排，limit=1000 CNY；Loan为实际提款200 CNY形成的持续义务，并以提款事件关联授信和主合同。",
+      "LoanPaymentSchedule记录本月底应还100 CNY；IndividualPaymentTransaction及PrincipalPayment/InterestPayment分别承载实际交易及本金/利息分量，本案没有实付证据。",
+      "Settlement为约定结算事项；SettlementEvent为发生记录；不能由结算日期或计划生成已发生事件。"
+    ],
+    "decisions": [
+      "不能把1000额度当作贷款余额，也不能把1000+200认定为已放款1200。",
+      "无支付事件不能认定已还100、结算完成、贷款余额降至100或已结清；200为给定提款额，当前余额仍需余额时点、费用及其他变动证据。",
+      "1000-200=800仅为同币种简单额度差额；是否可再提款800需冻结、循环、合同条件、其他占用和时点政策，保持未知。",
+      "申请到结清状态机、主键、角色基数、款项分摊、逾期/净额与实际交割完成标准均为本地政策，非标准建模。"
+    ]
+  },
+  "identity_rules": [
+    "授信、合同、贷款、提款、计划项、实际支付和结算事件各有独立来源命名空间键，保留关联及原记录；不得合并计划ID与支付ID。",
+    "主体与客户角色分离；客户号按机构/体系，账户按机构/账户体系；联合借款及银团贷款用带时效参与角色，不强套单一基数。"
+  ],
+  "time_and_units": [
+    "金额保留CNY与计量角色；额度生效/截止、提款发生、应还到期、实际支付、结算及observed_at各自保留。",
+    "本月底必须补足具体日期、时区与营业历；计划没有实际发生时间。"
+  ],
+  "standard_basis": [
+    "EDM Council FIBO固定仓库33a92cd34285d532c158da97bb42add089f135d3；FBC/DebtAndEquities/Debt.rdf中的CreditFacility、CommittedCreditFacility、UncommittedCreditFacility、PrincipalPayment、InterestPayment；该本体versionIRI为https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/。",
+    "同修订LOAN/LoansGeneral/Loans.rdf的Loan、LoanPaymentSchedule、IndividualPaymentTransaction支持贷款/计划/交易分离；Loan本体versionIRI为https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/。",
+    "同修订FND/Agreements/Contracts.rdf Contract/ContractParty仅为合同与合同当事方背景，不等同所有客户角色；FBC/FinancialInstruments/Settlement.rdf Settlement/SettlementEvent支持事项与发生记录分离。",
+    "banking.json中facility-commitment-status、scheduled-versus-actual-payment、settlement-definition-occurrence为standard-backed，仅在各scope内；customer-party为nonstandard-modeling。"
+  ],
+  "source_limits": [
+    "仅使用包内来源索引与原创知识摘要，未读取标准原文件、递归imports或执行OWL推理；并未证明法律效力、会计/监管符合性。"
+  ],
+  "unresolved": [
+    "主合同及客户角色的实际标识/基数/时效；提款是否含冲正；当前余额口径、额度占用和可借条件；计划本金/利息分摊及具体到期时区。"
+  ]
+}

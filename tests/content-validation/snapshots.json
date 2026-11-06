@@ -50,7 +50,8 @@
       "skills/scenarios/healthcare-care-pathway-modeling/references/graph-model.schema.json",
       "skills/scenarios/retail-inventory-replenishment/references/graph-model.schema.json",
       "skills/scenarios/financial-regulatory-reporting/references/graph-model.schema.json",
-      "skills/scenarios/related-party-transaction-modeling/references/graph-model.schema.json"
+      "skills/scenarios/related-party-transaction-modeling/references/graph-model.schema.json",
+      "skills/scenarios/software-vulnerability-impact/references/graph-model.schema.json"
     ]
   },
   {
@@ -111,7 +112,9 @@
       "skills/industries/retail-domain-knowledge/LICENSE",
       "skills/scenarios/retail-inventory-replenishment/LICENSE",
       "skills/scenarios/financial-regulatory-reporting/LICENSE",
-      "skills/scenarios/related-party-transaction-modeling/LICENSE"
+      "skills/scenarios/related-party-transaction-modeling/LICENSE",
+      "skills/industries/cybersecurity-domain-knowledge/LICENSE",
+      "skills/scenarios/software-vulnerability-impact/LICENSE"
     ]
   },
   {
@@ -276,7 +279,8 @@
     "source": "skills/core/ontology-validation/references/graph-model-specification.md",
     "copies": [
       "skills/scenarios/financial-regulatory-reporting/references/graph-model-specification.md",
-      "skills/scenarios/related-party-transaction-modeling/references/graph-model-specification.md"
+      "skills/scenarios/related-party-transaction-modeling/references/graph-model-specification.md",
+      "skills/scenarios/software-vulnerability-impact/references/graph-model-specification.md"
     ]
   },
   {
@@ -307,6 +311,104 @@
     "source": "examples/finance/related-party/acceptance.json",
     "copies": [
       "skills/scenarios/related-party-transaction-modeling/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "knowledge/cybersecurity/standards/sources.json",
+    "copies": [
+      "skills/industries/cybersecurity-domain-knowledge/references/sources.json",
+      "skills/scenarios/software-vulnerability-impact/references/sources.json"
+    ]
+  },
+  {
+    "source": "knowledge/cybersecurity/concepts/domain.json",
+    "copies": [
+      "skills/industries/cybersecurity-domain-knowledge/references/domain.json",
+      "skills/scenarios/software-vulnerability-impact/references/domain.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/graph-model.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/graph-model.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/input.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/input.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/acceptance.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/acceptance.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/README.md",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/README.md"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/advisory-1.csaf.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/advisory-1.csaf.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/advisory-2.csaf.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/advisory-2.csaf.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/cvss-4.0.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/cvss-4.0.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/negative/negative-contradictory-status.csaf.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/negative/negative-contradictory-status.csaf.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/negative/negative-duplicate-identity.spdx.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/negative/negative-duplicate-identity.spdx.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/negative/negative-inconsistent-cvss.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/negative/negative-inconsistent-cvss.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/negative/negative-missing-impact.csaf.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/negative/negative-missing-impact.csaf.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/projection-map.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/projection-map.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/sbom-a.spdx.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/sbom-a.spdx.json"
+    ]
+  },
+  {
+    "source": "examples/cybersecurity/standards-native/sbom-b.spdx.json",
+    "copies": [
+      "skills/scenarios/software-vulnerability-impact/examples/standards-native/sbom-b.spdx.json"
     ]
   }
 ]

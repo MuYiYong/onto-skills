@@ -1,0 +1,1 @@
+解释SKU/GTIN、地点/批次、快照、运动、库存预留、在途、订单与退货。给定sellable快照8件、active库存预留3件、在途20件、退货已收到但未通过可售检验；只在用户给定available=sellable-active_reserved下解释可用量与未知项，不自动下单。

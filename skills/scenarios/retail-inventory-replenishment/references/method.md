@@ -13,3 +13,5 @@
 [验收](../examples/acceptance.json)输出status、on_hand_by_condition、reserved、available、in_transit、restock_signal、suggested_quantity、order_created=false、duplicate_receipts、rejected_event_keys、pre_anchor_event_keys、warnings。数量是十进制字符串，未知是null，金额不参与计算。拒绝/不足证据须另列原因，不声称已对全量库存审计。
 
 [输入](../examples/input.json)是有界源投影，商业行、预留状态和实际postings分别提供，并不是全量Graph Model导入。完整模型还声明了外键、边身份和来源定位字段，缺失时不补造。快照与运动相互完整性的假设必须交给业务确认。
+
+EPCIS适配边界：标准7.4.1.2允许错误声明重发原事件，eventID保持相同，除errorDeclaration/recordTime外事件内容不变。先识别并验证这一合法配对，再应用本地同键异文冲突规则；保留原始记录、声明与独立ID的更正事件。错误声明不等于物理库存冲正。包内自定义投影不冒称实现EPCIS捕获/查询接口。

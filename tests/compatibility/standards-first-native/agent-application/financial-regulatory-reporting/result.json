@@ -1,0 +1,32 @@
+{
+  "skill_used": "financial-regulatory-reporting",
+  "answer": {
+    "old_value": 100,
+    "new_value": 110,
+    "current_accepted_submission": "S1",
+    "new_submission_accepted": false
+  },
+  "identity_rules": [
+    "SourceRecord键=source_system+record_id+source_version；SYS/K1/v1与v2是同一业务记录的修订，不求和；SYS/K2/v1原样重放只计一次。",
+    "旧run贡献K1/v1=80与K2/v1=20，新run贡献K1/v2=90与K2/v1=20；保留源版本→TransformationRun→ReportedFact→Submission→Receipt，逐条贡献与输入哈希/逻辑版本。",
+    "DEMO-R1模板/事实均v1；主体C1、单体/instant、报告时点与指标namespace/定义版本构成上下文；事实键保留submission_id+fact_id。",
+    "S2 SUPERSEDES S1保留历史，但只有明确关联提交的business accepted允许更新已接受视图；local check passed及transport received不能证明业务接受，S1仍当前已接受。"
+  ],
+  "time_and_units": [
+    "固定业务as_of2026-10-31；known_at2026-11-01不纳入11-02获知的K1/v2，所以80+20=100 CNY；11-03新运行纳入该更正，90+20=110 CNY。",
+    "币种CNY与金额单位yuan分别保留；同一instant/单体C1/模板版本可比，无混单位或汇率换算；日期只有日精度，不擅自填时区/午夜。",
+    "更正另建run/submission，不能覆盖原截止的事实/输入；版本按题设权威更正关系选取，不按v字符串排序。"
+  ],
+  "standard_basis": [
+    "银行保险监管统计管理办法：银保监会令2022年第10号，2023-02-01施行；包内定位nfra data_docId1089714，第2-3/12条范围，第16/18-19/22条质量职责，第24条完整连续可追溯归档；不含具体DEMO-R1模板。",
+    "XBRL2.1 REC2003-12-31 corrected errata2013-02-20 #item/#context/#entity/#period/#unit支持概念、主体、期间与单位分离；不是本地图主键/去重或中国报送要求。",
+    "BCBS2392013 Principle3 paragraphs36-40及Principles3-4仅为聚合/来源调节背景；BCBS Newsletter36(2026-01-06)为信息性通讯，不新增监管要求。",
+    "domain clocks/receipt/jurisdiction为nonstandard-modeling；双时钟、run哈希、接受视图及重放算法为本地政策，不由标准字段直接推出。"
+  ],
+  "source_limits": [
+    "合成DEMO-R1任务非实际1104表号；未取得真实模板、报送接口接受协议或执行真实报送/XBRL验证；仅产出packet schema结果，非完整Graph Model或机构合规结论。"
+  ],
+  "unresolved": [
+    "业务/知识日期的确切日内截止与时区、正式报表/指标公式与适用机构、源更正引用和回执协议；S2未来business accepted或rejected回执尚未知。"
+  ]
+}

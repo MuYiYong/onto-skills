@@ -1,0 +1,36 @@
+{
+  "observed_at": "2026-11-06",
+  "origin": "Original synthetic fixtures authored for this repository; not copied publisher examples",
+  "standard": "EPCIS 2.0.1 section 7.4.1.2",
+  "schema_uri": "https://ref.gs1.org/standards/epcis/2.0.1/epcis-json-schema.json",
+  "schema_sha256": "0f46ff694efffd8d8ce840a33dfde84228add11b516b8b258f3200740ae210af",
+  "validator": "jsonschema 4.26.0",
+  "schema_results": [
+    {
+      "document": "original.jsonld",
+      "publisher_schema_valid": true
+    },
+    {
+      "document": "declaration-and-corrective.jsonld",
+      "publisher_schema_valid": true
+    },
+    {
+      "document": "negative-changed-original.jsonld",
+      "publisher_schema_valid": true
+    }
+  ],
+  "semantic_results": {
+    "permitted_same_eventID_replay_except_errorDeclaration_and_recordTime": true,
+    "changed_original_payload_rejected": true,
+    "correctiveEventIDs_resolved": true
+  },
+  "limits": [
+    "Schema-valid negative intentionally demonstrates that schema validation alone does not enforce cross-document correction equality.",
+    "No EPCIS repository service, capture/query interface, JSON-LD expansion or SHACL conformance was tested."
+  ],
+  "source_sha256": {
+    "original.jsonld": "f614fb8bce4f1524981a4968bb625210c7d8d0a84894ac0241f9786024b18ce9",
+    "declaration-and-corrective.jsonld": "0831d954f71c8b9f721ebf904f725840dfae3714fe44ae0c255c9b7d22fe4095",
+    "negative-changed-original.jsonld": "e5d935387247913bb462025b829ee7702b62ef20253412abd153ea241292bf62"
+  }
+}

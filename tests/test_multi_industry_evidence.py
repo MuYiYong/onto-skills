@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 import jsonschema
+from evidence_sources import packages, package_files, package_digest
 
 ROOT = Path(__file__).resolve().parents[1]
 NATIVE = ROOT / 'tests/compatibility/multi-industry-native'
@@ -15,12 +16,6 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def package_files(name):
-    directory, = ROOT.glob('skills/*/' + name)
-    return {str(p.relative_to(directory)): hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in directory.rglob('*') if p.is_file()}
-
-
 class MultiIndustryEvidenceTests(unittest.TestCase):
     def assert_artifacts(self, directory, receipt):
         for relative, expected in receipt['artifact_sha256'].items():
@@ -29,30 +24,24 @@ class MultiIndustryEvidenceTests(unittest.TestCase):
                 self.assertTrue(path.resolve().is_relative_to(directory))
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), expected)
 
-    def test_native_discovery_binds_every_current_package_in_both_locations(self):
+    def test_native_discovery_binds_dated_packages_in_both_locations(self):
         receipt = read(NATIVE / 'receipt.json')
         self.assert_artifacts(NATIVE, receipt)
-        packages = {p.parent.name: p.parent for p in ROOT.glob('skills/*/*/SKILL.md')}
+        sources = packages()
         discovery = read(NATIVE / 'discovery.json')
-        self.assertEqual(len(packages), 25)
+        self.assertEqual(len(sources), 25)
         self.assertEqual({(r['scope'], r['phase']) for r in discovery['results']},
                          {(scope, phase) for scope in ('project', 'legacy-codex-home')
                           for phase in ('single', 'multiple')})
         for result in discovery['results']:
-            first = sorted(ROOT.glob('skills/*/*/SKILL.md'))[0].parent.name
-            names = set(packages) if result['phase'] == 'multiple' else {first}
+            first = 'entity-relationship-modeling'
+            names = set(sources) if result['phase'] == 'multiple' else {first}
             self.assertEqual(set(result['skill_names']), names)
             self.assertEqual(result['native_metadata_discovery'], 'passed')
             total_files = 0
             for name in names:
-                digest = hashlib.sha256()
-                for p in sorted(packages[name].rglob('*')):
-                    if p.is_file():
-                        digest.update(str(p.relative_to(packages[name])).encode())
-                        digest.update(b'\0')
-                        digest.update(p.read_bytes())
-                        total_files += 1
-                self.assertEqual(result['package_sha256'][name], digest.hexdigest())
+                total_files += len(sources[name])
+                self.assertEqual(result['package_sha256'][name], package_digest(sources[name]))
             self.assertEqual(result['resource_files_read'], total_files)
 
     def test_explicit_native_use_binds_twelve_final_independent_packages(self):
@@ -61,9 +50,9 @@ class MultiIndustryEvidenceTests(unittest.TestCase):
         self.assertEqual(len(receipt['results']), 12)
         expected = set(read(ROOT / 'tests/compatibility/cc-switch-native/receipt.json')
                        ['source_packages_sha256'])
-        current = {p.parent.name for p in ROOT.glob('skills/*/*/SKILL.md')}
-        self.assertEqual({r['skill'] for r in receipt['results']}, current - expected)
-        self.assertEqual(set(review), current - expected)
+        dated = set(packages())
+        self.assertEqual({r['skill'] for r in receipt['results']}, dated - expected)
+        self.assertEqual(set(review), dated - expected)
         for result in receipt['results']:
             name = result['skill']
             with self.subTest(skill=name):
@@ -104,8 +93,8 @@ class MultiIndustryEvidenceTests(unittest.TestCase):
         for name, files in receipt['source_packages_sha256'].items():
             self.assertEqual(package_files(name), files)
         for relative, hashes in recheck['reviewed_current_vs_frozen_hashes'].items():
-            current = ROOT / 'skills/scenarios' / relative
-            self.assertEqual(hashlib.sha256(current.read_bytes()).hexdigest(),
+            name, path = relative.split('/', 1)
+            self.assertEqual(hashlib.sha256(packages()[name][path]).hexdigest(),
                              hashes['current_recheck_sha256'])
         schema = read(ROOT / 'schemas/graph-model.schema.json')
         for name in ('task-a-graph-model.json', 'task-b-graph-model.json'):

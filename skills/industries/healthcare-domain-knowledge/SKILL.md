@@ -38,3 +38,9 @@ license: MIT
 [本地方法](references/method.md)、[知识](references/domain.json)、[来源](references/sources.json) 与 [示例](examples/worked-example.md) 均随包提供。来源外链只供可选核实；不打包第三方标准正文、术语代码表或数据库语法。
 
 检查每条重要判断是否有来源和分类；是否把资源 id、患者假名、版本、术语版本误混；是否给 unknown 赋零、把请求变执行或把单位标签当可比较证据。原始项目内容遵循 [MIT 许可证](LICENSE)，第三方来源保留自己的条款。静态格式通过不证明医学正确性、FHIR 完整符合性或真实系统行为。
+
+## 标准依据与缺口
+
+先核实包内来源与知识条目的standard_basis：固定发布机构、版次、具体定位和支持范围，再形成项目解释。standard_gap保留未核实映射、本地政策和补证路径；本地键、阈值或判定公式不因引用标准就成为官方定义。任务缺少适用版本或来源时交付不依赖缺口的部分，并明确待核实项。
+
+交付时读取条目的standard_status：standard-backed仅表示standard_basis.scope内有已核实标准依据，其他本地规则仍按standard_gap保留；nonstandard-modeling明确标为“非标准建模”，标准未取得或精确映射未核实的原因一并列出。不得把背景页、目录或来源分类当成条目符合性。

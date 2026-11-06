@@ -1,9 +1,9 @@
 {
   "id": "electric-power-sources",
   "name": "electric-power source catalogue",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Source/version observations for the bounded industry examples",
   "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
   "classification": "project-curated",
@@ -11,7 +11,14 @@
     "onto-project",
     "iec-cim-base",
     "iec-cim-amd1",
-    "entsoe-cgmes"
+    "entsoe-cgmes",
+    "entsoe-cgmes3-eq",
+    "entsoe-cgmes3-ssh",
+    "entsoe-cgmes3-tp",
+    "entsoe-cgmes3-header",
+    "entsoe-cgmes3-eq-shacl",
+    "entsoe-cgmes3-ssh-shacl",
+    "entsoe-cgmes3-header-shacl"
   ],
   "sources": [
     {
@@ -31,10 +38,10 @@
       "name": "IEC 61970-301:2020 CIM base",
       "kind": "official-standard",
       "uri": "https://webstore.iec.ch/en/publication/62698",
-      "version": "IEC 61970-301:2020 edition 7.0; model IEC61970CIM17v38 per public abstract",
+      "version": "IEC 61970-301:2020 edition 7.0; published 2020-06-26; model IEC61970CIM17v38 dated 2020-01-21 per public abstract",
       "publisher": "IEC TC 57",
       "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Public abstract identifies CIM resource classes, attributes and relationships for utility integration; full standard not accessed",
       "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
     },
@@ -43,10 +50,10 @@
       "name": "IEC 61970-301:2020/AMD1:2022",
       "kind": "official-standard",
       "uri": "https://webstore.iec.ch/en/publication/68639",
-      "version": "AMD1:2022; public catalogue also lists consolidated edition 7.1",
+      "version": "IEC 61970-301:2020/AMD1:2022; published 2022-02-22; amendment catalogue edition 7.0; consolidated edition selected separately",
       "publisher": "IEC TC 57",
       "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Amendment/version index only; no claim of detailed conformance",
       "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
     },
@@ -55,12 +62,96 @@
       "name": "ENTSO-E Common Grid Model Exchange Standard Library",
       "kind": "official-standard",
       "uri": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/",
-      "version": "CGMES v3.0 / 3.0.0 branch observed 2026-11-05; applicability selected separately",
+      "version": "CGMES 3.0.0 selected branch; official library observed 2026-11-06; separate CIM17.2.0 and NCP2.5 release families",
       "publisher": "ENTSO-E",
       "license": "Publisher terms differ by document/artifact; no third-party artifacts redistributed",
-      "retrieved_at": "2026-11-05",
-      "scope": "Official exchange-profile/version context; distribution outage example is not a certified CGMES dataset",
+      "retrieved_at": "2026-11-06",
+      "scope": "官方库提供模型/交换配置/边界版本选择背景；CGMES3.0 tag resolves to 8eff738bda72dc3a97fc24bf021dc78773814111；未据此核实配电停电模型的逐类约束",
       "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
+    },
+    {
+      "id": "entsoe-cgmes3-eq",
+      "name": "ENTSO-E CGMES3 Core Equipment RDFS",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "CIM100 Equipment/ConductingEquipment/Terminal/ConnectivityNode, mRID, Switch.normalOpen, phase and unit concepts; selected profile metadata identifies CIM17v40, distinct from base IEC abstract CIM17v38",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-ssh",
+      "name": "ENTSO-E CGMES3 Steady State Hypothesis RDFS",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Switch.open/locked, ACDCTerminal.connected and Equipment.inService; topology-processing input/availability do not prove observed interruption or safe energization",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-tp",
+      "name": "ENTSO-E CGMES3 Topology RDFS",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Topology-AP-Voc-RDFS2020.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "TopologicalNode and ConnectivityNode/Terminal associations; current-state topology and planning-model context",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-header",
+      "name": "ENTSO-E CGMES3 File Header RDFS",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "FullModel; Model.created/scenarioTime/version/profile/DependentOn/Supersedes identities and distinct clocks; not local observed_at policy",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-eq-shacl",
+      "name": "ENTSO-E CGMES3 Core Equipment simple SHACL",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_Equipment-AP-Con-Simple-SHACL.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Exact selected Terminal.ConductingEquipment/ConnectivityNode and Switch.normalOpen cardinality/type shapes; inspected source, not a validation run on a CGMES dataset",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-ssh-shacl",
+      "name": "ENTSO-E CGMES3 Steady State Hypothesis simple SHACL",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_SteadyStateHypothesis-AP-Con-Simple-SHACL.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Switch.open/locked and Equipment.inService Boolean and min1/max1 shapes; inspected source, not execution on exchanged model data",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
+    },
+    {
+      "id": "entsoe-cgmes3-header-shacl",
+      "name": "ENTSO-E CGMES3 File Header simple SHACL",
+      "kind": "official-standard",
+      "uri": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-552-Header-AP-Con-Simple-SHACL.rdf",
+      "version": "CGMES 3.0.0 public application-profile artifact; tag cgmes3.0; repository 8eff738bda72dc3a97fc24bf021dc78773814111",
+      "publisher": "ENTSO-E",
+      "license": "Apache-2.0 per selected repository LICENSE.txt and artifact notice; original summaries only; paid IEC text not redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Model.created/scenarioTime/version/profile cardinality/type and dependency value-type shapes; inspected source, not full constraint-closure certification",
+      "authority": "Official public profile artifact for the exact cited classes, fields and constraints; not full paid IEC text or proof of CGMES exchange/interface certification"
     }
   ]
 }

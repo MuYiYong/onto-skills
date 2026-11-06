@@ -1,0 +1,109 @@
+{
+  "as_of": "2026-11-06T12:00:00Z",
+  "known_as_of": "2026-11-06T12:00:00Z",
+  "vulnerability_id": "TEST-VULN-1",
+  "patch_available": true,
+  "packages": [
+    {
+      "namespace": "urn:sbom:A",
+      "spdx_id": "SPDXRef-lib",
+      "name": "sample-lib",
+      "version": "1.0"
+    },
+    {
+      "namespace": "urn:sbom:A",
+      "spdx_id": "SPDXRef-util",
+      "name": "sample-util",
+      "version": "3.0"
+    },
+    {
+      "namespace": "urn:sbom:B",
+      "spdx_id": "SPDXRef-lib",
+      "name": "sample-lib",
+      "version": "2.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "namespace": "urn:sbom:A",
+      "from_spdx_id": "SPDXRef-lib",
+      "to_spdx_id": "SPDXRef-util",
+      "relationship": "DEPENDS_ON"
+    }
+  ],
+  "deployments": [
+    {
+      "asset_id": "host-H",
+      "namespace": "urn:sbom:A",
+      "spdx_id": "SPDXRef-lib",
+      "valid_from": "2026-11-01T00:00:00Z",
+      "valid_to": null,
+      "observed_at": "2026-11-01T01:00:00Z"
+    }
+  ],
+  "mappings": [
+    {
+      "publisher": "https://vendor.example/security",
+      "tracking_id": "ADV1",
+      "product_id": "product-p",
+      "namespace": "urn:sbom:A",
+      "spdx_id": "SPDXRef-lib",
+      "version": "1.0",
+      "evidence_id": "mapping-review-1",
+      "observed_at": "2026-11-01T01:00:00Z",
+      "advisory_revision": 1
+    },
+    {
+      "publisher": "https://vendor.example/security",
+      "tracking_id": "ADV1",
+      "product_id": "product-p",
+      "namespace": "urn:sbom:A",
+      "spdx_id": "SPDXRef-lib",
+      "version": "1.0",
+      "evidence_id": "mapping-review-2",
+      "observed_at": "2026-11-08T00:00:00Z",
+      "advisory_revision": 2
+    }
+  ],
+  "advisories": [
+    {
+      "publisher": "https://vendor.example/security",
+      "tracking_id": "ADV1",
+      "revision": 1,
+      "released_at": "2026-11-01T00:00:00Z",
+      "observed_at": "2026-11-01T01:00:00Z",
+      "document_status": "final",
+      "product_status": [
+        {
+          "product_id": "product-p",
+          "vulnerability_id": "TEST-VULN-1",
+          "status": "known_affected",
+          "action_statement": "Review vendor mitigation for version1.0; available patch does not prove installed."
+        }
+      ]
+    },
+    {
+      "publisher": "https://vendor.example/security",
+      "tracking_id": "ADV1",
+      "revision": 2,
+      "released_at": "2026-11-07T00:00:00Z",
+      "observed_at": "2026-11-08T00:00:00Z",
+      "document_status": "final",
+      "product_status": [
+        {
+          "product_id": "product-p",
+          "vulnerability_id": "TEST-VULN-1",
+          "status": "known_not_affected",
+          "impact_statement": "Synthetic vendor correction: vulnerable code absent in this product build."
+        }
+      ]
+    }
+  ],
+  "cvss": {
+    "version": "4.0",
+    "metric_group": "CVSS-B",
+    "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H",
+    "base_score": "10.0",
+    "source": "FIRSTdotorg/cvss-v4-calculator@c5b0d409ae9f57c44264c6ce5f27d89298e1d32a"
+  }
+}

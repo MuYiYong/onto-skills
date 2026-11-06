@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/request.txt",
+      "sha256": "b249b1ad94bc4bc239b245fb796a6c54be2af0e81532fbc5e4c76de2d9206c9c"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/source-files.json",
+      "sha256": "38eca55989a93e8e3841fae0edd75240a2092f6fc6ed6d7a09843fbddc20a8d3"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/.agents/skills/healthcare-domain-knowledge/SKILL.md",
+      "sha256": "2dbc6a73bc63188910d9350edf682df3f920d42920307bbd9d0711594ad64028"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/.agents/skills/healthcare-domain-knowledge/references/method.md",
+      "sha256": "dce16573960b3d5cf86bb9c8f66239a7723be9bc9b45c8f2afd27ea98518c2a0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/.agents/skills/healthcare-domain-knowledge/references/sources.json",
+      "sha256": "feb4d95a8e18eae615d24a0891a0a922b7379f3f838ef582abe32f9e9d1b6134"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-domain-knowledge/.agents/skills/healthcare-domain-knowledge/references/domain.json",
+      "sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical domain/source reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application, not a complete Graph Model Specification or full standard-conformance validation."
+  ]
+}

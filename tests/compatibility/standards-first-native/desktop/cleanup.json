@@ -1,0 +1,12 @@
+{
+  "owned_container_name": "onto-standards-desktop-final-20261106",
+  "owned_container_id": "44a4907086c8c2ead98f4b9ac0b2953555c2c8a1d8b30b936e28411037a966c0",
+  "host_config_mounts": [],
+  "gui_uninstall_terminal": {
+    "ssot": {},
+    "codex": {}
+  },
+  "container_removed": true,
+  "container_readback_absent": true,
+  "other_user_containers_untouched": true
+}

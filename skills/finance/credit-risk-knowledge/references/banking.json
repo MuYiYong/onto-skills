@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
@@ -22,16 +22,37 @@
         "onto-project",
         "fibo"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "主体去重、客户号机构范围和组织/自然人分类由已授权业务材料确定；此处不声明ContractParty等于所有客户角色。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf; ContractParty",
+          "relation": "background",
+          "scope": "合同当事方与合同关系的概念背景。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "credit-process",
       "name": "信贷流程",
       "lifecycle": "申请 → 授信决定 → 合同 → 放款 → 应还/实还 → 结清/违约/核销；允许拒绝、撤销、冲正与重组分支。",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "fibo"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "申请到授信/合同/放款/结清等完整状态机、分支和先后顺序未由所引源文件规定。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; Loan, LoanPaymentSchedule, IndividualPaymentTransaction",
+          "relation": "supports",
+          "scope": "贷款、还款计划与支付交易有不同概念身份。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "deposit-payment",
@@ -41,7 +62,17 @@
         "onto-project",
         "fibo"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "开户/销户流程、指令/执行/结算/退回状态及余额口径须由来源系统与合同明确。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; DepositAccount, IndividualTransaction",
+          "relation": "supports",
+          "scope": "存款账户与账户交易记录分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "risk-exposure",
@@ -51,7 +82,112 @@
         "onto-project",
         "bcbs-credit"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "多机构有效债务窗口、金额去重、机构独立性和风险信号阈值为本地分析规则。",
+      "standard_basis": [
+        {
+          "source_id": "bcbs-credit",
+          "locator": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08#36.39",
+          "relation": "background",
+          "scope": "关联集团中个体评级应按银行政策区分；不是多头借贷判据。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "facility-commitment-status",
+      "name": "承诺与未承诺授信",
+      "lifecycle": "FIBO分别建模CommittedCreditFacility和UncommittedCreditFacility；授信额度、可借条件与实际提款分别保留，未提用额度不自动成为已放款金额。",
+      "modeling_fields": [
+        "facility_id",
+        "commitment_kind",
+        "limit_amount",
+        "currency",
+        "terms_reference",
+        "drawdown_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; CreditFacility, CommittedCreditFacility, UncommittedCreditFacility",
+          "relation": "supports",
+          "scope": "区分授信安排及其承诺类别。"
+        }
+      ],
+      "standard_gap": "字段、额度余额计算和提款证据关联是本地映射；未执行完整授信公理推理。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "scheduled-versus-actual-payment",
+      "name": "支付计划与支付事件",
+      "lifecycle": "LoanPaymentSchedule表达计划；IndividualPaymentTransaction、PrincipalPayment与InterestPayment定位支付交易及本金/利息角色。计划到期不证明实际收到款项。",
+      "modeling_fields": [
+        "schedule_id",
+        "scheduled_due_time",
+        "payment_event_id",
+        "actual_payment_time",
+        "payment_component",
+        "amount",
+        "currency",
+        "evidence_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; LoanPaymentSchedule, IndividualPaymentTransaction",
+          "relation": "supports",
+          "scope": "计划与支付交易分别标识。"
+        },
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; PrincipalPayment, InterestPayment",
+          "relation": "supports",
+          "scope": "本金支付与利息支付类别。"
+        }
+      ],
+      "standard_gap": "本地分摊、冲正、逾期和净额规则仍需业务材料；不把这些字段当作标准原有属性名。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "settlement-definition-occurrence",
+      "name": "结算事项与发生记录",
+      "lifecycle": "FIBO分别定位Settlement和SettlementEvent，后者是合同生命周期事件的发生记录；约定的结算事项与实际发生证据应有独立身份。",
+      "modeling_fields": [
+        "settlement_terms_reference",
+        "settlement_event_id",
+        "trade_date",
+        "scheduled_settlement_date",
+        "actual_settlement_time",
+        "evidence_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fibo"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf; Settlement, SettlementEvent",
+          "relation": "supports",
+          "scope": "结算生命周期事项和事件发生记录的区分。"
+        }
+      ],
+      "standard_gap": "实际交割完成判据、日期历法和失败处理来自具体市场/合同；本地字段不是FIBO同名属性清单。",
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

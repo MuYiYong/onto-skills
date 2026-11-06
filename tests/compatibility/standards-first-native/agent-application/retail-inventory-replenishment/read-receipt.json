@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/request.txt",
+      "sha256": "3b745bb3dcc51bd8117198eba53b4609d8389cae823526a029f23a9f3aeac981"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/schema.json",
+      "sha256": "e2af4444bbb03e3eb78ccd73ce424b19448877ce3558b47f8d8123647384d1fa"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/source-files.json",
+      "sha256": "443e9be7d537655acad18d471c73c785f2e1120d1292048dfb3052d664a3e2e8"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/.agents/skills/retail-inventory-replenishment/SKILL.md",
+      "sha256": "982081c679a6e7ae9c4a4e8dc0db98469d320bc4011aeca19275626f5a00686a"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/.agents/skills/retail-inventory-replenishment/references/method.md",
+      "sha256": "e400fc08c02c39bc8453ed2391108c4f95024283ab6f4cf3666c77ec610f42bf"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/.agents/skills/retail-inventory-replenishment/references/sources.json",
+      "sha256": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/retail-inventory-replenishment/.agents/skills/retail-inventory-replenishment/references/domain.json",
+      "sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical retail reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

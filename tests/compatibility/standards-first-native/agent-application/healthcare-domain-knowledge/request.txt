@@ -1,0 +1,1 @@
+按随包选定FHIR版本整理Patient、Encounter、ServiceRequest、Procedure、Observation与Provenance。原医嘱已revoked，没有Procedure；Observation entered-in-error且缺少值；两名患者共享联系方式。输出概念与身份/状态/时钟/来源边界，不作临床建议或自动身份合并。

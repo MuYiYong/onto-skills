@@ -1,0 +1,43 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/request.txt",
+      "sha256": "d715ed2956c4673e3c94cd33d52e63acf5302fb7f61a4af4108f05f2bdf54cd9"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/source-files.json",
+      "sha256": "97374b3056ea3353d2c3906410d74ccdb892dbdcaaff9bbb111254cf38c6fb3a"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/.agents/skills/banking-business-model/SKILL.md",
+      "sha256": "e060916410b1d2ee638cd0ab0a2b44c2dc73c921a415872b3302e06ee52e8181"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/.agents/skills/banking-business-model/references/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/.agents/skills/banking-business-model/references/glossary.json",
+      "sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/.agents/skills/banking-business-model/references/banking.json",
+      "sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/banking-business-model/.agents/skills/banking-business-model/references/method.md",
+      "sha256": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only this packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical finance reference content was consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Only listed consumed package files verified; no claim about unread or excluded files."
+  ]
+}

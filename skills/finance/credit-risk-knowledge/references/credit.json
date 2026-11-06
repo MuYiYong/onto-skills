@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
@@ -22,9 +22,20 @@
       "direction": "Borrower to Loan",
       "cardinality": "某时点借款人可有 0..N 贷款；示例每笔贷款恰好一位借款人，联合借款需扩展角色模型",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "fibo"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地边方向可能与标准属性相反；单一借款人/放贷人基数和时点窗口是示例约束，不是全部FIBO公理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasBorrower",
+          "relation": "supports",
+          "scope": "标准属性提供借款/放贷角色的关系依据；本地图边按业务方向表达。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "funding",
@@ -34,9 +45,20 @@
       "direction": "Lender to Loan",
       "cardinality": "示例每笔贷款恰好一家机构；银团贷款需关联实体",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "fibo"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地边方向可能与标准属性相反；单一借款人/放贷人基数和时点窗口是示例约束，不是全部FIBO公理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasLender",
+          "relation": "supports",
+          "scope": "标准属性提供借款/放贷角色的关系依据；本地图边按业务方向表达。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "guaranteeing",
@@ -46,9 +68,20 @@
       "direction": "Guarantor to Loan",
       "cardinality": "0..N，带有效期、金额/币种和来源",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "fibo"
       ],
-      "classification": "model-inference"
+      "classification": "model-inference",
+      "standard_gap": "本地保证边、0..N基数、有效期和金额结构是模型推断；未核实完整保证/抵押/质押关系闭包。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; Loan restriction on hasGuarantor",
+          "relation": "background",
+          "scope": "Loan记录的保证人限定并不要求所有贷款存在保证人。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "shared-exposure",
@@ -61,7 +94,20 @@
         "onto-project",
         "bcbs-credit"
       ],
-      "classification": "model-inference"
+      "classification": "model-inference",
+      "standard_gap": "该派生边的时间、余额、机构范围和原记录去重完全由所声明分析口径决定。",
+      "standard_basis": [
+        {
+          "source_id": "bcbs-credit",
+          "locator": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08#36.39",
+          "relation": "background",
+          "scope": "关联集团内个体评级政策的背景；不等于共债或关联借贷判定。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

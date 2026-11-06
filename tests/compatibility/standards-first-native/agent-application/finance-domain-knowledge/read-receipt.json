@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/request.txt",
+      "sha256": "b68bb4ff83e80627bc0ae03cf030f9ed33df48e83cf487ce63ada76a86d261a0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/source-files.json",
+      "sha256": "a955baff4285fdbf8ac81c4914f1f0f4eba34fe03a0d1c726e451820ff168b9e"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/.agents/skills/finance-domain-knowledge/SKILL.md",
+      "sha256": "cbf62df2d1cc44d6a624a9ad0c41064b28b4de112ed29bddaffcd452e10c6ca5"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/.agents/skills/finance-domain-knowledge/references/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/.agents/skills/finance-domain-knowledge/references/glossary.json",
+      "sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/finance-domain-knowledge/.agents/skills/finance-domain-knowledge/references/method.md",
+      "sha256": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only this packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical finance reference content was consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Only listed consumed package files verified; no claim about unread or excluded files."
+  ]
+}

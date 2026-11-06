@@ -1,9 +1,9 @@
 {
   "id": "retail-domain",
   "name": "零售行业最小领域知识",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "用于数据库中立本体与业务图建模；不包含标准原文或行业自动决策",
   "authority": "项目原创摘要与模型建议，不是官方标准定义、认证或业务自动决策",
   "classification": "project-curated",
@@ -24,7 +24,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN class identity and compound keys的标识粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "location",
@@ -35,7 +45,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GLN party/physical/digital/function contexts的标识粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "lot",
@@ -47,7 +67,17 @@
         "onto-project",
         "gs1-architecture",
         "gs1-traceability"
-      ]
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN plus lot qualifier的标识粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "on-hand",
@@ -57,7 +87,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "实际收货posting才改变本地实存、在途不入实存是所声明库存口径；未核实外部标准规定本地入账规则。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "snapshot",
@@ -67,7 +99,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "最新有效快照锚与其后运动相加、快照不叠加为本地余额重建算法，不能由EPCIS事件概念直接推出。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "movement",
@@ -77,7 +111,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "原子多posting、整事件隔离和source_system+event_id去重是项目记账方法；不代表完整EPCIS Capture语义。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "reservation",
@@ -88,7 +124,17 @@
       "source_ids": [
         "onto-project",
         "gs1-cbv"
-      ]
+      ],
+      "standard_gap": "零售预留生命周期、最高版本选择、有效期和available公式为本地政策；不能以CBV reserved作为标准依据。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-cbv",
+          "locator": "https://ref.gs1.org/standards/cbv/2.0.0/; sections7.1.3 reserving and7.2.3 reserved",
+          "relation": "background",
+          "scope": "CBV保留的是实例标识分配语义，范围不同于零售库存预留。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "commerce-line",
@@ -97,8 +143,19 @@
       "modeling_rule": "CommerceLine.kind 保留 purchase_order/sales_order/sale/return；只有关联的有效 movement postings 改库存，不把销售单和运动重复减库存。",
       "classification": "project-curated",
       "source_ids": [
-        "onto-project"
-      ]
+        "onto-project",
+        "gs1-architecture"
+      ],
+      "standard_gap": "单据关联posting和避免销售重复扣减是本地库存模型，不是GS1标准记账算法。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-transaction-data; #h-visibility-data; sections6.1.2-6.1.3",
+          "relation": "supports",
+          "scope": "商业单据数据与可见性事件数据区分。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "return-condition",
@@ -108,7 +165,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "受损/隔离/可销售分类、双向posting和退回检验放行由本地质量与库存政策定义。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "reversal",
@@ -118,7 +177,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "逐posting反向、更正引用和一次有效reversal是本地记账约束；不等于EPCIS errorDeclaration。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "time-knowledge",
@@ -129,7 +190,17 @@
       "source_ids": [
         "onto-project",
         "gs1-epcis"
-      ]
+      ],
+      "standard_gap": "本地observed_at、快照覆盖边界和晚到对账算法由项目定义，不能把仓库recordTime自动当本地首次已知时间。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "业务事件时间与EPCIS仓库记录时间分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "replenishment",
@@ -139,7 +210,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "补货点、目标量、available公式和建议数量为用户配置政策；标准没有规定本例阈值或自动采购。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "unit-currency",
@@ -149,7 +222,73 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "十进制字符串、混单位拒绝、金额不入数量算式是本地数据处理策略；未实现外部完整度量/货币标准。",
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "traceability-event-data-elements",
+      "name": "追溯事件与关键数据要素",
+      "meaning": "GS1 Global Traceability区分关键追踪事件CTE与描述事件的关键数据要素KDE；追溯不止保存批次号，还要保留主体、物品、地点、时间与业务上下文。",
+      "modeling_rule": "逐类列出实际收货、转化、打包与发货所需的已提供证据，缺失要素单独记录，不用订单时间补造实际事件。",
+      "modeling_fields": [
+        "critical_tracking_event",
+        "party_reference",
+        "object_reference",
+        "location_reference",
+        "event_time",
+        "business_context",
+        "missing_data_elements"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-traceability"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "gs1-traceability",
+          "locator": "https://ref.gs1.org/standards/global-traceability/2.0.0/; sections2.3 and3.1",
+          "relation": "supports",
+          "scope": "CTE、KDE及Who/What/Where/When/Why维度。"
+        }
+      ],
+      "standard_gap": "具体必填字段、容错阈值、地区法规和库存入账策略仍由选定业务材料决定。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "event-correction-versus-stock-reversal",
+      "name": "事件纠错与库存冲正",
+      "meaning": "EPCIS错误声明指出原事件断言有误，可携带更正事件引用；这是可见性证据纠正，不自动证明实物退货或库存已作逆向运动。 EPCIS permits an error declaration to repeat the original event with the same eventID and otherwise identical event content except errorDeclaration and recordTime. Recognize that permitted correction pair before treating differing payloads at the local event key as a conflict; corrective events retain their own IDs.",
+      "modeling_rule": "分别记录original_event、error_declaration和corrective_event引用；本地库存若要冲正，仍需获准的posting规则和原入账引用。",
+      "modeling_fields": [
+        "original_event_reference",
+        "error_declaration_time",
+        "error_reason",
+        "corrective_event_references",
+        "stock_reversal_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.4.1.2 ErrorDeclaration",
+          "relation": "supports",
+          "scope": "事件错误声明及更正事件引用。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_gap": "本地库存逆向posting、快照对账和可销售数量重算是项目政策；不由错误声明直接产生库存变动。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "standard_status": "standard-backed"
     }
   ],
   "applicability": [
@@ -166,7 +305,12 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "项目变更日志，不是GS1标准修订记录或外部概念废弃公告。",
+      "standard_status": "nonstandard-modeling"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

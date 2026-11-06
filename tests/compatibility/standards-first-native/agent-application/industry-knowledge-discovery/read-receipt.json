@@ -1,0 +1,31 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/industry-knowledge-discovery/request.txt",
+      "sha256": "13708631a34dea1c5429767e57dc1bb547e4b37f50680d234c6debae9b83b861"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/industry-knowledge-discovery/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/industry-knowledge-discovery/source-files.json",
+      "sha256": "5e6919a2b00bea47d8749a14aeb80595e59f227addfb0f663f9a6a1af4d10bb3"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/industry-knowledge-discovery/.agents/skills/industry-knowledge-discovery/SKILL.md",
+      "sha256": "61a6ec2ee501a945018c9dc908d08c7a08d85f5debe8002680253b606c76efe0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/industry-knowledge-discovery/.agents/skills/industry-knowledge-discovery/references/method.md",
+      "sha256": "db456a4e358ea200641684d9fcd169408c9557e9a4917e2ada65399cb86b5d83"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only this packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical finance reference content was consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Only listed consumed package files verified; no claim about unread or excluded files."
+  ]
+}

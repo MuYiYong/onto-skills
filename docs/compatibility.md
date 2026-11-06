@@ -1,6 +1,13 @@
 # 兼容性与证据边界
 
-原13项证据保持历史范围。当前25项源码的新增证据与限制见[多行业扩展](multi-industry-expansion.md)；下表中的13项/84文件、四项CLI与CC-Switch/数据库运行不能当作新增内容已通过同类原生验收。
+2026-11-06最终27项/227文件的[新记录](../tests/compatibility/standards-first-native/README.md)已完成Linux Codex0.166.0两种布局发现，以及CC-Switch4.0.25原生GUI全量ZIP安装/同步、Codex开关恢复和终态卸载。全部文件绑定冻结源码哈希。
+
+当前Codex代理运行时对21项修改/新增技能完成有界任务，保存实际读取路径、输出、schema和根代理语义复核。两项独立先导，其余共享审阅代理上下文，目录各自仅安装自身。这些结果不等于21个独立CLI进程；本轮实际本地CLI模型调用均因HTTP429失败，默认和替代模型的5份失败终态保留，未生成模型结果。macOS原生、远程安装升级和隐式触发仍未验证。
+
+标准获取、149项知识依据/非标准状态、真实标准格式样例及未取得IEC全文等限制见[标准核验](standards-verification.md)。原13项与25项历史结果以下列冻结范围保留，不能替代当前运行。
+
+
+原13项证据保持历史范围。当时25项源码的新增证据与限制见[多行业扩展](multi-industry-expansion.md)；下表中的13项/84文件、四项CLI与CC-Switch/数据库运行不能当作新增内容已通过同类原生验收。
 
 原生证据采集日期：2026-11-05。以下原生检查在首版发布前完成，当时远端尚无 refs；保留该历史边界。当前源码/下载包见 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 和 [Releases](https://github.com/MuYiYong/onto-skills/releases)。发布资产不自动证明仓库 GUI 安装或远程升级已验。
 
@@ -24,7 +31,7 @@
 | Graph Type DDL 与数据库执行 | 5.3.2 原生通过 | 完整信贷/欺诈模型回读、39 节点/51 边合成数据、查询正反例与清理；32 项验收通过 |
 | Procedure、规模与性能 | 未运行 | 本项目没有提供待测 Procedure；小规模功能验收不外推性能 |
 
-## 当前25项源码的新增原生验证
+## 当时25项源码的新增原生验证
 
 2026-11-06的[独立记录](../tests/compatibility/multi-industry-native/README.md)使用Codex0.166.0，原生app-server在project/legacy-codex-home两种布局均完成单项及全部25项发现，共199个包内文件可读。随后12个新增技能分别在仅安装自身的临时项目中实际显式调用，全部turn.completed、退出0；五项知识输出和七项场景结果经语义复核，提示、schema、结果、命令与全部包文件哈希均保存。监管报送包最终模型变更后的补跑已替换计数中的旧试用；旧试用单独保留而不冒充当前源码。
 

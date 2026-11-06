@@ -1,0 +1,743 @@
+{
+  "spec_version": "1.0",
+  "model_id": "software-vulnerability-impact",
+  "version": "1.0.0",
+  "graph_type": "SoftwareVulnerabilityEvidence",
+  "description": "Source-traceable software inventory and product vulnerability assertions; database-neutral design",
+  "target": {
+    "database": "unspecified",
+    "version": "unspecified"
+  },
+  "source_catalog": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling guidance",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "standards-first-worktree-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "scope": "Original summaries, exact-match fixture policies and synthetic examples",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "spdx23",
+      "name": "SPDX Specification 2.3",
+      "uri": "https://github.com/spdx/spdx-spec/tree/v2.3",
+      "version": "2.3 (tag v2.3; deliberately pinned, not latest)",
+      "publisher": "SPDX / Linux Foundation",
+      "license": "CC-BY-3.0 per upstream v2.3 LICENSE; source text not bundled",
+      "scope": "Document namespace, package identity/version/external references and declared relationships",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "csaf20",
+      "name": "Common Security Advisory Framework 2.0",
+      "uri": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html",
+      "version": "2.0 OASIS Standard, 2022-11-18",
+      "publisher": "OASIS Open",
+      "license": "OASIS copyright and Notices apply; only index and original modeling summaries bundled",
+      "scope": "Document tracking, product IDs, product status, VEX profile and evidence statements",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "cvss40",
+      "name": "CVSS v4.0 Specification Document",
+      "uri": "https://www.first.org/cvss/v4.0/specification-document",
+      "version": "4.0 (selected specification; observed 2026-11-06)",
+      "publisher": "FIRST.Org, Inc.",
+      "license": "FIRST CVSS license/attribution terms apply; only index and original summaries bundled",
+      "scope": "Severity metric groups as input to local risk assessment, not deployment or incident proof",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    }
+  ],
+  "node_types": [
+    {
+      "name": "SoftwareComponent",
+      "business_meaning": "SBOM-scoped package occurrence",
+      "identity_scope": "document_namespace + spdx_id within source scope; do not reuse identifiers",
+      "primary_key": [
+        "document_namespace",
+        "spdx_id"
+      ],
+      "properties": [
+        {
+          "name": "document_namespace",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "SPDX document namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "spdx_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Document-local package identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "version",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source package version; not normalized silently",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "spdx23"
+      ]
+    },
+    {
+      "name": "Asset",
+      "business_meaning": "Inventory-scoped managed asset",
+      "identity_scope": "source_system + asset_id within source scope; do not reuse identifiers",
+      "primary_key": [
+        "source_system",
+        "asset_id"
+      ],
+      "properties": [
+        {
+          "name": "source_system",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Inventory authority",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "asset_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Scoped inventory identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ]
+    },
+    {
+      "name": "AdvisoryRevision",
+      "business_meaning": "One publisher advisory revision",
+      "identity_scope": "publisher + tracking_id + revision + payload_hash within source scope; do not reuse identifiers",
+      "primary_key": [
+        "publisher",
+        "tracking_id",
+        "revision",
+        "payload_hash"
+      ],
+      "properties": [
+        {
+          "name": "publisher",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Normalized CSAF publisher.namespace issuer key, not display name",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "tracking_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Publisher-scoped tracking identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original revision string with declared comparison policy",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "released_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Publisher release time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local knowledge time",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Digest identifying immutable source payload",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    },
+    {
+      "name": "Vulnerability",
+      "business_meaning": "Identifier in an explicit scheme",
+      "identity_scope": "scheme + vulnerability_id within source scope; do not reuse identifiers",
+      "primary_key": [
+        "scheme",
+        "vulnerability_id"
+      ],
+      "properties": [
+        {
+          "name": "scheme",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "CVE or other source namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "vulnerability_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Vulnerability identifier; no validity inferred",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    },
+    {
+      "name": "ProductAssessment",
+      "business_meaning": "Revision-specific product/vulnerability assertion",
+      "identity_scope": "publisher + tracking_id + revision + payload_hash + product_id + vulnerability_scheme + vulnerability_id within source scope; do not reuse identifiers",
+      "primary_key": [
+        "publisher",
+        "tracking_id",
+        "revision",
+        "payload_hash",
+        "product_id",
+        "vulnerability_scheme",
+        "vulnerability_id"
+      ],
+      "properties": [
+        {
+          "name": "payload_hash",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Owning immutable advisory payload digest",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "publisher",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Normalized CSAF publisher.namespace issuer key, not display name",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "tracking_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Advisory document",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "revision",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Revision",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "product_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Advisory-local product identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "vulnerability_scheme",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Identifier namespace",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "vulnerability_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Assessed vulnerability",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "status",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Original product status, distinct unknown/conflict handling",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "statement",
+          "logical_type": "string",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Source action/impact statement",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Exact source assertion location",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    }
+  ],
+  "edge_types": [
+    {
+      "name": "DEPENDS_ON",
+      "business_meaning": "Declared dependency direction only, not proven runtime reachability",
+      "identity_scope": "Source evidence identity with endpoints; multiple observations retained",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source evidence identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source record location",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "spdx23"
+      ],
+      "from": "SoftwareComponent",
+      "to": "SoftwareComponent",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "HAS_DEPLOYMENT_EVIDENCE",
+      "business_meaning": "Inventory observation with effective interval; not inferred from dependency",
+      "identity_scope": "Source evidence identity with endpoints; multiple observations retained",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source evidence identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source record location",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_from",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Effective start",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "valid_to",
+          "logical_type": "datetime",
+          "nullable": true,
+          "multivalued": false,
+          "business_meaning": "Exclusive end, null open",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "observed_at",
+          "logical_type": "datetime",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Local knowledge time",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project"
+      ],
+      "from": "Asset",
+      "to": "SoftwareComponent",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "bitemporal",
+        "start": "valid_from",
+        "end": "valid_to",
+        "observed_at": "observed_at"
+      }
+    },
+    {
+      "name": "HAS_ASSESSMENT",
+      "business_meaning": "Assessment is explicitly owned by one advisory revision",
+      "identity_scope": "Source evidence identity with endpoints; multiple observations retained",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source evidence identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source record location",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "from": "AdvisoryRevision",
+      "to": "ProductAssessment",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "1"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "ASSESSES",
+      "business_meaning": "Exact vulnerability identity, not broad family matching",
+      "identity_scope": "Source evidence identity with endpoints; multiple observations retained",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source evidence identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source record location",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "from": "ProductAssessment",
+      "to": "Vulnerability",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "1",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    },
+    {
+      "name": "MAPS_TO_COMPONENT",
+      "business_meaning": "Reviewed publisher/document/revision/product/version mapping with evidence",
+      "identity_scope": "Source evidence identity with endpoints; multiple observations retained",
+      "primary_key": [
+        "evidence_id"
+      ],
+      "properties": [
+        {
+          "name": "evidence_id",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Stable source evidence identifier",
+          "source_ids": [
+            "onto-project"
+          ]
+        },
+        {
+          "name": "source_locator",
+          "logical_type": "string",
+          "nullable": false,
+          "multivalued": false,
+          "business_meaning": "Source record location",
+          "source_ids": [
+            "onto-project"
+          ]
+        }
+      ],
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "from": "ProductAssessment",
+      "to": "SoftwareComponent",
+      "direction": "outgoing",
+      "cardinality": {
+        "per_source": "0..N",
+        "per_target": "0..N"
+      },
+      "temporal": {
+        "kind": "none",
+        "start": null,
+        "end": null,
+        "observed_at": null
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "scope-identity",
+      "subject": "node:SoftwareComponent",
+      "rule": "Same SPDXRef in different document namespaces denotes separate occurrences; retain original version and alias evidence.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "spdx23"
+      ]
+    },
+    {
+      "id": "assessment-identity",
+      "subject": "node:ProductAssessment",
+      "rule": "Product IDs are advisory-local. Bind mappings to the exact advisory revision and require reviewed exact-version mapping; preserve unsupported range/product relationships as unresolved.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    },
+    {
+      "id": "historical-selection",
+      "subject": "node:AdvisoryRevision",
+      "rule": "Apply evaluation and local knowledge cutoffs; compare only declared homogeneous revision scheme; keep different payload digests as distinct immutable records; group by publisher/tracking/revision to flag conflicting same-revision payloads for review.",
+      "enforcement": "application",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    },
+    {
+      "id": "status-evidence",
+      "subject": "node:ProductAssessment",
+      "rule": "Preserve distinct statuses and supporting impact/action evidence. Missing or conflicting evidence remains unresolved; no absence-as-safe.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ]
+    },
+    {
+      "id": "no-operational-inference",
+      "subject": "model",
+      "rule": "SBOM dependency, patch publication and CVSS severity do not prove installed remediation, runtime exploitability or compromise.",
+      "enforcement": "review",
+      "source_ids": [
+        "onto-project",
+        "spdx23",
+        "cvss40"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "id": "spdx-package",
+      "source_id": "spdx23",
+      "source_term": "SPDX 2.3 sections6.5/7.2 package identity",
+      "target": "node:SoftwareComponent",
+      "status": "approximated",
+      "explanation": "Only package identity/version is projected; file/license/checksum graphs and complete document validation are outside this model.",
+      "constraint_ids": [
+        "scope-identity"
+      ]
+    },
+    {
+      "id": "csaf-assessment",
+      "source_id": "csaf20",
+      "source_term": "CSAF2.0 product_status and document/tracking",
+      "target": "node:ProductAssessment",
+      "status": "approximated",
+      "explanation": "Retain exact assertion source and statements; full product trees/groups, range matching and all profile tests require additional design. Source terms are not OWL classes.",
+      "constraint_ids": [
+        "assessment-identity",
+        "status-evidence"
+      ]
+    },
+    {
+      "id": "cvss-not-local-risk",
+      "source_id": "cvss40",
+      "source_term": "CVSS4.0 metric groups and severity",
+      "target": null,
+      "status": "unmapped",
+      "explanation": "Independent severity source only; not flattened into affected status, exploit evidence or CSAF2.0 CVSS structures.",
+      "constraint_ids": [
+        "no-operational-inference"
+      ]
+    }
+  ],
+  "assumptions": [
+    "Synthetic fixture uses reviewed exact-version mappings, positive integer advisory revisions and final documents only.",
+    "Graph composite identities preserve document/product/vulnerability source scopes.",
+    "Any real data adapter must preserve original payload, statements and trust evidence."
+  ],
+  "unresolved": [
+    "Select real publisher trust policy, exact version/range matching and original SPDX/CSAF validation before production use.",
+    "Select target database/version and its identity/temporal constraints separately."
+  ],
+  "competency_questions": [
+    "Which installed component/version has an affected assertion known by both cutoffs, and which source revision supports it?",
+    "Which same-name components, dependencies and product mappings remain unresolved?",
+    "Does published remediation have separate installed-change evidence?"
+  ]
+}

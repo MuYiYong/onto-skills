@@ -1,0 +1,37 @@
+{
+  "skill_used": "credit-risk-knowledge",
+  "answer": {
+    "concepts": [
+      "Loan是有效债务安排；CreditFacility是授信而非已提款；Borrower/Lender为具体安排中的角色。",
+      "征信查询是独立事件，不能证明授信、放款或有效负债；该精确FIBO等价类未核实，标非标准建模。",
+      "计划本金/利息与实际PrincipalPayment/InterestPayment分离；计划存在不证明支付发生。",
+      "多机构风险候选需要已核实同一主体、多个独立机构及重叠有效债务；集团风险、共债与关联借贷分别定义。"
+    ],
+    "decisions": [
+      "本案两笔有效贷款来自同一机构，机构去重后为1；另一家仅查询不计入贷款机构，因此现有事实不能证明当前多机构借贷。",
+      "同源同贷款记录重放去重；两笔真实贷款保留两笔，不因同机构而丢失义务，也不重复计为两家机构。",
+      "无实付事件不能认定计划本金/利息已经偿还、余额降低或结清；亦不能仅凭缺记录认定违约。",
+      "不编造自动拒贷、逾期/违约或PD/LGD/EAD阈值；暴露派生关系、窗口与机构范围均为本地规则。"
+    ]
+  },
+  "identity_rules": [
+    "主体使用经批准的身份匹配；贷款键为来源系统+稳定贷款号/版本，支付和查询独立来源事件键；保留更正与冲正。",
+    "机构、分支、法人和集团分别建身份；同机构分支不重复计数，跨法人是否归并集团须给定有时效的集团边界和聚合政策。"
+  ],
+  "time_and_units": [
+    "固定评价时点、知识截止和债务有效期交集；余额需as_of、币种、净额/总额及重组口径。",
+    "应还到期时间与实付发生/观测时间独立；各本金利息分量、金额及单位不混加。"
+  ],
+  "standard_basis": [
+    "FIBO修订33a92cd34285d532c158da97bb42add089f135d3，FBC/DebtAndEquities/Debt.rdf CreditFacility/Borrower/Lender/PrincipalPayment/InterestPayment及hasBorrower/hasLender；versionIRI FBC/20260901/DebtAndEquities/Debt/。",
+    "同修订LOAN/LoansGeneral/Loans.rdf Loan/LoanPaymentSchedule/IndividualPaymentTransaction，versionIRI LOAN/20251201/LoansGeneral/Loans/。",
+    "Basel Framework CRE36版 published2022-12-08/in force2023-01-01，36.39仅为集团内个体评级政策背景；36.68起的该版违约定义并非通用本地多头阈值。",
+    "credit.json borrowing/funding为有界standard-backed；shared-exposure、guaranteeing为nonstandard-modeling，不能把本地边方向/基数称为完整FIBO公理。"
+  ],
+  "source_limits": [
+    "包内知识为原创整理；未递归FIBO imports、未执行OWL推理；BCBS法律适用与机构监管口径未知，不能作监管或审批结论。"
+  ],
+  "unresolved": [
+    "适用地区/监管版次；独立机构与集团边界；共同余额截止、币种和重组/结清证据；源重复识别及主体匹配授权。"
+  ]
+}

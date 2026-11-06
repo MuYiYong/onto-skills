@@ -1,0 +1,1 @@
+评估合成控制子规则。R confirmed控制BANK和VENDOR，关系有效2026-01-01起且01-02已知，有独立证据。BANK与OTHER仅共享电话。交易SYS E1/v1 BANK→VENDOR40CNY(10-31已知)、E1/v2更正45CNY(11-02已知)、E2 BANK→VENDOR30CNY(10-31已知)；业务时点均2026-10-31。比较known_at11-01与11-03的候选去重金额；E1/v3 reversed在11-04获知，再看11-05。明确给定合并披露范围{BANK,VENDOR}与监管视图区别；不作完整法律认定。

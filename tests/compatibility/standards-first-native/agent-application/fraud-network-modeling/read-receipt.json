@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/request.txt",
+      "sha256": "0b3be78c52e2aecd5f0c38ab70d00e01b2fe41a7f62b2ddfe0bfefe5e0f77f30"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/source-files.json",
+      "sha256": "5aca154595984327e45287d597b22bfa556ec3aaf2d2967ddca92046619d4b53"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/.agents/skills/fraud-network-modeling/SKILL.md",
+      "sha256": "d76c2ce76449aa1b397f6311bb894edf1ef0f9acfba6dab87fdc96007cb2409b"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/.agents/skills/fraud-network-modeling/references/method.md",
+      "sha256": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/.agents/skills/fraud-network-modeling/references/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fraud-network-modeling/.agents/skills/fraud-network-modeling/references/domain.md",
+      "sha256": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

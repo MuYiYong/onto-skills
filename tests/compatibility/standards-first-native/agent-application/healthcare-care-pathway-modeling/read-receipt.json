@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/request.txt",
+      "sha256": "b2f3395c6880477fc6b79681a478feb0a038c8fd95e79c9a42fd824b8d4078b2"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/schema.json",
+      "sha256": "f5c7811cd0e7508a751001e2c46f6749060e2917bafc98e36dcc129fb22577d0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/source-files.json",
+      "sha256": "a232345b7653e107add1488b50a640101e088a635424614e3d9e9405be7ffbe7"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/.agents/skills/healthcare-care-pathway-modeling/SKILL.md",
+      "sha256": "9163b004a1639c3496e788942458f479da0cc0412053786c82c9f7d5b37e3a96"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/.agents/skills/healthcare-care-pathway-modeling/references/method.md",
+      "sha256": "b96a145cd7b8741e590e295e386807eebf998b2acc4c22c5aefa0242608aae1c"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/.agents/skills/healthcare-care-pathway-modeling/references/sources.json",
+      "sha256": "feb4d95a8e18eae615d24a0891a0a922b7379f3f838ef582abe32f9e9d1b6134"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/healthcare-care-pathway-modeling/.agents/skills/healthcare-care-pathway-modeling/references/domain.json",
+      "sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical domain/source reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application, not a complete Graph Model Specification or full standard-conformance validation."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "properties": {
+    "skill_used": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "object",
+      "properties": {
+        "old_value": {
+          "type": "number"
+        },
+        "corrected_value": {
+          "type": "number"
+        },
+        "after_reversal_value": {
+          "type": "number"
+        },
+        "shared_phone_proves_related_party": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "old_value",
+        "corrected_value",
+        "after_reversal_value",
+        "shared_phone_proves_related_party"
+      ],
+      "additionalProperties": false
+    },
+    "identity_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "time_and_units": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "standard_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "skill_used",
+    "answer",
+    "identity_rules",
+    "time_and_units",
+    "standard_basis",
+    "source_limits",
+    "unresolved"
+  ],
+  "additionalProperties": false
+}

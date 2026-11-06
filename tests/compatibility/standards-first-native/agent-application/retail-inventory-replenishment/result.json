@@ -1,0 +1,33 @@
+{
+  "skill_used": "retail-inventory-replenishment",
+  "answer": {
+    "sellable": 8,
+    "available": 5,
+    "restock_signal": true,
+    "suggested_quantity": 7,
+    "order_created": false
+  },
+  "identity_rules": [
+    "单粒度merchant M/SKU S/location L/lot B/unit each，condition sellable与damaged分开；批次分配方未给需正式export补足，当前按题设同一已知lot范围计算。",
+    "sale -2的source_system+event_id原样重放只应用一次；所有源事件postings完整且有效按题设接受，不按商业销售行再次扣库。",
+    "return +1实际进入damaged，不增加sellable；active库存预留3只扣available，不扣实存。",
+    "在途20只有计划无receipt，单列且不加入实存或自动抵扣补货量；不执行采购，order_created=false。"
+  ],
+  "standard_basis": [
+    "GS1 System Architecture12.0.0 section4.2支持GTIN/GLN/lot粒度，6.1.2-6.1.3区分商业数据与可见性；本地merchant/SKU/location/lot/condition/unit键仍项目设计。",
+    "GS1 EPCIS2.0.0 baseline2022-06-22 7.3.4/7.4.1支持eventTime/recordTime区分，7.4.1.2错误声明不同于实物库存冲正；未实现EPCIS捕获接口。",
+    "GS1 CBV2.0.0 reserving/reserved是标识分配背景，不是库存预留；Global Traceability2.0 sections2.3/3.1仅支持追溯CTE/KDE。",
+    "domain snapshot/movement/reservation/return-condition/replenishment为nonstandard-modeling；本题用户available=sellable-active_reserved、严格小于6触发及target12为本地政策，非GS1要求。"
+  ],
+  "source_limits": [
+    "仅对题设完整合成postings与快照应用本地方法，未读取例子/验收答案或运行真实库存/采购系统；schema结果非完整Graph Model、库存审计或标准认证。"
+  ],
+  "unresolved": [
+    "正式lot_issuer、source/event/reservation ID及具体时区日期未提供；题设已明确单粒度、已知有效/完整且截止一致，数值不依赖补造这些细节。"
+  ],
+  "time_and_units": [
+    "sellable锚10件覆盖10:00及以前，只加锚后10:30 sale -2一次，所以sellable=8；damaged锚0+11:00 return1=1。",
+    "as_of/known_as_of均12:00，11:30 active预留3有效：available=8-3=5 each；5严格小于reorder_point6，signal=true，suggested_quantity=target12-available5=7 each。",
+    "10:00边界不重复叠加；所有postings与快照单位each，数量与货币分离；在途20件不参与当前可用量与建议量算式。"
+  ]
+}

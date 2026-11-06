@@ -1,9 +1,9 @@
 {
   "id": "healthcare-sources",
   "name": "医疗健康知识来源索引 / healthcare source catalogue",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Published FHIR R4 4.0.1 data semantics; no clinical guidelines or terminology redistribution",
   "authority": "Onto Skills original data-modeling guidance; no clinical, regulatory or FHIR conformance authority",
   "classification": "project-curated",
@@ -44,7 +44,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Resource.id, Meta.versionId, lastUpdated and resource/version identity",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -56,7 +56,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Organization-scoped patient records and identity boundaries",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -68,7 +68,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Encounter lifecycle, patient context and locally determined encounter granularity",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -80,7 +80,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Requested service, request status/intent, authoredOn and occurrence",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -92,7 +92,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Result status, basedOn, effective/issued time, value and dataAbsentReason",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -104,7 +104,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Performed or not-done activity, basedOn and performed[x]",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -116,7 +116,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Clinical and verification status, recordedDate and onset; con-4/con-5",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -128,7 +128,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Version-targeted record creation/revision provenance; distinct from audit and access authorization",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -140,7 +140,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Coding system/version/code, quantity value/comparator/unit/system/code, partial dates",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -152,7 +152,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "R4 revoked request status semantics; index only, no bundled code list",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -164,7 +164,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "R4 result status semantics including entered-in-error and unknown; no bundled code list",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -176,7 +176,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "R4 event status semantics including completed/not-done; no bundled code list",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     },
@@ -188,7 +188,7 @@
       "version": "4.0.1 (published R4; deliberately pinned, not the latest FHIR release)",
       "publisher": "Health Level Seven International (HL7)",
       "license": "CC0 for the FHIR specification document; third-party terminology and HL7/FHIR trademarks retain their terms; original summary and link only",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "FHIR document CC0 terms and HL7/FHIR trademark and non-endorsement boundary",
       "authority": "Official published FHIR R4 specification for the stated scope; graph recommendations are not normative FHIR rules"
     }

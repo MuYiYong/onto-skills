@@ -1,0 +1,51 @@
+{
+  "codex_version": "0.166.0",
+  "scope": "Actual failed CLI attempts, retained separately from native metadata and current-agent applications",
+  "attempts": [
+    {
+      "attempt": "chkbuj5o-cybersecurity-domain-knowledge",
+      "model_route": "configured-default gpt-6.1-sol",
+      "exit_code": 1,
+      "terminal_event": "turn.failed",
+      "model_output_generated": false,
+      "http_status": 429,
+      "source_scope": "Attempt-specific earlier checkpoint; no inference result, not final package acceptance"
+    },
+    {
+      "attempt": "chkbuj5o-software-vulnerability-impact",
+      "model_route": "configured-default gpt-6.1-sol",
+      "exit_code": 1,
+      "terminal_event": "turn.failed",
+      "model_output_generated": false,
+      "http_status": 429,
+      "source_scope": "Attempt-specific earlier checkpoint; no inference result, not final package acceptance"
+    },
+    {
+      "attempt": "la_0qgur-cybersecurity-domain-knowledge",
+      "model_route": "explicit gpt-6-astra",
+      "exit_code": 1,
+      "terminal_event": "turn.failed",
+      "model_output_generated": false,
+      "http_status": 429,
+      "source_scope": "Attempt-specific earlier checkpoint; no inference result, not final package acceptance"
+    },
+    {
+      "attempt": "7ogk90kn-software-vulnerability-impact",
+      "model_route": "configured-default gpt-6.1-sol after wait",
+      "exit_code": 1,
+      "terminal_event": "turn.failed",
+      "model_output_generated": false,
+      "http_status": 429,
+      "source_scope": "Attempt-specific earlier checkpoint; no inference result, not final package acceptance"
+    },
+    {
+      "attempt": "x1m1qrgz-software-vulnerability-impact",
+      "model_route": "explicit gpt-6-sol",
+      "exit_code": 1,
+      "terminal_event": "turn.failed",
+      "model_output_generated": false,
+      "http_status": 429,
+      "source_scope": "Attempt-specific earlier checkpoint; no inference result, not final package acceptance"
+    }
+  ]
+}

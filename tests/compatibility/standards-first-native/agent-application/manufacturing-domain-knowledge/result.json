@@ -1,0 +1,37 @@
+{
+  "skill_used": "manufacturing-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "MaterialDefinition为物料类别，MaterialLot为物理批次；订单是计划，ProcessEvent是实际消耗/产出/转化事件；设备是资源，各自有身份。",
+      "RAW经混配/拆分生成FG与返工批，返工批再经独立返工事件产出不同FG；建Lot→consumed_by→ProcessEvent→produced→Lot，产出使用新身份。",
+      "每条投入/产出参与记录保留quantity、unit和来源；混配、拆分、合并、返工、报废/损耗/留存分别描述，不把输出改名为输入制造环。",
+      "另一批仅共用设备，只建used-equipment关系，不产生RAW谱系或批次合并；交叉污染若需分析必须另给残留/清洗/批间转移证据。"
+    ],
+    "decisions": [
+      "当前仅有lot本地号/site/source_system/quantity/unit，足以提出有范围的批次身份和候选流程草案，但缺事件ID、明确输入输出引用/数量分配与时钟，不能完整证明实际谱系或算终端暴露量。",
+      "缺少具体数量、维度/获批换算和守恒基础时不填零、不编造平衡；只有声明适用时才核对投入=产出+损耗，报废已列产出不能再计损耗。",
+      "终端暴露先沿明确谱系选目标状态并完整身份去重，不把中间品与后代一起加；检验pass不能自动切断上游路径。",
+      "检验规格、质量阈值、召回批准均为外部本地政策，不由EPCIS/ISA95背景规定。"
+    ]
+  },
+  "identity_rules": [
+    "批次key=source_system+site+lot_id；跨厂同号、同物料或同设备不合并；当前给定三字段可保留原值。",
+    "生产事件key=source_system+event_id，目前未给，保持缺口；真实重复事件与精确重放分别处理，同键异文先核实标准错误声明/更正语义。"
+  ],
+  "time_and_units": [
+    "保留event_time、EPCIS Repository recordTime及本地observed_at；event_as_of与knowledge_cutoff分别过滤，未给时不可重建历史快照。",
+    "quantity用十进制并带unit/维度；kg与件不得相加，缺换算不猜转换；部分消耗需余料批次或分配记录。"
+  ],
+  "standard_basis": [
+    "GS1 EPCIS2.0.1发布包(官方archive2025-07-01，规范封面Release2.0 Jun2022)，7.4.5 TransformationEvent支持消耗输入并产生输出；7.3.4/7.4.1区分时钟；7.4.1.2错误声明不等于物理返工/冲正。",
+    "OPC10030 v1.00，依据ANSI/ISA-95.00.02-2010；8.4.3.3/8.4.3.4支持MaterialDefinitionType/MaterialLotType分离；8.2/8.3/8.4支持设备/物理资产/物料分离。",
+    "OPC10030 8.4.2.1/8.4.3.1/9.6.3为MaterialTestResultType/MaterialTestSpecificationType/TestedByMaterialTest关系，非本地检验限值。",
+    "quantity-reconciliation、loss-coproduct、recall-scope、standards-boundary为nonstandard-modeling；其他standard-backed仅限条目scope；ISA95 overview无单一规范part/edition。"
+  ],
+  "source_limits": [
+    "包内摘要及所给合成字段，未读取标准全文/OPC节点集、执行完整接口/数量守恒或数据库验证；不能证明全部实际谱系、库存完整性、质量或法定召回。"
+  ],
+  "unresolved": [
+    "实际事件ID与输入/输出关系/数量、site编码范围及产出批次新号；执行/观测时钟、目标状态、期初量/部分消耗、unit维度及获批转换/守恒基础；检验方法/规格版本和批准流程。"
+  ]
+}

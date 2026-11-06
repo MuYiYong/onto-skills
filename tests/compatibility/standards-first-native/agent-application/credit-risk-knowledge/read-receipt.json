@@ -1,0 +1,47 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/request.txt",
+      "sha256": "05901911b1b6debb337e5d40a3e6e35b1b8ed75b3e0f59f453fc6d39a6041beb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/source-files.json",
+      "sha256": "51412438da38ab9781cf34b15df1b086ddab4a7b3d7a3210fd3042170f8de54e"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/SKILL.md",
+      "sha256": "5e16da7d295b9a22d762e80b0e0d7631299c7f2db01566449639ca50a424e2f4"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/references/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/references/glossary.json",
+      "sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/references/banking.json",
+      "sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/references/credit.json",
+      "sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/credit-risk-knowledge/.agents/skills/credit-risk-knowledge/references/method.md",
+      "sha256": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only this packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical finance reference content was consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Only listed consumed package files verified; no claim about unread or excluded files."
+  ]
+}

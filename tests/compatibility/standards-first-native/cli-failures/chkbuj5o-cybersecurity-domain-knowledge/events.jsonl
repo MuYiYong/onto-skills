@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"01a1b055-8efd-7830-aa36-61258acfd202"}
+{"type":"turn.started"}
+{"type":"error","message":"Reconnecting... 1/5 (exceeded retry limit, last status: 429 Too Many Requests)"}
+{"type":"error","message":"Reconnecting... 2/5 (exceeded retry limit, last status: 429 Too Many Requests)"}
+{"type":"error","message":"Reconnecting... 3/5 (exceeded retry limit, last status: 429 Too Many Requests)"}
+{"type":"error","message":"Reconnecting... 4/5 (exceeded retry limit, last status: 429 Too Many Requests)"}
+{"type":"error","message":"Reconnecting... 5/5 (exceeded retry limit, last status: 429 Too Many Requests)"}
+{"type":"error","message":"exceeded retry limit, last status: 429 Too Many Requests"}
+{"type":"turn.failed","error":{"message":"exceeded retry limit, last status: 429 Too Many Requests"}}

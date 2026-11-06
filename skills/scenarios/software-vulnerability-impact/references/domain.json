@@ -1,0 +1,160 @@
+{
+  "id": "cybersecurity-domain",
+  "name": "软件供应链与漏洞证据",
+  "version": "1.0.0",
+  "license": "MIT (original summaries; third-party standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "Database-neutral SBOM, advisory and deployment evidence modeling",
+  "authority": "Original bounded modeling guidance; not a standards certification or incident response authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "spdx23",
+    "csaf20",
+    "cvss40"
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "This collection and its graph model are original project curation, not an official combined standard.",
+  "records": [
+    {
+      "id": "sbom-identity",
+      "name": "文档范围内组件身份",
+      "summary": "Use document namespace plus SPDX identifier for a package occurrence; version and external identifiers are separate evidence. An updated SPDX document version requires a new document namespace. Same names across documents do not establish equivalence.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "spdx23"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "spdx23",
+          "locator": "SPDX 2.3 sections 6.5 Document namespace; 7.2 Package SPDX identifier; 7.3 Package version; 7.21 External reference",
+          "relation": "supports",
+          "scope": "Scope package identifiers to documents; no automatic cross-document merge."
+        }
+      ],
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "dependency-evidence",
+      "name": "依赖与部署证据",
+      "summary": "Retain declared relationship direction, type and source. SBOM containment or dependency alone does not prove a component is deployed, reachable or exploited.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "spdx23"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "spdx23",
+          "locator": "SPDX 2.3 section 11 Relationships between SPDX elements",
+          "relation": "supports",
+          "scope": "Declared dependency semantics only."
+        }
+      ],
+      "standard_gap": "Deployment, runtime reachability and exploit observations require separate task evidence; they are not inferred from SBOM relationships.",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "product-mapping",
+      "name": "通告产品与组件对齐",
+      "summary": "Use normalized publisher.namespace as issuer key, not display name; scope product_id to its advisory document revision; preserve version, supplier and reviewed mapping evidence. PURL/CPE/hash are matching evidence, not an unconditional equality rule.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "csaf20",
+        "spdx23"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.1.8 Product ID Type; 3.2.1.8.5 Publisher Namespace; 3.1.3.3 Product Identification Helper",
+          "relation": "supports",
+          "scope": "Document-scoped product IDs and optional identification helpers."
+        }
+      ],
+      "standard_gap": "The fixture uses explicit reviewed exact-version mappings; arbitrary version ranges, aliases and distributions need a declared resolver policy.",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "advisory-revision",
+      "name": "通告修订与已知时点",
+      "summary": "Track publisher, tracking ID, revision, release date and source payload; retain earlier versions. Keep local observed_at separately, exclude knowledge acquired after the requested cutoff, and expose same-revision payload conflicts.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 section 3.2.1.12 Tracking; tests 6.1.14 and 6.1.16",
+          "relation": "supports",
+          "scope": "Publisher document tracking and revision ordering."
+        }
+      ],
+      "standard_gap": "Historical knowledge cutoffs, trusted publisher selection and conflict handling are explicit project policies; fixture supports positive integer revisions only, not all CSAF semantic versions.",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "vulnerability-status",
+      "name": "漏洞适用性与理由",
+      "summary": "Preserve product-specific known_affected, known_not_affected, fixed and under_investigation assertions, including impact/action statements. Missing assessment stays unknown. Preserve other CSAF status fields without silently treating them as these four.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.2.3.9 Product Status; 4.5 VEX; tests 6.1.6, 6.1.27.9 and 6.1.27.10",
+          "relation": "supports",
+          "scope": "Selected product status and VEX evidence concepts; the fixture is not a conforming VEX serialization."
+        }
+      ],
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "severity-risk",
+      "name": "严重度与本地风险",
+      "summary": "Preserve CVSS version, complete vector, metric group and score provenance. The original sample now publishes a complete CVSS4.0 Base vector calculated as10.0 by the pinned FIRST reference implementation and independently cross-checked; local risk still needs deployment/environment/threat evidence.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "cvss40"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "cvss40",
+          "locator": "CVSS v4.0 Specification, Introduction and Metrics",
+          "relation": "supports",
+          "scope": "Base, Threat, Environmental and Supplemental metric-group boundaries."
+        }
+      ],
+      "standard_gap": "A Base severity is not local risk or exploit evidence. CVSS4.0 is a separate source record, not a CSAF2.0 v2/v3 score field. Publisher trust and real observed deployments remain separate task evidence.",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "remediation-evidence",
+      "name": "修复版本与实际修复",
+      "summary": "A product marked fixed or a published patch concerns that product version. Prove an installed replacement with inventory/change evidence before treating an affected installed copy as remediated.",
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "csaf20"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.2.3.9 Product Status; 3.2.3.12 Remediations",
+          "relation": "supports",
+          "scope": "Distinguish vendor version assertions from an asset installation observation."
+        }
+      ],
+      "standard_gap": "No automatic patch execution, closure decision or production write is provided.",
+      "standard_status": "standard-backed"
+    }
+  ],
+  "standard_status": "nonstandard-modeling"
+}

@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/request.txt",
+      "sha256": "06910f4627f17acfc9cd48e25240eab653a045134e942609ff4d4baea771c06e"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/source-files.json",
+      "sha256": "ccddf18b58c8ce59e38edb3cce54f18b31f2fbb8c7623c85291f2e53f419f810"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/.agents/skills/manufacturing-domain-knowledge/SKILL.md",
+      "sha256": "00397c82f51007c15ef9c86b6565ff4d045b291dd31ceb52723c0073c4d0c82c"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/.agents/skills/manufacturing-domain-knowledge/references/method.md",
+      "sha256": "c6349e4946e49f0ebab40151c11be8aaa98cb1622ce94f6f58e634768fe2eb2d"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/.agents/skills/manufacturing-domain-knowledge/references/sources.json",
+      "sha256": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-domain-knowledge/.agents/skills/manufacturing-domain-knowledge/references/domain.json",
+      "sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

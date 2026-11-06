@@ -1,0 +1,3150 @@
+{
+  "observed_at": "2026-11-06",
+  "scope": "All identified knowledge objects; bounded source meaning and explicit nonstandard labeling, not complete processor or institutional certification",
+  "status_counts": {
+    "nonstandard-modeling": 61,
+    "standard-backed": 88
+  },
+  "identified_objects": 149,
+  "catalogues": [
+    {
+      "path": "knowledge/cybersecurity/standards/sources.json",
+      "sha256": "f7390c7e868b259870aef700b8227234876d8d4fdc36da91ab132a0ebf679769"
+    },
+    {
+      "path": "knowledge/electric-power/standards/sources.json",
+      "sha256": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa"
+    },
+    {
+      "path": "knowledge/finance/regulatory/standards/sources.json",
+      "sha256": "aecbab252a1fe239a481ab7eb00fda384c1266770a55a6a863453b1f10dc5a97"
+    },
+    {
+      "path": "knowledge/finance/related-parties/standards/sources.json",
+      "sha256": "08187cb0d6174f10e225d7075622d2a58f570bffac81b0b997ec33398041c336"
+    },
+    {
+      "path": "knowledge/finance/standards/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "knowledge/healthcare/standards/sources.json",
+      "sha256": "feb4d95a8e18eae615d24a0891a0a922b7379f3f838ef582abe32f9e9d1b6134"
+    },
+    {
+      "path": "knowledge/logistics/standards/sources.json",
+      "sha256": "902e416621a970d79c64431d8a8deb2db16f18f41ebd1cc8e645224f5c1b9efb"
+    },
+    {
+      "path": "knowledge/manufacturing/standards/sources.json",
+      "sha256": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb"
+    },
+    {
+      "path": "knowledge/retail/standards/sources.json",
+      "sha256": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311"
+    }
+  ],
+  "primary_retrieval_receipts_not_conformance": [
+    {
+      "key": "cas36",
+      "uri": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "status": 200,
+      "final_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "content_type": "text/html",
+      "bytes": 23285,
+      "sha256": "cb429481c7915d3e1647161709ae5803c85815956d71a2bcce25193bba314e10"
+    },
+    {
+      "key": "nfra-statistics",
+      "uri": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json",
+      "status": 200,
+      "final_url": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json",
+      "content_type": "application/json",
+      "bytes": 183095,
+      "sha256": "63f1065712e14a52eae4b2690d4dda965a2b9cec4cae1298a889b1530d675f82"
+    },
+    {
+      "key": "nfra-related",
+      "uri": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json",
+      "status": 200,
+      "final_url": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json",
+      "content_type": "application/json",
+      "bytes": 733449,
+      "sha256": "b0be65232831231df897ba16a7fadf71229e5101c36ba9cd851ee0ad1db8b20f"
+    },
+    {
+      "key": "cre36",
+      "uri": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08",
+      "status": 200,
+      "final_url": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 443574,
+      "sha256": "9beabbc0426f2341466b097567baf3c2d672906767fe3483ef250ca83af0c6c8"
+    },
+    {
+      "key": "csaf20",
+      "uri": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.md",
+      "status": 200,
+      "final_url": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.md",
+      "content_type": "text/markdown",
+      "bytes": 294479,
+      "sha256": "5bc757cc8dcf1a48a73c50de8100b0437bda1f9b5b860afd051c585749f568be"
+    },
+    {
+      "key": "xbrl21",
+      "uri": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "status": 200,
+      "final_url": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 1119965,
+      "sha256": "0aabd01fa4c77b41e7d2aeac2845f872e53871edcffad96fc99e72ba6555501f"
+    },
+    {
+      "key": "FND_Agreements_Contracts.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 73907,
+      "sha256": "d1177c7b092ae26228c5cc07f63172443e99e867b6ed8139389f7fccfb0bf65e"
+    },
+    {
+      "key": "FBC_FunctionalEntities_FinancialServicesEntities.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/FunctionalEntities/FinancialServicesEntities.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/FunctionalEntities/FinancialServicesEntities.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 82365,
+      "sha256": "f1047cce38f164b6f49bd6c21a340073f0168ff1b36a491e1556b79ad7d6d0da"
+    },
+    {
+      "key": "FBC_ProductsAndServices_FinancialProductsAndServices.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/FinancialProductsAndServices.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/FinancialProductsAndServices.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 90893,
+      "sha256": "84cfba5ccf3a9074027fd001fcfda12ef91a5a2aa7c5d9e976e7a68ee2014321"
+    },
+    {
+      "key": "FBC_ProductsAndServices_ClientsAndAccounts.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 86014,
+      "sha256": "6e97f64ff985a92d43af0babd325c3a01969b91362d2d09324f030bd06e331ae"
+    },
+    {
+      "key": "FBC_DebtAndEquities_Debt.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 103718,
+      "sha256": "c9a2bce7d7ddc74d62ea9f1034f588ca188ced316836e329ff56793406013b53"
+    },
+    {
+      "key": "LOAN_LoansGeneral_Loans.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 45350,
+      "sha256": "87024035dac38303e21738879202d87f0f37c1347a16119f9ec2b4e37e124f05"
+    },
+    {
+      "key": "FBC_FinancialInstruments_Settlement.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 19901,
+      "sha256": "45ed22079ecc6b6f90f75ae6d3ebff9c7228e716509bc4fb701e03b77e6daae1"
+    },
+    {
+      "key": "AboutFIBOProd.rdf",
+      "uri": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/AboutFIBOProd.rdf",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/edmcouncil/fibo/33a92cd34285d532c158da97bb42add089f135d3/AboutFIBOProd.rdf",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 24529,
+      "sha256": "91e3957aa2f3b5c82121ead716a784468a4d3f15ea32b9eadfe146dddd8df92c"
+    },
+    {
+      "key": "spdx-document",
+      "uri": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/document-creation-information.md",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/document-creation-information.md",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 19321,
+      "sha256": "9e0533b9bd7104b3ac60a4507aa21308e7183067f57b4b66e9e0f17db6511902"
+    },
+    {
+      "key": "spdx-package",
+      "uri": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/package-information.md",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/package-information.md",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 58100,
+      "sha256": "100080d1bd421b014e49dc2e6bfea7d56bc8d112065f2586b54b7f4b373ebe08"
+    },
+    {
+      "key": "spdx-relationships",
+      "uri": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/relationships-between-SPDX-elements.md",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.3/chapters/relationships-between-SPDX-elements.md",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 15757,
+      "sha256": "e2a917031ac013422d4c2a350343682f64e917602537641b84791eb639b76f98"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/",
+      "owners": [
+        "knowledge/finance/standards/sources.json:fibo"
+      ],
+      "status": 200,
+      "final_url": "https://spec.edmcouncil.org/fibo/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 694138,
+      "sha256": "311736b3395720a7020b939803ab1bef83187a9051676e8f6d4f87ccf1b65db5",
+      "temporary_cache_key": "e92df33c11f998a4"
+    },
+    {
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "owners": [
+        "knowledge/finance/standards/sources.json:owl2"
+      ],
+      "status": 200,
+      "final_url": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 267804,
+      "sha256": "e64c94d2900e24142940cd45126651082f8e9a23e23396899f39ce4be9543630",
+      "temporary_cache_key": "adea60d88372e425"
+    },
+    {
+      "uri": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08",
+      "owners": [
+        "knowledge/finance/standards/sources.json:bcbs-credit"
+      ],
+      "status": 200,
+      "final_url": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 443574,
+      "sha256": "9beabbc0426f2341466b097567baf3c2d672906767fe3483ef250ca83af0c6c8",
+      "temporary_cache_key": "7076718a7ddac106"
+    },
+    {
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1089714&itemId=861&generaltype=1",
+      "owners": [
+        "knowledge/finance/regulatory/standards/sources.json:nfra-statistics"
+      ],
+      "status": 200,
+      "final_url": "https://www.nfra.gov.cn/cn/view/pages/governmentDetail.html?docId=1089714&itemId=861&generaltype=1",
+      "content_type": "text/html",
+      "bytes": 19559,
+      "sha256": "8d8194b5baa45309d178f65d6df8921f0b93d543951eaa8ecc7b2cfb5fcbeb18",
+      "temporary_cache_key": "80e2b347b97691c8"
+    },
+    {
+      "uri": "https://www.bis.org/publ/bcbs239.htm",
+      "owners": [
+        "knowledge/finance/regulatory/standards/sources.json:bcbs239"
+      ],
+      "status": 200,
+      "final_url": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 134432,
+      "sha256": "989920a2a8d6b091890eac422514853487af39b7fe15fc7a3d75209b9433d273",
+      "temporary_cache_key": "16b4c5984d48270b"
+    },
+    {
+      "uri": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles",
+      "owners": [
+        "knowledge/finance/regulatory/standards/sources.json:bcbs239-2026"
+      ],
+      "status": 200,
+      "final_url": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 135475,
+      "sha256": "a3803fc64a062a1b9b80a1c52b8124be1e23e0099637eb832c180cc0ca3dd7bd",
+      "temporary_cache_key": "b4af20664876524e"
+    },
+    {
+      "uri": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "owners": [
+        "knowledge/finance/regulatory/standards/sources.json:xbrl21"
+      ],
+      "status": 200,
+      "final_url": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 1119965,
+      "sha256": "0aabd01fa4c77b41e7d2aeac2845f872e53871edcffad96fc99e72ba6555501f",
+      "temporary_cache_key": "5a296110263daaef"
+    },
+    {
+      "uri": "https://specifications.xbrl.org/xbrl-essentials.html",
+      "owners": [
+        "knowledge/finance/regulatory/standards/sources.json:xbrl-essentials"
+      ],
+      "status": 200,
+      "final_url": "https://specifications.xbrl.org/xbrl-essentials.html",
+      "content_type": "text/html",
+      "bytes": 13811,
+      "sha256": "515e4bdf6e88c6936a8d0de6db4074cc3ea1671e8595b70e3bc6215315060609",
+      "temporary_cache_key": "18fd9c4285e8bf5d"
+    },
+    {
+      "uri": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1209888&generaltype=0&itemId=928",
+      "owners": [
+        "knowledge/finance/related-parties/standards/sources.json:nfra-related-2025"
+      ],
+      "status": 200,
+      "final_url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1209888&generaltype=0&itemId=928",
+      "content_type": "text/html",
+      "bytes": 20416,
+      "sha256": "2746269444dfbb546796f82825e20d277d6f21e04a357922a03218f9a5bd14d6",
+      "temporary_cache_key": "e94d01d360381c9e"
+    },
+    {
+      "uri": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "owners": [
+        "knowledge/finance/related-parties/standards/sources.json:cas36"
+      ],
+      "status": 200,
+      "final_url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm",
+      "content_type": "text/html",
+      "bytes": 23285,
+      "sha256": "cb429481c7915d3e1647161709ae5803c85815956d71a2bcce25193bba314e10",
+      "temporary_cache_key": "dc7a2052e570f454"
+    },
+    {
+      "uri": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm",
+      "owners": [
+        "knowledge/finance/related-parties/standards/sources.json:mof-related-state"
+      ],
+      "status": 200,
+      "final_url": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm",
+      "content_type": "text/html",
+      "bytes": 11978,
+      "sha256": "70cded06238e6e2be8ded3e4fc42a0613b6e025fd7f25aec09c4d32c17c8c101",
+      "temporary_cache_key": "f6c489082f61299d"
+    },
+    {
+      "uri": "https://m.mof.gov.cn/czxw/202501/t20250106_3951168.htm",
+      "owners": [
+        "knowledge/finance/related-parties/standards/sources.json:mof-annual-2024"
+      ],
+      "status": 200,
+      "final_url": "https://m.mof.gov.cn/czxw/202501/t20250106_3951168.htm",
+      "content_type": "text/html",
+      "bytes": 22687,
+      "sha256": "bda14a50b35b3bd835422ef440694e3eeb0bed8b7538b6c7cc9888e2aeb54604",
+      "temporary_cache_key": "63fe2e7d98790b47"
+    },
+    {
+      "uri": "https://webstore.iec.ch/en/publication/62698",
+      "owners": [
+        "knowledge/electric-power/standards/sources.json:iec-cim-base"
+      ],
+      "status": 200,
+      "final_url": "https://webstore.iec.ch/en/publication/62698",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 457950,
+      "sha256": "4389006327e901825c6b5de795d2b43ce2d7baea6d5976620922bc0a1d68ba2e",
+      "temporary_cache_key": "739703b26a6f4f59"
+    },
+    {
+      "uri": "https://webstore.iec.ch/en/publication/68639",
+      "owners": [
+        "knowledge/electric-power/standards/sources.json:iec-cim-amd1"
+      ],
+      "status": 200,
+      "final_url": "https://webstore.iec.ch/en/publication/68639",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 448148,
+      "sha256": "fc95250e387c5d53be937466bbe4230c4445d77d4d650e83bcc085872da28118",
+      "temporary_cache_key": "942908c28581fd82"
+    },
+    {
+      "uri": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/",
+      "owners": [
+        "knowledge/electric-power/standards/sources.json:entsoe-cgmes"
+      ],
+      "status": 200,
+      "final_url": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 77486,
+      "sha256": "6db6bed78d316eb2032351f946f75ce18b81d1e9ca5e3a4e84be7053cfdbfb9b",
+      "temporary_cache_key": "7a98c34942038120"
+    },
+    {
+      "uri": "https://ref.gs1.org/standards/epcis/2.0.1/",
+      "owners": [
+        "knowledge/manufacturing/standards/sources.json:gs1-epcis"
+      ],
+      "status": 200,
+      "final_url": "https://ref.gs1.org/standards/epcis/2.0.1/",
+      "content_type": "application/pdf",
+      "bytes": 4827202,
+      "sha256": "6c9b2b51b41cd2cf169f6723001cac56a31c574e9c79ec8d4d52d2bf505f8eaa",
+      "temporary_cache_key": "947088d23b104fd7"
+    },
+    {
+      "uri": "https://reference.opcfoundation.org/specs/OPC-10030/full",
+      "owners": [
+        "knowledge/manufacturing/standards/sources.json:opc-isa95"
+      ],
+      "status": 200,
+      "final_url": "https://reference.opcfoundation.org/specs/OPC-10030/full",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 726366,
+      "sha256": "5453b90d8634323789c25ee2c871d9f13eb6aeb1fa6d36fcabb1fa5d6f83eb8b",
+      "temporary_cache_key": "02036bb0c377f6d8"
+    },
+    {
+      "uri": "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard",
+      "owners": [
+        "knowledge/manufacturing/standards/sources.json:isa95-overview"
+      ],
+      "status": 200,
+      "final_url": "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 90778,
+      "sha256": "1597ea7b861c5a590b01afd4aeb45f52f4294fd9b1fcb8b0a4d129469c843f9e",
+      "temporary_cache_key": "5212d375cbce545a"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/resource.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-resource"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/resource.html",
+      "content_type": "text/html",
+      "bytes": 181924,
+      "sha256": "7a090df22a2cfcc77c4dd0ada8da471b70c24eca91ed51caf90614b2f5058c49",
+      "temporary_cache_key": "b19d9c485487c5cf"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/patient.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-patient"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/patient.html",
+      "content_type": "text/html",
+      "bytes": 320662,
+      "sha256": "fb65456ffb34331ac685b9bee21baa69cc43ca4118a56778501e56811ba8a8b3",
+      "temporary_cache_key": "186fe5b40d028931"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/encounter.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-encounter"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/encounter.html",
+      "content_type": "text/html",
+      "bytes": 449501,
+      "sha256": "9a30d0a4abf826c5b05e6b35a008a81fd4caa5999aadcf96695a4ed6b9691a19",
+      "temporary_cache_key": "e04b2b199fe1bdb0"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/servicerequest-definitions.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-servicerequest"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/servicerequest-definitions.html",
+      "content_type": "text/html",
+      "bytes": 48631,
+      "sha256": "334f8b561cfa4bbb5ba4f281c9667e892a79577604adbdab2258d8c83b9d506a",
+      "temporary_cache_key": "3879d134ea0ead6b"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/observation-definitions.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-observation"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/observation-definitions.html",
+      "content_type": "text/html",
+      "bytes": 60059,
+      "sha256": "0377eafc8bd2d9753724141ef0039926e6ed1d142abcaef88fad6e2d9ffdf998",
+      "temporary_cache_key": "a61ec812c684c732"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/procedure-definitions.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-procedure"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/procedure-definitions.html",
+      "content_type": "text/html",
+      "bytes": 42974,
+      "sha256": "fcbcd589e67bd10bfafa1c635f2aeff97fd98045bdab76a2d415f29f976c26a2",
+      "temporary_cache_key": "64546bb767b0e376"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/condition-definitions.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-condition"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/condition-definitions.html",
+      "content_type": "text/html",
+      "bytes": 40166,
+      "sha256": "ca66f360ccd4499033a705bb9752b82fe8d49b771eb5a1e42b72f8457060e19b",
+      "temporary_cache_key": "2d9b549491e00d2a"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/provenance.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-provenance"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/provenance.html",
+      "content_type": "text/html",
+      "bytes": 217624,
+      "sha256": "1f0fd44cfa491592d4900654267e650142f7b0fe050d69c744b1ce6c8b596c29",
+      "temporary_cache_key": "1daa2383de987950"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/datatypes.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-datatypes"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/datatypes.html",
+      "content_type": "text/html",
+      "bytes": 1364305,
+      "sha256": "03d88289865b77620321652f4b9b5c954b795c17715aa0a24f1a220dc12af573",
+      "temporary_cache_key": "b4aebaf440dce768"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/codesystem-request-status.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-request-status"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/codesystem-request-status.html",
+      "content_type": "text/html",
+      "bytes": 17737,
+      "sha256": "eb76a167a4c5da1828769f1f622dfba9f97a2bf3c25c81cece9fd68a651e18de",
+      "temporary_cache_key": "ac81d7fa7b841e5b"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/codesystem-observation-status.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-observation-status"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/codesystem-observation-status.html",
+      "content_type": "text/html",
+      "bytes": 19165,
+      "sha256": "5dd33f7aab9713fd023368f43df3d85e534366ca136811117ecd98be95234bc2",
+      "temporary_cache_key": "9271f336a94bdbc3"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/codesystem-event-status.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-event-status"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/codesystem-event-status.html",
+      "content_type": "text/html",
+      "bytes": 18982,
+      "sha256": "f3b2fb13f55ffe86115e219d5961eee16dd5c75ac214c8cc07c3778350c1e46f",
+      "temporary_cache_key": "d38ad2d9885029f9"
+    },
+    {
+      "uri": "https://hl7.org/fhir/R4/license.html",
+      "owners": [
+        "knowledge/healthcare/standards/sources.json:fhir-r4-license"
+      ],
+      "status": 200,
+      "final_url": "https://hl7.org/fhir/R4/license.html",
+      "content_type": "text/html",
+      "bytes": 22009,
+      "sha256": "b2aeb02247ca2aa855ed1fce29f62600aeeb8dcc8257ec1e0b40ceaf4fd60a15",
+      "temporary_cache_key": "934dca65755e543a"
+    },
+    {
+      "uri": "https://ref.gs1.org/standards/epcis/2.0.0/",
+      "owners": [
+        "knowledge/logistics/standards/sources.json:gs1-epcis",
+        "knowledge/retail/standards/sources.json:gs1-epcis"
+      ],
+      "status": 200,
+      "final_url": "https://ref.gs1.org/standards/epcis/2.0.0/",
+      "content_type": "application/pdf",
+      "bytes": 4827202,
+      "sha256": "6c9b2b51b41cd2cf169f6723001cac56a31c574e9c79ec8d4d52d2bf505f8eaa",
+      "temporary_cache_key": "c96db3b1f0bd1658"
+    },
+    {
+      "uri": "https://ref.gs1.org/standards/cbv/2.0.0/",
+      "owners": [
+        "knowledge/logistics/standards/sources.json:gs1-cbv",
+        "knowledge/retail/standards/sources.json:gs1-cbv"
+      ],
+      "status": 200,
+      "final_url": "https://ref.gs1.org/standards/cbv/2.0.0/",
+      "content_type": "application/pdf",
+      "bytes": 1322587,
+      "sha256": "e7003e4ef71096e91cd366775f5efb2158fc72c3229d5d513b41d7499229586e",
+      "temporary_cache_key": "b5647bf7b61ae590"
+    },
+    {
+      "uri": "https://ref.gs1.org/architecture/system-architecture/12.0.0/",
+      "owners": [
+        "knowledge/logistics/standards/sources.json:gs1-architecture",
+        "knowledge/retail/standards/sources.json:gs1-architecture"
+      ],
+      "status": 200,
+      "final_url": "https://ref.gs1.org/architecture/system-architecture/12.0.0/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 189276,
+      "sha256": "951405c75037c9b92ccd3db46bfddb0b245208480f639a15a771e8b14d90a079",
+      "temporary_cache_key": "efdd6368eb38c49c"
+    },
+    {
+      "uri": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm",
+      "owners": [
+        "knowledge/logistics/standards/sources.json:dcsa-event-classifier"
+      ],
+      "status": 200,
+      "final_url": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm",
+      "content_type": "text/html",
+      "bytes": 12824,
+      "sha256": "4641a898b61748492a49342effe6b6a01f9c7a872d449a73c68c4680fd9b0bba",
+      "temporary_cache_key": "114aaed15e5006e5"
+    },
+    {
+      "uri": "https://ref.gs1.org/standards/global-traceability/2.0.0/",
+      "owners": [
+        "knowledge/retail/standards/sources.json:gs1-traceability"
+      ],
+      "status": 200,
+      "final_url": "https://ref.gs1.org/standards/global-traceability/2.0.0/",
+      "content_type": "application/pdf",
+      "bytes": 4219090,
+      "sha256": "d05b1d8808ff597c8985c42846dd98d38506427eaae56486d60804acd904f06e",
+      "temporary_cache_key": "faea9b4a4d28dd17"
+    },
+    {
+      "uri": "https://github.com/spdx/spdx-spec/tree/v2.3",
+      "owners": [
+        "knowledge/cybersecurity/standards/sources.json:spdx23"
+      ],
+      "status": 200,
+      "final_url": "https://github.com/spdx/spdx-spec/tree/v2.3",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 254140,
+      "sha256": "1992fca08b60b7918013ac8b9852bb5eec922357cb730224fe3e33e2a416b0ba",
+      "temporary_cache_key": "07ea6fa316e88088"
+    },
+    {
+      "uri": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html",
+      "owners": [
+        "knowledge/cybersecurity/standards/sources.json:csaf20"
+      ],
+      "status": 200,
+      "final_url": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html",
+      "content_type": "text/html",
+      "bytes": 415225,
+      "sha256": "0fbc5857a66dabe57568c305c19d1bcf4e633c1872ac37f50405864d62d339ba",
+      "temporary_cache_key": "5ae5e9722d310cfd"
+    },
+    {
+      "uri": "https://www.first.org/cvss/v4.0/specification-document",
+      "owners": [
+        "knowledge/cybersecurity/standards/sources.json:cvss40"
+      ],
+      "status": 200,
+      "final_url": "https://www.first.org/cvss/v4.0/specification-document",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 118076,
+      "sha256": "355a2cd015c3ceb97acb3de0057a9211bad972d16234c06a23df1fe3412a2a46",
+      "temporary_cache_key": "b68d66d8652e8e2c"
+    }
+  ],
+  "records": [
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/",
+      "id": "cybersecurity-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "This collection and its graph model are original project curation, not an official combined standard.",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/0",
+      "id": "sbom-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "spdx23",
+          "locator": "SPDX 2.3 sections 6.5 Document namespace; 7.2 Package SPDX identifier; 7.3 Package version; 7.21 External reference",
+          "relation": "supports",
+          "scope": "Scope package identifiers to documents; no automatic cross-document merge."
+        }
+      ],
+      "standard_gap": null,
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/1",
+      "id": "dependency-evidence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "spdx23",
+          "locator": "SPDX 2.3 section 11 Relationships between SPDX elements",
+          "relation": "supports",
+          "scope": "Declared dependency semantics only."
+        }
+      ],
+      "standard_gap": "Deployment, runtime reachability and exploit observations require separate task evidence; they are not inferred from SBOM relationships.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/2",
+      "id": "product-mapping",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.1.8 Product ID Type; 3.2.1.8.5 Publisher Namespace; 3.1.3.3 Product Identification Helper",
+          "relation": "supports",
+          "scope": "Document-scoped product IDs and optional identification helpers."
+        }
+      ],
+      "standard_gap": "The fixture uses explicit reviewed exact-version mappings; arbitrary version ranges, aliases and distributions need a declared resolver policy.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/3",
+      "id": "advisory-revision",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 section 3.2.1.12 Tracking; tests 6.1.14 and 6.1.16",
+          "relation": "supports",
+          "scope": "Publisher document tracking and revision ordering."
+        }
+      ],
+      "standard_gap": "Historical knowledge cutoffs, trusted publisher selection and conflict handling are explicit project policies; fixture supports positive integer revisions only, not all CSAF semantic versions.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/4",
+      "id": "vulnerability-status",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.2.3.9 Product Status; 4.5 VEX; tests 6.1.6, 6.1.27.9 and 6.1.27.10",
+          "relation": "supports",
+          "scope": "Selected product status and VEX evidence concepts; the fixture is not a conforming VEX serialization."
+        }
+      ],
+      "standard_gap": null,
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/5",
+      "id": "severity-risk",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "cvss40",
+          "locator": "CVSS v4.0 Specification, Introduction and Metrics",
+          "relation": "supports",
+          "scope": "Base, Threat, Environmental and Supplemental metric-group boundaries."
+        }
+      ],
+      "standard_gap": "A Base severity is not local risk or exploit evidence. CVSS4.0 is a separate source record, not a CSAF2.0 v2/v3 score field. Publisher trust and real observed deployments remain separate task evidence.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/cybersecurity/concepts/domain.json",
+      "asset_sha256": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+      "json_pointer": "/records/6",
+      "id": "remediation-evidence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "csaf20",
+          "locator": "CSAF 2.0 sections 3.2.3.9 Product Status; 3.2.3.12 Remediations",
+          "relation": "supports",
+          "scope": "Distinguish vendor version assertions from an asset installation observation."
+        }
+      ],
+      "standard_gap": "No automatic patch execution, closure decision or production write is provided.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/",
+      "id": "electric-power-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/0",
+      "id": "equipment-terminal-connectivity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; public Abstract",
+          "relation": "background",
+          "scope": "CIM共享资源类、属性和关系的总体模型范围；没有读取逐类条款。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:Equipment, ConductingEquipment, Terminal, ConnectivityNode, Terminal.ConductingEquipment, Terminal.ConnectivityNode, IdentifiedObject.mRID",
+          "relation": "supports",
+          "scope": "设备/导电设备/端子/零阻抗连接点分离，mRID由模型权威分配且在交换上下文唯一；cim=http://iec.ch/TC57/CIM100#。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_Equipment-AP-Con-Simple-SHACL.rdf; Terminal.ConductingEquipment-cardinality; Terminal.ConnectivityNode-cardinality",
+          "relation": "supports",
+          "scope": "所选配置端子到设备min1/max1、端子到连接点max1；不规定本地业务图所有边的通用基数。"
+        }
+      ],
+      "standard_gap": "所选公开CGMES3配置支持逐类语义与该配置基数；本地节点版本化、source键映射及停电影响推导仍为非标准建模。未取得付费IEC完整正文，不能据公开配置宣称完整IEC或CGMES交换符合性。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/1",
+      "id": "topology-version",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; CGMES v3.0 and model/profile library",
+          "relation": "background",
+          "scope": "交换配置及其模型/版本依赖的背景。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-tp",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Topology-AP-Voc-RDFS2020.rdf; cim:TopologicalNode; ConnectivityNode.TopologicalNode; Terminal.TopologicalNode",
+          "relation": "supports",
+          "scope": "状态相关的拓扑节点/连接点关联与规划母线语境分离。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf; md:Model.scenarioTime; Model.DependentOn; Model.version",
+          "relation": "supports",
+          "scope": "源模型代表时点与版本特定依赖有独立身份；md=http://iec.ch/TC57/61970-552/ModelDescription/1#。"
+        }
+      ],
+      "standard_gap": "TopologicalNode及源模型头的有界语义已由公开配置核实；event_time/knowledge_cutoff筛选、兼容性判定、原始键映射和有效区间为非标准建模，未运行CGMES数据集全约束校验。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/2",
+      "id": "switch-state",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:Switch; Switch.normalOpen",
+          "relation": "supports",
+          "scope": "normalOpen与无状态测量场景及Switch连通性边界；端子connected不得代替开关自身状态。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf; cim:Switch.open; Switch.locked; ACDCTerminal.connected",
+          "relation": "supports",
+          "scope": "开关拓扑输入、闭锁和端子连接状态是不同字段。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_Equipment-AP-Con-Simple-SHACL.rdf; Switch.normalOpen-cardinality; Switch.normalOpen-datatype",
+          "relation": "supports",
+          "scope": "所选EQ配置normalOpen为Boolean且min1/max1。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_SteadyStateHypothesis-AP-Con-Simple-SHACL.rdf; Switch.open-cardinality/-datatype; Switch.locked-cardinality/-datatype",
+          "relation": "supports",
+          "scope": "所选SSH配置open和locked为Boolean且min1/max1；三值unknown是项目扩展。"
+        }
+      ],
+      "standard_gap": "公开配置核实了Switch字段语义及Boolean基数；unknown/冲突传播、event_time/observed_at和实际状态证据选择仍为非标准建模。未读取付费IEC完整Switch条款；输入拓扑状态不等于现场观测或安全操作结论。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/3",
+      "id": "supply-and-der",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:EnergySource; PowerElectronicsConnection",
+          "relation": "supports",
+          "scope": "供能等值与采用电力电子的交流网络连接分离；不推定DER实际出力。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf; cim:Equipment.inService",
+          "relation": "supports",
+          "scope": "设备可用于拓扑处理的状态，不等于已带电或具备安全供电能力。"
+        }
+      ],
+      "standard_gap": "公开配置仅支持电源等值、电子电力连接及设备可用性字段；反送电候选、未知传播与本地DER策略为非标准建模，未核实潮流、保护、孤岛或安全送电标准。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/4",
+      "id": "service-customer-circuit",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; public Abstract",
+          "relation": "background",
+          "scope": "CIM共享资源类、属性和关系的总体模型范围；没有读取逐类条款。"
+        }
+      ],
+      "standard_gap": "未从已取得CGMES3配置建立Customer/UsagePoint/回路与本地供电点的精确类映射或基数；全部客户绑定、计数和时间规则为非标准建模。EnergyConsumer消费模型点不得自动等同客户身份，付费IEC对应详情仍为标准未核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/5",
+      "id": "planned-actual",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "计划移除、客户实际停电认定和证据门槛均为非标准建模；已取得公开CGMES配置未规定本例客户中断认定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/6",
+      "id": "restoration-segment",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "分段中断、交叠区间并集和重复中断保留均为非标准建模；未取得适用的供电可靠性考核标准。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/7",
+      "id": "electrical-quantity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:PhaseCode; Terminal.phases; UnitSymbol; UnitMultiplier",
+          "relation": "supports",
+          "scope": "相位语境、单位和倍率分别表达；PhaseCode本身不编码相间连接或接地方式。"
+        }
+      ],
+      "standard_gap": "公开配置支持相位、单位与倍率的概念分离；本地数值/时间证据字段、换算政策及拓扑可达安全边界为非标准建模，未完成电气可行性或安全标准核实。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/8",
+      "id": "cim-boundary",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; Abstract and publication metadata",
+          "relation": "background",
+          "scope": "IEC61970CIM17v38、2020-01-21及基础标准范围。"
+        },
+        {
+          "source_id": "iec-cim-amd1",
+          "locator": "https://webstore.iec.ch/en/publication/68639; publication metadata",
+          "relation": "background",
+          "scope": "AMD1版本身份；未读取详细修订条款。"
+        },
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; CGMES v3.0",
+          "relation": "background",
+          "scope": "交换配置、依赖和发布导航。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; Ontology metadata: owl:versionInfo 3.0.0; owl:versionIRI http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0; dcterms:conformsTo model file CIM17v40",
+          "relation": "supports",
+          "scope": "公开配置版本身份与模型依赖；不可把配置CIM17v40与基础IEC摘要CIM17v38合并为同一版本。"
+        }
+      ],
+      "standard_gap": "仅已取得的公开配置字段和约束具有所列标准依据；付费IEC完整条款仍为标准未核实。本地图schema、停电投影和三值决策为非标准建模，未宣称完整CGMES交换或接口认证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/electric-power/concepts/domain.json",
+      "asset_sha256": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+      "json_pointer": "/records/9",
+      "id": "model-profile-snapshot-manifest",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; Common Information Model and CGMES v3.0 sections",
+          "relation": "background",
+          "scope": "官方库区分CIM、CGMES、Network Code Profiles及边界资料的发布身份。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf; md:FullModel; Model.created; Model.scenarioTime; Model.version; Model.profile; Model.DependentOn; Model.Supersedes",
+          "relation": "supports",
+          "scope": "源序列化时间、代表时点、内容版本、配置及版本特定模型依赖/替代关系分别保留。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-552-Header-AP-Con-Simple-SHACL.rdf; Model.created-cardinality/-datatype; Model.scenarioTime-cardinality/-datatype; Model.version-cardinality/-datatype; Model.profile-cardinality/-datatype",
+          "relation": "supports",
+          "scope": "created/scenarioTime/version为min1/max1；profile至少1；类型分别dateTime/dateTime/integer/anyURI，只覆盖所列Header约束。"
+        }
+      ],
+      "standard_gap": "源Header身份和时钟含义已按公开配置核实；本地快照键、known_at筛选、兼容性检查和依赖选择算法仍为非标准建模。未对实际CGMES实例运行完整SHACL闭包、跨配置或接口验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/",
+      "id": "banking-concepts",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/0",
+      "id": "customer-party",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf; ContractParty",
+          "relation": "background",
+          "scope": "合同当事方与合同关系的概念背景。"
+        }
+      ],
+      "standard_gap": "主体去重、客户号机构范围和组织/自然人分类由已授权业务材料确定；此处不声明ContractParty等于所有客户角色。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/1",
+      "id": "credit-process",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; Loan, LoanPaymentSchedule, IndividualPaymentTransaction",
+          "relation": "supports",
+          "scope": "贷款、还款计划与支付交易有不同概念身份。"
+        }
+      ],
+      "standard_gap": "申请到授信/合同/放款/结清等完整状态机、分支和先后顺序未由所引源文件规定。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/2",
+      "id": "deposit-payment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; DepositAccount, IndividualTransaction",
+          "relation": "supports",
+          "scope": "存款账户与账户交易记录分离。"
+        }
+      ],
+      "standard_gap": "开户/销户流程、指令/执行/结算/退回状态及余额口径须由来源系统与合同明确。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/3",
+      "id": "risk-exposure",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "bcbs-credit",
+          "locator": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08#36.39",
+          "relation": "background",
+          "scope": "关联集团中个体评级应按银行政策区分；不是多头借贷判据。"
+        }
+      ],
+      "standard_gap": "多机构有效债务窗口、金额去重、机构独立性和风险信号阈值为本地分析规则。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/4",
+      "id": "facility-commitment-status",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; CreditFacility, CommittedCreditFacility, UncommittedCreditFacility",
+          "relation": "supports",
+          "scope": "区分授信安排及其承诺类别。"
+        }
+      ],
+      "standard_gap": "字段、额度余额计算和提款证据关联是本地映射；未执行完整授信公理推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/5",
+      "id": "scheduled-versus-actual-payment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; LoanPaymentSchedule, IndividualPaymentTransaction",
+          "relation": "supports",
+          "scope": "计划与支付交易分别标识。"
+        },
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; PrincipalPayment, InterestPayment",
+          "relation": "supports",
+          "scope": "本金支付与利息支付类别。"
+        }
+      ],
+      "standard_gap": "本地分摊、冲正、逾期和净额规则仍需业务材料；不把这些字段当作标准原有属性名。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/concepts/banking.json",
+      "asset_sha256": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+      "json_pointer": "/concepts/6",
+      "id": "settlement-definition-occurrence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf; Settlement, SettlementEvent",
+          "relation": "supports",
+          "scope": "结算生命周期事项和事件发生记录的区分。"
+        }
+      ],
+      "standard_gap": "实际交割完成判据、日期历法和失败处理来自具体市场/合同；本地字段不是FIBO同名属性清单。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/examples/index.json",
+      "asset_sha256": "f469aabdef1c3c50c83ed8bfca622c0a775716cf9ad9f10e2beaf0b515cba443",
+      "json_pointer": "/",
+      "id": "finance-example-index",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/examples/index.json",
+      "asset_sha256": "f469aabdef1c3c50c83ed8bfca622c0a775716cf9ad9f10e2beaf0b515cba443",
+      "json_pointer": "/examples/0",
+      "id": "multi-lending-example",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目合成教学数据及有效期/机构去重方法；没有外部标准规定示例数据、风险阈值或验收结果。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/examples/index.json",
+      "asset_sha256": "f469aabdef1c3c50c83ed8bfca622c0a775716cf9ad9f10e2beaf0b515cba443",
+      "json_pointer": "/examples/1",
+      "id": "fraud-network-example",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目生成的待复核假设与证据链教学例子；标准未据此规定欺诈定性，公共标识不构成确证。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/",
+      "id": "finance-regulatory-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/0",
+      "id": "regime",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第2-3、12条",
+          "relation": "supports",
+          "scope": "机构/监管统计范围与常规、临时统计调查区分。"
+        }
+      ],
+      "standard_gap": "报表模板、生效版本及DEMO表号为本地选择；未取得适用机构的正式1104模板。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/1",
+      "id": "definition",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#item",
+          "relation": "supports",
+          "scope": "事实引用概念、上下文及数值单位。"
+        }
+      ],
+      "standard_gap": "ReportDefinition/MetricDefinition图节点、版本键及指标公式不是XBRL标准规定的图结构。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/2",
+      "id": "context",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#context; #entity; #period; #unit",
+          "relation": "supports",
+          "scope": "上下文主体、期间与数值单位分离。"
+        }
+      ],
+      "standard_gap": "任意业务维度还需所选Dimensions/taxonomy依据；本地图事实主键与去重规则为项目设计。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/3",
+      "id": "clocks",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "双时钟、晚到修订及不覆盖原运行是本地可复现性策略；所引报送标准未规定这套事件/已知时间算法。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/4",
+      "id": "lineage",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第24条",
+          "relation": "supports",
+          "scope": "统计资料完整、连续与可追溯归档。"
+        },
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=15; Principle3, paragraphs36-40",
+          "relation": "background",
+          "scope": "字典、来源调节和数据聚合过程的记录背景。"
+        },
+        {
+          "source_id": "bcbs239-2026",
+          "locator": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles; Data lineage",
+          "relation": "background",
+          "scope": "信息性数据血缘讨论，不构成新的监管要求。"
+        }
+      ],
+      "standard_gap": "具体血缘图、哈希、运行版本及回执边为本地可复现性设计。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/5",
+      "id": "amounts",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#unit",
+          "relation": "supports",
+          "scope": "数值事实需要明确计量单位。"
+        }
+      ],
+      "standard_gap": "未知值处理、混币阻断和授信/贷款汇总口径为本地方法；无正式转换政策不创造汇率。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/6",
+      "id": "quality",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第16、18-19、22条",
+          "relation": "supports",
+          "scope": "统计质量、一致性、责任与全流程质量管理。"
+        },
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=15; Principles3-4",
+          "relation": "background",
+          "scope": "来源调节和完整性背景。"
+        }
+      ],
+      "standard_gap": "勾稽公式、波动阈值、责任工作流和通过标准由已选正式报表与机构规则指定。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/7",
+      "id": "receipt",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "尚未取得特定监管接口的业务接受/拒绝协议；XBRL Essentials不规定监管回执或上一接受版本的保留策略。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/8",
+      "id": "jurisdiction",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=8; Scope and initial considerations",
+          "relation": "background",
+          "scope": "BCBS239自身适用范围背景。"
+        },
+        {
+          "source_id": "bcbs239-2026",
+          "locator": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles; informational disclaimer",
+          "relation": "background",
+          "scope": "通讯明确信息性范围，不新增监管要求。"
+        }
+      ],
+      "standard_gap": "具体中国报表制度、提交日历和阈值需另选正式材料。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/9",
+      "id": "quality-owner-and-reconciliation",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第16、18-19、22条",
+          "relation": "supports",
+          "scope": "统计一致性、分工与质量责任。"
+        }
+      ],
+      "standard_gap": "本地责任边、整改状态与差异对象为设计建议；不声明完成机构合规审查。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/regulatory/concepts/domain.json",
+      "asset_sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+      "json_pointer": "/concepts/10",
+      "id": "numeric-fact-unit-context",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#item; #context; #period; #unit",
+          "relation": "supports",
+          "scope": "事实、上下文、期间和数值单位身份。"
+        }
+      ],
+      "standard_gap": "上述图字段是本地投影；不构成XBRL实例、tuple或完整Dimensions校验器。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/",
+      "id": "finance-related-parties-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/0",
+      "id": "regimes",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第5-8、10-11条",
+          "relation": "supports",
+          "scope": "银行保险监管关联方/关联交易范围。"
+        },
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第2-8条",
+          "relation": "supports",
+          "scope": "会计披露关联方、交易与合并范围。"
+        }
+      ],
+      "standard_gap": "两个制度的适用主体、排除条款和汇总规则分别配置，不相互替代。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/1",
+      "id": "identity",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "证据支持的主体ID及共享标识线索规则为本地方法；共享地址、电话、账户不被所引标准自动定义为sameAs或关联方。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/2",
+      "id": "control",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第5-8条",
+          "relation": "supports",
+          "scope": "控制、重大影响及各类自然人/组织关联情形。"
+        },
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第3-4条",
+          "relation": "supports",
+          "scope": "会计口径下控制、共同控制、重大影响及关联方类别。"
+        }
+      ],
+      "standard_gap": "持股证据不是自动控制判定；具体时点、穿透算法和评估结论须由适用规则及证据确定。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/3",
+      "id": "temporal",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "事件时点/已知截止的双时钟过滤是本地可复现算法；不等于监管第8条过去/未来十二个月的法定关联认定范围。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/4",
+      "id": "state",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第6条",
+          "relation": "supports",
+          "scope": "仅共同国家控制且无其他关联关系的会计排除情形。"
+        },
+        {
+          "source_id": "mof-related-state",
+          "locator": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm; 会计司回复正文",
+          "relation": "background",
+          "scope": "官方解释举例说明同一母公司控制不等于只有国家控制。"
+        }
+      ],
+      "standard_gap": "国家控制排除不能扩大为银行保险监管的通用豁免；机构与后续解释适用需核实。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/5",
+      "id": "aggregation",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第10-11条",
+          "relation": "supports",
+          "scope": "披露金额、未结算项目与按关联方/交易类型披露。"
+        },
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第11条",
+          "relation": "supports",
+          "scope": "监管关联交易余额的特定合并范围。"
+        }
+      ],
+      "standard_gap": "事件重放去重、币种处理及冲正算法是本地数据处理；监管与会计汇总范围不得混用。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/6",
+      "id": "consolidation",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第2条",
+          "relation": "supports",
+          "scope": "合并范围内交易的对外合并披露边界。"
+        }
+      ],
+      "standard_gap": "会计披露排除不等于银行保险关联交易审查豁免；本地图候选保留策略仍是项目选择。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/7",
+      "id": "governance2025",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 决定第三项；重公布银行保险机构关联交易管理办法第45条第3款、第46条",
+          "relation": "supports",
+          "scope": "特定任职人员关系交易的审查/批准与回避。"
+        }
+      ],
+      "standard_gap": "章程适用、人员关系及重大交易分类必须逐案确认；不自动审批或给出法律结论。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/8",
+      "id": "decision",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "候选解释、反证和人工复核工作流是项目设计；未有标准授权自动定性违法或替代主管机关判断。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/9",
+      "id": "disclosure-elements",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第10-12条",
+          "relation": "supports",
+          "scope": "关联交易披露要素、分类与公允交易证据范围。"
+        }
+      ],
+      "standard_gap": "字段是本地设计；适用会计准则解释及具体披露模板仍需确认，未给出估值或公允结论。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/related-parties/concepts/domain.json",
+      "asset_sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+      "json_pointer": "/concepts/10",
+      "id": "review-and-recusal-evidence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第45-46条",
+          "relation": "supports",
+          "scope": "审议记录和回避的制度依据。"
+        }
+      ],
+      "standard_gap": "本地证据结构不代替法定审议程序；不自动设定例外、批准或监管报送动作。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/relationships/credit.json",
+      "asset_sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+      "json_pointer": "/",
+      "id": "credit-relationships",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/relationships/credit.json",
+      "asset_sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+      "json_pointer": "/relationships/0",
+      "id": "borrowing",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasBorrower",
+          "relation": "supports",
+          "scope": "标准属性提供借款/放贷角色的关系依据；本地图边按业务方向表达。"
+        }
+      ],
+      "standard_gap": "本地边方向可能与标准属性相反；单一借款人/放贷人基数和时点窗口是示例约束，不是全部FIBO公理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/relationships/credit.json",
+      "asset_sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+      "json_pointer": "/relationships/1",
+      "id": "funding",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/hasLender",
+          "relation": "supports",
+          "scope": "标准属性提供借款/放贷角色的关系依据；本地图边按业务方向表达。"
+        }
+      ],
+      "standard_gap": "本地边方向可能与标准属性相反；单一借款人/放贷人基数和时点窗口是示例约束，不是全部FIBO公理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/relationships/credit.json",
+      "asset_sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+      "json_pointer": "/relationships/2",
+      "id": "guaranteeing",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; Loan restriction on hasGuarantor",
+          "relation": "background",
+          "scope": "Loan记录的保证人限定并不要求所有贷款存在保证人。"
+        }
+      ],
+      "standard_gap": "本地保证边、0..N基数、有效期和金额结构是模型推断；未核实完整保证/抵押/质押关系闭包。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/relationships/credit.json",
+      "asset_sha256": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+      "json_pointer": "/relationships/3",
+      "id": "shared-exposure",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "bcbs-credit",
+          "locator": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08#36.39",
+          "relation": "background",
+          "scope": "关联集团内个体评级政策的背景；不等于共债或关联借贷判定。"
+        }
+      ],
+      "standard_gap": "该派生边的时间、余额、机构范围和原记录去重完全由所声明分析口径决定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/",
+      "id": "fibo-index",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/0",
+      "id": "FND",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/FND",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/1",
+      "id": "BE",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/BE",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/2",
+      "id": "FBC",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/FBC",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/3",
+      "id": "LOAN",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/LOAN",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/4",
+      "id": "SEC",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/SEC",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/5",
+      "id": "DER",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/DER",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/6",
+      "id": "IND",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/IND",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/7",
+      "id": "MD",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/MD",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/8",
+      "id": "BP",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/BP",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/standards/fibo-index.json",
+      "asset_sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+      "json_pointer": "/modules/9",
+      "id": "CAE",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/CAE",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/",
+      "id": "finance-glossary",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/0",
+      "id": "FinancialInstitution",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FunctionalEntities/FinancialServicesEntities.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialInstitution",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/1",
+      "id": "FinancialProduct",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/FinancialProductsAndServices.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/FinancialProduct",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/2",
+      "id": "FinancialMarket",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "本次限定检索未建立金融市场中文范围与所选FIBO类的精确对应；不得凭同名词生成IRI。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/3",
+      "id": "FinancialTransaction",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/IndividualTransaction",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "此映射仅定位IndividualTransaction，不声明涵盖所有金融交易类型；合同、指令、记录和实际事件需逐项区分。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/4",
+      "id": "FinancialContract",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf; https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/5",
+      "id": "Claim",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "债权是本地业务视角；尚未核实此范围对应的FIBO精确Class/Property及其权利义务公理。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/6",
+      "id": "Debt",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Debt",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/7",
+      "id": "Account",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/8",
+      "id": "CreditFacility",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditFacility",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/9",
+      "id": "Loan",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/10",
+      "id": "Guarantee",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "中文担保涵盖保证、抵押、质押等不同法律安排；尚无经核实的单一FIBO等价类，不以Loan.hasGuarantor替代完整担保语义。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/11",
+      "id": "Settlement",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/Settlement",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/12",
+      "id": "Borrower",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Borrower",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/13",
+      "id": "Lender",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Lender",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/14",
+      "id": "Repayment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalPayment",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        },
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestPayment",
+          "relation": "supports",
+          "scope": "利息支付与本金支付分别定位，不把还款计划当实付。"
+        }
+      ],
+      "standard_gap": "Repayment是本地总称；PrincipalPayment仅覆盖本金支付，利息另见同文件InterestPayment；冲正、退回及计划归并由本地规则定义。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/finance/terminology/glossary.json",
+      "asset_sha256": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+      "json_pointer": "/terms/15",
+      "id": "CreditInquiry",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "征信查询事件为本地业务概念；尚未核实所选FIBO修订中的精确等价类，查询不能由此推成借贷事实。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/",
+      "id": "healthcare-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/0",
+      "id": "patient-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html#id",
+          "relation": "supports",
+          "scope": "资源逻辑ID具有资源/服务上下文。"
+        },
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Identifier",
+          "relation": "supports",
+          "scope": "业务标识的system/value与资源逻辑ID区分。"
+        }
+      ],
+      "standard_gap": "跨来源患者归并、授权crosswalk与假名键是本地策略；Identifier相同或人口信息相似本身不授予身份合并。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/1",
+      "id": "resource-version",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html#versions",
+          "relation": "supports",
+          "scope": "版本元数据与资源逻辑身份分离，版本ID是来源管理的标识。"
+        }
+      ],
+      "standard_gap": "本地版本去重和快照保留为设计选择；meta.versionId不是可依赖的数值排序，也不保证来源开放历史。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/2",
+      "id": "encounter-context",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-encounter",
+          "locator": "https://hl7.org/fhir/R4/encounter.html; Scope and Usage",
+          "relation": "supports",
+          "scope": "Encounter提供患者与服务交互的上下文及生命周期。"
+        }
+      ],
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/3",
+      "id": "request-versus-performance",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-servicerequest",
+          "locator": "https://hl7.org/fhir/R4/servicerequest-definitions.html#ServiceRequest.intent; #ServiceRequest.doNotPerform",
+          "relation": "supports",
+          "scope": "请求意图及禁止执行含义。"
+        },
+        {
+          "source_id": "fhir-r4-procedure",
+          "locator": "https://hl7.org/fhir/R4/procedure-definitions.html#Procedure.status",
+          "relation": "supports",
+          "scope": "执行活动文档有独立状态。"
+        },
+        {
+          "source_id": "fhir-r4-request-status",
+          "locator": "https://hl7.org/fhir/R4/codesystem-request-status.html; revoked",
+          "relation": "supports",
+          "scope": "请求撤销状态不证明实际执行。"
+        }
+      ],
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/4",
+      "id": "observation-validity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.status; #Observation.dataAbsentReason",
+          "relation": "supports",
+          "scope": "结果状态与缺失原因字段。"
+        },
+        {
+          "source_id": "fhir-r4-observation-status",
+          "locator": "https://hl7.org/fhir/R4/codesystem-observation-status.html; entered-in-error",
+          "relation": "supports",
+          "scope": "录入错误状态的含义。"
+        }
+      ],
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/5",
+      "id": "condition-assertion",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.verificationStatus; #Condition.clinicalStatus",
+          "relation": "supports",
+          "scope": "确认状态与临床状态有不同语义。"
+        }
+      ],
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/6",
+      "id": "clinical-times",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-servicerequest",
+          "locator": "https://hl7.org/fhir/R4/servicerequest-definitions.html#ServiceRequest.authoredOn",
+          "relation": "supports",
+          "scope": "请求签发时间。"
+        },
+        {
+          "source_id": "fhir-r4-procedure",
+          "locator": "https://hl7.org/fhir/R4/procedure-definitions.html#Procedure.performed_x_",
+          "relation": "supports",
+          "scope": "执行时间或期间。"
+        },
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.effective_x_; #Observation.issued",
+          "relation": "supports",
+          "scope": "观测有效时间与可用时间分离。"
+        },
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.onset_x_; #Condition.recordedDate",
+          "relation": "supports",
+          "scope": "健康问题发生时间与记录日期分离。"
+        },
+        {
+          "source_id": "fhir-r4-provenance",
+          "locator": "https://hl7.org/fhir/R4/provenance.html; recorded",
+          "relation": "supports",
+          "scope": "来源活动记录时间。"
+        }
+      ],
+      "standard_gap": "本地时间字段投影必须保留来源精度和choice类型；缺失值不补造午夜，观测截止策略由项目定义。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/7",
+      "id": "coding-and-unit",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Coding; #Quantity",
+          "relation": "supports",
+          "scope": "编码system/version/code及Quantity的数值、comparator与单位字段。"
+        }
+      ],
+      "standard_gap": "单位换算和代码等价须另有获准规则；display或unit标签相同不证明代码、量纲或术语版本相同。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/8",
+      "id": "provenance-and-retraction",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-provenance",
+          "locator": "https://hl7.org/fhir/R4/provenance.html; Scope and Usage, target",
+          "relation": "supports",
+          "scope": "资源创建/更新的来源活动及目标资源。"
+        }
+      ],
+      "standard_gap": "Provenance不是访问授权或临床行为发生的证明；本地撤回筛选与权限运行机制未由此实现。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/9",
+      "id": "synthetic-data-minimization",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "合成样例、最小化输入和假名保护是项目规则；本包不提供匿名性、隐私合规或授权运行时证明。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/10",
+      "id": "business-identifier-scope",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Identifier",
+          "relation": "supports",
+          "scope": "Identifier的命名空间、值、用途、期间及分配机构字段。"
+        }
+      ],
+      "standard_gap": "本地跨系统匹配与患者假名关联仍需授权证据；这些字段本身不构成匹配或身份合并算法。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/concepts/11",
+      "id": "quantity-comparator-boundary",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Quantity",
+          "relation": "supports",
+          "scope": "Quantity的comparator修饰数值解释，unit标签与system/code分离。"
+        }
+      ],
+      "standard_gap": "聚合策略、单位转换和临床解释为外部授权规则；本包不输出诊断、治疗或全量Quantity验证器。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/official_constraints/0",
+      "id": "r4-observation-obs6",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.dataAbsentReason; obs-6",
+          "relation": "supports",
+          "scope": "root value[x]存在时不能另有dataAbsentReason；只覆盖此选定不变量。"
+        }
+      ],
+      "standard_gap": null,
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/official_constraints/1",
+      "id": "r4-condition-con5",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.clinicalStatus; con-5",
+          "relation": "supports",
+          "scope": "verificationStatus=entered-in-error时clinicalStatus应缺失；只覆盖此选定不变量。"
+        }
+      ],
+      "standard_gap": null,
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/mapping_losses/0",
+      "id": "resource-coverage-loss",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html; Resource structure",
+          "relation": "background",
+          "scope": "基础资源提供广于本地模型的结构背景。"
+        }
+      ],
+      "standard_gap": "保留JSON或少量字段不实现全部FHIR语义、modifierExtensions、profiles、references、consent、签名及工作流。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/healthcare/concepts/domain.json",
+      "asset_sha256": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+      "json_pointer": "/mapping_losses/1",
+      "id": "no-terminology-equivalence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Coding",
+          "relation": "supports",
+          "scope": "编码来源system/version/code边界。"
+        }
+      ],
+      "standard_gap": "本包不包含或验证ICD、LOINC、SNOMED CT代码集；本地合成编码不声明与临床标准术语等价。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/",
+      "id": "logistics-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/0",
+      "id": "shipment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GSIN shipment的标识对象与粒度。"
+        }
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/1",
+      "id": "consignment",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GINC consignment的标识对象与粒度。"
+        }
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/2",
+      "id": "logistic-unit",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "SSCC logistic unit的标识对象与粒度。"
+        }
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/3",
+      "id": "trade-item",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN class and compound instance/batch keys的标识对象与粒度。"
+        }
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/4",
+      "id": "leg",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "路段顺序、换船和目的地绑定是本地运输模型；未核实统一标准规定该路段图结构。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/5",
+      "id": "booking-document",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-transaction-data; #h-visibility-data; sections6.1.2-6.1.3",
+          "relation": "supports",
+          "scope": "商业交易数据与可见性事件数据分离。"
+        }
+      ],
+      "standard_gap": "订舱/单证生命周期、状态和实物交付判定由来源合同与系统定义。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/6",
+      "id": "event-classifier",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "dcsa-event-classifier",
+          "locator": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm; Attributes ACT/PLN/EST/REQ",
+          "relation": "supports",
+          "scope": "DCSA2024.4包含Actual、Planned、Estimated和Requested四类。"
+        }
+      ],
+      "standard_gap": "本项目三类shipment投影不覆盖完整DCSA枚举；REQ必须保留请求性质，不转换为实际发生。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/7",
+      "id": "event-time",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "eventTime、recordTime及eventTimeZoneOffset分离。"
+        }
+      ],
+      "standard_gap": "本地observed_at是首次获知时间；EPCIS recordTime属于来源仓库，不能不经映射直接等同。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/8",
+      "id": "event-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.4.1 eventID and section7.4.1.2 ErrorDeclaration",
+          "relation": "background",
+          "scope": "事件标识与错误声明保留不同语义。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_gap": "来源事件号键、消息重放与真实重复扫描识别是本地规则；错误声明可能与原事件共享eventID，不能简单按eventID丢弃。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/9",
+      "id": "handover",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.5 and7.3.6.4",
+          "relation": "supports",
+          "scope": "位置及业务转移端点分别建模。"
+        },
+        {
+          "source_id": "gs1-cbv",
+          "locator": "https://ref.gs1.org/standards/cbv/2.0.0/; section7.4.3 owning_party, possessing_party, location",
+          "relation": "supports",
+          "scope": "所有权、持有方和地点端点类型区分。"
+        }
+      ],
+      "standard_gap": "本地到港/卸货/签收证据与保管责任判定需具体来源；端点角色不自动证明所有权实际转移。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/10",
+      "id": "eta-selection",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "当前有效预测选择、里程碑对齐、计划基线及延误阈值为本地规则；不由DCSA枚举或EPCIS事件字段决定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/11",
+      "id": "delivery-completeness",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "所有必需物流单元的实际arrival在指定目的地确认交付，是此合成例子的判据；不是GS1或DCSA通用签收要求。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/12",
+      "id": "read-point-business-location",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.3.5",
+          "relation": "supports",
+          "scope": "读取点与业务地点具有不同用途。"
+        }
+      ],
+      "standard_gap": "地点归一化、地理包含关系、里程碑比较及交付判定为本地规则。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/concepts/13",
+      "id": "requested-event-classifier",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "dcsa-event-classifier",
+          "locator": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm; REQ attribute",
+          "relation": "supports",
+          "scope": "REQ为正式枚举中的Requested。"
+        }
+      ],
+      "standard_gap": "本项目现有三类示例未实现REQ流程；请求转计划或实际的状态机需来源业务规则。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/logistics/concepts/domain.json",
+      "asset_sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+      "json_pointer": "/change_log/0",
+      "id": "initial-2026-11-05",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目变更日志，不是标准变更或废弃ID公告。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/",
+      "id": "manufacturing-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/0",
+      "id": "material-lot-identity",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.3.3; 8.4.3.4",
+          "relation": "supports",
+          "scope": "MaterialDefinitionType和MaterialLotType分离。"
+        }
+      ],
+      "standard_gap": "source+site+lot键、拆分后新批次键和返工身份策略为本地设计。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/1",
+      "id": "event-genealogy",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.4.5 TransformationEvent",
+          "relation": "supports",
+          "scope": "投入被全部或部分消耗并产生输出的转化事件语义。"
+        }
+      ],
+      "standard_gap": "本地图事件键、拆分/合并/返工分类和召回遍历规则不是通用EPCIS处理算法。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/2",
+      "id": "equipment-role",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.2; 8.3; 8.4",
+          "relation": "supports",
+          "scope": "角色设备、物理资产与物料信息模型分离。"
+        }
+      ],
+      "standard_gap": "生产订单角色与本地资源绑定需业务证据；共设备不产生本地物料血缘。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/3",
+      "id": "quantity-reconciliation",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.3.3.1 QuantityElement",
+          "relation": "background",
+          "scope": "类级物料数量与单位的表达背景。"
+        }
+      ],
+      "standard_gap": "精确十进制存储、单位换算、守恒基础和对账阈值为本地政策；EPCIS数量表达本身不规定守恒算法。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/4",
+      "id": "loss-coproduct",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "损耗、副产物、终端批次去重及防止中间库存重复计量是本地核对策略；未据所引标准推导统一守恒公式。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/5",
+      "id": "inspection-evidence",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.2.1; 8.4.3.1; 9.6.3",
+          "relation": "supports",
+          "scope": "MaterialTestResultType、MaterialTestSpecificationType及TestedByMaterialTest的关联。"
+        }
+      ],
+      "standard_gap": "检验阈值、抽样判定、证据新鲜度和是否解除召回需机构与适用规范决定。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/6",
+      "id": "recall-scope",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "候选追溯、隔离、授权召回和回收状态为本地流程；公开建模标准不代替产品特定召回法规或决定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/7",
+      "id": "event-observation-clock",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "eventTime、recordTime、eventTimeZoneOffset具有不同用途。"
+        }
+      ],
+      "standard_gap": "observed_at是本地首次获知时间，不能自动等于EPCIS仓库recordTime；历史知识截止和晚到纳入算法为项目策略。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/8",
+      "id": "standards-boundary",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; sections7.4.1 and7.4.5",
+          "relation": "background",
+          "scope": "可见性事件及转化范围。"
+        },
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/1",
+          "relation": "background",
+          "scope": "资源信息模型范围和ANSI/ISA-95.00.02-2010依据。"
+        }
+      ],
+      "standard_gap": "所引标准不规定本地检验限值、召回政策或属性图schema。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/9",
+      "id": "test-specification-result-link",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.2.1; 8.4.3.1; 9.6.3",
+          "relation": "supports",
+          "scope": "MaterialTestResultType、MaterialTestSpecificationType与TestedByMaterialTest的概念关系。"
+        }
+      ],
+      "standard_gap": "字段为本地映射；规格版本选择、测量方法、接受限值及抽样外推仍需授权业务与质量规范。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/manufacturing/concepts/domain.json",
+      "asset_sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+      "json_pointer": "/records/10",
+      "id": "visibility-error-declaration",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.4.1.2 ErrorDeclaration",
+          "relation": "supports",
+          "scope": "错误声明、声明时间及更正事件引用。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_gap": "本地血缘回放、受影响候选重算和物理返工分类是项目处理策略；不把错误声明当库存反向posting。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/",
+      "id": "retail-domain",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/0",
+      "id": "sku-gtin",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN class identity and compound keys的标识粒度。"
+        }
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/1",
+      "id": "location",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GLN party/physical/digital/function contexts的标识粒度。"
+        }
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/2",
+      "id": "lot",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN plus lot qualifier的标识粒度。"
+        }
+      ],
+      "standard_gap": "SKU、地点层级及merchant/sku/location/lot/condition/unit键为本地业务设计；不证明GS1分配正确。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/3",
+      "id": "on-hand",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "实际收货posting才改变本地实存、在途不入实存是所声明库存口径；未核实外部标准规定本地入账规则。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/4",
+      "id": "snapshot",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "最新有效快照锚与其后运动相加、快照不叠加为本地余额重建算法，不能由EPCIS事件概念直接推出。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/5",
+      "id": "movement",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "原子多posting、整事件隔离和source_system+event_id去重是项目记账方法；不代表完整EPCIS Capture语义。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/6",
+      "id": "reservation",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [
+        {
+          "source_id": "gs1-cbv",
+          "locator": "https://ref.gs1.org/standards/cbv/2.0.0/; sections7.1.3 reserving and7.2.3 reserved",
+          "relation": "background",
+          "scope": "CBV保留的是实例标识分配语义，范围不同于零售库存预留。"
+        }
+      ],
+      "standard_gap": "零售预留生命周期、最高版本选择、有效期和available公式为本地政策；不能以CBV reserved作为标准依据。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/7",
+      "id": "commerce-line",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-transaction-data; #h-visibility-data; sections6.1.2-6.1.3",
+          "relation": "supports",
+          "scope": "商业单据数据与可见性事件数据区分。"
+        }
+      ],
+      "standard_gap": "单据关联posting和避免销售重复扣减是本地库存模型，不是GS1标准记账算法。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/8",
+      "id": "return-condition",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "受损/隔离/可销售分类、双向posting和退回检验放行由本地质量与库存政策定义。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/9",
+      "id": "reversal",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "逐posting反向、更正引用和一次有效reversal是本地记账约束；不等于EPCIS errorDeclaration。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/10",
+      "id": "time-knowledge",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "业务事件时间与EPCIS仓库记录时间分离。"
+        }
+      ],
+      "standard_gap": "本地observed_at、快照覆盖边界和晚到对账算法由项目定义，不能把仓库recordTime自动当本地首次已知时间。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/11",
+      "id": "replenishment",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "补货点、目标量、available公式和建议数量为用户配置政策；标准没有规定本例阈值或自动采购。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/12",
+      "id": "unit-currency",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "十进制字符串、混单位拒绝、金额不入数量算式是本地数据处理策略；未实现外部完整度量/货币标准。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/13",
+      "id": "traceability-event-data-elements",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-traceability",
+          "locator": "https://ref.gs1.org/standards/global-traceability/2.0.0/; sections2.3 and3.1",
+          "relation": "supports",
+          "scope": "CTE、KDE及Who/What/Where/When/Why维度。"
+        }
+      ],
+      "standard_gap": "具体必填字段、容错阈值、地区法规和库存入账策略仍由选定业务材料决定。",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/concepts/14",
+      "id": "event-correction-versus-stock-reversal",
+      "standard_status": "standard-backed",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.4.1.2 ErrorDeclaration",
+          "relation": "supports",
+          "scope": "事件错误声明及更正事件引用。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_gap": "本地库存逆向posting、快照对账和可销售数量重算是项目政策；不由错误声明直接产生库存变动。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "disposition": "Verified only for listed support scope; remaining local meanings retain stated gap"
+    },
+    {
+      "asset": "knowledge/retail/concepts/domain.json",
+      "asset_sha256": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+      "json_pointer": "/change_log/0",
+      "id": "initial-2026-11-05",
+      "standard_status": "nonstandard-modeling",
+      "standard_basis": [],
+      "standard_gap": "项目变更日志，不是GS1标准修订记录或外部概念废弃公告。",
+      "disposition": "Nonstandard modeling; not a normative definition or conformance pass"
+    }
+  ],
+  "findings_closed": {
+    "F01": "CSAF Remediations locator corrected to3.2.3.12 in all copies",
+    "F02": "Version/vector/score10.0 and pinned FIRST calculation; genuine standards documents and negatives validated",
+    "F03": "EPCIS same-eventID permitted declaration wording and original schema/semantic fixtures",
+    "F04": "Public CGMES3 RDFS/SHACL acquired at8eff738bda72dc3a97fc24bf021dc78773814111; paid IEC full text remains unavailable and unverified/local parts explicitly nonstandard",
+    "F05": "Repository target is knowledge/mapping assets; local graph fixtures remain explicitly lossy projections; no complete exchange processor or institution certification claimed",
+    "F06": "FinancialProduct definition broadened; unresolved mappings/import closure and reasoning limits retained"
+  },
+  "remaining_limits": [
+    "Paid IEC full text unavailable; no complete IEC conformity",
+    "No FIBO import-closure reasoning or OWL processor/document certification",
+    "No FHIR/EPCIS/XBRL/CGMES/OPC UA interface, bank compliance, legal or clinical certification"
+  ]
+}

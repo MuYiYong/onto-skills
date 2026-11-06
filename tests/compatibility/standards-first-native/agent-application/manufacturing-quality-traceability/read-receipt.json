@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/request.txt",
+      "sha256": "1532fca5da1b76f5f19bcee38d1de965f0527f9d51e54ac0aab7e975a0a5d147"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/schema.json",
+      "sha256": "812b9d29738eda0905a73dd24b281d2f53e3a5f2deceb642ad22a790657535af"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/source-files.json",
+      "sha256": "29f94dbb281c435dd5334a5992010b4a33f51f5db5076bf8d8e34573dc1dc179"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/.agents/skills/manufacturing-quality-traceability/SKILL.md",
+      "sha256": "8e5d44e29aa6d45b8837c2c83972dba918d7f0b46a08343787d82617e1a9c01d"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/.agents/skills/manufacturing-quality-traceability/references/method.md",
+      "sha256": "c6349e4946e49f0ebab40151c11be8aaa98cb1622ce94f6f58e634768fe2eb2d"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/.agents/skills/manufacturing-quality-traceability/references/sources.json",
+      "sha256": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/manufacturing-quality-traceability/.agents/skills/manufacturing-quality-traceability/references/domain.json",
+      "sha256": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

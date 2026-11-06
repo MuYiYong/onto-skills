@@ -1,0 +1,3 @@
+Use ONLY $cybersecurity-domain-knowledge at .agents/skills/cybersecurity-domain-knowledge as the installed skill under review. Read its SKILL.md and relevant package-local references. This is an ACTUAL product acceptance task, not implementation delegation. Read only this isolated project. Do not use network, other skills/subagents, credentials/config or production systems. Do not modify files. Do not claim full standard certification from bounded knowledge. Return schema JSON only.
+
+基于SPDX2.3、CSAF2.0和CVSS4.0解释软件组件与通告概念。两个SBOM均有SPDXRef-lib，文档namespace不同，display name相同。发布者display name相同但namespace不同。新版文档再次使用product-p，无新版映射。CVSS Base9.8且补丁已发布，没有安装变更或利用记录。列出身份、版本、标准定位、推断边界；不要把缺评估当safe，也不要把旧映射跨修订继承。

@@ -30,3 +30,9 @@ license: MIT
 ## 资源与质量检查
 
 [方法](references/method.md) 包含最小决策规则；[工作示例](examples/worked-example.md) 展示 unknown 与两种时间。核对每个重要概念的来源/分类、身份、时效和单位。引用 CIM/CGMES 仅提供背景，不声称本包是标准实现。外部数据库语法生成是可选后续工作，遵循 [交接边界](references/handoff.md)。
+
+## 标准依据与缺口
+
+先核实包内来源与知识条目的standard_basis：固定发布机构、版次、具体定位和支持范围，再形成项目解释。standard_gap保留未核实映射、本地政策和补证路径；本地键、阈值或判定公式不因引用标准就成为官方定义。任务缺少适用版本或来源时交付不依赖缺口的部分，并明确待核实项。
+
+交付时读取条目的standard_status：standard-backed仅表示standard_basis.scope内有已核实标准依据，其他本地规则仍按standard_gap保留；nonstandard-modeling明确标为“非标准建模”，标准未取得或精确映射未核实的原因一并列出。不得把背景页、目录或来源分类当成条目符合性。

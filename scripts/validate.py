@@ -230,15 +230,70 @@ def validate_knowledge(asset, catalog):
     except (ValueError, TypeError, FormatError) as exc:
         errors.append(f'knowledge: invalid updated_at: {exc}')
 
+    sources = {s['id']: s for s in catalog['sources']
+               if isinstance(s, dict) and isinstance(s.get('id'), str)}
+    # Only the selected catalogue itself is exempt from record grounding.
+    is_catalog = asset == catalog
+    if not is_catalog and asset.get('standards_policy') != 'standards-first-v1':
+        errors.append('knowledge: missing/invalid standards_policy')
+
+    def grounding(record):
+        ctx = f'knowledge/{record.get("id")}'
+        basis = record.get('standard_basis', [])
+        gap = record.get('standard_gap')
+        if not isinstance(basis, list):
+            errors.append(f'{ctx}: standard_basis must be a list')
+            basis = []
+        if gap is not None and (not isinstance(gap, str) or not gap.strip()):
+            errors.append(f'{ctx}: standard_gap must explain the missing or local authority')
+        if not basis and not (isinstance(gap, str) and gap.strip()):
+            errors.append(f'{ctx}: standard_basis or explicit standard_gap required')
+        direct_support = False
+        for citation in basis:
+            if not isinstance(citation, dict):
+                errors.append(f'{ctx}: standard_basis citation must be an object')
+                continue
+            ref = citation.get('source_id')
+            source = sources.get(ref) if isinstance(ref, str) else None
+            refs = record.get('source_ids')
+            if source is None or not isinstance(refs, list) or ref not in refs:
+                errors.append(f'{ctx}: standard_basis source must occur in record source_ids')
+                continue
+            if any(not isinstance(citation.get(k), str) or not citation[k].strip()
+                   for k in ('locator', 'scope')):
+                errors.append(f'{ctx}: standard_basis requires locator and bounded scope')
+            relation = citation.get('relation')
+            if relation not in ('supports', 'background'):
+                errors.append(f'{ctx}: invalid standard_basis relation')
+            if source.get('kind') not in ('official-standard', 'industry-common'):
+                errors.append(f'{ctx}: standard_basis requires a publisher standard or sourced background')
+            if relation == 'supports':
+                if source.get('kind') != 'official-standard':
+                    errors.append(f'{ctx}: direct standard support requires official-standard source')
+                else:
+                    direct_support = True
+        if record.get('classification') == 'official-standard' and not direct_support:
+            errors.append(f'{ctx}: official-standard record requires direct standard support')
+        status = record.get('standard_status')
+        if status not in ('standard-backed', 'nonstandard-modeling'):
+            errors.append(f'{ctx}: missing/invalid standard_status')
+        if status == 'standard-backed' and not direct_support:
+            errors.append(f'{ctx}: standard-backed status requires direct bounded support')
+        if status == 'nonstandard-modeling' and not (isinstance(gap, str) and gap.strip()):
+            errors.append(f'{ctx}: nonstandard-modeling status requires an explicit reason')
+
     def visit(value):
         if isinstance(value, dict):
-            # Sources use kind; knowledge records use classification.
-            if 'id' in value and 'kind' not in value:
+            # Only source entries in the selected catalogue use kind as an
+            # exemption. A knowledge record cannot opt out by adding that key.
+            if 'id' in value and (not is_catalog or 'kind' not in value):
                 if value.get('classification') not in {'official-standard', 'industry-common', 'project-curated', 'model-inference'}:
                     errors.append(f'knowledge/{value.get("id")}: missing/invalid classification')
                 refs = value.get('source_ids')
                 if not isinstance(refs, list) or not refs or any(not isinstance(x, str) or x not in ids for x in refs):
                     errors.append(f'knowledge/{value.get("id")}: missing/unknown source_ids')
+                if not is_catalog:
+                    grounding(value)
             for child in value.values():
                 visit(child)
         elif isinstance(value, list):

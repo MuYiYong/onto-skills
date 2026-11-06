@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/request.txt",
+      "sha256": "80350707cb59249a5679cc042ddb20cda4b9b35a7602953ff79a5714e13688ba"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/source-files.json",
+      "sha256": "2f1ca9b27cc40c2569669ebe3546d773998361eef78faded1e5b3014f53d28af"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/.agents/skills/logistics-domain-knowledge/SKILL.md",
+      "sha256": "e107331d00de91bd67825344b7c70ae901636fbc19ed37fd1a4e7291f038c959"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/.agents/skills/logistics-domain-knowledge/references/method.md",
+      "sha256": "ec763177ddefb94c33acddf484e9d953c5eee54cf449ccdfeb389d4bd57f4bcb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/.agents/skills/logistics-domain-knowledge/references/sources.json",
+      "sha256": "902e416621a970d79c64431d8a8deb2db16f18f41ebd1cc8e645224f5c1b9efb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/logistics-domain-knowledge/.agents/skills/logistics-domain-knowledge/references/domain.json",
+      "sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical domain/source reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application, not a complete Graph Model Specification or full standard-conformance validation."
+  ]
+}

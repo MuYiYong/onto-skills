@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
@@ -9,7 +9,10 @@
     "onto-project",
     "fibo",
     "owl2",
-    "bcbs-credit"
+    "bcbs-credit",
+    "owl2-syntax",
+    "owl2-direct-semantics",
+    "owl2-conformance"
   ],
   "id": "finance-sources",
   "name": "金融知识来源索引",
@@ -34,8 +37,8 @@
       "version": "repository 33a92cd34285d532c158da97bb42add089f135d3; AboutFIBOProd versionIRI 20261001",
       "publisher": "EDM Council",
       "license": "MIT for edmcouncil/fibo repository; linked publications retain own terms",
-      "retrieved_at": "2026-11-05",
-      "scope": "模块索引及金融本体术语定位；非完整本体副本",
+      "retrieved_at": "2026-11-06",
+      "scope": "固定修订中的模块与选定Class/Property定位；逐文件记录versionIRI，不宣称完整imports闭包或推理验证",
       "authority": "官方项目与发布来源；映射建议仍为本项目整理"
     },
     {
@@ -46,7 +49,7 @@
       "version": "W3C Recommendation 2012-12-11",
       "publisher": "W3C",
       "license": "W3C document terms; original document not redistributed",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Class、Property、Domain/Range、继承、Restriction 与开放世界解释",
       "authority": "OWL 语义的官方说明，本项目不是推理实现"
     },
@@ -54,13 +57,49 @@
       "id": "bcbs-credit",
       "name": "Basel Framework CRE36 Internal ratings-based approach: minimum requirements",
       "kind": "official-standard",
-      "uri": "https://www.bis.org/basel_framework/chapter/CRE/36.htm",
-      "version": "online chapter observed 2026-11-05; applicable jurisdiction/version must be selected per task",
+      "uri": "https://www.bis.org/committees/bcbs/basel-framework/standard/cre/36/inforce/2023-01-01/published/2022-12-08",
+      "version": "CRE36; published 2022-12-08; in force 2023-01-01; specific version reverified 2026-11-06",
       "publisher": "Basel Committee on Banking Supervision / BIS",
       "license": "BIS copyright; link and original summary only",
-      "retrieved_at": "2026-11-05",
-      "scope": "信用风险概念背景；不直接提供本地监管或审批阈值",
+      "retrieved_at": "2026-11-06",
+      "scope": "IRB概念背景；36.39涉及关联集团内个体评级；36.68起为该版本违约定义；不是多头借贷判定规则",
       "authority": "国际银行监管框架，法律适用需另行确定"
+    },
+    {
+      "id": "owl2-syntax",
+      "name": "OWL2 Structural Specification and Functional-Style Syntax",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/",
+      "version": "OWL2 Second Edition W3C Recommendation2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original index/summaries only, no full normative text redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Ontology/version/imports, classes/properties, expressions/axioms and global restrictions",
+      "authority": "Selected normative W3C Recommendation; bounded knowledge use only",
+      "kind": "official-standard"
+    },
+    {
+      "id": "owl2-direct-semantics",
+      "name": "OWL2 Direct Semantics",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-direct-semantics-20121211/",
+      "version": "OWL2 Second Edition W3C Recommendation2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original index/summaries only, no full normative text redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Formal interpretation of class/property expressions, axioms and ontologies",
+      "authority": "Selected normative W3C Recommendation; bounded knowledge use only",
+      "kind": "official-standard"
+    },
+    {
+      "id": "owl2-conformance",
+      "name": "OWL2 Conformance",
+      "uri": "https://www.w3.org/TR/2012/REC-owl2-conformance-20121211/",
+      "version": "OWL2 Second Edition W3C Recommendation2012-12-11",
+      "publisher": "W3C",
+      "license": "W3C document terms; original index/summaries only, no full normative text redistributed",
+      "retrieved_at": "2026-11-06",
+      "scope": "Distinguish ontology-document conformance from tool behavior; does not certify a local graph mapping",
+      "authority": "Selected normative W3C Recommendation; bounded knowledge use only",
+      "kind": "official-standard"
     }
   ]
 }

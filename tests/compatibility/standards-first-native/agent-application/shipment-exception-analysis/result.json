@@ -1,0 +1,32 @@
+{
+  "skill_used": "shipment-exception-analysis",
+  "answer": {
+    "selected_eta_event_id": "E2",
+    "delay_minutes": 240,
+    "delivery_confirmed": false,
+    "delivered_unit_ids": [
+      "U1"
+    ]
+  },
+  "identity_rules": [
+    "S的必需单元集合为{U1,U2}，仅同shipment/最终DC/arrival里程碑比较；事件以source_system+event_id区分，唯一事件保留，不能把planned P1转换为实际。",
+    "A1证明U1在最终DC实际arrival；A2只证明U2港口arrival；没有U2最终DC实际arrival，故不确认完整交付。",
+    "ETA选择E2因同一优先源issued_at13:00晚于E1的11:00，不按ETA目标时间或系统入库先后选择。"
+  ],
+  "time_and_units": [
+    "业务/知识截止2026-11-05T14:00:00Z；E1/E2已知且issued_at<=截止；A1在13:30、A2在12:00已发生；P1虽指向14:00仍是计划。",
+    "最新ETA E2=2026-11-05T16:00:00Z；基线12:00Z；(16:00-12:00)=240分钟，严格大于用户阈值30，构成ETA延误候选，不是实际延误/合同违约认定。",
+    "全部时间为UTC；estimated目标16:00晚于as_of允许，不能用actual未来证据冒充发生。"
+  ],
+  "standard_basis": [
+    "GS1 System Architecture12.0.0 section4.2提供shipment/consignment/logistic unit标识粒度；EPCIS2.0.0 7.3.4/7.4.1提供eventTime/recordTime/offset分离；本地observed_at仍需明确。",
+    "DCSA Information Model2024.4 Event Classifier ACT/PLN/EST/REQ支持事件分类；EPCIS2.0.0 7.3.5与CBV2.0.0 7.4.3支持地点/转移端点区别。",
+    "domain eta-selection与delivery-completeness明确nonstandard-modeling；本题按用户给定30分钟与本地严格大于、最新issued_at及全部必需单元正确目的地actual判据，不称标准通用交付规范。"
+  ],
+  "source_limits": [
+    "仅应用合成事实与包内方法，未读取例子/验收或运行真实物流系统；未给实际签收、保管方或GS1获配证明；schema结果不等于完整Graph Model或EPCIS/DCSA符合性。"
+  ],
+  "unresolved": [
+    "源system具体命名空间、实际observed_at/record_time及证据载荷未逐条给出，接受题设已知有效；U2最终DC实际到达仍缺失。"
+  ]
+}

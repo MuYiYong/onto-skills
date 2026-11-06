@@ -1,0 +1,34 @@
+{
+  "skill_used": "related-party-transaction-modeling",
+  "answer": {
+    "old_value": 70,
+    "corrected_value": 75,
+    "after_reversal_value": 30,
+    "shared_phone_proves_related_party": false
+  },
+  "identity_rules": [
+    "R的confirmed控制评估带独立证据，BANK与VENDOR经共同控制形成题设子规则候选；BANK与OTHER共享电话只为线索，不证明sameAs、控制或关联方。",
+    "主体使用namespace+party_id；交易用SYS+event_id+version；E1/v1、v2、v3为同一业务事件的更正/状态链，只选当时已知的权威当前版本，不能重复累计；E2为独立事件。",
+    "保留每笔候选的控制路径、源版本、载荷及revises_ref；多个路径不重复金额；reversed状态更新不同于独立负数补偿事件，旧证据不删除。"
+  ],
+  "time_and_units": [
+    "控制自2026-01-01有效且01-02已知，覆盖2026-10-31交易；known_at11-01排除晚到v2/v3，选E1/v1 40+E2 30=70 CNY。",
+    "known_at11-03纳入11-02更正，选E1/v2 45+E2 30=75 CNY；known_at11-05纳入11-04 reversed v3，E1不再计executed发生额，仅E2 30 CNY。",
+    "给定日精度不补造午夜/时区；原币CNY与金额unit另存；按题设明确的修订先后选版本，不按版本字符串数值排序。",
+    "给定合并披露范围{BANK,VENDOR}且basis=financial_statement时，该本地合并披露视图的内部交易金额为0，仍保留候选与原交易；监管候选原币去重发生额仍分别70/75/30，不从合并处理推导监管豁免。"
+  ],
+  "standard_basis": [
+    "NFRA令2025年第4号(2025-05-15；官网2025-05-20发布)，重公布银行保险机构关联交易管理办法；包内data_docId1209888定位第5-8、10-11条为范围，第45条第3款/第46条及决定第三项为治理修正/审议回避，不能沿用未修正2022版。",
+    "财政部CAS36财会〔2006〕3号，第2条合并对外披露边界、第3-4条控制/关联方、第10-12条交易金额/未结算/定价证据；sources.json和method.md一致记录2026-11-06已读取原文，具体机构及解释12/13适用仍待核实。",
+    "财政部会计司2024-01-17回复作为仅共同国家控制与同母公司控制区别的背景，不能扩大成普遍国企监管豁免。",
+    "domain regimes/control/aggregation/consolidation等为有界standard-backed；identity/temporal/decision是nonstandard-modeling。demonstration-confirmed-control-only、双时钟、版本去重、候选与披露视图为项目政策，不构成全部法律关联情形。"
+  ],
+  "source_limits": [
+    "本次仅用fresh packet的原创建模方法、标准索引/摘要及给定合成事实；未亲自联网读取CAS36/NFRA原文或执行监管/会计符合性检查。",
+    "只计算confirmed-control子规则的去重executed发生额；不判断完整法律关联、重大/一般分类、监管合同金额/余额、审批或报告；未生成完整Graph Model或运行数据库。",
+    "当前method.md的CAS36来源状态表述与sources.json一致，所报告的旧包来源状态措辞冲突在此fresh packet不再存在；未覆盖其他未读资源。"
+  ],
+  "unresolved": [
+    "实际机构/适用制度、后续解释、正式监管及披露模板、重大交易阈值和审议材料；source namespace、精确时区截止、金额unit和source修订引用/payload仍需真实export提供。"
+  ]
+}

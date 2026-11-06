@@ -1,0 +1,582 @@
+{
+  "tests": [
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "csaf_2_0_strict"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_1"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_10"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_11"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_2"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [
+        {
+          "instancePath": "/vulnerabilities/0",
+          "message": "missing CVE"
+        }
+      ],
+      "name": "informativeTest_6_3_3"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [
+        {
+          "instancePath": "/vulnerabilities/0",
+          "message": "missing cwe"
+        }
+      ],
+      "name": "informativeTest_6_3_4"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_5"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [
+        {
+          "instancePath": "/document/publisher/namespace",
+          "message": "use of non-self referencing urls failing to resolve"
+        }
+      ],
+      "name": "informativeTest_6_3_6"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_7"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_8"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "informativeTest_6_3_9"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_1"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_10"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_11"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_12"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_13"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_14"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_15"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_16"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_17"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_18"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_19"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_2"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_20"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_21"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_22"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_23"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_24"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_25"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_26"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_1"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_10"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_11"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_2"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_3"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_4"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_5"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_6"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_7"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_8"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_27_9"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_28"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_29"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_3"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_30"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_31"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_32"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_33"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_4"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_5"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_6"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_7"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_9"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_1"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "message": "missing tlp label",
+          "instancePath": "/document/distribution/tlp/label"
+        }
+      ],
+      "infos": [],
+      "name": "optionalTest_6_2_10"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "message": "missing canonical url",
+          "instancePath": "/document/references"
+        }
+      ],
+      "infos": [],
+      "name": "optionalTest_6_2_11"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "message": "missing document language",
+          "instancePath": "/document"
+        }
+      ],
+      "infos": [],
+      "name": "optionalTest_6_2_12"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "instancePath": "/document",
+          "message": "not sorted alphabetically"
+        },
+        {
+          "instancePath": "/document/tracking",
+          "message": "not sorted alphabetically"
+        },
+        {
+          "instancePath": "/document/tracking/revision_history/0",
+          "message": "not sorted alphabetically"
+        },
+        {
+          "instancePath": "/document/tracking/revision_history/1",
+          "message": "not sorted alphabetically"
+        }
+      ],
+      "infos": [],
+      "name": "optionalTest_6_2_13"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_14"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_15"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "instancePath": "/product_tree/full_product_names/0",
+          "message": "missing product identification helper"
+        }
+      ],
+      "infos": [],
+      "name": "optionalTest_6_2_16"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_17"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_18"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_19"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_2"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_20"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_3"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_4"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_5"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_6"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_7"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_8"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "optionalTest_6_2_9"
+    },
+    {
+      "isValid": true,
+      "errors": [],
+      "warnings": [],
+      "infos": [],
+      "name": "mandatoryTest_6_1_8"
+    }
+  ],
+  "isValid": true
+}

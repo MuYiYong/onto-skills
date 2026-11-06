@@ -1,0 +1,36 @@
+{
+  "skill_used": "finance-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "授信CreditFacility为信用安排，贷款Loan为形成偿付义务的安排；授信额度/决定、合同、实际放款、余额快照、计划与实付分别建模。",
+      "Borrower/Lender为具体贷款或授信上下文角色；Party身份与CustomerRole分开，ContractParty仅提供合同角色背景，不能等同所有客户。",
+      "Contract为权利义务安排；产品类别可被多个合同采用；债权债务为同一安排的不同业务视角，避免复制矛盾合同。",
+      "金融市场、中文担保和征信查询的精确标准映射未核实，交付有稳定本地ID、范围、原创解释和standard_gap的非标准建模项，不捏造IRI。"
+    ],
+    "decisions": [
+      "以包内固定FIBO修订提供有界术语映射，不能仅凭中文同名或字段名声称机构采用FIBO。",
+      "聚合发布AboutFIBOProd versionIRI 20261001与每个声明本体的versionIRI分别记录，不能把聚合日期覆盖到所有本体。",
+      "本地身份键、方向、基数、状态机、去重与风险阈值保持project-curated/model-inference；有标准概念支持不会使这些政策成为官方定义。"
+    ]
+  },
+  "identity_rules": [
+    "金融合同、账户、交易、产品类别与主体角色分别用稳定ID；账户带机构/账户体系，交易带来源命名空间。",
+    "标准IRI与本地键分栏，角色带上下文/有效期；担保方、担保合同、担保物和被担保义务分开，不用Loan.hasGuarantor代替全部中文担保语义。"
+  ],
+  "time_and_units": [
+    "FIBO固定commit33a92cd34285d532c158da97bb42add089f135d3；聚合AboutFIBOProd20261001；Debt.rdf本体20260901、Loans.rdf20251201、Contracts.rdf20260601，均以实际versionIRI为准。",
+    "余额、债务、额度与交易金额保留as_of、币种和计量口径；不同日期余额不直接相加。"
+  ],
+  "standard_basis": [
+    "glossary.json中CreditFacility/Borrower/Lender定位FBC/DebtAndEquities/Debt.rdf及https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/{CreditFacility,Borrower,Lender}；versionIRI https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/。",
+    "Loan定位LOAN/LoansGeneral/Loans.rdf，IRI https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan；versionIRI LOAN/20251201/LoansGeneral/Loans/。",
+    "Contract定位FND/Agreements/Contracts.rdf，IRI https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract；versionIRI FND/20260601/Agreements/Contracts/。",
+    "FinancialMarket、Guarantee、CreditInquiry、Claim条目标为nonstandard-modeling；其他standard-backed仅限条目standard_basis.scope，中文解释仍属项目整理。"
+  ],
+  "source_limits": [
+    "未取得原始FIBO本体文件、递归imports或运行推理；包内固定索引不等于完整标准、法律适用或监管认证。"
+  ],
+  "unresolved": [
+    "客户角色精确标准对齐；FinancialMarket/Guarantee/CreditInquiry等范围的精确IRI和公理；企业所在地、时期、风险政策与来源系统主键。"
+  ]
+}

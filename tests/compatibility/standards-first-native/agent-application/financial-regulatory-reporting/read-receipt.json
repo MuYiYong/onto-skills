@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/request.txt",
+      "sha256": "f3bb2846d6c1557c915cb0b19d12c24bdbb04d53837931d6273e8c90e99bbc0d"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/schema.json",
+      "sha256": "0895490e3553c1e78287efa3dcf4d8299cd9675cbce07dd0d312dcb4925fbed1"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/source-files.json",
+      "sha256": "75c927336ef4b81c9ff6f03bef2fa8d7d9c1468e578bc90fa581fb8b61465749"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/.agents/skills/financial-regulatory-reporting/SKILL.md",
+      "sha256": "fff91c000314c45ba34b9829555e11f2038a4b8eb17ed75f9d3f27c7bef7c179"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/.agents/skills/financial-regulatory-reporting/references/method.md",
+      "sha256": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/.agents/skills/financial-regulatory-reporting/references/sources.json",
+      "sha256": "aecbab252a1fe239a481ab7eb00fda384c1266770a55a6a863453b1f10dc5a97"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/financial-regulatory-reporting/.agents/skills/financial-regulatory-reporting/references/domain.json",
+      "sha256": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

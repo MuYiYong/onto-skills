@@ -13,6 +13,7 @@ INDUSTRIES = {
     'logistics': ('logistics-domain-knowledge', 'shipment-exception-analysis'),
     'healthcare': ('healthcare-domain-knowledge', 'healthcare-care-pathway-modeling'),
     'retail': ('retail-domain-knowledge', 'retail-inventory-replenishment'),
+    'cybersecurity': ('cybersecurity-domain-knowledge', 'software-vulnerability-impact'),
 }
 FINANCE = {
     'regulatory': ('financial-regulatory-reporting', 'regulatory-reporting'),

@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+## [v26.11.06_Build1906] - 2026-11-06
+
+### Added
+
+- 网络安全知识与软件漏洞影响2项独立技能；当前共27项、七个行业，附标准格式SPDX/CSAF/CVSS样例、证据图和正反例。
+- 全部149个知识对象的条目级标准状态、具体定位、适用范围及非标准缺口；取得公开CGMES3配置及规范性OWL2来源。
+- 最终27包227文件的两布局Codex原生发现、Linux CC-Switch全量安装/同步/开关/卸载，以及21项当前Codex代理有界应用证据。
+- 实际SPDX/CSAF/CVSS工具校验与EPCIS纠错身份证据；135项离线检查，原历史源码/结果冻结保留。
+
+### Fixed
+
+- 修正CSAF Remediations条款、CVSS完整向量与分数、EPCIS同ID合法纠错边界、FinancialProduct定义范围及CAS36过时获取说明。
+- 校验器拒绝缺少标准状态、背景冒充直接依据和无解释的非标准项；知识副本保持同步。
+
+### Limits
+
+- 本轮CLI推理5次终态HTTP429失败，未产生模型结果；21项代理应用与CLI/版本证据分开记录，含共享审阅上下文。
+- 未取得IEC付费完整正文；本地政策、未核实语义明确标非标准建模。未宣称完整标准认证、macOS原生、远程升级或新增数据库执行。
+
 ## [v26.11.06_Build0721] - 2026-11-06
 
 ### Added
@@ -28,3 +47,5 @@
 [v26.11.05_Build2200]: https://github.com/MuYiYong/onto-skills/releases/tag/v26.11.05_Build2200
 
 [v26.11.06_Build0721]: https://github.com/MuYiYong/onto-skills/compare/v26.11.05_Build2200...v26.11.06_Build0721
+
+[v26.11.06_Build1906]: https://github.com/MuYiYong/onto-skills/compare/v26.11.06_Build0721...v26.11.06_Build1906

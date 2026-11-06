@@ -1,0 +1,283 @@
+{
+  "banking-business-model": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "e060916410b1d2ee638cd0ab0a2b44c2dc73c921a415872b3302e06ee52e8181",
+    "examples/worked-example.md": "4bc0619da88f460381450e4f41c4b3540c8e081c99972ddf1d21c7ebf7928c7a",
+    "references/banking.json": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+    "references/glossary.json": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+    "references/method.md": "f4f9b5aee240ee22b309d6019fa8bc28adbd4a7133d3f97e27dfc90615627538",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "credit-risk-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "5e16da7d295b9a22d762e80b0e0d7631299c7f2db01566449639ca50a424e2f4",
+    "examples/worked-example.md": "8edaf91fba5a621462571eba08b66c93fd4ba710b324f45695bf7904b3fc9b76",
+    "references/banking.json": "692bca496fcd0a1b33bcedb7b3346a62ae76d9707bc84e97d2f253b098281bf3",
+    "references/credit.json": "96f3746e01a17e7380fd4ff0269625e8abf697e19af68d25f1997e385cf7c136",
+    "references/glossary.json": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+    "references/method.md": "23b8ff8d34ef9ab6666c07e437d63086f80604a9cc3c5b0cca6d66ee24bc1b71",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "cybersecurity-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "f4a46446c8b1dfe59f1fc60a4ff51bb2d0890ce2af6675213bfea4477bac11d7",
+    "examples/worked-example.md": "d58b3550ee4450ffc599baf71f02ddb685c79c156c92d18271c4f32bd18c674d",
+    "references/domain.json": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+    "references/method.md": "486d02a149514336b3e3a271c7eb04f4eb16b5954b25343c0a786b8a42619465",
+    "references/sources.json": "f7390c7e868b259870aef700b8227234876d8d4fdc36da91ab132a0ebf679769"
+  },
+  "electric-power-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "c93033baa8b5946aa94cedb4cfc425daab3d2acabe552fbdb434c6009fdaa94e",
+    "examples/worked-example.md": "34c39e936e401ccf2fa7b7a59528c7e719870b43456e707a4410b43be8861ac4",
+    "references/domain.json": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+    "references/handoff.md": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+    "references/method.md": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e",
+    "references/sources.json": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa"
+  },
+  "entity-relationship-modeling": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "fc9caac279e12d531a6edc25c3a2cfff2cc10a1cb5d07b1d145fca27ea4e075e",
+    "examples/worked-example.md": "c8ecd94d03954e1c0223eb5f8aa26b527e82f5e770c643a6247f3b833d66ba20",
+    "references/method.md": "77d7563efaffeba0f4463dba0630e69f39725f170458433b7c3b1563d522e823"
+  },
+  "fibo-ontology": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "94d8fd8147ebc7d431f89b2fe9cabd0cf02ef0359c3f44b7961f11d68d0d0bdb",
+    "examples/worked-example.md": "eb20d19c89b6718ca6c9ca8f0b20d6ae56af3c67852af1d6d7647298f25dd216",
+    "references/fibo-index.json": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/method.md": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "finance-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "cbf62df2d1cc44d6a624a9ad0c41064b28b4de112ed29bddaffcd452e10c6ca5",
+    "examples/worked-example.md": "cb7cdb685a090b5ffa35860979f152f67a05ba786a6bd726d83516c03342f866",
+    "references/glossary.json": "e46465cf5de7077dbea5343b574c297682a33cc9b292af492b259c4f381fabc4",
+    "references/method.md": "dc5ce959b276023072e398421295e0b748897850bdfab43a499129a421473284",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "financial-regulatory-reporting": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "fff91c000314c45ba34b9829555e11f2038a4b8eb17ed75f9d3f27c7bef7c179",
+    "examples/acceptance.json": "02558925c4ff7f25d870228ff2bfbfc717d0c7228b376a13ccbd65d29d2cc5e4",
+    "examples/graph-model.json": "409a82d97110fdffdcd15f31da92c6ac8d68123c03e6abadf09d62239295d017",
+    "examples/input.json": "0ae53e75512f4767729d53c301f3183fe917bc291af70a62e0e3daa4e13247c1",
+    "examples/worked-example.md": "874db300368bb2e9e88822293987a29e3777beb8da457b33ed2a42580eb77428",
+    "references/domain.json": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586",
+    "references/sources.json": "aecbab252a1fe239a481ab7eb00fda384c1266770a55a6a863453b1f10dc5a97"
+  },
+  "fraud-network-modeling": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "d76c2ce76449aa1b397f6311bb894edf1ef0f9acfba6dab87fdc96007cb2409b",
+    "examples/graph-model.json": "8267d1a64b38cafa473968dae8cac8f7194d86d952051cc3a8aed6783a2e060e",
+    "examples/worked-example.md": "2a370bf82b7131060b6097cd91a0a0c79f883a615ae7b098d6a70c751955ec3a",
+    "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "62b221aa448027b380f7d38dccea1b9d333797cfa51fbf64b60fe056cc8f3256",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "healthcare-care-pathway-modeling": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "9163b004a1639c3496e788942458f479da0cc0412053786c82c9f7d5b37e3a96",
+    "examples/acceptance.json": "7e16cac63b6e8fb786f21b6d671c7e5c25ad495eb330cc2797cda6f31dac3b04",
+    "examples/graph-model.json": "1d4d4169fa70d287c6c67e90dac5200273cadf26dc15398d979058bbfafa5dd0",
+    "examples/input.json": "13608efa0900abb06eac29845f1d5f63e99f2d12d75259a114519bf58759e9f0",
+    "examples/worked-example.md": "997699e65ebd66deb3c0e075eceeebcdc4bb4d64b2ebed10f22282581349eabe",
+    "references/domain.json": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+    "references/graph-model-specification.md": "d785cbc407c06cce3fbe21370f526395f53aaef43dc1b2c69bda8e533d6a9297",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "b96a145cd7b8741e590e295e386807eebf998b2acc4c22c5aefa0242608aae1c",
+    "references/sources.json": "feb4d95a8e18eae615d24a0891a0a922b7379f3f838ef582abe32f9e9d1b6134"
+  },
+  "healthcare-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "2dbc6a73bc63188910d9350edf682df3f920d42920307bbd9d0711594ad64028",
+    "examples/worked-example.md": "11845aeeb21e49d7cc6bfd1f6d3515c59819b50b642c034f3458586459035952",
+    "references/domain.json": "1b0ce9feca8f31d3164295d0ed8ae9a6448dcc38e6af5a071886ee0127abaf57",
+    "references/method.md": "dce16573960b3d5cf86bb9c8f66239a7723be9bc9b45c8f2afd27ea98518c2a0",
+    "references/sources.json": "feb4d95a8e18eae615d24a0891a0a922b7379f3f838ef582abe32f9e9d1b6134"
+  },
+  "industry-knowledge-discovery": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "61a6ec2ee501a945018c9dc908d08c7a08d85f5debe8002680253b606c76efe0",
+    "examples/worked-example.md": "3c0e82908808a2e5601b9b3b7bfd00d772cf2f23a26290613d1b59c091ce423f",
+    "references/method.md": "db456a4e358ea200641684d9fcd169408c9557e9a4917e2ada65399cb86b5d83"
+  },
+  "logistics-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "e107331d00de91bd67825344b7c70ae901636fbc19ed37fd1a4e7291f038c959",
+    "examples/worked-example.md": "d9fa336dcf6bdf8aa37ad4b63abc54688b71da7d6b0a62cd977ea78896ed28c2",
+    "references/domain.json": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+    "references/method.md": "ec763177ddefb94c33acddf484e9d953c5eee54cf449ccdfeb389d4bd57f4bcb",
+    "references/sources.json": "902e416621a970d79c64431d8a8deb2db16f18f41ebd1cc8e645224f5c1b9efb"
+  },
+  "manufacturing-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "00397c82f51007c15ef9c86b6565ff4d045b291dd31ceb52723c0073c4d0c82c",
+    "examples/worked-example.md": "415ce7b70e8a4e2417ff7986c576ca01a0e471445c3d3118bf1f643ae3630180",
+    "references/domain.json": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+    "references/handoff.md": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+    "references/method.md": "c6349e4946e49f0ebab40151c11be8aaa98cb1622ce94f6f58e634768fe2eb2d",
+    "references/sources.json": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb"
+  },
+  "manufacturing-quality-traceability": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "8e5d44e29aa6d45b8837c2c83972dba918d7f0b46a08343787d82617e1a9c01d",
+    "examples/acceptance.json": "f3b1b5aa9d07e77fc318eed4eb91310e30a71673057f3eafc57b524738f37f7c",
+    "examples/graph-model.json": "af9449d4c495a00aea7e682a2517e69a877b210c936b6b55bdc5d870d3995429",
+    "examples/input.json": "0b45e2c55b1369eeb291063e93e0787c792d0d0df5258d147071a535dd6120dd",
+    "examples/worked-example.md": "164a282562b3474f1073a79044e1f6ab27a7f3c92ec4af3f728cbd51c3a67c7c",
+    "references/domain.json": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+    "references/fixture-contract.md": "e9f98660ed7ddd8b39027fa19476ee561283778c6ec0548aa26e8b8819eaea30",
+    "references/graph-model-specification.md": "05fc78883979f6c11e0e8258bd483f71b20d8b0baf41766ec5de6b7be35702b4",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/handoff.md": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+    "references/method.md": "c6349e4946e49f0ebab40151c11be8aaa98cb1622ce94f6f58e634768fe2eb2d",
+    "references/sources.json": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb"
+  },
+  "multi-lending-detection": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "0aecc9839f0d4b609d10d18a1d0d6ad0709fb77b63f37d00741a6b4dad057075",
+    "examples/graph-model.json": "a6f4025c1b120792cf8885ebb93ff56c3c9877cd47d7a57e5a3f52708264765b",
+    "examples/worked-example.md": "0e8665c6f30851d429142b6210cdd2a96e17c1411c02a6784796c4a9678e324e",
+    "references/domain.md": "7c35a700900e328918e40e497e60ed0b2776fa2fdee81a890b525f3a5be4854d",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "cc42c1999728406ad6a52ed3085519cb5110737909011eb5fafe4a620c770885",
+    "references/sources.json": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+  },
+  "ontology-documentation": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "686665d63abb67d2bfa594f65b072e341c64544e47208b5059b37f24d2218ed1",
+    "examples/worked-example.md": "a527c0856dc63f81c6d5df5ab51e430b97e5203177dc51ea716b6b20339dc924",
+    "references/method.md": "c05395e8770fc98a36ef789749688be2de561c15bca5e4224a965c77b918f223"
+  },
+  "ontology-evolution": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "0a78e189c4150333b0b82fbd0bbbc24fb7f561365a7c0e66f4cfd4bad15036f0",
+    "examples/worked-example.md": "975243331d6ab7a932b9774ac4bf98d5609af09833f62c0e17d9f14d60e358ac",
+    "references/method.md": "8f4360ee65fe96bd25059424a4bb90944bf7f48d7a11a1ebb769ece44e0384bd"
+  },
+  "ontology-modeling": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "dbe0968d08a7d5b1748a5d8604b68de793fcc57b1fe445a79e7b89ae6c5d755f",
+    "examples/worked-example.md": "983974084bd8f279b5f3b8162a6734b1eee3fe18504c1aa3d770d9a2e97660f1",
+    "references/method.md": "a044f7d9e7373562b819dab9146f209242bdb4eedc87cc9652cffd141c49f2b7"
+  },
+  "ontology-validation": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "d2acd23d1edf06b68a12139cd154447150d4c5d1ae06036baaa55fe68bc06087",
+    "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+    "examples/worked-example.md": "ac872dc412545b22cacb25e6a1c1ea06bc84896bb355f61d9157a200698beb41",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "c4b6b59c9720650a4ab63c2ec0a5a7c0efdc11ed794764f0936927a478fda14b"
+  },
+  "power-outage-impact-analysis": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "c246fbd812e7be1272a50c98bde0bc316f0975127615ad6230a7a98176571782",
+    "examples/acceptance.json": "d853e27e3c6e706139118de7b67bd7e07d5c4b60d491570a48e74e73c9bd7803",
+    "examples/graph-model.json": "78ed9aa6907445490d87a10a6023aa0282dcbfc56e49f012a6a5573dba29a49e",
+    "examples/input.json": "c836a38784ae3e534f106287d07816639dce8911cc714f3c2f4b456bd7108c25",
+    "examples/worked-example.md": "d99f506c275110a565d4a34b6df1809b03a1f64a2514cce66e98f3d8f9cb67d6",
+    "references/domain.json": "19a989c6434fdb32b3f4f5af2dd08d7be72687db773700a0fd96c8ba57ba667a",
+    "references/fixture-contract.md": "e9f98660ed7ddd8b39027fa19476ee561283778c6ec0548aa26e8b8819eaea30",
+    "references/graph-model-specification.md": "05fc78883979f6c11e0e8258bd483f71b20d8b0baf41766ec5de6b7be35702b4",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/handoff.md": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+    "references/method.md": "1dd59f3c0b8f9b857826a8c09fc50f0c5c820a65d47bce8a8c24ed774c3be79e",
+    "references/sources.json": "61db7a58153ecef38b9917663e06185dc5a98f2565e11c32eee34071026235aa"
+  },
+  "property-graph-mapping": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "bcf1dcad31761399e96c73424c9f4dac9167244ed88b9a19e04a00eaa5eb8036",
+    "examples/graph-model.json": "1201ce3de7e645b9e913ffaffd32e371f98431b46c5e845d530daf15f4255ac1",
+    "examples/worked-example.md": "7aa9ed62ad48e60bec5a27c3a834ca0fccc8b425422a402f5550c6a418d05bc6",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "426d618a27a0d9fc441f555a0eb8cbe7784585bce707b79d34f4de563f42fdb0"
+  },
+  "related-party-transaction-modeling": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "0d6d6d04c8228ace8406682821ce4833f956440d3426ee87ad8e4512a98a1376",
+    "examples/acceptance.json": "0aa7ed886e9a4ce8f34b0f4ece44491fd646c7a2b513713ed101ba5ff94b22e0",
+    "examples/graph-model.json": "6c9953dd05f615aaf661ccc3c6b13883e1de5c35943796cdacb5c65ba4c49ee5",
+    "examples/input.json": "37270acc7229edc5ff0b79e445df5b28aa56f101ae5abf506f55e9ced5841cdf",
+    "examples/worked-example.md": "a86d66348b247cf2f977b1dee6dca955aba1a0cf961126a20bb2568bfc551f3f",
+    "references/domain.json": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d",
+    "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+    "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "bef3ee0295935381917ff2aebb6fe58f533996f6c10b3b3430da1f3a7acbae70",
+    "references/sources.json": "08187cb0d6174f10e225d7075622d2a58f570bffac81b0b997ec33398041c336"
+  },
+  "retail-domain-knowledge": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "b919f421ae262725c209a44d19ffc08ec6b722c2f66aa8df52667db300083e59",
+    "examples/worked-example.md": "1a7c85939d6345cee07c90830d043af625922d26b25ad82ed633b3b1270b8084",
+    "references/domain.json": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+    "references/method.md": "95ffef56419a667bb635f6dd7a81ae4d9ece4848ff0a9d581870a25601dbbfd3",
+    "references/sources.json": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311"
+  },
+  "retail-inventory-replenishment": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "982081c679a6e7ae9c4a4e8dc0db98469d320bc4011aeca19275626f5a00686a",
+    "examples/acceptance.json": "763954f2249baef6ee09e26e286bbef301bdb20604e2f3e1519e780e75830a37",
+    "examples/graph-model.json": "e1362ff911d54a624c6b108df14bbb0ce85084a4d2dc6f89052c55cbb9c667b5",
+    "examples/input.json": "1e06dd631450ff0e50dd37a67bb5aa7f1a364332c1f5361d5fddd2c50578fc2b",
+    "examples/worked-example.md": "557f237db31b6fcdccebdc8c1cf17314178e3b05ed6ec9f3810b0b8c245f6e93",
+    "references/domain.json": "20140b005651f7628c35e8992132d4dce2c900ef38eca48e2008dd241221e104",
+    "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "e400fc08c02c39bc8453ed2391108c4f95024283ab6f4cf3666c77ec610f42bf",
+    "references/sources.json": "beedbd69660ba3f60a546ac05e7cc61dfc27ef4050560322a57709085eaee311"
+  },
+  "shipment-exception-analysis": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "528e8d449e0d2a659d5597cc908f2a7d7d16cb8c50d1eb15133f6f9ee0cbdb2a",
+    "examples/acceptance.json": "809b8b8e3cbb235fe20082c3dab19a90994778bac239b56759d7cfef2ef53aef",
+    "examples/graph-model.json": "f6f271caf31bc07c50ed0720da907cf1a681ed6a657ef7e8acf627c3d4f0c6e2",
+    "examples/input.json": "c485edc4cbb964d91e0aa2b3134042e6a712d87fba436f33e38e2c6b391dd821",
+    "examples/worked-example.md": "ff37738c1791fa91064883b2eda33b16d4f5aa870ac3bd332776cc083eb019d6",
+    "references/domain.json": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece",
+    "references/graph-model-specification.md": "d78d3ccc0fee8574ca5a141c97a4cb91bc7606e44628822ab427c7757d48f661",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "f9943eaed5bc572272e2cc2b4113e84a6416b68ea7baed5a834fa6516cbae59b",
+    "references/sources.json": "902e416621a970d79c64431d8a8deb2db16f18f41ebd1cc8e645224f5c1b9efb"
+  },
+  "software-vulnerability-impact": {
+    "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+    "SKILL.md": "9e9e1ebe1cc6838357b60d7105935c079d49cf890c421df6c289e2431db99944",
+    "examples/acceptance.json": "f7bd9629c35b2a750d908f9cf6050a8b86eda60f9eb6c2a0a08c51d33c077223",
+    "examples/graph-model.json": "1423e97a245d35b2661df6fbcf538f4e7c725bbe2075cda141d87e46175d7557",
+    "examples/input.json": "f7847b3e82f1682420b19230144c90768b0cd4b1505cd801654c17fe88ea4426",
+    "examples/standards-native/README.md": "30e24b1eeb71de422d3e5020bd578d64115b489f265bf692d01643c830cc9740",
+    "examples/standards-native/advisory-1.csaf.json": "d4330cae6574d8178cbe9225bfc84bd0778beafafa29d04e8f4da4276d3005fa",
+    "examples/standards-native/advisory-2.csaf.json": "fdf7a4f7efd0a8af8f57dd0662128df241d865e7ff7a2c573a8f9035456531f8",
+    "examples/standards-native/cvss-4.0.json": "ba7ae96db16c561e61da795aaeb277289fb83aa18896904f0f4d78f346ff91e2",
+    "examples/standards-native/negative/negative-contradictory-status.csaf.json": "40a7b583b7b3e048a99de0238c33058c0238d559eab60b411aca210b79d6cdc9",
+    "examples/standards-native/negative/negative-duplicate-identity.spdx.json": "92326d97483e5804ac5d67a1cc8a2c04f7f196ad0c27591ff4eff988eb7a22ee",
+    "examples/standards-native/negative/negative-inconsistent-cvss.json": "3ac2783baf3df59aead403c0de4c9b3998506b342f5d1ef286879c42fbf92f66",
+    "examples/standards-native/negative/negative-missing-impact.csaf.json": "d907bbe401d8339075c80a1615369573c96e83b77e6c90b5459c031649d99bc1",
+    "examples/standards-native/projection-map.json": "10c64d64a65da896145b811e2d6207464a98fe53a5c75ad0f225bd5b36f32f62",
+    "examples/standards-native/sbom-a.spdx.json": "61c9228d8250d054a5141e62a37f10493275b40bc013cdc2d6f82cc732ceea8f",
+    "examples/standards-native/sbom-b.spdx.json": "371de9afcf073715b17a17bb7aa6d33ee682129d1e49fb6a25befe60ed5ec7bf",
+    "examples/worked-example.md": "d58b3550ee4450ffc599baf71f02ddb685c79c156c92d18271c4f32bd18c674d",
+    "references/domain.json": "398378f7bd995eaf068f4378504d5a41a835ca743741214da96b2f0915f7d857",
+    "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+    "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+    "references/method.md": "486d02a149514336b3e3a271c7eb04f4eb16b5954b25343c0a786b8a42619465",
+    "references/sources.json": "f7390c7e868b259870aef700b8227234876d8d4fdc36da91ab132a0ebf679769"
+  }
+}

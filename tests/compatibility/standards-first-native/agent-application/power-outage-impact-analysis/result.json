@@ -1,0 +1,33 @@
+{
+  "skill_used": "power-outage-impact-analysis",
+  "answer": {
+    "definite_path_to_sp1": false,
+    "possible_path_to_sp1": true,
+    "actual_customer_outage_proven": false,
+    "switching_authorized": false
+  },
+  "identity_rules": [
+    "设备、电源、端子、连接点及SP1分别保留utility_id范围键；使用题设单一有效拓扑，不以同回路/名称/相近位置代替连接。",
+    "本场景先移除实际故障S，因此A→N0→S→N1→SP1路径失效；A可用不意味着故障边可通行。",
+    "T状态未知不能默认open或closed；确定图不纳入T，可能图纳入T，故无确定路径、有可能路径B→N2→T→N1→SP1，分类uncertain。",
+    "没有实际服务停复电记录，故障与拓扑不确定性都不证明客户实际停电；客户绑定/去重身份亦未给，不能虚构客户名单。"
+  ],
+  "time_and_units": [
+    "event_as_of与knowledge_cutoff均2026-11-01T10:00:00Z；只纳入兼容拓扑及该截止已知的电源/开关状态，保留版本和来源证据。",
+    "拓扑可能路径不证明带电、容量、相别、保护、孤岛/反送电可行性或倒闸许可；switching_authorized=false，不给操作命令。",
+    "无服务中断/恢复区间，不能计算实际停电时长；缺恢复时点不补截止时刻或已恢复。"
+  ],
+  "standard_basis": [
+    "ENTSO-E CGMES3.0.0公开配置固定commit8eff738bda72dc3a97fc24bf021dc78773814111：EQ RDFS cim:Equipment/ConductingEquipment/Terminal/ConnectivityNode/IdentifiedObject.mRID；EQ SHACL Terminal.ConductingEquipment min1/max1、Terminal.ConnectivityNode max1仅限所选配置。",
+    "同修订EQ Switch.normalOpen、SSH Switch.open/locked/ACDCTerminal.connected/Equipment.inService；SSH open/locked Boolean min1/max1支持字段区分，不能把normalOpen或terminal.connected当现场开关观测。",
+    "TP TopologicalNode/ConnectivityNode.TopologicalNode/Terminal.TopologicalNode，Header Model.scenarioTime/version/DependentOn提供状态/模型身份；created为序列化时间，与本地observed_at分离。",
+    "IEC61970-301:2020 ed7 CIM17v38及AMD1:2022仅目录/摘要背景；公开配置metadata为CIM17v40，不能混成同一模型版本。",
+    "domain switch-state/supply-and-der等有界standard-backed；unknown三值传播、确定/可能可达、planned-actual、service-customer-circuit及restoration-segment为非标准建模，不是CGMES或调度安全判据。"
+  ],
+  "source_limits": [
+    "仅对给定聚合拓扑应用包内本地方法；未取得完整付费IEC原文、运行CGMES实例SHACL/交换验证、潮流/保护/相别检查或现场验证；未生成完整Graph Model。"
+  ],
+  "unresolved": [
+    "T的有效实际状态、设备/状态source key与utility/topology版本、SP1实际服务证据和客户绑定；操作授权及电气可行性均无证据。"
+  ]
+}

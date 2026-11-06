@@ -1,0 +1,8 @@
+{
+  "archive": "v26.11.06_Build0721.tar.gz",
+  "sha256": "81afbdc87e5f79d33ae9046f9fd7b9e3d07170326b131f3e90b6fd320e4caa15",
+  "source_commit": "1b2ea74d5bbcf6aa07e207a249e826e98b0e8e6b",
+  "scope": "Exact 25-skill sources used by the dated native/desktop receipts; not acceptance of current working-tree changes",
+  "package_count": 25,
+  "file_count": 199
+}

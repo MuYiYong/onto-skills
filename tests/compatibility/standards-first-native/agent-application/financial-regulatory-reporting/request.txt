@@ -1,0 +1,1 @@
+评估给定合成报送原始输入。在业务时点2026-10-31，known_at2026-11-01，SYS K1/v1=80CNY，K1/v2=90CNY是11-02晚到更正，K2/v1=20CNY被原样重放一次；单位均yuan，instant/单体C1，DEMO-R1模板与事实均v1。计算原截止和11-03新运行数值。S1已有business accepted；S2 supersedes S1只有local check passed和transport received。输出原/新数值、当前已接受版本、S2接受情况和血缘/制度边界。

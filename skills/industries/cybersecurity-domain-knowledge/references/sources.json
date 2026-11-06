@@ -1,0 +1,66 @@
+{
+  "id": "cybersecurity-sources",
+  "name": "Cybersecurity source catalogue",
+  "version": "1.0.0",
+  "license": "MIT (original summaries; third-party standards retain their terms)",
+  "updated_at": "2026-11-06",
+  "scope": "Selected public standards for SBOM and vulnerability applicability",
+  "authority": "Original bounded modeling guidance; not a standards certification or incident response authority",
+  "classification": "project-curated",
+  "source_ids": [
+    "onto-project",
+    "spdx23",
+    "csaf20",
+    "cvss40"
+  ],
+  "sources": [
+    {
+      "id": "onto-project",
+      "name": "Onto Skills original modeling guidance",
+      "uri": "https://github.com/MuYiYong/onto-skills",
+      "version": "standards-first-worktree-2026-11-06",
+      "publisher": "Onto Skills contributors",
+      "license": "MIT",
+      "scope": "Original summaries, exact-match fixture policies and synthetic examples",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "project-curated",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "spdx23",
+      "name": "SPDX Specification 2.3",
+      "uri": "https://github.com/spdx/spdx-spec/tree/v2.3",
+      "version": "2.3 (tag v2.3; deliberately pinned, not latest)",
+      "publisher": "SPDX / Linux Foundation",
+      "license": "CC-BY-3.0 per upstream v2.3 LICENSE; source text not bundled",
+      "scope": "Document namespace, package identity/version/external references and declared relationships",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "csaf20",
+      "name": "Common Security Advisory Framework 2.0",
+      "uri": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html",
+      "version": "2.0 OASIS Standard, 2022-11-18",
+      "publisher": "OASIS Open",
+      "license": "OASIS copyright and Notices apply; only index and original modeling summaries bundled",
+      "scope": "Document tracking, product IDs, product status, VEX profile and evidence statements",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    },
+    {
+      "id": "cvss40",
+      "name": "CVSS v4.0 Specification Document",
+      "uri": "https://www.first.org/cvss/v4.0/specification-document",
+      "version": "4.0 (selected specification; observed 2026-11-06)",
+      "publisher": "FIRST.Org, Inc.",
+      "license": "FIRST CVSS license/attribution terms apply; only index and original summaries bundled",
+      "scope": "Severity metric groups as input to local risk assessment, not deployment or incident proof",
+      "authority": "Publisher specification only for the stated scope; graph design remains project-curated",
+      "kind": "official-standard",
+      "retrieved_at": "2026-11-06"
+    }
+  ]
+}

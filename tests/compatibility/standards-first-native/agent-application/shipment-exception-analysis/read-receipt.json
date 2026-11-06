@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/request.txt",
+      "sha256": "e1bc05cea7e57161d3d602fb69e9e0901f694bfcb7fb86f2a6849c9827b7aab9"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/schema.json",
+      "sha256": "1058a181d1e561aed3e465ae943d8d754f8d31a66e5d3f941d103ff3b79b9e36"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/source-files.json",
+      "sha256": "0801b0b30f323dc3eaa3ccb691094dd46c36b5dcc91c3591f9356e1747f654cc"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/.agents/skills/shipment-exception-analysis/SKILL.md",
+      "sha256": "528e8d449e0d2a659d5597cc908f2a7d7d16cb8c50d1eb15133f6f9ee0cbdb2a"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/.agents/skills/shipment-exception-analysis/references/method.md",
+      "sha256": "f9943eaed5bc572272e2cc2b4113e84a6416b68ea7baed5a834fa6516cbae59b"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/.agents/skills/shipment-exception-analysis/references/sources.json",
+      "sha256": "902e416621a970d79c64431d8a8deb2db16f18f41ebd1cc8e645224f5c1b9efb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/shipment-exception-analysis/.agents/skills/shipment-exception-analysis/references/domain.json",
+      "sha256": "f78dbe5eebcf62c267e31c5997fd649c3f90550f1b1686ea1ef0484ac504dece"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical domain/source reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application, not a complete Graph Model Specification or full standard-conformance validation."
+  ]
+}

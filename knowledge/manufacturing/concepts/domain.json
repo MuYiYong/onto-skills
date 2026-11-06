@@ -1,9 +1,9 @@
 {
   "id": "manufacturing-domain",
   "name": "manufacturing curated domain knowledge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Database-neutral business semantics; bounded synthetic industry scenarios",
   "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
   "classification": "project-curated",
@@ -23,7 +23,17 @@
         "opc-isa95",
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "source+site+lot键、拆分后新批次键和返工身份策略为本地设计。",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.3.3; 8.4.3.4",
+          "relation": "supports",
+          "scope": "MaterialDefinitionType和MaterialLotType分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "event-genealogy",
@@ -34,7 +44,17 @@
         "gs1-epcis",
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地图事件键、拆分/合并/返工分类和召回遍历规则不是通用EPCIS处理算法。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.4.5 TransformationEvent",
+          "relation": "supports",
+          "scope": "投入被全部或部分消耗并产生输出的转化事件语义。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "equipment-role",
@@ -46,7 +66,17 @@
         "isa95-overview",
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "生产订单角色与本地资源绑定需业务证据；共设备不产生本地物料血缘。",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.2; 8.3; 8.4",
+          "relation": "supports",
+          "scope": "角色设备、物理资产与物料信息模型分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "quantity-reconciliation",
@@ -54,9 +84,20 @@
       "record_type": "rule",
       "summary": "Keep quantity as decimal text, unit and declared conversion policy on each material participation. Reconcile like quantities only under a declared conservation basis; do not add kg to pieces.",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "gs1-epcis"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "精确十进制存储、单位换算、守恒基础和对账阈值为本地政策；EPCIS数量表达本身不规定守恒算法。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.3.3.1 QuantityElement",
+          "relation": "background",
+          "scope": "类级物料数量与单位的表达背景。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "loss-coproduct",
@@ -66,7 +107,9 @@
       "source_ids": [
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "损耗、副产物、终端批次去重及防止中间库存重复计量是本地核对策略；未据所引标准推导统一守恒公式。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "inspection-evidence",
@@ -74,9 +117,20 @@
       "record_type": "concept",
       "summary": "Preserve measured value, unit, method, sample scope, event time, observed_at and local specification version. Pass/fail and sampling do not automatically clear an upstream recall.",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "opc-isa95"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "检验阈值、抽样判定、证据新鲜度和是否解除召回需机构与适用规范决定。",
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.2.1; 8.4.3.1; 9.6.3",
+          "relation": "supports",
+          "scope": "MaterialTestResultType、MaterialTestSpecificationType及TestedByMaterialTest的关联。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "recall-scope",
@@ -86,18 +140,30 @@
       "source_ids": [
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "候选追溯、隔离、授权召回和回收状态为本地流程；公开建模标准不代替产品特定召回法规或决定。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "event-observation-clock",
       "name": "事件与已知时间",
       "record_type": "rule",
-      "summary": "event_time is when the operation occurred; observed_at is when the source record became known. Late records are excluded from historical knowledge snapshots and then included on refresh.",
+      "summary": "Keep operation event_time, EPCIS Repository recordTime and local observed_at separately. EPCIS recordTime is repository bookkeeping, not proof of when the business operation occurred or when this application first learned of it. Historical knowledge cutoffs use the explicitly declared local clock.",
       "source_ids": [
         "gs1-epcis",
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "observed_at是本地首次获知时间，不能自动等于EPCIS仓库recordTime；历史知识截止和晚到纳入算法为项目策略。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "eventTime、recordTime、eventTimeZoneOffset具有不同用途。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "standards-boundary",
@@ -110,7 +176,91 @@
         "isa95-overview",
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "所引标准不规定本地检验限值、召回政策或属性图schema。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; sections7.4.1 and7.4.5",
+          "relation": "background",
+          "scope": "可见性事件及转化范围。"
+        },
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/1",
+          "relation": "background",
+          "scope": "资源信息模型范围和ANSI/ISA-95.00.02-2010依据。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "test-specification-result-link",
+      "name": "检验规格与结果关联",
+      "record_type": "relationship",
+      "summary": "A material test result and its test specification have separate identities. Link a result to the applicable specification and tested material scope; a test result on one lot does not automatically apply to every lot sharing equipment.",
+      "modeling_fields": [
+        "test_result_id",
+        "test_specification_reference",
+        "specification_version",
+        "material_scope_reference",
+        "measurement_value",
+        "measurement_unit",
+        "result_evidence"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "opc-isa95"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "opc-isa95",
+          "locator": "https://reference.opcfoundation.org/specs/OPC-10030/8.4.2.1; 8.4.3.1; 9.6.3",
+          "relation": "supports",
+          "scope": "MaterialTestResultType、MaterialTestSpecificationType与TestedByMaterialTest的概念关系。"
+        }
+      ],
+      "standard_gap": "字段为本地映射；规格版本选择、测量方法、接受限值及抽样外推仍需授权业务与质量规范。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "visibility-error-declaration",
+      "name": "可见性事件错误声明",
+      "record_type": "concept",
+      "summary": "EPCIS separates an error declaration from the original event and can reference corrective event identifiers. Preserve the erroneous assertion and correction evidence; a source correction is different from a physical rework or material-consumption event. EPCIS permits an error declaration to repeat the original event with the same eventID and otherwise identical event content except errorDeclaration and recordTime. Recognize that permitted correction pair before treating differing payloads at the local event key as a conflict; corrective events retain their own IDs.",
+      "modeling_fields": [
+        "original_event_reference",
+        "declaration_time",
+        "reason_reference",
+        "corrective_event_references",
+        "repository_record_time",
+        "local_observed_at"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.1/; section7.4.1.2 ErrorDeclaration",
+          "relation": "supports",
+          "scope": "错误声明、声明时间及更正事件引用。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_gap": "本地血缘回放、受影响候选重算和物理返工分类是项目处理策略；不把错误声明当库存反向posting。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

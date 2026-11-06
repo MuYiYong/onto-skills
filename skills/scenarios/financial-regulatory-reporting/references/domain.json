@@ -1,9 +1,9 @@
 {
   "id": "finance-regulatory-domain",
   "name": "金融regulatory业务知识",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original summaries only; external sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "独立技能随包知识与模型取舍",
   "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
   "classification": "project-curated",
@@ -24,7 +24,17 @@
       "source_ids": [
         "onto-reporting",
         "nfra-statistics"
-      ]
+      ],
+      "standard_gap": "报表模板、生效版本及DEMO表号为本地选择；未取得适用机构的正式1104模板。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第2-3、12条",
+          "relation": "supports",
+          "scope": "机构/监管统计范围与常规、临时统计调查区分。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "definition",
@@ -34,7 +44,17 @@
       "source_ids": [
         "onto-reporting",
         "xbrl21"
-      ]
+      ],
+      "standard_gap": "ReportDefinition/MetricDefinition图节点、版本键及指标公式不是XBRL标准规定的图结构。",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#item",
+          "relation": "supports",
+          "scope": "事实引用概念、上下文及数值单位。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "context",
@@ -45,7 +65,17 @@
         "onto-reporting",
         "xbrl21",
         "xbrl-essentials"
-      ]
+      ],
+      "standard_gap": "任意业务维度还需所选Dimensions/taxonomy依据；本地图事实主键与去重规则为项目设计。",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#context; #entity; #period; #unit",
+          "relation": "supports",
+          "scope": "上下文主体、期间与数值单位分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "clocks",
@@ -54,7 +84,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-reporting"
-      ]
+      ],
+      "standard_gap": "双时钟、晚到修订及不覆盖原运行是本地可复现性策略；所引报送标准未规定这套事件/已知时间算法。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "lineage",
@@ -64,8 +96,31 @@
       "source_ids": [
         "onto-reporting",
         "bcbs239",
-        "bcbs239-2026"
-      ]
+        "bcbs239-2026",
+        "nfra-statistics"
+      ],
+      "standard_gap": "具体血缘图、哈希、运行版本及回执边为本地可复现性设计。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第24条",
+          "relation": "supports",
+          "scope": "统计资料完整、连续与可追溯归档。"
+        },
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=15; Principle3, paragraphs36-40",
+          "relation": "background",
+          "scope": "字典、来源调节和数据聚合过程的记录背景。"
+        },
+        {
+          "source_id": "bcbs239-2026",
+          "locator": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles; Data lineage",
+          "relation": "background",
+          "scope": "信息性数据血缘讨论，不构成新的监管要求。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "amounts",
@@ -73,8 +128,19 @@
       "meaning": "先确认币种、金额单位和余额/发生额口径。未知不置零；混币种无约定汇率时阻断汇总；不把授信加到贷款余额。",
       "classification": "project-curated",
       "source_ids": [
-        "onto-reporting"
-      ]
+        "onto-reporting",
+        "xbrl21"
+      ],
+      "standard_gap": "未知值处理、混币阻断和授信/贷款汇总口径为本地方法；无正式转换政策不创造汇率。",
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#unit",
+          "relation": "supports",
+          "scope": "数值事实需要明确计量单位。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "quality",
@@ -85,7 +151,23 @@
         "onto-reporting",
         "nfra-statistics",
         "bcbs239"
-      ]
+      ],
+      "standard_gap": "勾稽公式、波动阈值、责任工作流和通过标准由已选正式报表与机构规则指定。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第16、18-19、22条",
+          "relation": "supports",
+          "scope": "统计质量、一致性、责任与全流程质量管理。"
+        },
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=15; Principles3-4",
+          "relation": "background",
+          "scope": "来源调节和完整性背景。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "receipt",
@@ -95,7 +177,9 @@
       "source_ids": [
         "onto-reporting",
         "xbrl-essentials"
-      ]
+      ],
+      "standard_gap": "尚未取得特定监管接口的业务接受/拒绝协议；XBRL Essentials不规定监管回执或上一接受版本的保留策略。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "jurisdiction",
@@ -106,7 +190,86 @@
         "onto-reporting",
         "bcbs239",
         "bcbs239-2026"
-      ]
+      ],
+      "standard_gap": "具体中国报表制度、提交日历和阈值需另选正式材料。",
+      "standard_basis": [
+        {
+          "source_id": "bcbs239",
+          "locator": "https://www.bis.org/publications/201301-guidelines-principles-effective-risk-data-aggregation-and-risk-reporting.pdf#page=8; Scope and initial considerations",
+          "relation": "background",
+          "scope": "BCBS239自身适用范围背景。"
+        },
+        {
+          "source_id": "bcbs239-2026",
+          "locator": "https://www.bis.org/publications/implementation-principles-effective-risk-data-aggregation-and-risk-reporting-bcbs-239-principles; informational disclaimer",
+          "relation": "background",
+          "scope": "通讯明确信息性范围，不新增监管要求。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "quality-owner-and-reconciliation",
+      "name": "质量责任与对账证据",
+      "meaning": "统计数据质量责任、业务规则确认和源头治理应可定位；同一指标在监管报送与对外披露有重大差异时，保留差异及说明证据。",
+      "modeling_rule": "区分最终责任人、统计负责人、规则确认部门与问题整改责任；记录指标上下文、两侧版本、差异及解释。",
+      "modeling_fields": [
+        "responsible_role",
+        "metric_context",
+        "reported_version",
+        "disclosed_version",
+        "difference",
+        "explanation_reference",
+        "remediation_status"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "nfra-statistics"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "nfra-statistics",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1089714.json; 第16、18-19、22条",
+          "relation": "supports",
+          "scope": "统计一致性、分工与质量责任。"
+        }
+      ],
+      "standard_gap": "本地责任边、整改状态与差异对象为设计建议；不声明完成机构合规审查。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "numeric-fact-unit-context",
+      "name": "数值事实单位与期间",
+      "meaning": "XBRL事实的值、概念、上下文与单位分别解释；时点事实和期间事实不同，货币金额的币种是单位范围的一部分。",
+      "modeling_rule": "保留concept reference、entity、instant或start/end与unit reference；不能仅凭相同指标中文名合并。",
+      "modeling_fields": [
+        "concept_reference",
+        "entity_identifier",
+        "period_kind",
+        "instant",
+        "start_date",
+        "end_date",
+        "unit_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-reporting",
+        "xbrl21"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "xbrl21",
+          "locator": "https://www.xbrl.org/Specification/XBRL-2.1/REC-2003-12-31/XBRL-2.1-REC-2003-12-31%2Bcorrected-errata-2013-02-20.html#item; #context; #period; #unit",
+          "relation": "supports",
+          "scope": "事实、上下文、期间和数值单位身份。"
+        }
+      ],
+      "standard_gap": "上述图字段是本地投影；不构成XBRL实例、tuple或完整Dimensions校验器。",
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

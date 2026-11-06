@@ -1,6 +1,6 @@
 # 安装与更新
 
-安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。当前版本 `v26.11.06_Build0721` 包含全部25项。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [最新 Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 提供25个单技能 ZIP、全量 ZIP 和八项金融/场景组合 ZIP，均使用普通目录并附 SHA-256。
+安装单元是含 SKILL.md 的完整目录；不能只复制入口文件。仓库提供27项，逐项路径见下表。从 [GitHub 仓库](https://github.com/MuYiYong/onto-skills) 或 [Release](https://github.com/MuYiYong/onto-skills/releases/latest) 获取资产；Release 内容以具体版本的发布清单为准，不据源码目录推定已发布。ZIP使用普通目录并附SHA-256。
 
 ## Codex CLI
 
@@ -37,7 +37,7 @@ test ! -e "$HOME/.agents/skills/ontology-modeling" && cp -R skills/core/ontology
 | multi-lending-detection | skills/scenarios/multi-lending-detection |
 | fraud-network-modeling | skills/scenarios/fraud-network-modeling |
 
-本次新增技能的独立安装目录：
+其他行业与专项场景的独立安装目录：
 
 | Skill | 源目录 |
 | --- | --- |
@@ -53,6 +53,8 @@ test ! -e "$HOME/.agents/skills/ontology-modeling" && cp -R skills/core/ontology
 | retail-inventory-replenishment | skills/scenarios/retail-inventory-replenishment |
 | financial-regulatory-reporting | skills/scenarios/financial-regulatory-reporting |
 | related-party-transaction-modeling | skills/scenarios/related-party-transaction-modeling |
+| cybersecurity-domain-knowledge | skills/industries/cybersecurity-domain-knowledge |
+| software-vulnerability-impact | skills/scenarios/software-vulnerability-impact |
 
 ## CC-Switch
 
@@ -64,7 +66,7 @@ test ! -e "$HOME/.agents/skills/ontology-modeling" && cp -R skills/core/ontology
 4. 在发现页选择安装目标 Codex，只安装需要的 Skill。已安装页可调整各应用开关；多项选择按当前版本批量启用。
 5. 确认 SKILL.md、references、examples、LICENSE 都安装成功，且 Codex 可发现。存储主副本默认 `~/.cc-switch/skills/`，Codex 目标默认 `~/.codex/skills/`，实际配置可修改。
 
-本地资产使用 Skills → Add Skill → Install from ZIP。将所选完整 Skill 目录放进普通 ZIP；已实测单项、两项选择包和包含 `skills/<category>/<name>/` 的 13 项包。`Import from this computer` 扫描已安装应用的 Skills，不是任意本地目录选择器。不支持 ZIP 的旧版本可先按 Codex 手动方式安装，再用其已有导入功能。Pack 是组合说明，不是 CC-Switch 专用包格式。
+本地资产使用 Skills → Add Skill → Install from ZIP。将所选完整 Skill 目录放进普通 ZIP；已实测单项、两项选择包，以及全部27项普通目录ZIP；最终227个文件在SSOT和Codex同步目录哈希一致，见[原生记录](../tests/compatibility/standards-first-native/README.md)。`Import from this computer` 扫描已安装应用的 Skills，不是任意本地目录选择器。不支持 ZIP 的旧版本可先按 Codex 手动方式安装，再用其已有导入功能。Pack 是组合说明，不是 CC-Switch 专用包格式。
 
 发布仓库来源的更新使用现有 Check Updates/卡片操作；改变远端版本后的升级尚未验证。本地 ZIP 重复导入会跳过同名目录，不覆盖更新；需要替换时先检查本地修改和备份，再通过已有卸载/导入操作完成。已实测单项卸载保留其他项、选择后批量卸载、Codex 开关和原生发现；CC-Switch 会在卸载前备份。不要用本项目脚本替代 CC-Switch 管理。
 

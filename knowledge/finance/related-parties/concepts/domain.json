@@ -1,9 +1,9 @@
 {
   "id": "finance-related-parties-domain",
   "name": "金融related-parties业务知识",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original summaries only; external sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "独立技能随包知识与模型取舍",
   "authority": "项目原创业务建模整理；不是监管机关的定义、规则引擎或合规结论",
   "classification": "project-curated",
@@ -24,7 +24,23 @@
         "onto-related",
         "nfra-related-2025",
         "cas36"
-      ]
+      ],
+      "standard_gap": "两个制度的适用主体、排除条款和汇总规则分别配置，不相互替代。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第5-8、10-11条",
+          "relation": "supports",
+          "scope": "银行保险监管关联方/关联交易范围。"
+        },
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第2-8条",
+          "relation": "supports",
+          "scope": "会计披露关联方、交易与合并范围。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "identity",
@@ -33,7 +49,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-related"
-      ]
+      ],
+      "standard_gap": "证据支持的主体ID及共享标识线索规则为本地方法；共享地址、电话、账户不被所引标准自动定义为sameAs或关联方。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "control",
@@ -42,8 +60,25 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-related",
-        "nfra-related-2025"
-      ]
+        "nfra-related-2025",
+        "cas36"
+      ],
+      "standard_gap": "持股证据不是自动控制判定；具体时点、穿透算法和评估结论须由适用规则及证据确定。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第5-8条",
+          "relation": "supports",
+          "scope": "控制、重大影响及各类自然人/组织关联情形。"
+        },
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第3-4条",
+          "relation": "supports",
+          "scope": "会计口径下控制、共同控制、重大影响及关联方类别。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "temporal",
@@ -52,7 +87,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-related"
-      ]
+      ],
+      "standard_gap": "事件时点/已知截止的双时钟过滤是本地可复现算法；不等于监管第8条过去/未来十二个月的法定关联认定范围。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "state",
@@ -61,8 +98,25 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-related",
-        "mof-related-state"
-      ]
+        "mof-related-state",
+        "cas36"
+      ],
+      "standard_gap": "国家控制排除不能扩大为银行保险监管的通用豁免；机构与后续解释适用需核实。",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第6条",
+          "relation": "supports",
+          "scope": "仅共同国家控制且无其他关联关系的会计排除情形。"
+        },
+        {
+          "source_id": "mof-related-state",
+          "locator": "https://www.mof.gov.cn/bd/mhwzzxly/hjs/202401/t20240117_3926120.htm; 会计司回复正文",
+          "relation": "background",
+          "scope": "官方解释举例说明同一母公司控制不等于只有国家控制。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "aggregation",
@@ -70,8 +124,26 @@
       "meaning": "同源事件重放去重，真实重复交易保留；路径多条不重复金额，按币种与余额/发生额分类汇总，冲正回指原记录。",
       "classification": "project-curated",
       "source_ids": [
-        "onto-related"
-      ]
+        "onto-related",
+        "cas36",
+        "nfra-related-2025"
+      ],
+      "standard_gap": "事件重放去重、币种处理及冲正算法是本地数据处理；监管与会计汇总范围不得混用。",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第10-11条",
+          "relation": "supports",
+          "scope": "披露金额、未结算项目与按关联方/交易类型披露。"
+        },
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第11条",
+          "relation": "supports",
+          "scope": "监管关联交易余额的特定合并范围。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "consolidation",
@@ -82,7 +154,17 @@
         "onto-related",
         "cas36",
         "mof-annual-2024"
-      ]
+      ],
+      "standard_gap": "会计披露排除不等于银行保险关联交易审查豁免；本地图候选保留策略仍是项目选择。",
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第2条",
+          "relation": "supports",
+          "scope": "合并范围内交易的对外合并披露边界。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "governance2025",
@@ -92,7 +174,17 @@
       "source_ids": [
         "onto-related",
         "nfra-related-2025"
-      ]
+      ],
+      "standard_gap": "章程适用、人员关系及重大交易分类必须逐案确认；不自动审批或给出法律结论。",
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 决定第三项；重公布银行保险机构关联交易管理办法第45条第3款、第46条",
+          "relation": "supports",
+          "scope": "特定任职人员关系交易的审查/批准与回避。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "decision",
@@ -101,7 +193,71 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-related"
-      ]
+      ],
+      "standard_gap": "候选解释、反证和人工复核工作流是项目设计；未有标准授权自动定性违法或替代主管机关判断。",
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "disclosure-elements",
+      "name": "关联交易披露要素",
+      "meaning": "CAS36区分交易金额与未结算项目；未结算项目还涉及条款、担保、坏账准备及定价政策。公允交易陈述需要确凿证据，金额相同不能替代定价依据。",
+      "modeling_rule": "为交易发生额、期末未结算项目、保证信息、准备与定价政策分别保留来源及期间；不默认所有会计字段都属于监管模板。",
+      "modeling_fields": [
+        "transaction_amount",
+        "outstanding_amount",
+        "terms_reference",
+        "guarantee_reference",
+        "allowance_amount",
+        "pricing_policy_reference",
+        "arm_length_evidence"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "cas36"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "cas36",
+          "locator": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46245.htm; 第10-12条",
+          "relation": "supports",
+          "scope": "关联交易披露要素、分类与公允交易证据范围。"
+        }
+      ],
+      "standard_gap": "字段是本地设计；适用会计准则解释及具体披露模板仍需确认，未给出估值或公允结论。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "review-and-recusal-evidence",
+      "name": "审议与回避证据",
+      "meaning": "审查意见、会议决议和记录应可追溯；一般/重大关联交易审查以及2025新增人员关系审批情形须按适用规则区分，相关人员回避有独立证据。",
+      "modeling_rule": "保留适用条款、章程版本、关联人员关系、审查机关、决议和回避记录；缺少材料时输出待核实。",
+      "modeling_fields": [
+        "rule_locator",
+        "articles_version",
+        "relationship_evidence",
+        "review_body",
+        "decision_reference",
+        "recusal_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-related",
+        "nfra-related-2025"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "nfra-related-2025",
+          "locator": "https://www.nfra.gov.cn/cn/static/data/DocInfo/SelectByDocId/data_docId=1209888.json; 重公布银行保险机构关联交易管理办法第45-46条",
+          "relation": "supports",
+          "scope": "审议记录和回避的制度依据。"
+        }
+      ],
+      "standard_gap": "本地证据结构不代替法定审议程序；不自动设定例外、批准或监管报送动作。",
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

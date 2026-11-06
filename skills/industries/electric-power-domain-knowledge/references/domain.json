@@ -1,9 +1,9 @@
 {
   "id": "electric-power-domain",
   "name": "electric-power curated domain knowledge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Database-neutral business semantics; bounded synthetic industry scenarios",
   "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
   "classification": "project-curated",
@@ -11,50 +11,155 @@
     "onto-project",
     "iec-cim-base",
     "iec-cim-amd1",
-    "entsoe-cgmes"
+    "entsoe-cgmes",
+    "entsoe-cgmes3-eq",
+    "entsoe-cgmes3-ssh",
+    "entsoe-cgmes3-tp",
+    "entsoe-cgmes3-header",
+    "entsoe-cgmes3-eq-shacl",
+    "entsoe-cgmes3-ssh-shacl",
+    "entsoe-cgmes3-header-shacl"
   ],
   "records": [
     {
       "id": "equipment-terminal-connectivity",
       "name": "设备、端子与连接点",
       "record_type": "concept",
-      "summary": "Keep equipment identity separate from its terminals and versioned connection points; a connectivity relation alone does not prove energization.",
+      "summary": "Keep Equipment, ConductingEquipment, Terminal and ConnectivityNode identities distinct. In the selected CGMES3 profile, a Terminal belongs to exactly one ConductingEquipment and has zero or one ConnectivityNode association; a connectivity relation alone does not prove energization. Preserve model-authority/exchange scope for mRID.",
       "source_ids": [
         "iec-cim-base",
-        "onto-project"
+        "onto-project",
+        "entsoe-cgmes3-eq",
+        "entsoe-cgmes3-eq-shacl"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "所选公开CGMES3配置支持逐类语义与该配置基数；本地节点版本化、source键映射及停电影响推导仍为非标准建模。未取得付费IEC完整正文，不能据公开配置宣称完整IEC或CGMES交换符合性。",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; public Abstract",
+          "relation": "background",
+          "scope": "CIM共享资源类、属性和关系的总体模型范围；没有读取逐类条款。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:Equipment, ConductingEquipment, Terminal, ConnectivityNode, Terminal.ConductingEquipment, Terminal.ConnectivityNode, IdentifiedObject.mRID",
+          "relation": "supports",
+          "scope": "设备/导电设备/端子/零阻抗连接点分离，mRID由模型权威分配且在交换上下文唯一；cim=http://iec.ch/TC57/CIM100#。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_Equipment-AP-Con-Simple-SHACL.rdf; Terminal.ConductingEquipment-cardinality; Terminal.ConnectivityNode-cardinality",
+          "relation": "supports",
+          "scope": "所选配置端子到设备min1/max1、端子到连接点max1；不规定本地业务图所有边的通用基数。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "topology-version",
       "name": "拓扑版本",
       "record_type": "concept",
-      "summary": "Select one compatible topology snapshot for event_time and knowledge_cutoff; retain original source keys and effective intervals.",
+      "summary": "TopologicalNode represents topology under a network state; its connectivity-node membership can depend on switch state, while planning bus models have a distinct modeling context. Locally select one compatible snapshot for event_time and knowledge_cutoff, retaining source identities and intervals.",
       "source_ids": [
         "onto-project",
-        "entsoe-cgmes"
+        "entsoe-cgmes",
+        "entsoe-cgmes3-tp",
+        "entsoe-cgmes3-header"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "TopologicalNode及源模型头的有界语义已由公开配置核实；event_time/knowledge_cutoff筛选、兼容性判定、原始键映射和有效区间为非标准建模，未运行CGMES数据集全约束校验。",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; CGMES v3.0 and model/profile library",
+          "relation": "background",
+          "scope": "交换配置及其模型/版本依赖的背景。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-tp",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Topology-AP-Voc-RDFS2020.rdf; cim:TopologicalNode; ConnectivityNode.TopologicalNode; Terminal.TopologicalNode",
+          "relation": "supports",
+          "scope": "状态相关的拓扑节点/连接点关联与规划母线语境分离。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf; md:Model.scenarioTime; Model.DependentOn; Model.version",
+          "relation": "supports",
+          "scope": "源模型代表时点与版本特定依赖有独立身份；md=http://iec.ch/TC57/61970-552/ModelDescription/1#。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "switch-state",
       "name": "开关状态观测",
       "record_type": "concept",
-      "summary": "Record closed/open/unknown, event-time validity, observed_at and evidence. Normal/open design state is not an observed state.",
+      "summary": "In CGMES3, Switch.open is topology-processing input and Switch.normalOpen is used when no status measurement is present. The Switch definition excludes ACDCTerminal.connected at either side as the switch-connectivity test; consider open, normalOpen and locked. Locally retain closed/open/unknown, event validity, observed_at and evidence without treating defaults as observations.",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "entsoe-cgmes3-eq",
+        "entsoe-cgmes3-ssh",
+        "entsoe-cgmes3-eq-shacl",
+        "entsoe-cgmes3-ssh-shacl"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "公开配置核实了Switch字段语义及Boolean基数；unknown/冲突传播、event_time/observed_at和实际状态证据选择仍为非标准建模。未读取付费IEC完整Switch条款；输入拓扑状态不等于现场观测或安全操作结论。",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:Switch; Switch.normalOpen",
+          "relation": "supports",
+          "scope": "normalOpen与无状态测量场景及Switch连通性边界；端子connected不得代替开关自身状态。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf; cim:Switch.open; Switch.locked; ACDCTerminal.connected",
+          "relation": "supports",
+          "scope": "开关拓扑输入、闭锁和端子连接状态是不同字段。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_Equipment-AP-Con-Simple-SHACL.rdf; Switch.normalOpen-cardinality; Switch.normalOpen-datatype",
+          "relation": "supports",
+          "scope": "所选EQ配置normalOpen为Boolean且min1/max1。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-600-2_SteadyStateHypothesis-AP-Con-Simple-SHACL.rdf; Switch.open-cardinality/-datatype; Switch.locked-cardinality/-datatype",
+          "relation": "supports",
+          "scope": "所选SSH配置open和locked为Boolean且min1/max1；三值unknown是项目扩展。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "supply-and-der",
       "name": "电源与分布式电源",
       "record_type": "concept",
-      "summary": "Available source reachability is a bounded candidate test; unknown DER availability or tie/backfeed paths create uncertainty. Capacity, protection, phase and islanding require separate study.",
+      "summary": "Keep EnergySource, power-electronics network connection and Equipment.inService availability distinct. Available-source reachability is only the local candidate test; unknown DER availability or tie/backfeed paths create local uncertainty. Capacity, protection, phase and islanding require separate study.",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "entsoe-cgmes3-eq",
+        "entsoe-cgmes3-ssh"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "公开配置仅支持电源等值、电子电力连接及设备可用性字段；反送电候选、未知传播与本地DER策略为非标准建模，未核实潮流、保护、孤岛或安全送电标准。",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:EnergySource; PowerElectronicsConnection",
+          "relation": "supports",
+          "scope": "供能等值与采用电力电子的交流网络连接分离；不推定DER实际出力。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-ssh",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf; cim:Equipment.inService",
+          "relation": "supports",
+          "scope": "设备可用于拓扑处理的状态，不等于已带电或具备安全供电能力。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "service-customer-circuit",
@@ -65,7 +170,17 @@
         "onto-project",
         "iec-cim-base"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "未从已取得CGMES3配置建立Customer/UsagePoint/回路与本地供电点的精确类映射或基数；全部客户绑定、计数和时间规则为非标准建模。EnergyConsumer消费模型点不得自动等同客户身份，付费IEC对应详情仍为标准未核实。",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; public Abstract",
+          "relation": "background",
+          "scope": "CIM共享资源类、属性和关系的总体模型范围；没有读取逐类条款。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "planned-actual",
@@ -75,7 +190,9 @@
       "source_ids": [
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "计划移除、客户实际停电认定和证据门槛均为非标准建模；已取得公开CGMES配置未规定本例客户中断认定。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "restoration-segment",
@@ -85,30 +202,127 @@
       "source_ids": [
         "onto-project"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "分段中断、交叠区间并集和重复中断保留均为非标准建模；未取得适用的供电可靠性考核标准。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "electrical-quantity",
       "name": "电气量与边界",
       "record_type": "rule",
-      "summary": "Retain value, unit, phase/reference context, event time and evidence. Do not infer safe switching or electrical feasibility from a topological path.",
+      "summary": "Retain value, coded unit/multiplier, phase/reference context, event time and evidence. CGMES3 separates PhaseCode and Terminal.phases; the phase enumeration alone does not describe phase interconnection or grounding. Do not infer safe switching or electrical feasibility from a topological path.",
       "source_ids": [
-        "onto-project"
+        "onto-project",
+        "entsoe-cgmes3-eq"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "公开配置支持相位、单位与倍率的概念分离；本地数值/时间证据字段、换算政策及拓扑可达安全边界为非标准建模，未完成电气可行性或安全标准核实。",
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; cim:PhaseCode; Terminal.phases; UnitSymbol; UnitMultiplier",
+          "relation": "supports",
+          "scope": "相位语境、单位和倍率分别表达；PhaseCode本身不编码相间连接或接地方式。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "cim-boundary",
       "name": "CIM 与交换配置范围",
       "record_type": "standard-index",
-      "summary": "The public IEC abstract introduces a shared utility information model; ENTSO-E indexes exchange profiles and their dependencies. Local outage nodes, projections and three-valued decisions are original project choices.",
+      "summary": "IEC catalogue metadata identifies the base and amendment; acquired ENTSO-E CGMES3 RDFS/SHACL artifacts now ground the specifically cited classes, fields and profile constraints. These public artifacts are distinct from complete paid IEC text. Local outage nodes, projections and three-valued decisions remain original project choices.",
       "source_ids": [
         "iec-cim-base",
         "iec-cim-amd1",
         "entsoe-cgmes",
-        "onto-project"
+        "onto-project",
+        "entsoe-cgmes3-eq"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "仅已取得的公开配置字段和约束具有所列标准依据；付费IEC完整条款仍为标准未核实。本地图schema、停电投影和三值决策为非标准建模，未宣称完整CGMES交换或接口认证。",
+      "standard_basis": [
+        {
+          "source_id": "iec-cim-base",
+          "locator": "https://webstore.iec.ch/en/publication/62698; Abstract and publication metadata",
+          "relation": "background",
+          "scope": "IEC61970CIM17v38、2020-01-21及基础标准范围。"
+        },
+        {
+          "source_id": "iec-cim-amd1",
+          "locator": "https://webstore.iec.ch/en/publication/68639; publication metadata",
+          "relation": "background",
+          "scope": "AMD1版本身份；未读取详细修订条款。"
+        },
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; CGMES v3.0",
+          "relation": "background",
+          "scope": "交换配置、依赖和发布导航。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-eq",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Equipment-AP-Voc-RDFS2020.rdf; Ontology metadata: owl:versionInfo 3.0.0; owl:versionIRI http://iec.ch/TC57/ns/CIM/CoreEquipment-EU/3.0; dcterms:conformsTo model file CIM17v40",
+          "relation": "supports",
+          "scope": "公开配置版本身份与模型依赖；不可把配置CIM17v40与基础IEC摘要CIM17v38合并为同一版本。"
+        }
+      ],
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "model-profile-snapshot-manifest",
+      "name": "模型、配置与快照清单",
+      "record_type": "concept",
+      "summary": "Keep CIM model version, CGMES profile version, model document identity, boundary/reference dataset and local study snapshot separately. In the acquired Header profile, Model.created is serialization time and Model.scenarioTime is represented model-valid time; version, profile, DependentOn and Supersedes retain source identity. Neither clock is local observed_at. Independently versioned NCP labels do not rename CGMES3.",
+      "modeling_fields": [
+        "cim_model_version",
+        "cgmes_profile_version",
+        "profile_artifact_reference",
+        "boundary_dataset_reference",
+        "study_snapshot_id",
+        "dependency_manifest",
+        "source_revision",
+        "source_model_id",
+        "model_created",
+        "model_scenario_time",
+        "model_version",
+        "model_profile_references",
+        "model_dependency_references",
+        "model_supersedes_references",
+        "local_observed_at"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "entsoe-cgmes",
+        "entsoe-cgmes3-header",
+        "entsoe-cgmes3-header-shacl"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "entsoe-cgmes",
+          "locator": "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/; Common Information Model and CGMES v3.0 sections",
+          "relation": "background",
+          "scope": "官方库区分CIM、CGMES、Network Code Profiles及边界资料的发布身份。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/RDFS/61970-600-2_Header-AP-Voc-RDFS2020.rdf; md:FullModel; Model.created; Model.scenarioTime; Model.version; Model.profile; Model.DependentOn; Model.Supersedes",
+          "relation": "supports",
+          "scope": "源序列化时间、代表时点、内容版本、配置及版本特定模型依赖/替代关系分别保留。"
+        },
+        {
+          "source_id": "entsoe-cgmes3-header-shacl",
+          "locator": "https://raw.githubusercontent.com/entsoe/application-profiles-library/8eff738bda72dc3a97fc24bf021dc78773814111/CGMES/SHACL/RDF/61970-552-Header-AP-Con-Simple-SHACL.rdf; Model.created-cardinality/-datatype; Model.scenarioTime-cardinality/-datatype; Model.version-cardinality/-datatype; Model.profile-cardinality/-datatype",
+          "relation": "supports",
+          "scope": "created/scenarioTime/version为min1/max1；profile至少1；类型分别dateTime/dateTime/integer/anyURI，只覆盖所列Header约束。"
+        }
+      ],
+      "standard_gap": "源Header身份和时钟含义已按公开配置核实；本地快照键、known_at筛选、兼容性检查和依赖选择算法仍为非标准建模。未对实际CGMES实例运行完整SHACL闭包、跨配置或接口验证。",
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

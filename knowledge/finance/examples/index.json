@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
@@ -22,7 +22,9 @@
         "fibo"
       ],
       "scope": "合成数据、半开有效期、机构去重；非真实风控策略",
-      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/examples/finance"
+      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/examples/finance",
+      "standard_gap": "项目合成教学数据及有效期/机构去重方法；没有外部标准规定示例数据、风险阈值或验收结果。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "fraud-network-example",
@@ -32,7 +34,12 @@
         "onto-project"
       ],
       "scope": "单发送/单接收账户简单转账；公共标识不是欺诈结论",
-      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/skills/scenarios/fraud-network-modeling"
+      "uri": "https://github.com/MuYiYong/onto-skills/tree/main/skills/scenarios/fraud-network-modeling",
+      "standard_gap": "项目生成的待复核假设与证据链教学例子；标准未据此规定欺诈定性，公共标识不构成确证。",
+      "standard_status": "nonstandard-modeling"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 import jsonschema
+from evidence_sources import package_files
 
 ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / 'tests/compatibility/codex-execution'
@@ -15,14 +16,8 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def package_files(name):
-    directory, = ROOT.glob('skills/*/' + name)
-    return {str(p.relative_to(directory)): hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in directory.rglob('*') if p.is_file()}
-
-
 class CompatibilityEvidenceTests(unittest.TestCase):
-    def test_cli_cases_bind_actual_outputs_and_current_independent_packages(self):
+    def test_cli_cases_bind_actual_outputs_and_dated_independent_packages(self):
         receipt = read(CLI / 'receipt.json')
         for relative, expected in receipt['artifact_sha256'].items():
             path = CLI / relative

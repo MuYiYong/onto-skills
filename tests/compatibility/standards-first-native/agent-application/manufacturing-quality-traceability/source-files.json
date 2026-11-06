@@ -1,0 +1,15 @@
+{
+  "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+  "SKILL.md": "8e5d44e29aa6d45b8837c2c83972dba918d7f0b46a08343787d82617e1a9c01d",
+  "references/sources.json": "d090c44b3a061ea2837f88501e091b989ff1f1dbb4ebd15bc8877ca970e5d8cb",
+  "references/domain.json": "bcdda5756bb19e102fdc5c89e963805ba039cbacbdd412014ca27ce5bc78d28e",
+  "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+  "references/method.md": "c6349e4946e49f0ebab40151c11be8aaa98cb1622ce94f6f58e634768fe2eb2d",
+  "references/handoff.md": "9e62b819b4e25a430174e252a9f0bd8284105a4de1b9366b9de38127f3eb7644",
+  "references/graph-model-specification.md": "05fc78883979f6c11e0e8258bd483f71b20d8b0baf41766ec5de6b7be35702b4",
+  "references/fixture-contract.md": "e9f98660ed7ddd8b39027fa19476ee561283778c6ec0548aa26e8b8819eaea30",
+  "examples/graph-model.json": "af9449d4c495a00aea7e682a2517e69a877b210c936b6b55bdc5d870d3995429",
+  "examples/input.json": "0b45e2c55b1369eeb291063e93e0787c792d0d0df5258d147071a535dd6120dd",
+  "examples/acceptance.json": "f3b1b5aa9d07e77fc318eed4eb91310e30a71673057f3eafc57b524738f37f7c",
+  "examples/worked-example.md": "164a282562b3474f1073a79044e1f6ab27a7f3c92ec4af3f728cbd51c3a67c7c"
+}

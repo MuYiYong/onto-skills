@@ -1,0 +1,33 @@
+{
+  "classification": "project-curated",
+  "scope": "Explicit lossy source projection for the existing synthetic applicability task; not a production converter",
+  "namespace_aliases": {
+    "urn:sbom:A": "https://example.test/sbom/A/20261106-1",
+    "urn:sbom:B": "https://example.test/sbom/B/20261106-1"
+  },
+  "source_to_projection": [
+    {
+      "source": "SPDX documentNamespace + packages[].SPDXID/versionInfo",
+      "target": "packages[].namespace/spdx_id/version",
+      "loss": "Synthetic namespace aliases are explicitly declared above; complete SPDX license/file/checksum content is not projected."
+    },
+    {
+      "source": "CSAF document.publisher.namespace + tracking.id/version/current_release_date",
+      "target": "advisories[].publisher/tracking_id/revision/released_at",
+      "loss": "Positive integer revision policy only; local observed_at is independently supplied ingestion evidence."
+    },
+    {
+      "source": "CSAF product_status + product-applicable threats/remediations",
+      "target": "advisories[].product_status[].status/impact_statement/action_statement",
+      "loss": "Only selected VEX statuses are projected; full product trees/ranges/groups need additional mappings."
+    },
+    {
+      "source": "CVSS4 vector/score record",
+      "target": "cvss",
+      "loss": "Separate external score record; never inserted as a CSAF2.0 cvss_v4 field."
+    }
+  ],
+  "independent_local_evidence": [
+    "Deployment observations, effective inventory intervals, reviewed revision-bound product mapping and first-observed timestamps are local synthetic evidence, not inferred from SPDX/CSAF."
+  ]
+}

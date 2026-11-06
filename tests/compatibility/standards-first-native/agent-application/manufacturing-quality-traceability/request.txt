@@ -1,0 +1,1 @@
+同source M/site P1，RAW100kg+ADD10kg混配成MIX110kg；MIX拆成FG60kg和RW50kg；RW返工成FG2 48kg+SCRAP2kg，均为不同实际事件且有已知有效谱系，FG与FG2为终端released；无关批U30kg仅共享设备。RAW是suspect seed，查询截止晚于所有事件，单位均kg且投料完整。输出候选终端批和总量，不把中间品/返工/报废重复加总，不把下游检验通过当切断谱系。

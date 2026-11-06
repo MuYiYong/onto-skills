@@ -1,0 +1,38 @@
+{
+  "skill_used": "cybersecurity-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "SPDX文档、文档内Package occurrence、声明依赖、实际部署资产分别有身份；同display name或SPDXRef-lib不建立跨文档等价。",
+      "CSAF发布者、通告tracking ID、文档修订、修订内product_id、漏洞及带理由状态断言分别保存。",
+      "CVSS4.0 Base严重度与Threat/Environmental/Supplemental组分开；9.8仅为给定Base分数，不是本地风险、利用或修复证明。"
+    ],
+    "decisions": [
+      "两个SBOM的namespace不同，所以各自SPDXRef-lib是两个文档内出现记录；是否同一实际组件还需版本、供应商、PURL/CPE/hash等经审查证据。",
+      "同名发布者namespace不同保留不同发布者身份；product-p必须绑定发布者/通告/修订，不能跨新版自动继承旧映射。",
+      "新版无受信映射时不能把旧版产品状态应用到新版组件；缺评估保持unknown，不填safe或known_not_affected。",
+      "补丁已发布不证明安装完成；没有安装变更或利用记录时，实际修复与是否被利用均未知。",
+      "保留known_affected/known_not_affected/fixed/under_investigation及影响/行动理由，其他CSAF状态不静默压成四类。"
+    ]
+  },
+  "identity_rules": [
+    "SBOM occurrence key=document_namespace+spdx_id；文档更新版本应有新namespace；保留原版本与外部标识，不按display name合并。",
+    "CSAF issuer以publisher.namespace经声明规范化为键，保留原值和规范化规则；产品键含publisher+tracking_id+revision+product_id，映射证据也绑定精确修订/版本。",
+    "同修订异载荷按payload_hash保留并报告冲突，不任意覆盖；组件、资产部署与通告产品不共用一个ID。"
+  ],
+  "time_and_units": [
+    "分别保留文档修订/发布时间released_at、来源时间与本系统observed_at；历史判断过滤released_at<=as_of及observed_at<=known_as_of，再按声明修订策略选择。",
+    "CVSS保留版本4.0、完整vector、metric group、score及来源；只给9.8无法复算或核实vector一致性。"
+  ],
+  "standard_basis": [
+    "SPDX/Linux Foundation SPDX2.3 tagv2.3：6.5 Document namespace、7.2 Package SPDX identifier、7.3 Package version、7.21 External reference、11 Relationships between SPDX elements；支持文档范围身份及声明关系。",
+    "OASIS CSAF2.0 Standard2022-11-18：3.1.8 Product ID Type、3.2.1.8.5 Publisher Namespace、3.1.3.3 Product Identification Helper、3.2.1.12 Tracking、3.2.3.9 Product Status、4.5 VEX、3.2.3.12 Remediations。",
+    "FIRST CVSSv4.0 Specification Introduction/Metrics支持指标组边界；CVSS4.0是独立来源记录，不伪装成CSAF2.0内建v4评分字段。",
+    "domain条目standard-backed仅为各scope；版本映射解析器、信任/冲突、知识截止、正整数修订等为项目政策；组合图模型总状态为nonstandard-modeling。"
+  ],
+  "source_limits": [
+    "仅用包内标准索引与原创摘要，未下载或执行SPDX/CSAF/CVSS全标准验证；没有SBOM实际载荷、完整CVSS vector或部署遥测，不能证明本地受影响资产、入侵或修复。"
+  ],
+  "unresolved": [
+    "真实namespace、tracking ID/revision/release日期；新版精确产品/组件版本映射与发布者信任；部署/安装变更、利用记录及CVSS完整vector和计算来源。"
+  ]
+}

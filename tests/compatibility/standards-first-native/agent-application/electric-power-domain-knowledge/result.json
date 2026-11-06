@@ -1,0 +1,62 @@
+{
+  "skill_used": "electric-power-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "设备 Equipment 表达设备身份；导电设备 ConductingEquipment 表达电气连接角色，不把名称、位置、正常设计状态或当前运行状态当作设备身份。来源：domain.json equipment-terminal-connectivity；所列 CGMES3 EQ 类语义有界标准依据，本地键为非标准建模。",
+      "端子 Terminal 是导电设备的连接端；连接点 ConnectivityNode 表达零阻抗连接语义，二者均有独立身份。所选 CGMES 3.0.0 EQ 配置中 Terminal 到 ConductingEquipment 为 1..1，到 ConnectivityNode 为 0..1；这些是指定配置的基数，不能扩大成所有本地图的通用规则。",
+      "拓扑节点 TopologicalNode 是网络状态下的拓扑聚合，与连接点及规划母线语境区分。端子—连接点、连接点—拓扑节点和设备归属应带来源版本与有效时间；不能混拼互不兼容的快照。来源：topology-version、model-profile-snapshot-manifest；本地快照筛选是非标准建模。",
+      "回路是业务组织和报告范围，不证明物理相连；供电点是服务物理连接范围，客户是服务主体。客户可对应多个供电点，供电点所属回路及客户绑定可随时间变化；不能把 EnergyConsumer 消费模型点直接等同客户。该映射、基数和客户计数为非标准建模，精确标准类映射尚未核实。",
+      "开关设备、实际开关状态、正常设计状态及状态观测分开。Switch.open、Switch.normalOpen、Switch.locked 和 ACDCTerminal.connected 各有语义；端子 connected 不能代替开关状态。状态观测单独记录被观测开关、值、业务有效区间、现场观测时间（若有）、本地接收时间、质量和证据来源。来源：switch-state；三值 unknown、冲突与观测模型为非标准建模。",
+      "电源等值 EnergySource、电力电子网络连接 PowerElectronicsConnection、设备可用性 Equipment.inService 和实际出力分开。DER 是本地业务分类，不能仅凭 DER 标签认定其对应某一 CGMES 类；available/unavailable/unknown 为本地模型状态。inService 不等于已带电或能安全供电。来源：supply-and-der。",
+      "计划停电情景、设备故障、供电点实际中断及恢复分段分开。实际停复电由服务证据和适用认定规则支撑，不由工单、故障或单一路径结果直接推出；这些停电事件与证据门槛为非标准建模。来源：planned-actual、restoration-segment。"
+    ],
+    "decisions": [
+      "对同名设备保留独立记录，以 utility_id 加源系统命名空间和源稳定 ID 辨识。只有取得资产映射或其他可核查的同一性证据后才建立跨源同一对象映射；同名、同回路、地理接近均不产生合并或连接边。映射保留依据和有效期。",
+      "建立数据库中立关系：Terminal → ConductingEquipment；Terminal → ConnectivityNode（具体拓扑版本/有效期）；Switch → StateObservation（设备一对多观测，观测指向一设备）；ServicePoint → Circuit（有效归属）；Customer ↔ ServicePoint（有效绑定）。后两类关系的方向、条件基数及供电点跨客户历史必须由本地业务确认，不能声称为 CGMES 规定。",
+      "联络开关缺状态时记为 unknown，不能默认为 open 或 closed。normalOpen 可以在明确标注的设计/模型假设中使用，但不能冒充现场测量；如目标是严格的所选 CGMES SSH 交换实例，缺失该配置要求的 Boolean 字段是补证/校验缺口，不能把本地字符串 unknown 填入 Boolean。冲突且同时有效的状态保留并阻止确定结论。",
+      "DER 可用性未知时仅形成可能供电路径。对同一兼容拓扑快照分别保留确定连接（已知闭合边）与可能连接（含未知开关边），以及已知可用和可能可用电源；如有情景指定不可用设备，先从该情景移除。报告回路只限定输出对象，不能截断跨回路联络、边界电源或反送电路径。",
+      "在没有实际拓扑与状态数据的本请求中不计算具体供电点集合。即使存在到已知可用电源的确定路径，也只说明拓扑候选筛查保留路径，不证明实际有电；只存在可能路径时结论为不确定。即使无可能路径，也须先证明拓扑和电源边界完整，才可列为情景下的失供候选，仍不能等同已确认客户停电。",
+      "现有条件不能断言业务时点 10:00 已停电，也不能断言已送电、恢复供电或允许安全送电。联络状态和 DER 可用性均未知，且没有服务观测、完整快照或实际客户绑定证据。计划移除、工单和设备故障不替代供电点中断证据。",
+      "需要补齐：10:00 有效且依赖兼容的设备—端子—连接点拓扑及边界电源；联络开关 open/locked 与来源、现场时间、有效期和质量；DER 的可用性、接入、实际运行/输出证据；10:00 有效的供电点—回路及客户绑定。为确认实际停复电，还需可定位供电点及相别的电压/计量/配网监测或经核实现场服务记录、证据质量、认定规则和中断/恢复业务时刻，不能把信号缺失当停电。",
+      "容量、相别、潮流、保护配合、孤岛及反送电是否可行另需相应工程数据与有权专业流程评估。该模型不生成倒闸顺序、调度指令、安全许可或电气安全结论。",
+      "若后续统计影响客户，先保留供电点级状态及不确定原因，再按业务时点有效的客户绑定去重；供电点数量不是客户数量。实际时长按供电点中断区间先求并集，保留重复中断与未知恢复端点；接收时间不是恢复时间。",
+      "每项结果保留证据链：对象原始 ID、源模型/资料版本、研究快照、有效区间、观测/接收时间、质量、采用原因及未决项；当前交付是概念与模型决策，不宣称执行过真实拓扑、电力计算、SHACL 或数据库验证。"
+    ]
+  },
+  "identity_rules": [
+    "设备、端子、连接点、拓扑节点、回路、供电点、客户和观测使用独立稳定 ID；本地 utility_id 仅是原创建模的身份范围策略，不是 IEC 官方键。跨源键还须保留源命名空间与映射。",
+    "CGMES mRID 应保留模型权威及交换上下文中的唯一性范围；不能将 mRID、名称或不同系统的裸 ID 无条件视为全球同一身份。依据：EQ IdentifiedObject.mRID 的包内有界摘要。",
+    "拓扑快照、源模型文档、CIM 模型版次、CGMES 配置版次、边界数据、依赖清单和本地研究快照分别有身份；模型替代关系和内容版本不覆盖历史观测。",
+    "反例：两个同名变压器并无同一 ID 或资产映射时保持分离；同一回路内两个端子没有连接点/连线证据时不建立连接。客户有两个供电点时不能把一个点中断直接扩展为客户全部失供。"
+  ],
+  "time_and_units": [
+    "event_as_of=业务日 10:00；knowledge_cutoff 尚未指定。10:30 仅解释为材料本地到达/known_at，不自动视为现场观测时刻或材料描述的有效时刻。业务日期、时区和是否同日需要补齐；确认后统一存储 UTC，并保留原始时区。",
+    "若回溯“10:00 当时已知什么”，取 knowledge_cutoff=10:00，排除 10:30 才到的材料。若做截至 10:30 或之后对 10:00 的事后重建，可纳入迟到材料，但仅当其证据有效区间覆盖 10:00、来源可信且与选定快照兼容；另出修订结果，不改写先前知识截面。",
+    "有效区间采用 [valid_from, valid_to)；valid_to 为空仅在明确持续有效时使用。现场测量时刻、业务有效时刻、本地收到时刻及更正/撤销时刻分别保留，时间相等的截止边界策略需明确。",
+    "源 Header Model.scenarioTime 表达模型代表时点，Model.created 是源序列化时间，均不是本地 observed_at/known_at；Model.version/profile/DependentOn/Supersedes 是源模型身份与依赖，不能用 10:30 接收时间替代。",
+    "电气量保留值、单位、倍率、相别/相对参考、单相或三相聚合口径、有效时间、质量和来源。未提供数值或单位时不补造。PhaseCode 不单独描述相间连接或接地方式；功率、能量、电压及电流不能混用。"
+  ],
+  "standard_basis": [
+    "依据限于包内 domain.json 与 sources.json 中的来源摘要；本次未访问外网或读取外部原始标准。ENTSO-E CGMES 3.0.0 所选公开 RDFS/SHACL 工件固定到 application-profiles-library 提交 8eff738bda72dc3a97fc24bf021dc78773814111。standard-backed 仅指各条目的 standard_basis.scope，不表示全部本地模型符合标准。",
+    "设备/端子/连接点：entsoe-cgmes3-eq 的 61970-600-2_Equipment-AP-Voc-RDFS2020.rdf 中 Equipment、ConductingEquipment、Terminal、ConnectivityNode、Terminal.ConductingEquipment、Terminal.ConnectivityNode、IdentifiedObject.mRID；entsoe-cgmes3-eq-shacl 的 Terminal.ConductingEquipment-cardinality 与 Terminal.ConnectivityNode-cardinality 支持所选配置的 1..1 和 0..1。",
+    "开关及可用性：上述 EQ 的 Switch、Switch.normalOpen；entsoe-cgmes3-ssh 的 61970-600-2_SteadyStateHypothesis-AP-Voc-RDFS2020.rdf 中 Switch.open、Switch.locked、ACDCTerminal.connected、Equipment.inService；所选 EQ/SSH simple SHACL 的 Boolean 和 min1/max1 约束只适用于列明的配置字段。正常设计状态与当前实测状态须区分。",
+    "电源、拓扑、量纲：EQ 的 EnergySource、PowerElectronicsConnection、PhaseCode、Terminal.phases、UnitSymbol、UnitMultiplier；entsoe-cgmes3-tp 的 61970-600-2_Topology-AP-Voc-RDFS2020.rdf 中 TopologicalNode、ConnectivityNode.TopologicalNode、Terminal.TopologicalNode。这些依据不证明 DER 实际出力、孤岛可行或安全送电。",
+    "源模型时钟和依赖：entsoe-cgmes3-header 的 61970-600-2_Header-AP-Voc-RDFS2020.rdf 中 FullModel、Model.created/scenarioTime/version/profile/DependentOn/Supersedes；entsoe-cgmes3-header-shacl 的所列 Header 约束支持源字段类型/基数，不规定本地双时间筛选策略。",
+    "IEC 61970-301:2020 edition 7.0（2020-06-26，公开摘要标识 IEC61970CIM17v38 / 2020-01-21）及 AMD1:2022（2022-02-22）仅为版本/范围背景，付费完整正文未取得。所选 CGMES3 EQ 元数据依赖 CIM17v40，不能与 IEC 摘要 CIM17v38 合并为同一版本；retrieved_at=2026-11-06 也不是标准版次或项目适用日期。",
+    "非标准建模：utility_id/源键映射、双时间与本地快照选择、三值 unknown 和冲突传播、确定/可能可达、客户—供电点—回路本地映射和计数、计划影响及实际停复电证据/时长策略均来自 onto-project/method.md；客户精确类映射、可靠性考核规则、电气安全与工程可行性标准尚未核实。"
+  ],
+  "source_limits": [
+    "严格只读取指定包内的请求、结果 schema、声明哈希清单、安装的 SKILL.md 及四个相关 references；未读取示例、期望答案、其他包、仓库、网络或配置。",
+    "来源目录是项目维护的有界摘要，官方来源分类本身不证明任何本地模型符合性。未在本次直接获取官方工件、付费 IEC 正文或验证它们的实时版本；本次仅据包内明确定位解释已列语义。",
+    "无真实设备、端子、连接点、开关观测、DER、客户、供电点或中断数据，无法核验任何实际对象同一性、可达范围或供电事实。",
+    "未执行完整 CGMES SHACL 闭包、跨配置一致性、接口认证、OWL 推理、电力工程计算、数据库执行或现场验证；当前 Codex 协作运行时的应用输出不代表本地 CLI、原生主机、CC-Switch GUI 或 macOS 兼容性证据。"
+  ],
+  "unresolved": [
+    "业务日期/时区，以及目标是 10:00 当时知识截面还是截至 10:30 以后的事后重建；材料实际描述时点、现场观测时刻、有效区间及更正状态。",
+    "同名设备的源稳定 ID、模型权威/utility 范围、跨源身份映射证据与版本。",
+    "适用项目的 CIM/CGMES/边界数据精确版本、源模型及依赖清单、10:00 兼容拓扑与完整边界电源。",
+    "联络开关的实际状态与质量、闭锁/可用性、DER 可用性/接入/实际运行，以及跨回路反送电和可能孤岛的证据。",
+    "供电点—客户—回路时效绑定、当地客户实际中断/恢复定义与观测门槛、可靠性计时规则，以及电压/计量/现场服务证据。",
+    "如需确认工程供电可行性或安全送电，尚缺相别、负荷与容量、潮流、保护及孤岛评估和有权专业结论。"
+  ]
+}

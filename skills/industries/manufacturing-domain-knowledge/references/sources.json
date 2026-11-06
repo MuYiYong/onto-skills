@@ -1,9 +1,9 @@
 {
   "id": "manufacturing-sources",
   "name": "manufacturing source catalogue",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Source/version observations for the bounded industry examples",
   "authority": "Project-curated modeling guidance and synthetic examples, not official standard axioms or operational authority",
   "classification": "project-curated",
@@ -30,12 +30,12 @@
       "id": "gs1-epcis",
       "name": "GS1 EPCIS Standard Archive",
       "kind": "official-standard",
-      "uri": "https://ref.gs1.org/standards/epcis/archive",
-      "version": "2.0.1 published 2025-07-01 per archive, observed 2026-11-05",
+      "uri": "https://ref.gs1.org/standards/epcis/2.0.1/",
+      "version": "2.0.1 package published 2025-07-01 per official archive; normative cover Release 2.0, Jun 2022",
       "publisher": "GS1",
       "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
-      "retrieved_at": "2026-11-05",
-      "scope": "Official visibility-event version index; local lot graph is not an EPCIS-compliant event serialization",
+      "retrieved_at": "2026-11-06",
+      "scope": "选定2.0.1发布包；7.3.3.1数量、7.4.1事件时钟/错误声明、7.4.5投入产出转化；本地归档时钟和召回规则另行声明",
       "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
     },
     {
@@ -43,10 +43,10 @@
       "name": "OPC UA Common Object Model: ISA-95",
       "kind": "official-standard",
       "uri": "https://reference.opcfoundation.org/specs/OPC-10030/full",
-      "version": "OPC 10030 v1.00 as displayed; applicability selected separately",
+      "version": "OPC 10030 v1.00; section 1 references ANSI/ISA-95.00.02-2010; observed 2026-11-06",
       "publisher": "OPC Foundation",
       "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Public scope and resource separation for material, equipment and manufacturing operations; no full companion-model implementation",
       "authority": "Official publisher source for stated scope; local modeling choices are project-curated"
     },
@@ -58,7 +58,7 @@
       "version": "Live overview observed 2026-11-05; no single part/edition implied",
       "publisher": "International Society of Automation",
       "license": "Copyright retained by publisher; index and original summaries only; source text not redistributed",
-      "retrieved_at": "2026-11-05",
+      "retrieved_at": "2026-11-06",
       "scope": "Official overview only; select applicable ISA-95 part and edition for a compliance task",
       "authority": "Official ISA overview for orientation; no normative part/edition or local quality authority implied"
     }

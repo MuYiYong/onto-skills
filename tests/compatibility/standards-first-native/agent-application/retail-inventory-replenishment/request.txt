@@ -1,0 +1,1 @@
+合成单粒度merchant M/SKU S/location L/lot B/unit each。sellable快照10件覆盖10:00及以前，damaged快照0；10:30 sale -2、同一source/event原样重放一次；11:00已收货return +1但进入damaged；11:30 active库存预留3件。as_of/known均12:00，所有源事件有明确posting与单位且完整。在途20仅计划无receipt。用户规则available=sellable-active_reserved，reorder_point6，target12，严格小于触发。输出sellable、available、补货候选及建议量，order_created=false。

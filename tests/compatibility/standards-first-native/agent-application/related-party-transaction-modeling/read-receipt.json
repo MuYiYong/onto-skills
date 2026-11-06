@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/request.txt",
+      "sha256": "da61fdb01927012f9fa647cd94d8d4d56f0b4e87ed2e2f98327e2e80fbb9e40c"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/schema.json",
+      "sha256": "2801ee7f4a94deabfd5c78cfe9c3fca156811cd3c470a526cc043e8354ad1838"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/source-files.json",
+      "sha256": "63f8271543ef4c9b216640bd910799ee8bce43a4b385ba1751fc89353bcf374f"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/.agents/skills/related-party-transaction-modeling/SKILL.md",
+      "sha256": "0d6d6d04c8228ace8406682821ce4833f956440d3426ee87ad8e4512a98a1376"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/.agents/skills/related-party-transaction-modeling/references/method.md",
+      "sha256": "bef3ee0295935381917ff2aebb6fe58f533996f6c10b3b3430da1f3a7acbae70"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/.agents/skills/related-party-transaction-modeling/references/sources.json",
+      "sha256": "08187cb0d6174f10e225d7075622d2a58f570bffac81b0b997ec33398041c336"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling-final/.agents/skills/related-party-transaction-modeling/references/domain.json",
+      "sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d"
+    }
+  ],
+  "limits": [
+    "Follow-up application of a new one-skill packet in the same shared model context; not a fresh CLI process or independent certification.",
+    "The new request/schema/manifest/SKILL/method were read directly. New source/domain copies were read, parsed and hash-matched to previously consumed byte-identical knowledge. No old result/answer file was read to construct this result.",
+    "No examples, worked examples, acceptance/expected answers, test-file content, repository source, network, auth/config or production access. Original packet and old results are preserved.",
+    "Only listed consumed package file hashes verified; schema-constrained task result, not full standard/ontology correctness, complete graph specification, GUI/macOS, regulatory compliance or native database evidence."
+  ]
+}

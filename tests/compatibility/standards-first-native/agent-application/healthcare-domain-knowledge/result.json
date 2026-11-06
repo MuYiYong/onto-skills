@@ -1,0 +1,38 @@
+{
+  "skill_used": "healthcare-domain-knowledge",
+  "answer": {
+    "concepts": [
+      "Patient是源系统患者资源记录；患者假名与资源身份/业务Identifier/版本分开。",
+      "Encounter为一次服务交互及生命周期；同患者重复就诊不折叠，finished不证明所有请求完成。",
+      "ServiceRequest是具有intent/status的请求；R4撤销状态为revoked；Procedure是另有status与performed[x]的活动文档。",
+      "Observation保存状态、value[x]/dataAbsentReason、effective[x]/issued及coding/Quantity；entered-in-error为无效记录，缺值保持未知。",
+      "Provenance保存资源创建/修订来源并指向精确版本，不是医疗执行或读写/披露授权。"
+    ],
+    "decisions": [
+      "原医嘱revoked且无Procedure，现有证据不能证明已执行，也不能证明绝对未执行；后来请求撤销不抹除可能独立存在的完成记录。",
+      "Observation entered-in-error不可作当前有效测量；缺值不补0，不解释为阴性、正常或临床诊断；历史在获批保留策略下可审计。",
+      "两名患者共享联系方式不足以归并，不自动合并；需有目的授权与审查通过的身份crosswalk证据。",
+      "版本current由来源权威声明决定，meta.versionId为不透明标识，不按数值/字典序挑最新；同版本重放幂等、异文冲突拒绝是本地策略。"
+    ]
+  },
+  "identity_rules": [
+    "resource logical key=source server base+resourceType/id；version key再含meta.versionId；Patient.identifier的system/value/use/period/assigner另存。",
+    "项目患者假名按tenant/namespace/purpose限定；同id跨服务器不合并，subject/encounter/basedOn仅从明确引用建立并保存解析版本。"
+  ],
+  "time_and_units": [
+    "保持authoredOn、occurrence[x]、performed[x]、effective[x]、issued、Provenance.recorded、meta.lastUpdated和intake时间分离，保留choice/原精度/时区，不编造午夜。",
+    "Quantity保留value/comparator/unit/system/code；Coding保留system/version/code；单位显示相同不代表可比，不在无获批规则下转换或聚合。"
+  ],
+  "standard_basis": [
+    "HL7 FHIR R4 4.0.1发布版，固定基线，非R5或build.fhir.org；resource.html#id/#versions、datatypes.html#Identifier支持源资源/业务标识/版本边界。",
+    "R4 encounter.html Scope and Usage、servicerequest-definitions.html#ServiceRequest.intent/#ServiceRequest.doNotPerform及codesystem-request-status.html revoked、procedure-definitions.html#Procedure.status。",
+    "R4 observation-definitions.html#Observation.status/#Observation.dataAbsentReason，codesystem-observation-status.html entered-in-error；obs-6仅允许根value[x]缺失时有dataAbsentReason。",
+    "R4 provenance.html Scope and Usage/target/recorded、datatypes.html#Coding/#Quantity支持来源、时钟、代码与数量边界；本地患者归并、quantitative view和撤回策略仍是project-curated/model-inference。"
+  ],
+  "source_limits": [
+    "仅基于随包摘要/定位作数据建模，未执行完整FHIR profile/术语绑定/扩展/签名验证，无临床、隐私或法规符合性结论，也未访问患者系统。"
+  ],
+  "unresolved": [
+    "实际来源server/type/id/version/current证据、请求intent/doNotPerform或modifierExtension、确切时间精度和单位代码、身份映射授权及当地实施指南。"
+  ]
+}

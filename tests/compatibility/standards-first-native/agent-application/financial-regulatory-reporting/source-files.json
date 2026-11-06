@@ -1,0 +1,14 @@
+{
+  "SKILL.md": "fff91c000314c45ba34b9829555e11f2038a4b8eb17ed75f9d3f27c7bef7c179",
+  "LICENSE": "3b5f4138c6b3c4408b7b1f709aa97d6eefd4b4ee6cb7cd1ca4118a86aeec474f",
+  "references/method.md": "7e5528e3ac15a979f626bd87ea97044b7ea16d72875a17ed56f96357a483c586",
+  "references/sources.json": "aecbab252a1fe239a481ab7eb00fda384c1266770a55a6a863453b1f10dc5a97",
+  "references/domain.json": "81d83690adf3dc31d9ca3199d7a7d66daa17b8d0eae785d5817e58e3b7e97806",
+  "references/graph-model.schema.json": "3d2ce4f4be2fe9bfe9fc7f541917c0e8b62cf2ea61ac62ed5a94f0228ace69b7",
+  "references/graph-model-specification.md": "16f3b8535adc9e41ddc16e5994be785c57d27750d5c229e678de58cfb68efc85",
+  "references/gql-handoff.md": "2504d864c1bbbec4dfa0a03d20a442cdb911374d9eee78e5ad9db7607e8e849d",
+  "examples/worked-example.md": "874db300368bb2e9e88822293987a29e3777beb8da457b33ed2a42580eb77428",
+  "examples/graph-model.json": "409a82d97110fdffdcd15f31da92c6ac8d68123c03e6abadf09d62239295d017",
+  "examples/input.json": "0ae53e75512f4767729d53c301f3183fe917bc291af70a62e0e3daa4e13247c1",
+  "examples/acceptance.json": "02558925c4ff7f25d870228ff2bfbfc717d0c7228b376a13ccbd65d29d2cc5e4"
+}

@@ -1,0 +1,33 @@
+{
+  "skill_used": "healthcare-care-pathway-modeling",
+  "answer": {
+    "procedure_performance_proven": false,
+    "superseded_value_usable": false,
+    "unknown_fill_zero": false,
+    "patients_auto_merged": false
+  },
+  "identity_rules": [
+    "server A+Patient/p1为源逻辑身份；在给定目的授权范围内按获批crosswalk关联匿名P1；p2共享联系人不授权关联或合并。",
+    "ServiceRequest/r1/_history/2及Observation/o1各版本独立不可变记录；versionId不透明；本题明确current而非按2>1猜选。",
+    "各资源version key含完整source base、resourceType/id和versionId；实际server base未给，A是合成标签，不能伪造可访问URL；basedOn/subject只按给定显式引用。",
+    "已撤销r1不制造Procedure；无Procedure仅表示执行未被证明，不断言从未执行。"
+  ],
+  "time_and_units": [
+    "知识截止晚于修订，使用o1 current v2 entered-in-error；v1的5mg/L仅保留历史，不回退到旧final值作为当前可用结果。",
+    "o2 final且dataAbsentReason=unknown没有数值，状态为unknown-value，不能填0或作正常/阴性。",
+    "authoredOn/occurrence、performed、effective、issued、Provenance.recorded、lastUpdated及intake时间分开；缺时钟不互补。",
+    "5mg/L保留原value/unit/comparator及Coding和Quantity的system/version/code；只给显示单位不足以证明代码维度可比，本题不转换或聚合。"
+  ],
+  "standard_basis": [
+    "HL7 FHIR R4 4.0.1：resource.html#id/#versions和datatypes.html#Identifier；源身份与opaque版本支持，患者假名/crosswalk及current策略为本地映射。",
+    "servicerequest-definitions.html#ServiceRequest.intent、codesystem-request-status.html revoked和procedure-definitions.html#Procedure.status支持请求/执行分离；R4撤销用revoked。",
+    "observation-definitions.html#Observation.status/#Observation.dataAbsentReason及codesystem-observation-status.html entered-in-error支持无效/缺失边界；obs-6限制根value[x]与dataAbsentReason并存。",
+    "datatypes.html#Coding/#Quantity与provenance.html target/recorded；domain相关条目standard-backed仅限所列scope；quantitative current final/amended/corrected、保留/撤回及授权机制为项目政策，非临床标准。"
+  ],
+  "source_limits": [
+    "给定合成事实的schema约束判断；未产出或验证完整Graph Model Specification、未执行FHIR全量符合性/术语/扩展/真实医疗系统检查，不作临床结论。"
+  ],
+  "unresolved": [
+    "源server A的固定base及各完整引用、coded units/terminology版本、current权威声明与具体时钟原值；历史保留/披露授权范围。"
+  ]
+}

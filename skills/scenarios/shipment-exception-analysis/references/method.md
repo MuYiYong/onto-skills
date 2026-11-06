@@ -13,3 +13,5 @@
 输出字段与[验收](../examples/acceptance.json)一致：status、selected_eta_event_id、latest_eta(UTC)、delay_minutes、delivery_confirmed、delivered_unit_ids、latest_actual_event_ids、actual_event_count、duplicate_receipts、rejected_event_keys。未知值为null，不用0代替。复核报告另列来源记录时间、原因、冲突和需要的证据。
 
 [输入](../examples/input.json)是有界源投影，不是全量Graph Model导入文件。context声明9类模型实体及缺失证据；events只投影本次判定需要的字段。关系实例和GS1号不可从未提供字段补造。
+
+EPCIS适配边界：标准7.4.1.2允许错误声明重发原事件，eventID保持相同，除errorDeclaration/recordTime外事件内容不变。先识别并验证这一合法配对，再应用本地同键异文冲突规则；保留原始记录、声明与独立ID的更正事件。错误声明不等于物理库存冲正。包内自定义投影不冒称实现EPCIS捕获/查询接口。

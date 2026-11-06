@@ -1,9 +1,9 @@
 {
   "id": "healthcare-domain",
   "name": "医疗健康数据概念与证据边界 / healthcare domain knowledge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "Database-neutral ontology/data design for patient-context request/event/result/provenance records",
   "authority": "Onto Skills original data-modeling guidance; no clinical, regulatory or FHIR conformance authority",
   "classification": "project-curated",
@@ -33,9 +33,26 @@
       "source_ids": [
         "onto-project",
         "fhir-r4-patient",
-        "fhir-r4-resource"
+        "fhir-r4-resource",
+        "fhir-r4-datatypes"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "跨来源患者归并、授权crosswalk与假名键是本地策略；Identifier相同或人口信息相似本身不授予身份合并。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html#id",
+          "relation": "supports",
+          "scope": "资源逻辑ID具有资源/服务上下文。"
+        },
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Identifier",
+          "relation": "supports",
+          "scope": "业务标识的system/value与资源逻辑ID区分。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "resource-version",
@@ -46,7 +63,17 @@
         "onto-project",
         "fhir-r4-resource"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地版本去重和快照保留为设计选择；meta.versionId不是可依赖的数值排序，也不保证来源开放历史。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html#versions",
+          "relation": "supports",
+          "scope": "版本元数据与资源逻辑身份分离，版本ID是来源管理的标识。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "encounter-context",
@@ -57,7 +84,17 @@
         "onto-project",
         "fhir-r4-encounter"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-encounter",
+          "locator": "https://hl7.org/fhir/R4/encounter.html; Scope and Usage",
+          "relation": "supports",
+          "scope": "Encounter提供患者与服务交互的上下文及生命周期。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "request-versus-performance",
@@ -71,7 +108,29 @@
         "fhir-r4-request-status",
         "fhir-r4-event-status"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-servicerequest",
+          "locator": "https://hl7.org/fhir/R4/servicerequest-definitions.html#ServiceRequest.intent; #ServiceRequest.doNotPerform",
+          "relation": "supports",
+          "scope": "请求意图及禁止执行含义。"
+        },
+        {
+          "source_id": "fhir-r4-procedure",
+          "locator": "https://hl7.org/fhir/R4/procedure-definitions.html#Procedure.status",
+          "relation": "supports",
+          "scope": "执行活动文档有独立状态。"
+        },
+        {
+          "source_id": "fhir-r4-request-status",
+          "locator": "https://hl7.org/fhir/R4/codesystem-request-status.html; revoked",
+          "relation": "supports",
+          "scope": "请求撤销状态不证明实际执行。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "observation-validity",
@@ -83,7 +142,23 @@
         "fhir-r4-observation",
         "fhir-r4-observation-status"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.status; #Observation.dataAbsentReason",
+          "relation": "supports",
+          "scope": "结果状态与缺失原因字段。"
+        },
+        {
+          "source_id": "fhir-r4-observation-status",
+          "locator": "https://hl7.org/fhir/R4/codesystem-observation-status.html; entered-in-error",
+          "relation": "supports",
+          "scope": "录入错误状态的含义。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "condition-assertion",
@@ -94,7 +169,17 @@
         "onto-project",
         "fhir-r4-condition"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地资源投影、关联键、证据筛选、缺失/冲突处理及授权策略不是完整FHIR profile、术语绑定或临床验证。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.verificationStatus; #Condition.clinicalStatus",
+          "relation": "supports",
+          "scope": "确认状态与临床状态有不同语义。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "clinical-times",
@@ -111,7 +196,41 @@
         "fhir-r4-resource",
         "fhir-r4-datatypes"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "本地时间字段投影必须保留来源精度和choice类型；缺失值不补造午夜，观测截止策略由项目定义。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-servicerequest",
+          "locator": "https://hl7.org/fhir/R4/servicerequest-definitions.html#ServiceRequest.authoredOn",
+          "relation": "supports",
+          "scope": "请求签发时间。"
+        },
+        {
+          "source_id": "fhir-r4-procedure",
+          "locator": "https://hl7.org/fhir/R4/procedure-definitions.html#Procedure.performed_x_",
+          "relation": "supports",
+          "scope": "执行时间或期间。"
+        },
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.effective_x_; #Observation.issued",
+          "relation": "supports",
+          "scope": "观测有效时间与可用时间分离。"
+        },
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.onset_x_; #Condition.recordedDate",
+          "relation": "supports",
+          "scope": "健康问题发生时间与记录日期分离。"
+        },
+        {
+          "source_id": "fhir-r4-provenance",
+          "locator": "https://hl7.org/fhir/R4/provenance.html; recorded",
+          "relation": "supports",
+          "scope": "来源活动记录时间。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "coding-and-unit",
@@ -122,7 +241,17 @@
         "onto-project",
         "fhir-r4-datatypes"
       ],
-      "classification": "project-curated"
+      "classification": "project-curated",
+      "standard_gap": "单位换算和代码等价须另有获准规则；display或unit标签相同不证明代码、量纲或术语版本相同。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Coding; #Quantity",
+          "relation": "supports",
+          "scope": "编码system/version/code及Quantity的数值、comparator与单位字段。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "provenance-and-retraction",
@@ -135,7 +264,17 @@
         "fhir-r4-observation",
         "fhir-r4-resource"
       ],
-      "classification": "model-inference"
+      "classification": "model-inference",
+      "standard_gap": "Provenance不是访问授权或临床行为发生的证明；本地撤回筛选与权限运行机制未由此实现。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-provenance",
+          "locator": "https://hl7.org/fhir/R4/provenance.html; Scope and Usage, target",
+          "relation": "supports",
+          "scope": "资源创建/更新的来源活动及目标资源。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "synthetic-data-minimization",
@@ -146,7 +285,67 @@
         "onto-project",
         "onto-project"
       ],
-      "classification": "model-inference"
+      "classification": "model-inference",
+      "standard_gap": "合成样例、最小化输入和假名保护是项目规则；本包不提供匿名性、隐私合规或授权运行时证明。",
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "business-identifier-scope",
+      "name": "业务标识命名空间与有效期",
+      "summary": "FHIR Identifier has use, type, system, value, period and assigner. Preserve its namespace and validity separately from the resource logical id and from local patient pseudonyms; the issuing organization is not the same field as the identifier value.",
+      "modeling_decision": "Store identifier_system/value/use/period/assigner as supplied; an absent system or assigner remains unresolved rather than becoming a global identity key.",
+      "modeling_fields": [
+        "identifier_system",
+        "identifier_value",
+        "identifier_use",
+        "identifier_type",
+        "identifier_period",
+        "identifier_assigner",
+        "source_resource_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Identifier",
+          "relation": "supports",
+          "scope": "Identifier的命名空间、值、用途、期间及分配机构字段。"
+        }
+      ],
+      "standard_gap": "本地跨系统匹配与患者假名关联仍需授权证据；这些字段本身不构成匹配或身份合并算法。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "quantity-comparator-boundary",
+      "name": "数量比较符与测量边界",
+      "summary": "Quantity.comparator can express a bound such as less than or greater than. A reported value with a comparator is not an exact point measurement; retain comparator, value, display unit and coded unit system/code together.",
+      "modeling_decision": "Keep missing numeric value distinct from zero and preserve comparator when projecting or displaying the observation. Do not average a bound as if it were an exact measurement or infer unit equivalence by label.",
+      "modeling_fields": [
+        "quantity_value",
+        "quantity_comparator",
+        "quantity_unit",
+        "quantity_system",
+        "quantity_code"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "fhir-r4-datatypes"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Quantity",
+          "relation": "supports",
+          "scope": "Quantity的comparator修饰数值解释，unit标签与system/code分离。"
+        }
+      ],
+      "standard_gap": "聚合策略、单位转换和临床解释为外部授权规则；本包不输出诊断、治疗或全量Quantity验证器。",
+      "standard_status": "standard-backed"
     }
   ],
   "official_constraints": [
@@ -157,7 +356,16 @@
       "classification": "official-standard",
       "source_ids": [
         "fhir-r4-observation"
-      ]
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-observation",
+          "locator": "https://hl7.org/fhir/R4/observation-definitions.html#Observation.dataAbsentReason; obs-6",
+          "relation": "supports",
+          "scope": "root value[x]存在时不能另有dataAbsentReason；只覆盖此选定不变量。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "r4-condition-con5",
@@ -166,7 +374,16 @@
       "classification": "official-standard",
       "source_ids": [
         "fhir-r4-condition"
-      ]
+      ],
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-condition",
+          "locator": "https://hl7.org/fhir/R4/condition-definitions.html#Condition.clinicalStatus; con-5",
+          "relation": "supports",
+          "scope": "verificationStatus=entered-in-error时clinicalStatus应缺失；只覆盖此选定不变量。"
+        }
+      ],
+      "standard_status": "standard-backed"
     }
   ],
   "mapping_losses": [
@@ -178,7 +395,17 @@
       "source_ids": [
         "onto-project",
         "fhir-r4-resource"
-      ]
+      ],
+      "standard_gap": "保留JSON或少量字段不实现全部FHIR语义、modifierExtensions、profiles、references、consent、签名及工作流。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-resource",
+          "locator": "https://hl7.org/fhir/R4/resource.html; Resource structure",
+          "relation": "background",
+          "scope": "基础资源提供广于本地模型的结构背景。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "no-terminology-equivalence",
@@ -188,7 +415,20 @@
       "source_ids": [
         "onto-project",
         "fhir-r4-datatypes"
-      ]
+      ],
+      "standard_gap": "本包不包含或验证ICD、LOINC、SNOMED CT代码集；本地合成编码不声明与临床标准术语等价。",
+      "standard_basis": [
+        {
+          "source_id": "fhir-r4-datatypes",
+          "locator": "https://hl7.org/fhir/R4/datatypes.html#Coding",
+          "relation": "supports",
+          "scope": "编码来源system/version/code边界。"
+        }
+      ],
+      "standard_status": "standard-backed"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

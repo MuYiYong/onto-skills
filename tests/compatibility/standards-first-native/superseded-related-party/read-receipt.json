@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/request.txt",
+      "sha256": "da61fdb01927012f9fa647cd94d8d4d56f0b4e87ed2e2f98327e2e80fbb9e40c"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/schema.json",
+      "sha256": "2801ee7f4a94deabfd5c78cfe9c3fca156811cd3c470a526cc043e8354ad1838"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/source-files.json",
+      "sha256": "03c4c25dc2d511c9ad06c553c5b52c86cb05b6054b1d0b24f413a488073ee7ab"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/.agents/skills/related-party-transaction-modeling/SKILL.md",
+      "sha256": "0d6d6d04c8228ace8406682821ce4833f956440d3426ee87ad8e4512a98a1376"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/.agents/skills/related-party-transaction-modeling/references/method.md",
+      "sha256": "f27a19814de12e7b5559c3d7aef0b004366d9b482421296ce1ac602f572b41d6"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/.agents/skills/related-party-transaction-modeling/references/sources.json",
+      "sha256": "08187cb0d6174f10e225d7075622d2a58f570bffac81b0b997ec33398041c336"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/related-party-transaction-modeling/.agents/skills/related-party-transaction-modeling/references/domain.json",
+      "sha256": "5a10338522c11d6eba77d51e850f25bcf930e02b24ce9c4f183fc51969e61f4d"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical reference copies were consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Schema-constrained task application; no full graph specification, native database, production, or standard-certification claim."
+  ]
+}

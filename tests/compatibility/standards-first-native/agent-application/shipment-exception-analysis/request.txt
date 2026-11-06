@@ -1,0 +1,1 @@
+原始合成请求：shipment S含必需单元U1、U2，最终DC到达planned=2026-11-05T12:00:00Z，as_of/known=2026-11-05T14:00:00Z。estimated E1由同一优先源于11:00 issued，ETA15:00；E2于13:00 issued，ETA16:00。actual A1=U1于13:30最终DC arrival；actual A2=U2于12:00港口arrival(非DC)；planned P1=U2于14:00最终DC arrival。阈值30分钟，输入各有唯一来源事件ID且已知有效。选最新ETA，给出延误分钟及完整交付是否确认。

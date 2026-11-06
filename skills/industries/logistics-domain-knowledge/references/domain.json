@@ -1,9 +1,9 @@
 {
   "id": "logistics-domain",
   "name": "物流行业最小领域知识",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "scope": "用于数据库中立本体与业务图建模；不包含标准原文或行业自动决策",
   "authority": "项目原创摘要与模型建议，不是官方标准定义、认证或业务自动决策",
   "classification": "project-curated",
@@ -24,7 +24,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GSIN shipment的标识对象与粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "consignment",
@@ -35,7 +45,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GINC consignment的标识对象与粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "logistic-unit",
@@ -46,7 +66,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "SSCC logistic unit的标识对象与粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "trade-item",
@@ -57,7 +87,17 @@
       "source_ids": [
         "onto-project",
         "gs1-architecture"
-      ]
+      ],
+      "standard_gap": "本地ID分配、装载/路段绑定和业务组合为项目映射，不提供GS1编号分配或条码符合性验证。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-gs1-identification-keys-simple-or-compound-and-aidc-data; section4.2",
+          "relation": "supports",
+          "scope": "GTIN class and compound instance/batch keys的标识对象与粒度。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "leg",
@@ -67,7 +107,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "路段顺序、换船和目的地绑定是本地运输模型；未核实统一标准规定该路段图结构。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "booking-document",
@@ -76,19 +118,40 @@
       "modeling_rule": "Booking 与 TransportDocument 独立节点；没有实际事件时不能从文档状态推导已发运或已交付。",
       "classification": "project-curated",
       "source_ids": [
-        "onto-project"
-      ]
+        "onto-project",
+        "gs1-architecture"
+      ],
+      "standard_gap": "订舱/单证生命周期、状态和实物交付判定由来源合同与系统定义。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-architecture",
+          "locator": "https://ref.gs1.org/architecture/system-architecture/12.0.0/#h-transaction-data; #h-visibility-data; sections6.1.2-6.1.3",
+          "relation": "supports",
+          "scope": "商业交易数据与可见性事件数据分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "event-classifier",
       "name": "计划、估计与实际",
-      "meaning": "计划是基线安排，估计是预测，实际是已发生的观测；三类共同保留而不互相覆盖。",
+      "meaning": "DCSA2024.4区分ACT实际、PLN计划、EST估计及REQ请求；当前shipment示例采用前三类。请求与计划均不证明实际发生，估计也不覆盖既有计划基线。",
       "modeling_rule": "classifier 枚举为 planned/estimated/actual；未来计划不产生交付事实。本例是项目词汇映射，不宣称 DCSA 合规。",
       "classification": "project-curated",
       "source_ids": [
         "onto-project",
         "dcsa-event-classifier"
-      ]
+      ],
+      "standard_gap": "本项目三类shipment投影不覆盖完整DCSA枚举；REQ必须保留请求性质，不转换为实际发生。",
+      "standard_basis": [
+        {
+          "source_id": "dcsa-event-classifier",
+          "locator": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm; Attributes ACT/PLN/EST/REQ",
+          "relation": "supports",
+          "scope": "DCSA2024.4包含Actual、Planned、Estimated和Requested四类。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "event-time",
@@ -99,17 +162,44 @@
       "source_ids": [
         "onto-project",
         "gs1-epcis"
-      ]
+      ],
+      "standard_gap": "本地observed_at是首次获知时间；EPCIS recordTime属于来源仓库，不能不经映射直接等同。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.4 and7.4.1",
+          "relation": "supports",
+          "scope": "eventTime、recordTime及eventTimeZoneOffset分离。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "event-identity",
       "name": "消息重放与重复扫描",
-      "meaning": "相同来源事件号的重放与不同事件号的真实重复扫描有不同身份。",
+      "meaning": "相同来源事件号的重放与不同事件号的真实重复扫描有不同身份。 EPCIS permits an error declaration to repeat the original event with the same eventID and otherwise identical event content except errorDeclaration and recordTime. Recognize that permitted correction pair before treating differing payloads at the local event key as a conflict; corrective events retain their own IDs.",
       "modeling_rule": "键为 source_system+event_id；相同负载重放只计一次，冲突负载整键隔离；不同事件号不按地点/时间折叠。",
       "classification": "project-curated",
       "source_ids": [
-        "onto-project"
-      ]
+        "onto-project",
+        "gs1-epcis"
+      ],
+      "standard_gap": "来源事件号键、消息重放与真实重复扫描识别是本地规则；错误声明可能与原事件共享eventID，不能简单按eventID丢弃。 Validate an actual EPCIS correction before adapting it into local immutable evidence; the bounded stock/logistics oracle is not an EPCIS capture interface.",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.4.1 eventID and section7.4.1.2 ErrorDeclaration",
+          "relation": "background",
+          "scope": "事件标识与错误声明保留不同语义。"
+        },
+        {
+          "source_id": "gs1-epcis",
+          "locator": "EPCIS 2.0 section7.4.1.2 Error declaration; selected version in source catalogue",
+          "relation": "supports",
+          "scope": "Permitted same-eventID correction annotation; not a physical stock reversal or a generic overwrite."
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "handover",
@@ -121,7 +211,23 @@
         "onto-project",
         "gs1-epcis",
         "gs1-cbv"
-      ]
+      ],
+      "standard_gap": "本地到港/卸货/签收证据与保管责任判定需具体来源；端点角色不自动证明所有权实际转移。",
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; sections7.3.5 and7.3.6.4",
+          "relation": "supports",
+          "scope": "位置及业务转移端点分别建模。"
+        },
+        {
+          "source_id": "gs1-cbv",
+          "locator": "https://ref.gs1.org/standards/cbv/2.0.0/; section7.4.3 owning_party, possessing_party, location",
+          "relation": "supports",
+          "scope": "所有权、持有方和地点端点类型区分。"
+        }
+      ],
+      "standard_status": "standard-backed"
     },
     {
       "id": "eta-selection",
@@ -131,7 +237,9 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "当前有效预测选择、里程碑对齐、计划基线及延误阈值为本地规则；不由DCSA枚举或EPCIS事件字段决定。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "delivery-completeness",
@@ -141,7 +249,63 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "所有必需物流单元的实际arrival在指定目的地确认交付，是此合成例子的判据；不是GS1或DCSA通用签收要求。",
+      "standard_status": "nonstandard-modeling"
+    },
+    {
+      "id": "read-point-business-location",
+      "name": "读取点与业务地点",
+      "meaning": "EPCIS readPoint表示事件发生/读取的位置，bizLocation表达事件后物品被认为所在的业务地点；闸口扫描点不自动等于最终交付地点。",
+      "modeling_rule": "为read_point和business_location分别保留来源ID、粒度及映射证据；ETA或交付比较使用明确的里程碑地点。",
+      "modeling_fields": [
+        "read_point_reference",
+        "business_location_reference",
+        "location_granularity",
+        "mapping_evidence"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "gs1-epcis"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "gs1-epcis",
+          "locator": "https://ref.gs1.org/standards/epcis/2.0.0/; section7.3.5",
+          "relation": "supports",
+          "scope": "读取点与业务地点具有不同用途。"
+        }
+      ],
+      "standard_gap": "地点归一化、地理包含关系、里程碑比较及交付判定为本地规则。",
+      "standard_status": "standard-backed"
+    },
+    {
+      "id": "requested-event-classifier",
+      "name": "请求事件类别",
+      "meaning": "DCSA Event Classifier Code中的REQ表示Requested，不能并入ACT；请求装卸、到达或服务不是已经完成。",
+      "modeling_rule": "输入出现REQ时保留原代码和来源模型版本；只有任务选择支持该类别后再建立请求流程投影，不能填成实际事件。",
+      "modeling_fields": [
+        "event_classifier_code",
+        "source_model_version",
+        "requested_milestone",
+        "request_reference"
+      ],
+      "classification": "project-curated",
+      "source_ids": [
+        "onto-project",
+        "dcsa-event-classifier"
+      ],
+      "standard_basis": [
+        {
+          "source_id": "dcsa-event-classifier",
+          "locator": "https://models.dcsa.org/2024Q4/EARoot/EA5/EA2/EA6/EA7/EA1/EA1/EA2575.htm; REQ attribute",
+          "relation": "supports",
+          "scope": "REQ为正式枚举中的Requested。"
+        }
+      ],
+      "standard_gap": "本项目现有三类示例未实现REQ流程；请求转计划或实际的状态机需来源业务规则。",
+      "standard_status": "standard-backed"
     }
   ],
   "applicability": [
@@ -158,7 +322,12 @@
       "classification": "project-curated",
       "source_ids": [
         "onto-project"
-      ]
+      ],
+      "standard_gap": "项目变更日志，不是标准变更或废弃ID公告。",
+      "standard_status": "nonstandard-modeling"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

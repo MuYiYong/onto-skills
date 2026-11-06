@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "skill_used": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "object",
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "a_lenders": {
+          "type": "integer"
+        },
+        "b_lenders": {
+          "type": "integer"
+        },
+        "c_lenders": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "candidates",
+        "a_lenders",
+        "b_lenders",
+        "c_lenders"
+      ],
+      "additionalProperties": false
+    },
+    "identity_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "time_and_units": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "standard_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "skill_used",
+    "answer",
+    "identity_rules",
+    "time_and_units",
+    "standard_basis",
+    "source_limits",
+    "unresolved"
+  ],
+  "additionalProperties": false
+}

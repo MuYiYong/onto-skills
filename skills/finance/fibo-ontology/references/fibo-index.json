@@ -1,14 +1,17 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
   "source_ids": [
     "onto-project",
     "fibo",
-    "owl2"
+    "owl2",
+    "owl2-syntax",
+    "owl2-direct-semantics",
+    "owl2-conformance"
   ],
   "id": "fibo-index",
   "name": "FIBO 模块与映射索引",
@@ -20,7 +23,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/FND",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "BE",
@@ -29,7 +42,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/BE",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "FBC",
@@ -38,7 +61,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/FBC",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "LOAN",
@@ -47,7 +80,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/LOAN",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "SEC",
@@ -56,7 +99,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/SEC",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "DER",
@@ -65,7 +118,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/DER",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "IND",
@@ -74,7 +137,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/IND",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "MD",
@@ -83,7 +156,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/MD",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "BP",
@@ -92,7 +175,17 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/BP",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "CAE",
@@ -101,14 +194,25 @@
       "classification": "project-curated",
       "source_ids": [
         "fibo"
-      ]
+      ],
+      "standard_gap": "模块是导航层级；模块成熟度、imports闭包和具体Class/Property需分别核实。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/tree/33a92cd34285d532c158da97bb42add089f135d3/CAE",
+          "relation": "background",
+          "scope": "固定修订下的模块导航背景；不把中文模块摘要或目录存在当作公理验证。"
+        }
+      ],
+      "standard_status": "nonstandard-modeling"
     }
   ],
   "notes": [
     "这是所观察版本的模块导航，不是完整标准快照；模块可含不同成熟度内容，按任务核实生产/开发及 imports。",
     "FIBO → Domain → Module → Ontology → Class/Property；标准 IRI 与下载路径/版本 IRI 分开记录。",
     "Class 表示概念集合；Object Property 关联个体，Datatype Property 关联数据值；Domain/Range 推断和 OWL Restriction 的保留策略参照 OWL2 来源。",
-    "通过精确版本的标签/IRI/公理定位概念，不能依据中文名称猜造标准 IRI。"
+    "通过精确版本的标签/IRI/公理定位概念，不能依据中文名称猜造标准 IRI。",
+    "OWL2规范性语法、直接语义与符合性来源已分别列出；Primer用于解释。单文件解析、概念存在或JSON图规格有效都不证明完整imports推理或无损映射。"
   ],
   "observed_loan_subset": {
     "source_url": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf",
@@ -125,6 +229,24 @@
       "fibo",
       "owl2"
     ],
-    "version_iri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/"
-  }
+    "version_iri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/",
+    "standard_basis": [
+      {
+        "source_id": "fibo",
+        "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+        "relation": "supports",
+        "scope": "Loan的直接父类和已记录restriction在固定源文件中核实。"
+      },
+      {
+        "source_id": "owl2",
+        "locator": "https://www.w3.org/TR/2012/REC-owl2-primer-20121211/#Property_Cardinality_Restrictions",
+        "relation": "supports",
+        "scope": "qualified minimum 0不构成至少存在一个保证人的要求。"
+      }
+    ],
+    "standard_gap": "仅选定源文件读取和公理定位；imports未递归加载，没有全本体推理或图数据库符合性证明。"
+  },
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

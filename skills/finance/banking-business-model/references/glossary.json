@@ -1,7 +1,7 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT (original project curation; third-party sources retain their terms)",
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "classification": "project-curated",
   "authority": "项目原创整理，供业务建模使用，不是官方标准定义",
   "scope": "金融本体工程初始试点",
@@ -22,17 +22,43 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FunctionalEntities/FinancialServicesEntities.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialInstitution",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/FinancialInstitution",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260301/FunctionalEntities/FinancialServicesEntities/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "FinancialProduct",
       "name": "金融产品",
-      "definition": "一类产品条款与业务安排；不是客户持有的每一份具体合同。",
+      "definition": "金融机构提供的产品；本任务可选择其中与产品条款、合同或业务安排有关的范围，并明确裁剪边界。",
       "classification": "project-curated",
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/FinancialProductsAndServices.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/FinancialProduct",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/FinancialProduct",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260701/ProductsAndServices/FinancialProductsAndServices/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "FinancialMarket",
@@ -42,7 +68,9 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "本次限定检索未建立金融市场中文范围与所选FIBO类的精确对应；不得凭同名词生成IRI。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "FinancialTransaction",
@@ -52,7 +80,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "此映射仅定位IndividualTransaction，不声明涵盖所有金融交易类型；合同、指令、记录和实际事件需逐项区分。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/IndividualTransaction",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/IndividualTransaction",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20261001/ProductsAndServices/ClientsAndAccounts/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "FinancialContract",
@@ -62,7 +103,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FND/Agreements/Contracts.rdf; https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FND/20260601/Agreements/Contracts/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Claim",
@@ -72,7 +126,9 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "债权是本地业务视角；尚未核实此范围对应的FIBO精确Class/Property及其权利义务公理。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "Debt",
@@ -82,7 +138,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Debt",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Debt",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Account",
@@ -92,7 +161,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/ProductsAndServices/ClientsAndAccounts.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/Account",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20261001/ProductsAndServices/ClientsAndAccounts/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "CreditFacility",
@@ -102,7 +184,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditFacility",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/CreditFacility",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Loan",
@@ -112,7 +207,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/LOAN/LoansGeneral/Loans.rdf; https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Guarantee",
@@ -122,7 +230,9 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "中文担保涵盖保证、抵押、质押等不同法律安排；尚无经核实的单一FIBO等价类，不以Loan.hasGuarantor替代完整担保语义。",
+      "standard_status": "nonstandard-modeling"
     },
     {
       "id": "Settlement",
@@ -132,7 +242,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/FinancialInstruments/Settlement.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/Settlement",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/Settlement",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FinancialInstruments/Settlement/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Borrower",
@@ -142,7 +265,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Borrower",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Borrower",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Lender",
@@ -152,7 +288,20 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "标准Class不规定本地ID、数据清洗、事件去重或生命周期投影；imports未递归加载，未执行OWL推理。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Lender",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/Lender",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "Repayment",
@@ -162,7 +311,26 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "Repayment是本地总称；PrincipalPayment仅覆盖本金支付，利息另见同文件InterestPayment；冲正、退回及计划归并由本地规则定义。",
+      "standard_basis": [
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalPayment",
+          "relation": "supports",
+          "scope": "所选源文件内的已核实Class；仅支持此概念范围，中文定义和图映射仍为项目整理。"
+        },
+        {
+          "source_id": "fibo",
+          "locator": "https://github.com/edmcouncil/fibo/blob/33a92cd34285d532c158da97bb42add089f135d3/FBC/DebtAndEquities/Debt.rdf; https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/InterestPayment",
+          "relation": "supports",
+          "scope": "利息支付与本金支付分别定位，不把还款计划当实付。"
+        }
+      ],
+      "standard_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/PrincipalPayment",
+      "ontology_version_iri": "https://spec.edmcouncil.org/fibo/ontology/FBC/20260901/DebtAndEquities/Debt/",
+      "alignment": "bounded-concept-mapping",
+      "standard_status": "standard-backed"
     },
     {
       "id": "CreditInquiry",
@@ -172,7 +340,12 @@
       "source_ids": [
         "onto-project",
         "fibo"
-      ]
+      ],
+      "standard_gap": "征信查询事件为本地业务概念；尚未核实所选FIBO修订中的精确等价类，查询不能由此推成借贷事实。",
+      "standard_status": "nonstandard-modeling"
     }
-  ]
+  ],
+  "standards_policy": "standards-first-v1",
+  "standard_gap": "项目维护的知识集合、版本和范围说明；组织方式不是外部标准规定。",
+  "standard_status": "nonstandard-modeling"
 }

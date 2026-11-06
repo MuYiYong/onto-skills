@@ -1,0 +1,39 @@
+{
+  "runtime": "Codex collaboration agent; grouped review turn; not local CLI",
+  "actual_read_paths": [
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/request.txt",
+      "sha256": "2d35e243a1900992b410ca753d2da7bc443a067bdc657ee418269537ac16e204"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/schema.json",
+      "sha256": "6708ba007d296089a6025feda66cc72b7315cb49c50a4591008bda37b3d7a1b0"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/source-files.json",
+      "sha256": "90cb85f99791b231bbb763e2ac7d3cd1ea6de791436fdfda4da14ccfa2b5e6e8"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/.agents/skills/fibo-ontology/SKILL.md",
+      "sha256": "94d8fd8147ebc7d431f89b2fe9cabd0cf02ef0359c3f44b7961f11d68d0d0bdb"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/.agents/skills/fibo-ontology/references/sources.json",
+      "sha256": "8486c0dcf36c998bc67923ef439095e49f81f59558b0a465f20b7e5769365920"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/.agents/skills/fibo-ontology/references/fibo-index.json",
+      "sha256": "28499250b5bd0652265c9963b9b32aff8687ee2a62766fc95205366747fe833e"
+    },
+    {
+      "path": "/tmp/onto-current-codex-use-ol08kvts/fibo-ontology/.agents/skills/fibo-ontology/references/method.md",
+      "sha256": "bb1320f10911a745efbdbf388067176ab0e41a7751d300cb87c2fc298e7b9f44"
+    }
+  ],
+  "limits": [
+    "One shared model context across separate one-skill installation packets; not fresh independent CLI processes or certification.",
+    "Read only this packet request/schema/source manifest and listed skill resources; no examples, acceptance, worked examples, answer files, repository source, network, auth, config or production access.",
+    "Byte-identical finance reference content was consumed once in this shared context and each listed packet copy was read and SHA256 matched against its own source manifest.",
+    "Only listed consumed package files verified; no claim about unread or excluded files."
+  ]
+}
